@@ -1,22 +1,24 @@
-# "校校慶慶"
-# 答題遊戲製作介紹
-* Github 連結：https://github.com/yih-0118/mlsh.github.io
-* 網頁連結：https://yih-0118.github.io/mlsh.github.io/%E6%A0%A1%E6%A0%A1%E6%85%B6%E6%85%B6/index.html
-* HackMD 連結：https://hackmd.io/@yih0118/rJnrYIuQT
+# Introduction to Quiz Game Development
+
+-   Github link: [https://github.com/yih-0118/mlsh.github.io](https://github.com/yih-0118/mlsh.github.io)
+-   Webpage link: [https://yih-0118.github.io/mlsh.github.io/%E6%A0%A1%E6%A0%A1%E6%85%B6%E6%85%B6/index.html](https://yih-0118.github.io/mlsh.github.io/%E6%A0%A1%E6%A0%A1%E6%85%B6%E6%85%B6/index.html)
+-   HackMD link: https://hackmd.io/@yih0118/rklFyi_Q6
+
 ## HTML
-### 建立標題
+### Create heading
 ```xml=
 <h1>明倫知多少？</h1>
 ```
-### 插入題目
-1. 建立`id`為`question`的`div`
+### Insert question
+1.  Create `div` with `id` as `question`
 ```xml=
 <div id="question"></div>
 ```
-### 建立選項
-1. 建立`id`為`options`的`div`
-2. 製作四個選項的按鈕，id依序為`option-1 ~option-4`
-3. 與題目庫作為連結，為方便陣列統整，`onclick="check_answer(0)"~onclick="check_answer(3)"`
+### Create options
+1.  Create `div` with `id` as `options`
+2.  Make four option buttons, `id` in order `option-1` to `option-4`
+3.  Connect to question repositories, for easy array organization, `onclick="check_answer(0)"` to `onclick="check_answer(3)"`
+
 ```xml=
 <div id="options">
     <button id="option-1" onclick="check_answer(0)"></button>
@@ -25,16 +27,19 @@
     <button id="option-4" onclick="check_answer(3)"></button>
 </div>
 ```
-### 建立分數容器
-1. 建立`id`為`score-container`的`div`
-2. 建立`id`為`score`的`span`
+### Create score container
+
+1.  Create `div` with `id` as `score-container`
+2.  Create `span` with `id` as `score`
+
 ```xml=
 <div id="">
     答對題數: <span id="score">0</span>
 </div>
 ```
-### 建立最終畫面
-1. 放置在最上方，先隱藏，遊戲結束後再顯示
+### Create end screen
+1.  Place at top, initially hidden, show after game ends
+
 ```xml=
 <div id="end-container" style="display: none;">
     <div id="end-container-text">遊戲結束</div>
@@ -42,22 +47,24 @@
     <div id="end-container-length_questions">共 <span id="length_question"> 0 </span> 題</div>
 </div>
 ```
-### 引入
-1. 引入題目庫
+### Import 
+1. Import question repositories
+
 ```xml=
 <script src="Questions Repositories.js"></script>
 ```
-2. 引入規則庫
+2. Import rule repositories
+
 ```xml=
 <script src="rule.js"></script>
 ```
-3. 引入CSS
+3. Import CSS
 ```xml=
 <link rel="stylesheet" href="style.css">
 ```
 ---
 ## Javascript
-### 建立變數
+### Declare variables
 ```javascript=
 const score_element = document.getElementById("score");
 const end_container = document.getElementById("end-container");
@@ -67,8 +74,10 @@ const length_question = document.getElementById("length_question");
 let score = 0; 
 let current_question_index = 0; 
 ```
-### 題目內
-1. 先確認題目庫長度小於，這樣題目才能進行
+### Within question
+
+1. First confirm question repositories length is less than, so questions can proceed
+
 ```javascript=
 function show_question(index) {
     if (index < questions.length) {
@@ -76,59 +85,63 @@ function show_question(index) {
     }
 }
 ```
-#### 建立題目變數
+#### Create question variable
 ```javascript=
 const questionElement = document.getElementById("question");
 ```
-#### 顯示題號
+#### Display question number
 ```javascript=
 questionElement.textContent = current_question_index + 1 + (". ") + questions[index].question; 
 ```
 ---
-### 創建選項
-1. 先建立選項變數
-2. 清空內容
+### Create options
+1.  First create options variable
+2.  Clear content
+
 ```javascript=
 const optionsElement = document.getElementById("options");
 optionsElement.innerHTML = "";
 ```
-#### 填充選項
-1. 題目庫內的先跑一遍
+#### Fill in options
+1.  Loop through question repositories
+
 ```javascript=
 questions[index].options.forEach((option, i) => {
         ...
         });
 ```
-#### 建立按鈕變數
+#### Create button variable
 ```javascript=
 const button = document.createElement("button");
 ```
-#### 選項內容及題號
-1. 用ASCII碼，建立選項編號
-2. 選項內容 option
+#### Option content and number
+1.  Use ASCII code to create option number
+2.  Option content option
+
 ```javascript=
 button.textContent = "(" + String.fromCharCode(65 + i) + ") " + option;
 ```
-#### 確認選項及接連下一題
+#### Confirm option and connect to next question
 ```javascript=
 button.onclick = () => check_answer(i);
 optionsElement.appendChild(button);
 ```
-#### length已盡，故遊戲結束
+#### Length finished, so game ends
 ```javascript=
 else {
     end_container.style.display = "block";
     }
 ```
 ---
-### 分數的變動
+### Score changes
 ```javascript=
 function check_answer(selected_index) {
     ...
 }
 ```
-1. 如果選項正確，加分
-2. 如果答錯，顯示"答錯了"
+1.  If option is correct, add score
+2.  If wrong, display "答錯了"
+
 ```javascript=
 if (selected_index === questions[current_question_index].correct_answer) {
         score += 1;
@@ -138,13 +151,13 @@ if (selected_index === questions[current_question_index].correct_answer) {
         alert("答錯了唷！")
     }
 ```
-3. 更新題目，變數+1
+3.  Update question, variable +1
 ```javascript=
 current_question_index++;
 show_question(current_question_index);
 ```
 
-#### 回傳
+#### Return
 ```javascript=
 game_over_score.innerHTML = score;
 score_element.innerHTML = score;
@@ -152,7 +165,7 @@ length_question.innerHTML = questions.length;
 show_question(current_question_index);
 ```
 ---
-### 題目庫示範
+### Question repositories example
 ```javascript=
 const questions = [
     {
@@ -161,6 +174,6 @@ const questions = [
         correct_answer: 1
     },
 ```
-很多之類的～
+And so on...
 
 ---
