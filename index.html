@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- 貼合手機介面 -->
+    <title>v2.1</title><!-- 標題 -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="School emblem.ico" /> <!-- 網頁標籤插入 -->
+</head>
+
+<body>
+    <div id="end-container" style="display: none;"><!-- 先隱藏最終頁面 --><!-- 最終分數頁面 -->
+        <div id="end-container-text">遊戲結束</div>
+        <div id="end-container-score">答對題數: <span id="score-end">0</span></div>
+        <div id="end-container-length_questions">共 <span id="length_question"> 0 </span> 題</div>
+    </div>
+    </div>
+    <h1>明倫知多少？</h1><!-- 標題 -->
+    <div id="question"></div><!-- 設id:question -->
+    <div id="options"><!-- 題目選項 -->
+        <button id="option-1" onclick="check_answer(0)"></button>
+        <button id="option-2" onclick="check_answer(1)"></button>
+        <button id="option-3" onclick="check_answer(2)"></button>
+        <button id="option-4" onclick="check_answer(3)"></button>
+    </div>
+    <div id="score-container"><!-- 使用介面分數 -->
+        答對題數: <span id="score">0</span>
+    </div>
+    <script src="Questions Repositories.js"></script><!-- 題目庫 -->
+    <script src="rule.js"></script>
+</body>
+
+</html>
