@@ -10,6 +10,21 @@ const questions = [
         correct_answer: 1
     },
     {
+        question: "明倫是民國幾年建校？",
+        options: ["68","71","75","57"],
+        correct_answer: 3
+    },
+    {
+        question: "明倫原先是國中，之後改制為明倫高級中學。請問是幾年改制並停招國中生？",
+        options: ["82","71","91","90"],
+        correct_answer: 0
+    },
+    {
+        question: "明倫校旗上有什麼圖形？",
+        options: ["三角形","圓形","正方形","菱形"],
+        correct_answer: 1
+    },
+    {
         question: "明倫高中位於哪個城市？",
         options: ["台北市", "高雄市", "台中市", "新北市"],
         correct_answer: 0
