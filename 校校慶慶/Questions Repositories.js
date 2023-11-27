@@ -41,7 +41,7 @@ const questions = [
     },
     {
         question: "明倫高中附近沒有什麼？",
-        options: ["紅茶屋", "明倫蛋餅", "孔廟", "學務處"],
+        options: ["紅茶屋", "明倫蛋餅", "孔廟", "奶茶屋"],
         correct_answer: 1
     },
     {
