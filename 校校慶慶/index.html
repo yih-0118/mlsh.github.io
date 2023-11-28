@@ -3,12 +3,16 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v2.2</title>
+    <title>v3.0</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="School emblem.ico" />
 </head>
 
 <body>
+    <div id="start-container">
+        <div id="start-text">按下後開始遊戲</div>
+        <button id="start-button" onclick="startGame()">開始</button> 
+      </div>
     <div id="end-container" style="display: none;">
         <div id="end-container-text">遊戲結束</div>
         <div id="end-container-score">答對題數: <span id="score-end">0</span></div>
@@ -16,6 +20,7 @@
     </div>
     </div>
     <h1>明倫知多少？</h1>
+    <div id="timer">剩餘時間：<span id="seconds">10</span> s</div>
     <div id="question"></div>
     <div id="options">
         <button id="option-1" onclick="check_answer(0)"></button>
@@ -26,6 +31,7 @@
     <div id="score-container">
         答對題數: <span id="score">0</span>
     </div>
+    
     <script src="Questions Repositories.js"></script>
     <script src="rule.js"></script>
 </body>
