@@ -6,6 +6,7 @@ const length_question = document.getElementById("length_question");
 let timer;
 let seconds = 10;
 function startGame() {
+    questions.sort(() => Math.random() - 0.5);
     document.getElementById("start-container").style.display = "none";
     function Quiz() {
         this.score = 0;
