@@ -38,8 +38,8 @@ function startGame() {
                 questions[index].options.forEach((option, i) => {
                     const button = document.createElement("button");
                     button.textContent = `(${String.fromCharCode(65 + i)}) ${option}`;
-                    button.onclick = () => this.check_answer(i);
-                    optionsElement.appendChild(button);
+                    button.onclick = () => this.check_answer(i);//點擊時呼叫Quiz中的check_answer,並傳入當前選項的i
+                    optionsElement.appendChild(button);//填充進去
                 });
             } else {
                 end_container.style.display = "block";
