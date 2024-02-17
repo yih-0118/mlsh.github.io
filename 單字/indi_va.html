@@ -1,108 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABC</title>
     <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #ffffff;
-            margin: 0;
-            padding: 0;
         }
 
+        /* Container Styles */
         .container {
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
         }
 
+        /* Header Styles */
         .header {
             text-align: center;
             margin-bottom: 30px;
+            animation: fadeIn 1s ease;
         }
 
         .header h1 {
             color: #333;
         }
 
+        /* Links Styles */
         .links {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .link-magazine {
+        .links li {
             margin-bottom: 20px;
-            background-color: #ffe1c4;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .link-l2 {
-            margin-bottom: 20px;
-            background-color: #c8f4c7;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .link-l3 {
-            margin-bottom: 20px;
-            background-color: #fffab0;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .link-l4 {
-            margin-bottom: 20px;
-            background-color: #faa2a2;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .link-magazine a {
-            display: block;
-            padding: 20px;
-            text-decoration: none;
-            color: #333;
+        .links li:hover {
+            transform: translateY(-5px);
         }
-        .link-l2 a {
-            display: block;
-            padding: 20px;
-            text-decoration: none;
-            color: #333;
-        }
-        .link-l3 a {
-            display: block;
-            padding: 20px;
-            text-decoration: none;
-            color: #333;
-        }
-        .link-l4 a {
+
+        .links li a {
             display: block;
             padding: 20px;
             text-decoration: none;
             color: #333;
         }
 
-        .link-item a:hover {
+        .links li a:hover {
             background-color: #f0f0f0;
         }
-        html{
-            -moz-user-select: none; /* Firefox */
-            -webkit-user-select: none;  /* Chrome , Safari*/
-            -ms-user-select: none;  /* IE10 */
-            -khtml-user-select: none;  /* 古早瀏覽器 */
-            user-select: none; 
-          }
-          .link {
-            -webkit-touch-callout: none; /* iOS Safari */
-            -webkit-user-select: none; /* Safari */
-            -khtml-user-select: none; /* Konqueror HTML */              
-            -moz-user-select: none; /* Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-          }
+
+        /* Specific Link Styles */
+        .link-magazine {
+            background-color: #ffe1c4;
+        }
+
+        .link-l2 {
+            background-color: #c8f4c7;
+        }
+
+        .link-l3 {
+            background-color: #fffab0;
+        }
+
+        .link-l4 {
+            background-color: #faa2a2;
+        }
+
+        .link-b4 {
+            background-color: #b9d8fe;
+        }
+
+        /* Disable Text Selection */
+        html,
+        .link {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -110,21 +117,166 @@
         </div>
         <ul class="links">
             <li class="link-magazine">
-                <a href="開學考雜誌.html">ALL PLUS 1月15日~1月31日</a>
+                <a href="./html/開學考雜誌.html">ALL PLUS 1月15日~1月31日</a>
             </li>
-            <li class="link-l3">
-                <a href="B4 L1.html">Book 4 Lesson 1</a>
+            <li class="link-b4">
+                <a href="./html/B4 L1.html">Book 4 Lesson 1</a>
             </li>
             <li class="link-l2">
-                <a href="L2 U1.html">Level 2 Unit 1</a>
+                <a href="./html/vocabulary(L2 Unit1).html">vocabulary(L2 Unit1)</a>
             </li>
-            <!-- <li class="link-l3">
-                <a href="https://twitter.com/example">Twitter</a>
+            <li class="link-l2">
+                <a href="./html/vocabulary(L2 Unit1).html">vocabulary(L2 Unit1)</a>
+            </li>
+            <li class="link-l2">
+                <a href="./html/vocabulary(L2 Unit2).html">vocabulary(L2 Unit2)</a>
+            </li>
+            <li class="link-l2">
+                <a href="./html/vocabulary(L2 Unit3).html">vocabulary(L2 Unit3)</a>
+            </li>
+            <li class="link-l2">
+                <a href="./html/vocabulary(L2 Unit4).html">vocabulary(L2 Unit4)</a>
+            </li>
+            <li class="link-l2">
+                <a href="./html/vocabulary(L2 Unit5).html">vocabulary(L2 Unit5)</a>
+            </li>
+            <li class="link-l2">
+                <a href="./html/vocabulary(L2 Unit6).html">vocabulary(L2 Unit6)</a>
+            </li>
+            <li class="link-l2">
+                <a href="./html/vocabulary(L2 Unit7).html">vocabulary(L2 Unit7)</a>
+            </li>
+            <li class="link-l2">
+                <a href="./html/vocabulary(L2 Unit8).html">vocabulary(L2 Unit8)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit1).html">vocabulary(L3 Unit1)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit2).html">vocabulary(L3 Unit2)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit3).html">vocabulary(L3 Unit3)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit4).html">vocabulary(L3 Unit4)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit5).html">vocabulary(L3 Unit5)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit6).html">vocabulary(L3 Unit6)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit7).html">vocabulary(L3 Unit7)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit8).html">vocabulary(L3 Unit8)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit9).html">vocabulary(L3 Unit9)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit10).html">vocabulary(L3 Unit10)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit11).html">vocabulary(L3 Unit11)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit12).html">vocabulary(L3 Unit12)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit13).html">vocabulary(L3 Unit13)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit14).html">vocabulary(L3 Unit14)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit15).html">vocabulary(L3 Unit15)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit16).html">vocabulary(L3 Unit16)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit17).html">vocabulary(L3 Unit17)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit18).html">vocabulary(L3 Unit18)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit19).html">vocabulary(L3 Unit19)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit20).html">vocabulary(L3 Unit20)</a>
+            </li>
+            <li class="link-l3">
+                <a href="./html/vocabulary(L3 Unit21).html">vocabulary(L3 Unit21)</a>
             </li>
             <li class="link-l4">
-                <a href="https://linkedin.com/in/example">LinkedIn</a>
-            </li> -->
+                <a href="./html/vocabulary(L4 Unit1).html">vocabulary(L4 Unit1)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit2).html">vocabulary(L4 Unit2)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit3).html">vocabulary(L4 Unit3)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit4).html">vocabulary(L4 Unit4)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit5).html">vocabulary(L4 Unit5)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit6).html">vocabulary(L4 Unit6)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit7).html">vocabulary(L4 Unit7)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit8).html">vocabulary(L4 Unit8)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit9).html">vocabulary(L4 Unit9)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit10).html">vocabulary(L4 Unit10)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit11).html">vocabulary(L4 Unit11)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit12).html">vocabulary(L4 Unit12)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit13).html">vocabulary(L4 Unit13)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit14).html">vocabulary(L4 Unit14)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit15).html">vocabulary(L4 Unit15)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit16).html">vocabulary(L4 Unit16)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit17).html">vocabulary(L4 Unit17)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit18).html">vocabulary(L4 Unit18)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit19).html">vocabulary(L4 Unit19)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit20).html">vocabulary(L4 Unit20)</a>
+            </li>
+            <li class="link-l4">
+                <a href="./html/vocabulary(L4 Unit21).html">vocabulary(L4 Unit21)</a>
+            </li>
         </ul>
     </div>
 </body>
+
 </html>
