@@ -40,7 +40,7 @@ body {
 .btn {
     border: none;
     outline: none;
-    background: #1f6feb;
+    background: #7c32bd;
     color: white;
     padding: 11px 25px;
     width: fit-content;
@@ -49,7 +49,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: outline-offset 0.2s ease;
-    outline: #1f6feb 3px solid;
+    outline: #7c32bd 3px solid;
 }
 
 .btn:hover,
