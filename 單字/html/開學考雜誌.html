@@ -172,10 +172,20 @@
                 this.display();
             }
         
-            // sound() {
-            //     const utterance = new SpeechSynthesisUtterance(this.output.html());
-            //     speechSynthesis.speak(utterance);
-            // }
+            sound() {
+                // 添加语音提示
+                const intro = new SpeechSynthesisUtterance("");
+                speechSynthesis.speak(intro);
+            
+                // 设置语音合成参数
+                const utterance = new SpeechSynthesisUtterance(this.output.html());
+                utterance.rate = 1; // 控制语速，可根据需求调整
+                utterance.pitch = 1.1; // 控制语调，可根据需求调整
+            
+                // 开始朗读内容
+                speechSynthesis.speak(utterance);
+            }
+            
         
             display() {
                 this.close_hint();
