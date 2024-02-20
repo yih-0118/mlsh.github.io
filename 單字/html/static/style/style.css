@@ -176,4 +176,7 @@ body {
 
 .chinese {
     display: none;
+    .chinese {
+        font-family: 'Microsoft Yahei', 'PingFang SC', sans-serif; 
+      }
 }

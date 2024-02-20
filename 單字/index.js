@@ -1,6 +1,8 @@
 const data = [
     { url: "./html/開學考雜誌.html", category: "link-magazine", label: "ALL+ 1/15~1/31" },
     { url: "./html/B4 L1.html", category: "link-b4", label: "Book 4 Lesson 1" },
+    { url: "./html/B4 L2.html", category: "link-b4", label: "Book 4 Lesson 2" },
+    { url: "./html/B4 L3.html", category: "link-b4", label: "Book 4 Lesson 3" },
     { url: "./html/vocabulary(L2 Unit1).html", category: "link-l2", label: "vocabulary(L2 Unit1)" },
     { url: "./html/vocabulary(L2 Unit2).html", category: "link-l2", label: "vocabulary(L2 Unit2)" },
     { url: "./html/vocabulary(L2 Unit3).html", category: "link-l2", label: "vocabulary(L2 Unit3)" },
