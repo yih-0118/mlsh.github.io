@@ -12,7 +12,9 @@ const data = [
     { url: "./html/ALL_PLUS_Mar_Unit_12.html", category: "link-magazine", label: "All Plus Mar Unit12" },
     { url: "./html/ALL_PLUS_Mar_Unit_13.html", category: "link-magazine", label: "All Plus Mar Unit13" },
     { url: "./html/ALL_PLUS_Mar_Unit_14.html", category: "link-magazine", label: "All Plus Mar Unit14" },
-    { url: "./html/ALL_PLUS_Mar_Unit_15.html", category: "link-magazine", label: "All Plus Mar Unit15" }
+    { url: "./html/ALL_PLUS_Mar_Unit_15.html", category: "link-magazine", label: "All Plus Mar Unit15" },
+    { url: "./html/ALL_PLUS_Mar_CNN_News.html", category: "link-magazine", label: "All Plus Mar CNN News" }
+
 ];
 
 function generateLinks() {
