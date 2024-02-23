@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/yih_0118/Documents/code  MacOS/自主學習(高二)",
+      "program": "/Users/yih_0118/Documents/code  MacOS/自主學習(高二)/build/Debug/outDebug"
+    }
+  ]
+}

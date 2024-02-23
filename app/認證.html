@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html{
+      -moz-user-select: none; /* Firefox */
+      -webkit-user-select: none;  /* Chrome , Safari*/
+      -ms-user-select: none;  /* IE10 */
+      -khtml-user-select: none;  /* 古早瀏覽器 */
+      user-select: none; 
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+    <h2>MLCP_31st</h2>
+    <form id="loginForm">
+      
+
+      <div class="form-group">
+        
+        <input type="password" id="password" name="password" required >
+      </div>
+
+      <div class="form-group">
+        <button type="button" onclick="login()">確認</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function login() {
+      // 可以在此處加入登入邏輯，例如檢查使用者名稱和密碼是否正確
+      alert('Login button clicked!');
+    }
+  </script>
+
+</body>
+
+</html>

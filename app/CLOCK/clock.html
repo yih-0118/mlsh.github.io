@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title></title>
+  <style>
+    body {
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease;
+    }
+
+    .container {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 60%;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+    }
+
+    .container h1,
+    .container h2 {
+      position: relative;
+      z-index: 2;
+      user-select: none;
+    }
+
+    .time-block {
+      text-align: center;
+      margin-bottom: 0.5vh;
+    }
+
+    .time-block h2 {
+      color: white;
+      font-size: 80px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      user-select: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container::before {
+        width: 90%;
+        height: 70%;
+      }
+
+      .time-block h2 {
+        font-size: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="time-block">
+      <h2 id="current-time" class="text-light"></h2>
+    </div>
+  </div>
+
+  <script>
+    const currentTimeElement = document.getElementById('current-time');
+    const backgrounds = ["bg-1.jpg", "bg-2.jpg", "bg-3.jpg", "bg-4.jpg", "bg-5.jpg", "bg-6.jpg", "bg-7.jpg", "bg-8.jpg", "bg-9.jpg", "bg-10.jpg", "bg-11.jpg", "bg-12.jpg"];
+    let currentBackgroundIndex = Math.floor(Math.random() * backgrounds.length);
+
+    // 預先加載所有圖片 
+    const preloadImages = [];
+    backgrounds.forEach(bg => {
+      const img = new Image();
+      img.src = bg;
+      preloadImages.push(img);
+    });
+
+    // 目前顯示的背景索引
+    let currentBgIndex = 0;
+
+    // 預加載的下一張背景圖
+    let nextImage;
+
+    function updateBackground() {
+
+      // 預加載下一張
+      nextImage = new Image();
+      nextImage.onload = swapBackground;
+      nextImage.src = backgrounds[++currentBgIndex % backgrounds.length];
+
+    }
+
+    function swapBackground() {
+
+      // 切換背景  
+      document.body.style.backgroundImage = `url(${nextImage.src})`;
+
+      // 准备下下一張圖
+      updateBackground();
+    }
+
+    function getCurrentTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const currentTime = `${hours}:${minutes}:${seconds}`;
+      currentTimeElement.textContent = currentTime;
+    }
+
+    function updateBackground() {
+
+      currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+
+      const newBackground = backgrounds[currentBackgroundIndex];
+
+      const tempImage = new Image();
+
+      tempImage.onload = function () {
+        document.body.style.backgroundImage = `url(${newBackground})`;
+      };
+
+      tempImage.src = newBackground;
+
+    }
+
+    getCurrentTime();
+    updateBackground();
+
+    const changeInterval = 5 * 60 * 1000;
+    setInterval(getCurrentTime, 1000);
+    setInterval(updateBackground, changeInterval);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

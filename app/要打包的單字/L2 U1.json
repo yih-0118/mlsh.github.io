@@ -1,0 +1,404 @@
+{
+    "vocabularies": [
+        {
+            "vocabulary": "will ",
+            "partOfSpeech": "n.",
+            "chinese": "遺囑 / 意志"
+        },
+        {
+            "vocabulary": "willing",
+            "partOfSpeech": "a.",
+            "chinese": "有意願的 "
+        },
+        {
+            "vocabulary": "leave",
+            "partOfSpeech": "n.",
+            "chinese": "請假"
+        },
+        {
+            "vocabulary": "on leave",
+            "partOfSpeech": null,
+            "chinese": "請假中"
+        },
+        {
+            "vocabulary": "take sick leave",
+            "partOfSpeech": null,
+            "chinese": "請病假"
+        },
+        {
+            "vocabulary": "part",
+            "partOfSpeech": "n.\nvi.\nvt",
+            "chinese": "零件\n分離\n分開"
+        },
+        {
+            "vocabulary": "draw",
+            "partOfSpeech": "vt.",
+            "chinese": "拉 / 吸引"
+        },
+        {
+            "vocabulary": "drawer",
+            "partOfSpeech": "n.",
+            "chinese": "抽屜"
+        },
+        {
+            "vocabulary": "lay",
+            "partOfSpeech": "vt.",
+            "chinese": "放置 / 生蛋"
+        },
+        {
+            "vocabulary": "lay off",
+            "partOfSpeech": null,
+            "chinese": "遣散 / 解僱 / 裁員"
+        },
+        {
+            "vocabulary": "lie",
+            "partOfSpeech": "vi. / n.",
+            "chinese": "躺 / 位於 / 說謊 \n謊言"
+        },
+        {
+            "vocabulary": "a white lie",
+            "partOfSpeech": null,
+            "chinese": "善意的謊言"
+        },
+        {
+            "vocabulary": "state",
+            "partOfSpeech": "vt.\nn.",
+            "chinese": "聲明\n州 / 狀態"
+        },
+        {
+            "vocabulary": "statement",
+            "partOfSpeech": "n.",
+            "chinese": "聲明 / 陳述"
+        },
+        {
+            "vocabulary": "sound",
+            "partOfSpeech": "a.",
+            "chinese": "紮實的、健全的\n深深的、深沉的（特指睡眠）\n明智的、合理的"
+        },
+        {
+            "vocabulary": "soundly",
+            "partOfSpeech": "adv.",
+            "chinese": "紮實安穩地"
+        },
+        {
+            "vocabulary": "safe and sound",
+            "partOfSpeech": null,
+            "chinese": "安好的、毫髮無傷的"
+        },
+        {
+            "vocabulary": "safe",
+            "partOfSpeech": "n.",
+            "chinese": "保險箱"
+        },
+        {
+            "vocabulary": "bit",
+            "partOfSpeech": "n.",
+            "chinese": "小塊"
+        },
+        {
+            "vocabulary": "bit by bit",
+            "partOfSpeech": null,
+            "chinese": "漸漸地"
+        },
+        {
+            "vocabulary": "bitcoin",
+            "partOfSpeech": null,
+            "chinese": "比特幣"
+        },
+        {
+            "vocabulary": "dot",
+            "partOfSpeech": "n.\nvt. ",
+            "chinese": "小點、圓點\n點綴"
+        },
+        {
+            "vocabulary": "season",
+            "partOfSpeech": "vt.",
+            "chinese": "調味"
+        },
+        {
+            "vocabulary": "seasoning",
+            "partOfSpeech": "n.",
+            "chinese": "調味料"
+        },
+        {
+            "vocabulary": "seasoned",
+            "partOfSpeech": "a. ",
+            "chinese": "調過味的"
+        },
+        {
+            "vocabulary": "examine",
+            "partOfSpeech": "vt. ",
+            "chinese": "檢查、審查 / 測驗"
+        },
+        {
+            "vocabulary": "examination",
+            "partOfSpeech": "n. ",
+            "chinese": "檢查、審查 / 測驗"
+        },
+        {
+            "vocabulary": "last",
+            "partOfSpeech": "vi.",
+            "chinese": "持續"
+        },
+        {
+            "vocabulary": "lasting",
+            "partOfSpeech": "a. ",
+            "chinese": "持久的"
+        },
+        {
+            "vocabulary": "judge",
+            "partOfSpeech": "n.\nvt.",
+            "chinese": "評審、法官\n判斷"
+        },
+        {
+            "vocabulary": "judg(e)ment",
+            "partOfSpeech": "n. ",
+            "chinese": "評判、裁決 / 判斷"
+        },
+        {
+            "vocabulary": "pass judgment on N",
+            "partOfSpeech": null,
+            "chinese": "對～嚴加批評"
+        },
+        {
+            "vocabulary": "grand",
+            "partOfSpeech": "a.",
+            "chinese": "雄偉的 /  重要的、顯赫的"
+        },
+        {
+            "vocabulary": "sentence",
+            "partOfSpeech": "n. / vt.",
+            "chinese": "判刑 / 判刑"
+        },
+        {
+            "vocabulary": "a life sentence",
+            "partOfSpeech": null,
+            "chinese": "無期徒刑"
+        },
+        {
+            "vocabulary": "address",
+            "partOfSpeech": "vt. / n",
+            "chinese": "向～發表演說\n寄信給（在信上寫收信人的\n姓名、住址）\n處理、對付\n稱呼～為\n/ 地址"
+        },
+        {
+            "vocabulary": "wind",
+            "partOfSpeech": "vi.",
+            "chinese": "蜿蜒 / 纏繞 / 轉緊（發條）"
+        },
+        {
+            "vocabulary": "wind up",
+            "partOfSpeech": null,
+            "chinese": "結果～ ( = end up)"
+        },
+        {
+            "vocabulary": "well",
+            "partOfSpeech": "n. ",
+            "chinese": "井"
+        },
+        {
+            "vocabulary": "spell",
+            "partOfSpeech": "n.",
+            "chinese": "咒語"
+        },
+        {
+            "vocabulary": "field",
+            "partOfSpeech": "n. ",
+            "chinese": "田野、田地 / 領域"
+        },
+        {
+            "vocabulary": "field trip",
+            "partOfSpeech": null,
+            "chinese": "戶外教學、實地考察之旅"
+        },
+        {
+            "vocabulary": "court",
+            "partOfSpeech": "n. / vt.",
+            "chinese": "法庭、球場（籃球、網球等）/\n追求"
+        },
+        {
+            "vocabulary": "indicate",
+            "partOfSpeech": "vt.",
+            "chinese": "顯示"
+        },
+        {
+            "vocabulary": "indicator",
+            "partOfSpeech": "n. ",
+            "chinese": "指示器 / 指標"
+        },
+        {
+            "vocabulary": "material",
+            "partOfSpeech": "n. / a.",
+            "chinese": "原料、材料 ; 資料、題材 /\n物質的"
+        },
+        {
+            "vocabulary": "materialism",
+            "partOfSpeech": "n.",
+            "chinese": "物質主義（重物質享受 ，輕精神生活）"
+        },
+        {
+            "vocabulary": "section",
+            "partOfSpeech": "n. ",
+            "chinese": "部位、區塊 / 部門"
+        },
+        {
+            "vocabulary": "bear",
+            "partOfSpeech": "vt.",
+            "chinese": "忍受【~ N / V-ing】,\n誕生（須用被動式，「出生\n在某地」，過去分詞為 born\n，但若「由某人所生」，過\n去分詞為 borne）,\n心懷,\n有、帶有"
+        },
+        {
+            "vocabulary": "unbearable",
+            "partOfSpeech": "a.",
+            "chinese": "無法忍受的"
+        },
+        {
+            "vocabulary": "stand",
+            "partOfSpeech": "vt.\nn. ",
+            "chinese": "忍受【~ N / V-ing】/ \n立場\n攤位"
+        },
+        {
+            "vocabulary": "apply",
+            "partOfSpeech": "vi.",
+            "chinese": "申請【~ (to A) (for B)】\n適用於【~ to N】\n應用【~ A (to B)】\n塗、敷【~ A (to B)】"
+        },
+        {
+            "vocabulary": "applied",
+            "partOfSpeech": "a.",
+            "chinese": "應用的（限定用法）"
+        },
+        {
+            "vocabulary": "surface",
+            "partOfSpeech": "n.\nvi.",
+            "chinese": "表面\n浮出水面、浮上檯面"
+        },
+        {
+            "vocabulary": "on the surface",
+            "partOfSpeech": null,
+            "chinese": "表面上"
+        },
+        {
+            "vocabulary": "principle",
+            "partOfSpeech": "n.",
+            "chinese": "原理 / 原則"
+        },
+        {
+            "vocabulary": "in principle",
+            "partOfSpeech": null,
+            "chinese": "原則上"
+        },
+        {
+            "vocabulary": "natural",
+            "partOfSpeech": "a.",
+            "chinese": "天然的\n自然不做作的\n當然的、不無道理的"
+        },
+        {
+            "vocabulary": "naturally",
+            "partOfSpeech": "adv.",
+            "chinese": "天生地 / 自然地、當然地"
+        },
+        {
+            "vocabulary": "particular",
+            "partOfSpeech": "a.\nn.",
+            "chinese": "特別的 / 講究的、挑剔的\n細節、詳情"
+        },
+        {
+            "vocabulary": "in particular",
+            "partOfSpeech": null,
+            "chinese": "特別地 ( = particularly)"
+        },
+        {
+            "vocabulary": "particularly",
+            "partOfSpeech": "adv.",
+            "chinese": "特別地"
+        },
+        {
+            "vocabulary": "especially",
+            "partOfSpeech": "adv.",
+            "chinese": "特別地 / 尤其地"
+        },
+        {
+            "vocabulary": "occur",
+            "partOfSpeech": "vi.",
+            "chinese": "發生 / \n突然想到【it ~ to sb. that】"
+        },
+        {
+            "vocabulary": "manner",
+            "partOfSpeech": "n.",
+            "chinese": "禮貌、風度【~ s】/ 態度 / 方法、方式"
+        },
+        {
+            "vocabulary": "table manners",
+            "partOfSpeech": null,
+            "chinese": "用餐禮儀"
+        },
+        {
+            "vocabulary": "pattern",
+            "partOfSpeech": "n.\nvt.",
+            "chinese": "規律、型態 / 圖案、花色 \n以圖案花樣裝飾"
+        },
+        {
+            "vocabulary": "maintain",
+            "partOfSpeech": "vt.",
+            "chinese": "保持 / 維修、保養"
+        },
+        {
+            "vocabulary": "bill",
+            "partOfSpeech": "n.\nvt.",
+            "chinese": "帳單 / 紙鈔 / 法案 / 鳥嘴 \n送帳單給～"
+        },
+        {
+            "vocabulary": "affair",
+            "partOfSpeech": "n.",
+            "chinese": "事務 / 外遇、緋聞"
+        },
+        {
+            "vocabulary": "mass",
+            "partOfSpeech": "n.",
+            "chinese": "一大塊、一大團 / \n質量（物理名詞） /\n大眾"
+        },
+        {
+            "vocabulary": "exact",
+            "partOfSpeech": "a.",
+            "chinese": "精確的"
+        },
+        {
+            "vocabulary": "exactly",
+            "partOfSpeech": "adv.",
+            "chinese": "精確地 / 完全地"
+        },
+        {
+            "vocabulary": "attend",
+            "partOfSpeech": "vt.\nvi.",
+            "chinese": "參加、出席 / 進入、就讀 \n注意、處理【~ to N】\n（職業上的）照顧、照料\n【~ to】"
+        },
+        {
+            "vocabulary": "attention",
+            "partOfSpeech": "n.",
+            "chinese": "注意 / 照料 / 立正（口令）"
+        },
+        {
+            "vocabulary": "pay attention (to)",
+            "partOfSpeech": null,
+            "chinese": "注意"
+        },
+        {
+            "vocabulary": "attentive",
+            "partOfSpeech": "a. ",
+            "chinese": "專心的"
+        },
+        {
+            "vocabulary": "shoot",
+            "partOfSpeech": "vt.\nn. ",
+            "chinese": "射擊 / 拍攝\n植物的嫩芽"
+        },
+        {
+            "vocabulary": "bamboo shoot",
+            "partOfSpeech": null,
+            "chinese": "竹筍"
+        },
+        {
+            "vocabulary": "shot",
+            "partOfSpeech": "n.",
+            "chinese": "射擊 / 射擊 / 投球、射球 / 嘗試 / 照片、拍攝"
+        }
+    ]
+}

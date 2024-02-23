@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <html lang="cn">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.2, maximum-scale=1.2, user-scalable=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+    html{
+            -moz-user-select: none; /* Firefox */
+            -webkit-user-select: none;  /* Chrome , Safari*/
+            -ms-user-select: none;  /* IE10 */
+            -khtml-user-select: none;  /* 古早瀏覽器 */
+            user-select: none;
+          }
+          .link {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+          }
+    </style>
+</head>
+<body>
+    <div id="tetris-container">
+        <canvas id="tetris" width="150" height="300"></canvas>
+    </div>
+
+    <div id="score-panel">
+        <div id="score-container">
+            Score: <span id="score">0</span>
+        </div>
+        <div id="level-container">
+            Level: <span id="level">1</span>
+        </div>
+    </div>
+
+    <div id="button-container">
+        <div class="button-row">
+            <button class="button" id="move-left-button">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+
+            <button class="button" id="rotate-button">Rotate
+                <i class="fas fa-sync-alt"></i> 
+
+            </button>
+            <button class="button" id="move-right-button">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+
+        </div>
+        <div class="button-row">
+            <button class="button" id="pause-button"><i class="fas fa-pause"></i> Pause</button>
+
+            <button class="button" id="move-down-button">
+                <i class="fas fa-arrow-down"></i>
+            </button>
+            
+            <button class="button" id="restart-button"><i class="fas fa-redo"></i> Restart</button>
+        </div>
+    </div>
+    
+    <script src="Fang's Cube.js"></script>
+    <script src="Rule.js"></script>
+    <script>
+        const rotateButton = document.getElementById("rotate-button");
+        const moveLeftButton = document.getElementById("move-left-button");
+        const moveRightButton = document.getElementById("move-right-button");
+        const moveDownButton = document.getElementById("move-down-button");
+        const pauseButton = document.getElementById("pause-button");
+        const restartButton = document.getElementById("restart-button");
+        let isPaused = false;
+
+        pauseButton.addEventListener("click", () => {
+            if (isPaused) {
+                isPaused = false;
+                drop();
+                pauseButton.innerHTML = '<i class="fas fa-pause"></i> Pause';
+            } else {
+                isPaused = true;
+                pauseButton.innerHTML = '<i class="fas fa-play"></i> Resume';
+            }
+        });
+
+         restartButton.addEventListener("click", () => {
+            isPaused = false;
+            p = randomPiece();
+            board = createBoard();
+            score = 0;
+            hardmode = 8;
+            levelElement.innerHTML = hardmode; 
+            scoreElement.innerHTML = score;
+            pauseButton.innerHTML = '<i class="fas fa-pause"></i> Pause';
+            drop();
+            gameOver = false;
+            gameOverMessage.style.display = 'none'; 
+        });
+
+        rotateButton.addEventListener("click", () => {
+            p.rotate();
+            dropStart = Date.now();
+        });
+
+        moveLeftButton.addEventListener("click", () => {
+            p.moveLeft();
+            dropStart = Date.now();
+        });
+
+        moveRightButton.addEventListener("click", () => {
+            p.moveRight();
+            dropStart = Date.now();
+        });
+
+        moveDownButton.addEventListener("click", () => {
+            p.moveDown();
+        });
+    </script>
+</body>
+</html>
