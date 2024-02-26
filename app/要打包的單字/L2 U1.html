@@ -197,25 +197,27 @@
             }
         
             next() {
-                if (WordProcessor.idx < Setting.max) {
-                    WordProcessor.idx++;
-                } else {
-                    WordProcessor.idx = 0;
-                }
-        
-                localStorage.setItem("number",WordProcessor.idx );
-                this.display();
-            }
-        
-            prev() {
-                if (WordProcessor.idx > Setting.min) {
-                    WordProcessor.idx--;
-                } else {
-                    WordProcessor.idx = Setting.max;
-                }
-                localStorage.setItem("number", WordProcessor.idx);
-                this.display();
-            }
+  WordProcessor.idx++; 
+  
+  // 超過資料長度就從頭開始
+  if(WordProcessor.idx >= WordProcessor.data.length) {
+    WordProcessor.idx = 0; 
+  }
+
+  this.display();
+
+}
+
+prev() {
+  WordProcessor.idx--;
+
+  // 小於 0 就從最後一個開始
+  if(WordProcessor.idx < 0) {
+    WordProcessor.idx = WordProcessor.data.length - 1;
+  }
+
+  this.display();
+}
         
             hint() {
                 if (this.ans.is(":hidden")) {

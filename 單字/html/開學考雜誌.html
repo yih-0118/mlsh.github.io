@@ -200,25 +200,25 @@
             }
         
             next() {
-                if (WordProcessor.idx < Setting.max) {
-                    WordProcessor.idx++;
-                } else {
-                    WordProcessor.idx = 0;
+                WordProcessor.idx++; 
+                
+                if(WordProcessor.idx >= WordProcessor.data.length) {
+                  WordProcessor.idx = 0; 
                 }
-        
-                localStorage.setItem("number",WordProcessor.idx );
+              
                 this.display();
-            }
-        
-            prev() {
-                if (WordProcessor.idx > Setting.min) {
-                    WordProcessor.idx--;
-                } else {
-                    WordProcessor.idx = Setting.max;
+              
+              }
+              
+              prev() {
+                WordProcessor.idx--;
+              
+                if(WordProcessor.idx < 0) {
+                  WordProcessor.idx = WordProcessor.data.length - 1;
                 }
-                localStorage.setItem("number", WordProcessor.idx);
+              
                 this.display();
-            }
+              }
         
             hint() {
                 if (this.ans.is(":hidden")) {
