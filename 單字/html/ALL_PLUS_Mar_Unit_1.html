@@ -11,7 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <link rel="stylesheet" href="{{ url_for("static",filename="style/initialize.min.css" ) }}">
     <link rel="stylesheet" href="{{ url_for("static",filename="style/style.css" ) }}"> -->
-    
+
     <link rel="stylesheet" href="static/style/initialize.min.css">
     <!-- <link rel="stylesheet" href="static/font/font.css"> -->
     <link rel="stylesheet" href="static/style/style.css">
@@ -45,10 +45,10 @@
     </div>
     <div class="panel setting">
         <div class="container">
-            
+
             <div class="block">
                 <h3>設定</h3>
-                <div class="options " >
+                <div class="options ">
                     <div>
                         <input id="mode-1" type="radio" value="1" name="mode" class="mode-set">
                         <label for="mode-1">
@@ -76,7 +76,7 @@
             </div>
             <div class="block">
                 <div>
-                    <input type="checkbox" id="chinese-display" >
+                    <input type="checkbox" id="chinese-display">
                     <label for="chinese-display">顯示中文</label>
                 </div>
 
@@ -87,7 +87,7 @@
                         <th>詞性</th>
                         <th class="chinese">中文</th>
                     </thead>
-                    
+
                 </table>
             </div>
         </div>
@@ -106,7 +106,7 @@
             localStorage.removeItem("mode");
             localStorage.removeItem("indexSet"); localStorage.setItem("update", true);
         }
-        
+
         class WordProcessor {
             static data;
             static idx;
@@ -118,9 +118,9 @@
                 this.prev_btn = $(prev_btn);
                 // number
                 console.log(localStorage.getItem("number"));
-        
+
                 if (localStorage.getItem("number")) {
-        
+
                     if (isNaN(parseInt(localStorage.getItem("number")))) {
                         WordProcessor.idx = 0;
                     } else {
@@ -139,7 +139,7 @@
                     self.output.html(WordProcessor.data[WordProcessor.idx]["vocabulary"])
                     self.ans.children(".type").html(WordProcessor.data[WordProcessor.idx]["partOfSpeech"]);
                     self.ans.children(".answer").html(WordProcessor.data[WordProcessor.idx]["chinese"]);
-        
+
                     for (var i = 0; i < WordProcessor.data.length; i++) {
                         $(".list").append(
                             `<tr class="val"><td class="idx" >${i}</td><td>${WordProcessor.data[i]["vocabulary"]}</td><td>${WordProcessor.data[i]["partOfSpeech"]}</td><td class="chinese">${WordProcessor.data[i]["chinese"]}</td></tr>`
@@ -148,7 +148,7 @@
                     finish_load();
                 });
             }
-        
+
             static get_data(func) {
                 $.ajax({
                     type: "GET",
@@ -162,28 +162,28 @@
                     }
                 });
             }
-        
+
             static random_idx(min, max) {
                 return Math.floor(Math.random() * (max - min + 1)) + min
             }
             random() {
                 WordProcessor.idx = WordProcessor.random_idx(Setting.min, Setting.max);
-                localStorage.setItem("number",WordProcessor.idx );
+                localStorage.setItem("number", WordProcessor.idx);
                 this.display();
             }
-        
+
             sound() {
                 const intro = new SpeechSynthesisUtterance("");
                 speechSynthesis.speak(intro);
-            
+
                 const utterance = new SpeechSynthesisUtterance(this.output.html());
-                utterance.rate = 1; 
-                utterance.pitch = 1.1; 
-            
-                
+                utterance.rate = 1;
+                utterance.pitch = 1.1;
+
+
                 speechSynthesis.speak(utterance);
             }
-        
+
             display() {
                 //this.close_hint();
                 this.output.html(WordProcessor.data[WordProcessor.idx]["vocabulary"])
@@ -191,36 +191,36 @@
                 this.ans.children(".answer").html(WordProcessor.data[WordProcessor.idx]["chinese"]);
                 return WordProcessor.idx
             }
-        
+
             set(idx) {
                 WordProcessor.idx = idx;
                 localStorage.setItem("number", WordProcessor.idx);
                 this.display();
             }
-        
+
             next() {
-  WordProcessor.idx++; 
-  
-  // 超過資料長度就從頭開始
-  if(WordProcessor.idx >= WordProcessor.data.length) {
-    WordProcessor.idx = 0; 
-  }
+                WordProcessor.idx++;
 
-  this.display();
+                // 超過資料長度就從頭開始
+                if (WordProcessor.idx >= WordProcessor.data.length) {
+                    WordProcessor.idx = 0;
+                }
 
-}
+                this.display();
 
-prev() {
-  WordProcessor.idx--;
+            }
 
-  // 小於 0 就從最後一個開始
-  if(WordProcessor.idx < 0) {
-    WordProcessor.idx = WordProcessor.data.length - 1;
-  }
+            prev() {
+                WordProcessor.idx--;
 
-  this.display();
-}
-        
+                // 小於 0 就從最後一個開始
+                if (WordProcessor.idx < 0) {
+                    WordProcessor.idx = WordProcessor.data.length - 1;
+                }
+
+                this.display();
+            }
+
             hint() {
                 if (this.ans.is(":hidden")) {
                     this.ans.show();
@@ -232,14 +232,14 @@ prev() {
                 this.ans.hide();
             }
         }
-        
+
         class Menu {
             constructor(menu_btn, panel) {
                 this.menu_btn = $(menu_btn);
                 this.panel = $(panel);
                 this.panel.hide();
             }
-        
+
             click() {
                 const self = this;
                 if (this.panel.is(":hidden")) {
@@ -266,9 +266,9 @@ prev() {
                     );
                 }
             }
-        
+
         }
-        
+
         class Setting {
             static min = 0;
             static max = 0;
@@ -290,18 +290,18 @@ prev() {
                 $(".amount-set").attr("max", Setting.max);
                 $("#val-min").val(Setting.min);
                 $("#val-max").val(Setting.max);
-        
+
                 if (localStorage.getItem("mode")) {
                     $(`#mode-${localStorage.getItem("mode")}`).click();
                     Setting.mode = localStorage.getItem("mode");
                 } else {
                     localStorage.setItem("mode", Setting.mode);
-        
+
                     console.log(localStorage.getItem("mode"));
                     $("#mode-2").click();
                 }
             }
-        
+
             set(b, amount) {
                 amount = parseInt(amount);
                 if (WordProcessor.data.length > amount && amount >= 0) {
@@ -325,14 +325,14 @@ prev() {
                 }
                 localStorage.setItem("indexSet", JSON.stringify(Setting.data));
             }
-        
+
             setMode(val) {
                 Setting.mode = val;
                 console.log(Setting.mode);
                 localStorage.setItem("mode", Setting.mode);
             }
         }
-        
+
         let SETTING;
         function val_click() {
             $(".val").on("click", function () {
@@ -341,22 +341,22 @@ prev() {
                 menu.click();
             })
             SETTING = new Setting();
-        
+
             $("input[name='mode']").click(function () {
                 SETTING.setMode(parseInt($("input[name='mode']:checked").val()));
             });
         }
-        
+
         wp = new WordProcessor("#question", "#hint", "#next", "#prev", "#answerBtn", val_click);
-        
+
         // wp.output.on("click", function () {
         //     wp.sound();
         // });
-        
+
         wp.hint_btn.on("click", function () {
             wp.hint();
         })
-        
+
         wp.next_btn.on("click", function () {
             console.log(Setting.mode);
             if (Setting.mode == 2) {
@@ -366,7 +366,7 @@ prev() {
                 wp.random();
             }
         })
-        
+
         wp.prev_btn.on("click", function () {
             if (Setting.mode == 2) {
                 wp.prev();
@@ -374,13 +374,13 @@ prev() {
                 wp.random();
             }
         })
-        
+
         menu = new Menu("#menu", ".setting")
-        
+
         menu.menu_btn.on("click", function () {
             menu.click();
         })
-        
+
         $('#chinese-display').change(function () {
             if ($(this).is(':checked')) {
                 // checkbox 已勾選
@@ -390,16 +390,16 @@ prev() {
                 $(".chinese").hide()
             }
         });
-        
+
         $('#val-min').change(function () {
             SETTING.set("min", $("#val-min").val());
         });
-        
+
         $('#val-max').change(function () {
             SETTING.set("max", $("#val-max").val());
         });
-        
-        
+
+
     </script>
 </body>
 

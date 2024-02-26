@@ -26,8 +26,8 @@ html {
 }
 
 body {
-    background-color: #010409;
-    color: white;
+    background-color: #e9e9e9;
+    color: rgb(0, 0, 0);
 }
 
 .app {
@@ -130,7 +130,7 @@ body {
 }
 
 .setting {
-    background-color: white;
+    background-color: #e9e9e9;
     color: black;
     overflow-y: scroll;
 }
@@ -180,3 +180,29 @@ body {
         font-family: 'Microsoft Yahei', 'PingFang SC', sans-serif; 
       }
 }
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #000000;
+      }
+      body {
+        color: #fff;
+      }
+      .btn {
+        background: #7c32bd;
+        color: #fff;
+      }
+      
+      .btn:hover {
+        background: #7c32bd;
+        color: #7c32bd;
+      }
+      .setting {
+        background: #000000;
+        color: #fff;
+      }
+      .block {
+        border-color: rgba(255,255,255,0.2); 
+      }
+  }
