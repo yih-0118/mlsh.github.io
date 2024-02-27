@@ -43,7 +43,7 @@ html {
 
 #menu {
     position: absolute;
-    top: 7%;
+    top: 4%;
     left: 5%;
     display: flex;
     justify-content: center;
@@ -61,7 +61,7 @@ html {
 #answerBtn {
     position: absolute;
     left: 5%;
-    bottom: 7%;
+    bottom: 10%;
 }
 
 .rightLeftArea {
@@ -70,7 +70,7 @@ html {
     text-align: right;
     position: absolute;
     right: 5%;
-    bottom: 7%;
+    bottom: 10%;
 }
 
 #prev {
