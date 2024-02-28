@@ -129,9 +129,8 @@
             animation: fadeOut 0.5s ease-out;
         }
 
-        /* 新增的动画 */
         .correct-feedback {
-            animation: pop-up 1s ease-out;
+            animation: pop-up 0.5s ease-out;
         }
 
         @keyframes pop-up {
@@ -205,7 +204,7 @@
             </div>
         </div>
         <p v-if="feedback !== null" class="mt-4 fade-out">{{ feedback }}</p>
-        <button @click="nextWord" class="btn btn-primary mt-4">Next</button>
+        <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton">Next</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
