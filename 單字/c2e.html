@@ -9,35 +9,27 @@
     <style>
         html {
             -moz-user-select: none;
-            /* Firefox */
             -webkit-user-select: none;
-            /* Chrome , Safari*/
             -ms-user-select: none;
-            /* IE10 */
             -khtml-user-select: none;
-            /* 古早瀏覽器 */
             user-select: none;
         }
-        
+
         .link {
             -webkit-touch-callout: none;
-            /* iOS Safari */
             -webkit-user-select: none;
-            /* Safari */
             -khtml-user-select: none;
-            /* Konqueror HTML */
             -moz-user-select: none;
-            /* Firefox */
             -ms-user-select: none;
-            /* Internet Explorer/Edge */
             user-select: none;
-            /* Non-prefixed version, currently supported by Chrome and Opera */
         }
+
         @media (prefers-color-scheme: light) {
             body {
                 background-color: #f0f0f0;
                 font-family: Arial, sans-serif;
             }
+
             .container {
                 align-items: center;
                 justify-content: center;
@@ -49,6 +41,7 @@
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 animation: fadeIn 1s ease-out;
             }
+
             .option {
                 flex: 0 0 48%;
                 margin-bottom: 10px;
@@ -72,6 +65,7 @@
                 background-color: #1f1e1e;
                 font-family: Arial, sans-serif;
             }
+
             .container {
                 align-items: center;
                 justify-content: center;
@@ -84,6 +78,7 @@
                 animation: fadeIn 1s ease-out;
                 color: #f0f0f0;
             }
+
             .option {
                 flex: 0 0 48%;
                 margin-bottom: 10px;
@@ -204,7 +199,8 @@
             <li><strong>Part of Speech：</strong> {{ currentWord.partOfSpeech }}</li>
         </ul>
         <div class="options">
-            <div v-for="(option, index) in options" :key="index" :class="{ 'option': true, 'correct-feedback': feedback === 'Correct!' }" @click="checkAnswer(option)">
+            <div v-for="(option, index) in options" :key="index"
+                :class="{ 'option': true, 'correct-feedback': feedback === 'Correct!' }" @click="checkAnswer(option)">
                 {{ option }}
             </div>
         </div>
@@ -223,24 +219,9 @@
                 correctIndex: null,
                 feedback: null,
                 chapters: {
-                    "ALL_PLUS_Mar_CNN_News": "./html/json/ALL_PLUS_Mar_CNN_News.json",
-                    "ALL_PLUS_Mar_Unit_1": "./html/json/ALL_PLUS_Mar_Unit_1.json",
-                    "ALL_PLUS_Mar_Unit_2": "./html/json/ALL_PLUS_Mar_Unit_2.json",
-                    "ALL_PLUS_Mar_Unit_3": "./html/json/ALL_PLUS_Mar_Unit_3.json",
-                    "ALL_PLUS_Mar_Unit_4": "./html/json/ALL_PLUS_Mar_Unit_4.json",
-                    "ALL_PLUS_Mar_Unit_5": "./html/json/ALL_PLUS_Mar_Unit_5.json",
-                    "ALL_PLUS_Mar_Unit_6": "./html/json/ALL_PLUS_Mar_Unit_6.json",
-                    "ALL_PLUS_Mar_Unit_7": "./html/json/ALL_PLUS_Mar_Unit_7.json",
-                    "ALL_PLUS_Mar_Unit_9": "./html/json/ALL_PLUS_Mar_Unit_9.json",
-                    "ALL_PLUS_Mar_Unit_10": "./html/json/ALL_PLUS_Mar_Unit_10.json",
-                    "ALL_PLUS_Mar_Unit_11": "./html/json/ALL_PLUS_Mar_Unit_11.json",
-                    "ALL_PLUS_Mar_Unit_12": "./html/json/ALL_PLUS_Mar_Unit_12.json",
-                    "ALL_PLUS_Mar_Unit_13": "./html/json/ALL_PLUS_Mar_Unit_13.json",
-                    "ALL_PLUS_Mar_Unit_14": "./html/json/ALL_PLUS_Mar_Unit_14.json",
-                    "ALL_PLUS_Mar_Unit_15": "./html/json/ALL_PLUS_Mar_Unit_15.json",
+                    "B4 L1": "./html/json/B4 L1.json",
                     "B4 L2": "./html/json/B4 L2.json",
                     "B4 L3": "./html/json/B4 L3.json",
-                    "B4 review 1": "./html/json/B4 review 1.json",
                     "vocabulary(L2 Unit1)": "./html/json/vocabulary(L2 Unit1).json",
                     "vocabulary(L2 Unit2)": "./html/json/vocabulary(L2 Unit2).json",
                     "vocabulary(L2 Unit3)": "./html/json/vocabulary(L2 Unit3).json",
@@ -290,13 +271,27 @@
                     "vocabulary(L4 Unit18)": "./html/json/vocabulary(L4 Unit18).json",
                     "vocabulary(L4 Unit19)": "./html/json/vocabulary(L4 Unit19).json",
                     "vocabulary(L4 Unit20)": "./html/json/vocabulary(L4 Unit20).json",
-                    "vocabulary(L4 Unit21)": "./html/json/vocabulary(L4 Unit21).json"
+                    "vocabulary(L4 Unit21)": "./html/json/vocabulary(L4 Unit21).json",
+                    "ALL_PLUS_Mar_CNN_News": "./html/json/ALL_PLUS_Mar_CNN_News.json",
+                    "ALL_PLUS_Mar_Unit_1": "./html/json/ALL_PLUS_Mar_Unit_1.json",
+                    "ALL_PLUS_Mar_Unit_2": "./html/json/ALL_PLUS_Mar_Unit_2.json",
+                    "ALL_PLUS_Mar_Unit_3": "./html/json/ALL_PLUS_Mar_Unit_3.json",
+                    "ALL_PLUS_Mar_Unit_4": "./html/json/ALL_PLUS_Mar_Unit_4.json",
+                    "ALL_PLUS_Mar_Unit_5": "./html/json/ALL_PLUS_Mar_Unit_5.json",
+                    "ALL_PLUS_Mar_Unit_6": "./html/json/ALL_PLUS_Mar_Unit_6.json",
+                    "ALL_PLUS_Mar_Unit_7": "./html/json/ALL_PLUS_Mar_Unit_7.json",
+                    "ALL_PLUS_Mar_Unit_9": "./html/json/ALL_PLUS_Mar_Unit_9.json",
+                    "ALL_PLUS_Mar_Unit_10": "./html/json/ALL_PLUS_Mar_Unit_10.json",
+                    "ALL_PLUS_Mar_Unit_11": "./html/json/ALL_PLUS_Mar_Unit_11.json",
+                    "ALL_PLUS_Mar_Unit_12": "./html/json/ALL_PLUS_Mar_Unit_12.json",
+                    "ALL_PLUS_Mar_Unit_13": "./html/json/ALL_PLUS_Mar_Unit_13.json",
+                    "ALL_PLUS_Mar_Unit_14": "./html/json/ALL_PLUS_Mar_Unit_14.json",
+                    "ALL_PLUS_Mar_Unit_15": "./html/json/ALL_PLUS_Mar_Unit_15.json",
                 },
                 selectedChapter: null
             },
             mounted() {
-                // Fetch data from JSON file
-                this.loadChapter('ALL_PLUS_Mar_Unit_1.json'); // 默认加载第一个章节
+                this.loadChapter('');
             },
             methods: {
                 loadChapter(chapter) {
@@ -337,9 +332,8 @@
 
                     this.options = Array.from(optionsSet);
                 },
-
                 checkAnswer(option) {
-                    if (option === this.currentWord.vocabulary) { // 比较选项与当前单词的中文释义
+                    if (option === this.currentWord.vocabulary) {
                         this.feedback = 'Correct!';
                     } else {
                         this.feedback = 'Incorrect. The correct answer is: ' + this.currentWord.vocabulary;
