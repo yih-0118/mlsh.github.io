@@ -37,7 +37,9 @@ const data = [
     // { url: "./html/vocabulary(L3 Unit19).html", category: "link-l3", label: "vocabulary(L3 Unit19)" },
     // { url: "./html/vocabulary(L3 Unit20).html", category: "link-l3", label: "vocabulary(L3 Unit20)" },
     // { url: "./html/vocabulary(L3 Unit21).html", category: "link-l3", label: "vocabulary(L3 Unit21)" },
-    { url: "./Vocabulary_Level_4.html", category: "link-l4", label: "Vocabulary Level 4" }
+    { url: "./Vocabulary_Level_4.html", category: "link-l4", label: "Vocabulary Level 4" },
+    { url: "./e2c.html", category: "link-test", label: "看英文選中文" },
+    { url: "./c2e.html", category: "link-test", label: "看中文選英文" }
     // { url: "./html/vocabulary(L4 Unit1).html", category: "link-l4", label: "vocabulary(L4 Unit1)" },
     // { url: "./html/vocabulary(L4 Unit2).html", category: "link-l4", label: "vocabulary(L4 Unit2)" },
     // { url: "./html/vocabulary(L4 Unit3).html", category: "link-l4", label: "vocabulary(L4 Unit3)" },
