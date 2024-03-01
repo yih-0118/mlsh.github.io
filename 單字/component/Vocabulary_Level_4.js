@@ -32,6 +32,8 @@ function generateLinks() {
         const link = document.createElement('a');
         link.href = item.url;
         link.textContent = item.label;
+        link.style.display = 'inline-block'; 
+        link.style.width = '100%';
         listItem.appendChild(link);
         linksContainer.appendChild(listItem);
     });
