@@ -15,24 +15,27 @@
 
 <body>
     <div id="app" class="container">
-        <i class="fas fa-cloud-sun"></i>
-        <h1>天氣查詢</h1>
-        <div class="select-area">
-            <select v-model="selectedCounty" @change="updateTowns" class="form-select">
-                <option disabled value="">選擇縣市</option>
-                <option v-for="county in counties" :value="county">{{ county }}</option>
-            </select>
+        <i class="fas fa-cloud-sun"></i> 
+        <h2>天氣觀測資料查詢</h2>
+<transition name="fade">
+    <div class="select-area">
+        <select v-model="selectedCounty" @change="updateTowns" class="form-select">
+            <option disabled value="">選擇縣市</option>
+            <option v-for="county in counties" :value="county">{{ county }}</option>
+        </select>
 
-            <select v-model="selectedTown" :disabled="!selectedCounty || !towns.length" class="form-select">
-                <option disabled value="">選擇鄉鎮市區</option>
-                <option v-for="town in towns" :value="town">{{ town }}</option>
-            </select>
+        <select v-model="selectedTown" :disabled="!selectedCounty || !towns.length" class="form-select">
+            <option disabled value="">選擇鄉鎮市區</option>
+            <option v-for="town in towns" :value="town">{{ town }}</option>
+        </select>
 
-            <select v-model="selectedStationName" :disabled="!selectedTown || !stationNames.length" class="form-select">
-                <option disabled value="">選擇觀測站</option>
-                <option v-for="name in stationNames" :value="name">{{ name }}</option>
-            </select>
-        </div>
+        <select v-model="selectedStationName" :disabled="!selectedTown || !stationNames.length" class="form-select">
+            <option disabled value="">選擇觀測站</option>
+            <option v-for="name in stationNames" :value="name">{{ name }}</option>
+        </select>
+    </div>
+</transition>
+
 
         <div v-if="weather" class="weather-info">
             <h3></h3>
@@ -40,7 +43,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="data-title">項目</th>
+                        <th>項目</th>
                         <th>數據</th>
                     </tr>
                 </thead>
@@ -64,6 +67,14 @@
                     <tr>
                         <td class="data-title">風速</td>
                         <td>{{ weather.WindSpeed }} m/s</td>
+                    </tr>
+                    <tr>
+                        <td class="data-title">測量最高溫</td>
+                        <td>{{ weather.DailyHigh }}°C</td>
+                    </tr>
+                    <tr>
+                        <td class="data-title">測量最低溫</td>
+                        <td>{{ weather.DailyLow }}°C</td>
                     </tr>
                 </tbody>
             </table>

@@ -11,7 +11,6 @@ const app = new Vue({
         weather: null,
         weatherData: null
     },
-
     mounted() {
         this.fetchWeatherData();
     },
@@ -21,7 +20,30 @@ const app = new Vue({
                 .then(response => response.json())
                 .then(data => {
                     this.weatherData = data;
-                    const counties = Array.from(new Set(data.cwaopendata.dataset.Station.map(station => station.GeoInfo.CountyName)));
+                    const counties = [
+                        '基隆市',
+                        '臺北市',
+                        '新北市',
+                        '桃園市',
+                        '新竹市',
+                        '新竹縣',
+                        '苗栗縣',
+                        '臺中市',
+                        '彰化縣',
+                        '南投縣',
+                        '雲林縣',
+                        '嘉義市',
+                        '嘉義縣',
+                        '臺南市',
+                        '高雄市',
+                        '屏東縣',
+                        '宜蘭縣',
+                        '花蓮縣',
+                        '臺東縣',
+                        '澎湖縣',
+                        '金門縣',
+                        '連江縣'
+                    ];
                     this.counties = counties;
                     const towns = Array.from(new Set(data.cwaopendata.dataset.Station.map(station => station.GeoInfo.TownName)));
                     towns.forEach(town => {
@@ -31,12 +53,16 @@ const app = new Vue({
                     });
                 });
         },
-
         updateTowns() {
             this.towns = [];
             if (this.selectedCounty) {
                 const selectedCountyStations = this.weatherData.cwaopendata.dataset.Station.filter(station => station.GeoInfo.CountyName === this.selectedCounty);
                 const towns = Array.from(new Set(selectedCountyStations.map(station => station.GeoInfo.TownName)));
+                const index = towns.indexOf('新莊區');
+                if (index !== -1) {
+                    towns.splice(index, 1);
+                    towns.unshift('新莊區');
+                }
                 this.towns = towns;
             }
         },
@@ -55,7 +81,15 @@ const app = new Vue({
                 );
                 const selectedStation = selectedStations[0];
                 if (selectedStation && selectedStation.WeatherElement) {
-                    this.weather = selectedStation.WeatherElement;
+                    this.weather = {
+                        Weather: selectedStation.WeatherElement.Weather,
+                        AirTemperature: selectedStation.WeatherElement.AirTemperature,
+                        RelativeHumidity: selectedStation.WeatherElement.RelativeHumidity,
+                        AirPressure: selectedStation.WeatherElement.AirPressure,
+                        WindSpeed: selectedStation.WeatherElement.WindSpeed,
+                        DailyHigh: selectedStation.WeatherElement.DailyExtreme.DailyHigh.TemperatureInfo.AirTemperature,
+                        DailyLow: selectedStation.WeatherElement.DailyExtreme.DailyLow.TemperatureInfo.AirTemperature
+                    };
                 } else {
                     this.weather = null;
                 }
