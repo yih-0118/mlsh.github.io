@@ -73,9 +73,16 @@ const app = new Vue({
         updateStations() {
             this.stationNames = [];
             if (this.selectedCounty && this.selectedTown) {
-                this.stationNames = this.stationNamesByTown[this.selectedTown];
+                const selectedStations = this.weatherData.cwaopendata.dataset.Station.filter(station =>
+                    station.GeoInfo.CountyName === this.selectedCounty &&
+                    station.GeoInfo.TownName === this.selectedTown
+                );
+                // 獲取選擇鄉鎮市區中存在的觀測站名稱
+                const stationNames = selectedStations.map(station => station.StationName);
+                this.stationNames = stationNames;
             }
         },
+        
         fetchWeatherInfo() {
             if (this.selectedCounty && this.selectedTown && this.selectedStationName) {
                 const selectedStations = this.weatherData.cwaopendata.dataset.Station.filter(station =>
