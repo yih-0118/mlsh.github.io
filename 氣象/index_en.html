@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Inquiry</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-MxJ5bg6FrmXn4PdZOWGlTAYSt0RvYlv5N7wQmT9PLsuDpAVz4Wx4j8kcaMLj7OQ3IrDFpXvRDMdcQ1MOJmTnzw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <i class="fas fa-cloud-sun"></i> 
+        <h2>Weather Observation Data Inquiry</h2>
+<transition name="fade">
+    <div class="select-area">
+        <select v-model="selectedCounty" @change="updateTowns" class="form-select">
+            <option disabled value="">Select County</option>
+            <option v-for="county in counties" :value="county">{{ county }}</option>
+        </select>
+
+        <select v-model="selectedTown" :disabled="!selectedCounty || !towns.length" class="form-select">
+            <option disabled value="">Select Township</option>
+            <option v-for="town in towns" :value="town">{{ town }}</option>
+        </select>
+
+        <select v-model="selectedStationName" :disabled="!selectedTown || !stationNames.length" class="form-select">
+            <option disabled value="">Select Observation Station</option>
+            <option v-for="name in stationNames" :value="name">{{ name }}</option>
+        </select>
+    </div>
+</transition>
+
+
+        <div v-if="weather" class="weather-info">
+            <h3></h3>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="data-title">Weather</td>
+                        <td>{{ weather.Weather }}</td>
+                    </tr>
+                    <tr>
+                        <td class="data-title">Temperature</td>
+                        <td>{{ weather.AirTemperature }}°C</td>
+                    </tr>
+                    <tr>
+                        <td class="data-title">Relative Humidity</td>
+                        <td>{{ weather.RelativeHumidity }}%</td>
+                    </tr>
+                    <tr>
+                        <td class="data-title">Air Pressure</td>
+                        <td>{{ weather.AirPressure }} hPa</td>
+                    </tr>
+                    <tr>
+                        <td class="data-title">Wind Speed</td>
+                        <td>{{ weather.WindSpeed }} m/s</td>
+                    </tr>
+                    <tr>
+                        <td class="data-title">Daily High Temperature</td>
+                        <td>{{ weather.DailyHigh }}°C</td>
+                    </tr>
+                    <tr>
+                        <td class="data-title">Daily Low Temperature</td>
+                        <td>{{ weather.DailyLow }}°C</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>Produced by Yi-Hung Wu from MLSH</p>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
