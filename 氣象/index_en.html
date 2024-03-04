@@ -15,26 +15,27 @@
 
 <body>
     <div id="app" class="container">
-        <i class="fas fa-cloud-sun"></i> 
+        <i class="fas fa-cloud-sun"></i>
         <h2>Weather Observation Data</h2>
-<transition name="fade">
-    <div class="select-area">
-        <select v-model="selectedCounty" @change="updateTowns" class="form-select">
-            <option disabled value="">Select County</option>
-            <option v-for="county in counties" :value="county">{{ county }}</option>
-        </select>
+        <transition name="fade">
+            <div class="select-area">
+                <select v-model="selectedCounty" @change="updateTowns" class="form-select">
+                    <option disabled value="">Select County</option>
+                    <option v-for="county in counties" :value="county">{{ county }}</option>
+                </select>
 
-        <select v-model="selectedTown" :disabled="!selectedCounty || !towns.length" class="form-select">
-            <option disabled value="">Select Township</option>
-            <option v-for="town in towns" :value="town">{{ town }}</option>
-        </select>
+                <select v-model="selectedTown" :disabled="!selectedCounty || !towns.length" class="form-select">
+                    <option disabled value="">Select Township</option>
+                    <option v-for="town in towns" :value="town">{{ town }}</option>
+                </select>
 
-        <select v-model="selectedStationName" :disabled="!selectedTown || !stationNames.length" class="form-select">
-            <option disabled value="">Select Observation Station</option>
-            <option v-for="name in stationNames" :value="name">{{ name }}</option>
-        </select>
-    </div>
-</transition>
+                <select v-model="selectedStationName" :disabled="!selectedTown || !stationNames.length"
+                    class="form-select">
+                    <option disabled value="">Select Observation Station</option>
+                    <option v-for="name in stationNames" :value="name">{{ name }}</option>
+                </select>
+            </div>
+        </transition>
 
 
         <div v-if="weather" class="weather-info">
@@ -48,6 +49,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td class="data-title">Weather</td>
+                        <td>{{ weather.Weather }}</td>
+                    </tr>
                     <tr>
                         <td class="data-title">Temperature</td>
                         <td>{{ weather.AirTemperature }}°C</td>
