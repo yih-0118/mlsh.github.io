@@ -96,7 +96,7 @@ const app = new Vue({
         if (this.selectedCounty) {
           const selectedCountyStations = this.weatherData.cwaopendata.dataset.Station.filter(station => station.GeoInfo.CountyName === this.selectedCounty);
           let towns = Array.from(new Set(selectedCountyStations.map(station => station.GeoInfo.TownName)));
-          if (this.selectedCounty === '新北市') {
+          if (this.selectedCounty === '新北市' && this.selectedDataType === '氣象觀測資料') {
             towns = towns.filter(town => town !== '新莊區');
             towns.unshift('新莊區');
           }
