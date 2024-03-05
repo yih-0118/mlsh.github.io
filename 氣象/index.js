@@ -24,17 +24,17 @@ const app = new Vue({
                 this.fetchWeatherData('https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0003-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON');
             } else if (this.selectedDataType === '雨量觀測資料') {
                 this.fetchWeatherData('https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0002-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON');
-                this.loadChartScript();
+                // this.loadChartScript();
             }
         },
-        loadChartScript() {
-            // 檢查是否已加載chart.js腳本
-            if (!document.querySelector('script[src="chart.js"]')) {
-                const script = document.createElement('script');
-                script.src = 'chart.js';
-                document.head.appendChild(script);
-            }
-        },
+        // loadChartScript() {
+        //     // 檢查是否已加載chart.js腳本
+        //     if (!document.querySelector('script[src="chart.js"]')) {
+        //         const script = document.createElement('script');
+        //         script.src = 'chart.js';
+        //         document.head.appendChild(script);
+        //     }
+        // },
         
         getUnit(key) {
             switch (key) {
