@@ -1,3 +1,4 @@
+import { inject } from "@vercel/analytics"
 const app = new Vue({
     el: '#app',
     data: {

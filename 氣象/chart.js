@@ -8,7 +8,7 @@ function createChart(data) {
     }
 
     const chartData = {
-        labels: ['10分',
+        labels: ['10分鐘',
         '1小時',
         '3小時',
         '6小時',
