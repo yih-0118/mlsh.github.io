@@ -18,13 +18,23 @@
     <i class="fas fa-cloud-sun"></i>
     <h2>天氣觀測資料查詢</h2>
     <div class="select-area">
-      <select v-model="selectedDataType" @change="fetchData" class="form-select">
-        <option disabled value="">選擇測站類型</option>
-        <option value="氣象觀測資料">自動測站</option>
-        <option value="天氣觀測報告">人工測站</option>
-        <option value="雨量觀測資料">雨量測站</option>
-      </select>
-
+        <div class="radio-container">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="dataType" id="autoStation"
+                    value="氣象觀測資料" v-model="selectedDataType" @change="fetchData">
+                <label class="form-check-label" for="autoStation">自動測站</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="dataType" id="manualStation"
+                    value="天氣觀測報告" v-model="selectedDataType" @change="fetchData">
+                <label class="form-check-label" for="manualStation">人工測站</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="dataType" id="rainStation"
+                    value="雨量觀測資料" v-model="selectedDataType" @change="fetchData">
+                <label class="form-check-label" for="rainStation">雨量測站</label>
+            </div>
+        </div>
       <select v-if="selectedDataType !== ''" v-model="selectedCounty" @change="updateTowns" class="form-select">
         <option disabled value="">選擇縣市</option>
         <option v-for="county in counties" :value="county">{{ county }}</option>
