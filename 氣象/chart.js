@@ -1,4 +1,3 @@
-import { inject } from "@vercel/analytics"
 let chart;
 
 function createChart(data) {
