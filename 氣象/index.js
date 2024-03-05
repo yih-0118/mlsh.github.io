@@ -10,7 +10,8 @@ const app = new Vue({
         stationNames: [],
         stationNamesByTown: {},
         weather: null,
-        weatherData: null
+        weatherData: null,
+        stationsData: [], // 新增一個用於存儲測站經緯度資訊的數組
     },
     mounted() {
         // this.fetchWeatherData();
@@ -23,8 +24,18 @@ const app = new Vue({
                 this.fetchWeatherData('https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0003-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON');
             } else if (this.selectedDataType === '雨量觀測資料') {
                 this.fetchWeatherData('https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0002-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON');
+                this.loadChartScript();
             }
         },
+        loadChartScript() {
+            // 檢查是否已加載chart.js腳本
+            if (!document.querySelector('script[src="chart.js"]')) {
+                const script = document.createElement('script');
+                script.src = 'chart.js';
+                document.head.appendChild(script);
+            }
+        },
+        
         getUnit(key) {
             switch (key) {
                 case '氣溫':
@@ -131,12 +142,12 @@ const app = new Vue({
                     station.GeoInfo.TownName === this.selectedTown &&
                     station.StationName === this.selectedStationName
                 );
-
+        
                 const selectedStation = selectedStations[0];
-
+        
                 if (selectedStation) {
                     let weatherData = null;
-
+        
                     if (this.selectedDataType === '氣象觀測資料' || this.selectedDataType === '天氣觀測報告') {
                         weatherData = {
                             天氣: selectedStation.WeatherElement.Weather,
@@ -160,13 +171,19 @@ const app = new Vue({
                             '過去3天累積雨量': selectedStation.RainfallElement.Past3days.Precipitation
                         };
                     }
-
+        
                     this.weather = weatherData;
+        
+                    // 確保當選擇雨量測站時才建立圖表
+                    if (this.selectedDataType === '雨量觀測資料') {
+                        createChart(weatherData);
+                    }
                 } else {
                     this.weather = null;
                 }
             }
         }
+        
     },
     watch: {
         selectedDataType: function () {

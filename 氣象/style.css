@@ -8,18 +8,17 @@ body {
     align-items: center;
     min-height: 100vh
 }
-
+#innn{
+    color:#fff ;
+}
 .container {
     background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 0 7px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     padding: 20px;
-    max-width: 100%;
-    width: 400px; /* 如果需要限制最大寬度，可以使用這行 */
-    animation: fadeIn .5s ease-in-out;
-    box-sizing: border-box; /* 確保 padding 不會增加寬度 */
+    width: 400px;
+    animation: fadeIn .5s ease-in-out
 }
-
 
 @keyframes fadeIn {
     0% {
@@ -46,7 +45,7 @@ select {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 5px;
     background-color: #f9f9f9
 }
 
@@ -59,7 +58,6 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     background-color: #fcfcfce1;
-
 }
 
 th,
@@ -67,9 +65,6 @@ td {
     padding: 8px;
     border-bottom: 1px solid #ddd;
     text-align: left
-}
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
 }
 
 .data-title {
@@ -108,40 +103,33 @@ html {
 
 
 @media(prefers-color-scheme:dark) {
-    body {
+    /* body {
         background-color: #333;
         color: #fff
     }
 
     .container {
-        background-color: #222
-    }
+        background-color: #222;
+        color: #fff
 
-    .table {
+    } */
+    /* #innn{
+        color:#222 ;
+    } */
+    /* .table {
         background-color: #444;
         color: #fff
     }
-
     .table td {
-        border-color: #666
+        color: #fff;
+    }
+    
+    .table td {
+        border-color: #666;
+        color: #fff
     }
 
     h2 {
         color: #fff
-    }
-    .table tbody tr:nth-child(even) {
-        background-color: #545454;
-    }
-}
-
-.radio-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    font-size: small;
-    
-}
-
-.radio-container label {
-    margin: 0 10px;
+    } */
 }
