@@ -104,8 +104,6 @@ const app = new Vue({
                 });
         },
 
-
-
         updateTowns() {
             this.towns = [];
             if (this.selectedCounty) {
@@ -183,7 +181,6 @@ const app = new Vue({
                 }
             }
         }
-        
     },
     watch: {
         selectedDataType: function () {

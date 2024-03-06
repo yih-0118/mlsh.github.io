@@ -42,24 +42,21 @@
                         地點選擇
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="form-inline mb-4">
-                            <select v-if="selectedDataType !== ''" v-model="selectedCounty" @change="updateTowns"
-                                class="form-select mr-md-2 mb-2 mb-md-0">
+                            <select v-show="true" v-model="selectedCounty" @change="updateTowns" class="form-select mr-md-2 mb-2 mb-md-0">
                                 <option disabled value="">選擇縣市</option>
                                 <option v-for="county in counties" :value="county">{{ county }}</option>
                             </select>
-                        
-                            <select v-if="selectedDataType !== ''" v-model="selectedTown" :disabled="!selectedCounty || !towns.length"
-                                class="form-select mr-md-2 mb-2 mb-md-0">
+                            
+                            <select v-show="true" v-model="selectedTown" :disabled="!selectedCounty || !towns.length" class="form-select mr-md-2 mb-2 mb-md-0">
                                 <option disabled value="">選擇鄉鎮市區</option>
                                 <option v-for="town in towns" :value="town">{{ town }}</option>
                             </select>
-                        
-                            <select v-if="selectedDataType !== ''" v-model="selectedStationName"
-                                :disabled="!selectedTown || !stationNames.length" class="form-select mr-md-2 mb-2 mb-md-0">
+                            
+                            <select v-show="true" v-model="selectedStationName" :disabled="!selectedTown || !stationNames.length" class="form-select mr-md-2 mb-2 mb-md-0">
                                 <option disabled value="">選擇觀測站</option>
                                 <option v-for="name in stationNames" :value="name">{{ name }}</option>
                             </select>
@@ -97,7 +94,9 @@
             <canvas id="chartCanvas"></canvas>
         </div>
     </div>
-
+    <div class="footer">
+        &copy; 天氣資料由中央氣象署提供
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="index.js"></script>

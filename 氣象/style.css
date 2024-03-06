@@ -6,7 +6,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh
+    min-height: 100vh;
+    position: relative; /* 新增這行 */
 }
 #innn{
     color:#fff ;
@@ -17,7 +18,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     padding: 20px;
     width: 400px;
-    animation: fadeIn .5s ease-in-out
+    animation: fadeIn .5s ease-in-out;
+    min-height: 100vh; /* 新增這行 */
 }
 
 @keyframes fadeIn {
@@ -132,4 +134,16 @@ html {
     h2 {
         color: #fff
     } */
+}
+.footer {
+    padding: 0 10px;
+    white-space: nowrap;
+    font-size: smaller;
+    text-align: center;
+    margin-top: 10px;
+    color: #888;
+    position: absolute; /* 新增這行 */
+    bottom: 0; /* 新增這行 */
+    left: 50%; /* 新增這行 */
+    transform: translateX(-50%); /* 新增這行 */
 }
