@@ -9,8 +9,28 @@ body {
     min-height: 100vh;
     position: relative; /* 新增這行 */
 }
-#innn{
-    color:#fff ;
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+}
+/* 在你的 style.css 文件中添加以下样式 */
+img {
+    max-width: 100%; /* 图片的最大宽度为其容器的100% */
+    height: auto; /* 保持图片的原始纵横比 */
+}
+
+.nav-item {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.nav-item:hover {
+    text-decoration: underline;
+}
+
+.ddd{
+    color:#f0f4f7 ;
 }
 .container {
     background-color: #fff;
@@ -73,18 +93,18 @@ td {
     font-weight: bold
 }
 
-.footer {
+/* .footer {
     padding: 0 10px;
-    white-space: nowrap;
-    font-size: smaller;
-    text-align: center;
-    margin-top: 10px;
-    color: #888;
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-}
+    /* white-space: nowrap; */
+    /* font-size: smaller;
+    text-align: center; */
+    /* margin-top: 10px; */
+    /* color: #888;
+    position: absolute; */
+    /* bottom: 0px; */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+
 
 html {
     -moz-user-select: none;
@@ -136,14 +156,16 @@ html {
     } */
 }
 .footer {
-    padding: 0 10px;
+    /* padding: 0 10px; */
     white-space: nowrap;
     font-size: smaller;
     text-align: center;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     color: #888;
     position: absolute; /* 新增這行 */
     bottom: 0; /* 新增這行 */
     left: 50%; /* 新增這行 */
     transform: translateX(-50%); /* 新增這行 */
 }
+
+

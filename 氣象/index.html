@@ -1,10 +1,11 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>天氣觀測資料查詢</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -14,99 +15,423 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
-<body>
 
-    <div id="app" class="container my-5">
-        <h2 class="text-center mb-4">觀測資料查詢</h2>
-        <div class="d-flex justify-content-center">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="dataType" id="autoStation" value="氣象觀測資料" v-model="selectedDataType" @change="fetchData">
-                <label class="form-check-label" for="autoStation">自動測站</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="dataType" id="manualStation" value="天氣觀測報告" v-model="selectedDataType" @change="fetchData">
-                <label class="form-check-label" for="manualStation">人工測站</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="dataType" id="rainStation" value="雨量觀測資料" v-model="selectedDataType" @change="fetchData">
-                <label class="form-check-label" for="rainStation">雨量測站</label>
-            </div>
-        </div>
-                <div id="innn"> "   "</div>
 
-        <div class="accordion mb-4" id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                        aria-expanded="true" aria-controls="collapseOne">
-                        地點選擇
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="form-inline mb-4">
-                            <select v-show="true" v-model="selectedCounty" @change="updateTowns" class="form-select mr-md-2 mb-2 mb-md-0">
-                                <option disabled value="">選擇縣市</option>
-                                <option v-for="county in counties" :value="county">{{ county }}</option>
-                            </select>
-                            
-                            <select v-show="true" v-model="selectedTown" :disabled="!selectedCounty || !towns.length" class="form-select mr-md-2 mb-2 mb-md-0">
-                                <option disabled value="">選擇鄉鎮市區</option>
-                                <option v-for="town in towns" :value="town">{{ town }}</option>
-                            </select>
-                            
-                            <select v-show="true" v-model="selectedStationName" :disabled="!selectedTown || !stationNames.length" class="form-select mr-md-2 mb-2 mb-md-0">
-                                <option disabled value="">選擇觀測站</option>
-                                <option v-for="name in stationNames" :value="name">{{ name }}</option>
-                            </select>
+<div id="app" class="container my-5">
+    <h2 class="text-center mb-4">天氣資料查詢</h2>
+    <div class="accordion mb-4" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    地點選擇
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="form-inline mb-4">
+                        <div class="d-flex justify-content-center">
+                            <div class="ddd">"</div>
+
+                            <div class="form-check form-check-inline">
+                                
+                                <input class="form-check-input" type="radio" name="dataType" id="autoStation" value="氣象觀測資料"
+                                    v-model="selectedDataType" @change="fetchData">
+                                <label class="form-check-label" for="autoStation">自動測站</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="dataType" id="manualStation" value="天氣觀測報告"
+                                    v-model="selectedDataType" @change="fetchData">
+                                <label class="form-check-label" for="manualStation">人工測站</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="dataType" id="rainStation" value="雨量觀測資料"
+                                    v-model="selectedDataType" @change="fetchData">
+                                <label class="form-check-label" for="rainStation">雨量測站</label>
+                            </div>
                         </div>
+                        <select v-show="true" v-model="selectedCounty" @change="updateTowns"
+                            class="form-select mr-md-2 mb-2 mb-md-0">
+                            <option disabled value="">選擇縣市</option>
+                            <option v-for="county in counties" :value="county">{{ county }}</option>
+                        </select>
+
+                        <select v-show="true" v-model="selectedTown" :disabled="!selectedCounty || !towns.length"
+                            class="form-select mr-md-2 mb-2 mb-md-0">
+                            <option disabled value="">選擇鄉鎮市區</option>
+                            <option v-for="town in towns" :value="town">{{ town }}</option>
+                        </select>
+
+                        <select v-show="true" v-model="selectedStationName"
+                            :disabled="!selectedTown || !stationNames.length" class="form-select mr-md-2 mb-2 mb-md-0">
+                            <option disabled value="">選擇觀測站</option>
+                            <option v-for="name in stationNames" :value="name">{{ name }}</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        
-        
-        
-        <div v-if="weather" class="weather-info mb-4">
-            <h4 class="text-center mb-4">{{ selectedStationName }} 觀測資料</h4>
+    <div v-if="weather" class="weather-info mb-4">
+        <h4 class="text-center mb-4">{{ selectedStationName }} 觀測資料</h4>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="data-title">項目</th>
-                        <th>數據</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(value, key) in weather">
-                        <td class="data-title">{{ key }}</td>
-                        <td v-if="value !== '-99'">{{ value }} {{ getUnit(key) }}</td>
-                        <td v-else>無資料</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="data-title">項目</th>
+                    <th>數據</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(value, key) in weather">
+                    <td class="data-title">{{ key }}</td>
+                    <td v-if="value !== '-99'">{{ value }} {{ getUnit(key) }}</td>
+                    <!-- <td v-if="value !== '-99'">{{ getUnit(key) }}</td> -->
+                    <td v-else>無資料</td>
+                </tr>
+            </tbody>
+        </table>
         <div class="chart-container mb-4">
             <canvas id="chartCanvas"></canvas>
         </div>
-    </div>
-    <div class="footer">
         &copy; 天氣資料由中央氣象署提供
+
+
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="chart.js"></script>
-    <script src="an.js"></script>
-    <script>
-        import { inject } from '@vercel/analytics';
-        inject();
-    </script>
+
+    <div class="accordion mb-4" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    氣象圖資
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="form-inline mb-4">
+                        <b>溫度分布圖</b>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0038-001.jpg"
+                            alt="溫度分布圖" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>日累積雨量圖資料</b>
+                        <p>大間距日累積雨量圖資料</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0040-001.jpg"
+                            alt="大間距日累積雨量圖資料" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>小間距日累積雨量圖資料</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0040-002.jpg"
+                            alt="小間距日累積雨量圖資料" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>雷達整合回波圖</b>
+                        <p>臺灣(較大範圍)無地形</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-001.png"
+                            alt="臺灣(較大範圍)無地形" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>臺灣(較大範圍)_有地形</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png"
+                            alt="臺灣(較大範圍)_有地形" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>臺灣(鄰近區域)_無地形</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-003.png"
+                            alt="臺灣(鄰近區域)_無地形" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>臺灣(鄰近區域)_有地形</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-004.png"
+                            alt="臺灣(鄰近區域)_有地形" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>雷達整合回波透明圖層(較大範圍)</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-005.png"
+                            alt="雷達整合回波透明圖層(較大範圍)" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>雷達整合回波透明圖層(鄰近區域)</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-006.png"
+                            alt="雷達整合回波透明圖層(鄰近區域)" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>降雨雷達</b>
+                        <p>樹林雷達回波圖</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0084-001.png"
+                            alt="樹林雷達回波圖" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>南屯雷達回波圖</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0084-002.png"
+                            alt="南屯雷達回波圖" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>林園雷達回波圖</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0084-003.png"
+                            alt="林園雷達回波圖" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>紅外線彩色衛星雲圖</b>
+                        <p>全球</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-001.jpg"
+                            alt="全球" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>東亞</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-002.jpg"
+                            alt="東亞" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>台灣</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-003.jpg"
+                            alt="台灣" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>紅外線黑白衛星雲圖</b>
+                        <p>全球</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0029-001.jpg"
+                            alt="全球" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>東亞</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0029-002.jpg"
+                            alt="東亞" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>台灣</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0029-003.jpg"
+                            alt="台灣" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>紅外線色調強化衛星雲圖</b>
+                        <p>全球</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0030-001.jpg"
+                            alt="全球" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>東亞</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0030-002.jpg"
+                            alt="東亞" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>台灣</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0030-003.jpg"
+                            alt="台灣" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>可見光衛星雲圖</b>
+                        <p>全球</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0031-001.jpg"
+                            alt="全球" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>東亞</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0031-002.jpg"
+                            alt="東亞" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>台灣</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0031-003.jpg"
+                            alt="台灣" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>高解析紅外線彩色衛星雲圖</b>
+                        <p>全球</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-001.jpg"
+                            alt="全球" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>東亞</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0032-002.jpg"
+                            alt="東亞" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>台灣</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-002.jpg"
+                            alt="台灣" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>高解析紅外線黑白衛星雲圖</b>
+                        <p>全球</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-003.jpg"
+                            alt="全球" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>東亞</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0032-003.jpg"
+                            alt="東亞" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>台灣</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-004.jpg"
+                            alt="台灣" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>高解析紅外線色調強化衛星雲圖</b>
+                        <p>全球</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-005.jpg"
+                            alt="全球" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>東亞</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0032-004.jpg"
+                            alt="東亞" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>台灣</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-006.jpg"
+                            alt="台灣" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>全解析衛星雲圖</b>
+                        <p>紅外線</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0033-001.jpg"
+                            alt="紅外線" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>地表位移速度場圖</b>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0057-002.jpg"
+                            alt="地表位移速度場圖" style="width: 300px; height: auto;">
+                        <hr>
+
+
+                        <b>滿潮預報圖</b>
+                        <p>今日</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-001.png" alt="今日"
+                            style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>明日</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-002.png" alt="明日"
+                            style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>後天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-003.png" alt="後天"
+                            style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第4天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-004.png"
+                            alt="第4天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第5天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-005.png"
+                            alt="第5天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第6天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-006.png"
+                            alt="第6天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第7天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-007.png"
+                            alt="第7天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>天氣分析與預測圖</b>
+                        <p>地面天氣圖</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-001.jpg"
+                            alt="地面天氣圖" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>一週天氣預測圖</b>
+                        <p>第0天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-006.jpg"
+                            alt="第0天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第1天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-007.jpg"
+                            alt="第1天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第2天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-008.jpg"
+                            alt="第2天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第3天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-009.jpg"
+                            alt="第3天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第4天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-010.jpg"
+                            alt="第4天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第5天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-011.jpg"
+                            alt="第5天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第6天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-012.jpg"
+                            alt="第6天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>第7天</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-013.jpg"
+                            alt="第7天" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>定量降水預報</b>
+                        <p>未來0-12小時</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-015.png"
+                            alt="未來0-12小時" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>未來12-24小時</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-017.png"
+                            alt="未來12-24小時" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <b>波浪預報圖</b>
+                        <p>24小時</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-020.jpg"
+                            alt="24小時" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>36小時</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-021.jpg"
+                            alt="36小時" style="width: 300px; height: auto;">
+                        <hr>
+
+                        <p>48小時</p>
+                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-022.jpg"
+                            alt="48小時" style="width: 300px; height: auto;">
+                        <hr>
+                        &copy; 氣象圖資訊由中央氣象署提供
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="footer">
+            &copy; 天氣資料由中央氣象署提供
+        </div> -->
+        <div class=""></div>
+    </div>
+
+
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="index.js"></script>
+<script src="chart.js"></script>
 </body>
 
 </html>

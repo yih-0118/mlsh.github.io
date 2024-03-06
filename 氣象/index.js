@@ -1,3 +1,4 @@
+// index.js
 const app = new Vue({
     el: '#app',
     data: {
@@ -11,90 +12,52 @@ const app = new Vue({
         stationNamesByTown: {},
         weather: null,
         weatherData: null,
-        stationsData: [], // 新增一個用於存儲測站經緯度資訊的數組
     },
     mounted() {
-        // this.fetchWeatherData();
+        this.fetchData();
     },
     methods: {
         fetchData() {
-            if (this.selectedDataType === '氣象觀測資料') {
-                this.fetchWeatherData('https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0001-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON');
-            } else if (this.selectedDataType === '天氣觀測報告') {
-                this.fetchWeatherData('https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0003-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON');
-            } else if (this.selectedDataType === '雨量觀測資料') {
-                this.fetchWeatherData('https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0002-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON');
-                // this.loadChartScript();
-            }
-        },
-        // loadChartScript() {
-        //     // 檢查是否已加載chart.js腳本
-        //     if (!document.querySelector('script[src="chart.js"]')) {
-        //         const script = document.createElement('script');
-        //         script.src = 'chart.js';
-        //         document.head.appendChild(script);
-        //     }
-        // },
-        
-        getUnit(key) {
-            switch (key) {
-                case '氣溫':
-                    return '°C';
-                case '相對濕度':
-                    return '%';
-                case '氣壓':
-                    return 'hPa';
-                case '風速':
-                    return 'm/s';
-                case '雨量':
-                case '過去10分鐘累積雨量':
-                case '過去1小時累積雨量':
-                case '過去3小時累積雨量':
-                case '過去6小時累積雨量':
-                case '過去12小時累積雨量':
-                case '過去24小時累積雨量':
-                case '過去2天累積雨量':
-                case '過去3天累積雨量':
-                    return 'mm';
-                case '今日最高':
-                    return '°C';
-                case '今日最低':
-                    return '°C';
-                default:
-                    return '';
-            }
-        },
+            const apiUrl = {
+                '氣象觀測資料': 'https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0001-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON',
+                '天氣觀測報告': 'https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0003-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON',
+                '雨量觀測資料': 'https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0002-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON',
+            };
 
+            if (this.selectedDataType in apiUrl) {
+                this.fetchWeatherData(apiUrl[this.selectedDataType]);
+            }
+        },
+        getUnit(key) {
+            const unitMap = {
+                '氣溫': '°C',
+                '相對濕度': '%',
+                '氣壓': 'hPa',
+                '風速': 'm/s',
+                '雨量': 'mm',
+                '過去10分鐘累積雨量': 'mm',
+                '過去1小時累積雨量': 'mm',
+                '過去3小時累積雨量': 'mm',
+                '過去6小時累積雨量': 'mm',
+                '過去12小時累積雨量': 'mm',
+                '過去24小時累積雨量': 'mm',
+                '過去2天累積雨量': 'mm',
+                '過去3天累積雨量': 'mm',
+                '今日最高': '°C',
+                '今日最低': '°C',
+            };
+            return unitMap[key] || '';
+        },
         fetchWeatherData(api) {
             fetch(api)
                 .then(response => response.json())
                 .then(data => {
                     this.weatherData = data;
-                    const counties = [
-                        '基隆市',
-                        '臺北市',
-                        '新北市',
-                        '桃園市',
-                        '新竹市',
-                        '新竹縣',
-                        '苗栗縣',
-                        '臺中市',
-                        '彰化縣',
-                        '南投縣',
-                        '雲林縣',
-                        '嘉義市',
-                        '嘉義縣',
-                        '臺南市',
-                        '高雄市',
-                        '屏東縣',
-                        '宜蘭縣',
-                        '花蓮縣',
-                        '臺東縣',
-                        '澎湖縣',
-                        '金門縣',
-                        '連江縣'
+                    this.counties = [
+                        '基隆市', '臺北市', '新北市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', '彰化縣', '南投縣',
+                        '雲林縣', '嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣', '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣',
+                        '金門縣', '連江縣'
                     ];
-                    this.counties = counties;
                     const towns = Array.from(new Set(data.cwaopendata.dataset.Station.map(station => station.GeoInfo.TownName)));
                     towns.forEach(town => {
                         const townStations = data.cwaopendata.dataset.Station.filter(station => station.GeoInfo.TownName === town);
@@ -103,7 +66,6 @@ const app = new Vue({
                     });
                 });
         },
-
         updateTowns() {
             this.towns = [];
             if (this.selectedCounty) {
@@ -128,7 +90,6 @@ const app = new Vue({
                     station.GeoInfo.CountyName === this.selectedCounty &&
                     station.GeoInfo.TownName === this.selectedTown
                 );
-                // 獲取選擇鄉鎮市區中存在的觀測站名稱
                 const stationNames = selectedStations.map(station => station.StationName);
                 this.stationNames = stationNames;
             }
@@ -140,12 +101,12 @@ const app = new Vue({
                     station.GeoInfo.TownName === this.selectedTown &&
                     station.StationName === this.selectedStationName
                 );
-        
+
                 const selectedStation = selectedStations[0];
-        
+
                 if (selectedStation) {
                     let weatherData = null;
-        
+
                     if (this.selectedDataType === '氣象觀測資料' || this.selectedDataType === '天氣觀測報告') {
                         weatherData = {
                             天氣: selectedStation.WeatherElement.Weather,
@@ -169,13 +130,8 @@ const app = new Vue({
                             '過去3天累積雨量': selectedStation.RainfallElement.Past3days.Precipitation
                         };
                     }
-        
+
                     this.weather = weatherData;
-        
-                    // 確保當選擇雨量測站時才建立圖表
-                    if (this.selectedDataType === '雨量觀測資料') {
-                        createChart(weatherData);
-                    }
                 } else {
                     this.weather = null;
                 }

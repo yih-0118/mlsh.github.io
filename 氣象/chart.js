@@ -1,3 +1,4 @@
+// chart.js
 let chart;
 
 function createChart(data) {
@@ -8,14 +9,7 @@ function createChart(data) {
     }
 
     const chartData = {
-        labels: ['10分鐘',
-        '1小時',
-        '3小時',
-        '6小時',
-        '12小時',
-        '1天',
-        '2天',
-        '3天'], // x 軸標籤
+        labels: ['10分鐘', '1小時', '3小時', '6小時', '12小時', '1天', '2天', '3天'], // x 軸標籤
         datasets: [
             {
                 label: '累積雨量', // 數據集標籤
@@ -39,10 +33,8 @@ function createChart(data) {
         '過去3天累積雨量'
     ];
 
-
     for (const key of keys) {
         if (data.hasOwnProperty(key)) {
-            //chartData.labels.push(key);
             chartData.datasets[0].data.push(data[key]);
         }
     }
