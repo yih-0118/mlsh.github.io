@@ -24,7 +24,7 @@
             <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
-                    地點選擇
+                    測站類型選擇
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
@@ -38,17 +38,17 @@
                                 
                                 <input class="form-check-input" type="radio" name="dataType" id="autoStation" value="氣象觀測資料"
                                     v-model="selectedDataType" @change="fetchData">
-                                <label class="form-check-label" for="autoStation">自動測站</label>
+                                <label class="form-check-label" for="autoStation">無人</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="dataType" id="manualStation" value="天氣觀測報告"
                                     v-model="selectedDataType" @change="fetchData">
-                                <label class="form-check-label" for="manualStation">人工測站</label>
+                                <label class="form-check-label" for="manualStation">人工</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="dataType" id="rainStation" value="雨量觀測資料"
                                     v-model="selectedDataType" @change="fetchData">
-                                <label class="form-check-label" for="rainStation">雨量測站</label>
+                                <label class="form-check-label" for="rainStation">雨量</label>
                             </div>
                         </div>
                         <div class="ddd">"</div>
