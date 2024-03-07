@@ -35,19 +35,19 @@
                             <div class="ddd">"</div>
 
                             <div class="form-check form-check-inline">
-                                
-                                <input class="form-check-input" type="radio" name="dataType" id="autoStation" value="氣象觀測資料"
-                                    v-model="selectedDataType" @change="fetchData">
+
+                                <input class="form-check-input" type="radio" name="dataType" id="autoStation"
+                                    value="氣象觀測資料" v-model="selectedDataType" @change="fetchData">
                                 <label class="form-check-label" for="autoStation">無人</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="dataType" id="manualStation" value="天氣觀測報告"
-                                    v-model="selectedDataType" @change="fetchData">
+                                <input class="form-check-input" type="radio" name="dataType" id="manualStation"
+                                    value="天氣觀測報告" v-model="selectedDataType" @change="fetchData">
                                 <label class="form-check-label" for="manualStation">人工</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="dataType" id="rainStation" value="雨量觀測資料"
-                                    v-model="selectedDataType" @change="fetchData">
+                                <input class="form-check-input" type="radio" name="dataType" id="rainStation"
+                                    value="雨量觀測資料" v-model="selectedDataType" @change="fetchData">
                                 <label class="form-check-label" for="rainStation">雨量</label>
                             </div>
                         </div>
@@ -116,323 +116,257 @@
                 <div class="accordion-body">
                     <div class="form-inline mb-4">
                         <b>溫度分布圖</b>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0038-001.jpg"
-                            alt="溫度分布圖" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-1"></div>
                         <hr>
 
                         <b>日累積雨量圖資料</b>
                         <p>大間距日累積雨量圖資料</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0040-001.jpg"
-                            alt="大間距日累積雨量圖資料" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-2"></div>
                         <hr>
 
                         <p>小間距日累積雨量圖資料</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0040-002.jpg"
-                            alt="小間距日累積雨量圖資料" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-3"></div>
                         <hr>
 
                         <b>雷達整合回波圖</b>
                         <p>臺灣(較大範圍)無地形</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-001.png"
-                            alt="臺灣(較大範圍)無地形" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-4"></div>
                         <hr>
 
                         <p>臺灣(較大範圍)_有地形</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-002.png"
-                            alt="臺灣(較大範圍)_有地形" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-5"></div>
                         <hr>
 
                         <p>臺灣(鄰近區域)_無地形</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-003.png"
-                            alt="臺灣(鄰近區域)_無地形" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-6"></div>
                         <hr>
 
                         <p>臺灣(鄰近區域)_有地形</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-004.png"
-                            alt="臺灣(鄰近區域)_有地形" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-7"></div>
                         <hr>
 
                         <p>雷達整合回波透明圖層(較大範圍)</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-005.png"
-                            alt="雷達整合回波透明圖層(較大範圍)" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-8"></div>
                         <hr>
 
                         <p>雷達整合回波透明圖層(鄰近區域)</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0058-006.png"
-                            alt="雷達整合回波透明圖層(鄰近區域)" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-9"></div>
                         <hr>
 
                         <b>降雨雷達</b>
                         <p>樹林雷達回波圖</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0084-001.png"
-                            alt="樹林雷達回波圖" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-10"></div>
                         <hr>
 
                         <p>南屯雷達回波圖</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0084-002.png"
-                            alt="南屯雷達回波圖" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-11"></div>
                         <hr>
 
                         <p>林園雷達回波圖</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-A0084-003.png"
-                            alt="林園雷達回波圖" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-12"></div>
                         <hr>
 
                         <b>紅外線彩色衛星雲圖</b>
                         <p>全球</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-001.jpg"
-                            alt="全球" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-13"></div>
                         <hr>
 
                         <p>東亞</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-002.jpg"
-                            alt="東亞" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-14"></div>
                         <hr>
 
                         <p>台灣</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0028-003.jpg"
-                            alt="台灣" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-15"></div>
                         <hr>
 
                         <b>紅外線黑白衛星雲圖</b>
                         <p>全球</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0029-001.jpg"
-                            alt="全球" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-16"></div>
                         <hr>
 
                         <p>東亞</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0029-002.jpg"
-                            alt="東亞" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-17"></div>
                         <hr>
 
                         <p>台灣</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0029-003.jpg"
-                            alt="台灣" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-18"></div>
                         <hr>
 
                         <b>紅外線色調強化衛星雲圖</b>
                         <p>全球</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0030-001.jpg"
-                            alt="全球" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-19"></div>
                         <hr>
 
                         <p>東亞</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0030-002.jpg"
-                            alt="東亞" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-20"></div>
                         <hr>
 
                         <p>台灣</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0030-003.jpg"
-                            alt="台灣" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-21"></div>
                         <hr>
 
                         <b>可見光衛星雲圖</b>
                         <p>全球</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0031-001.jpg"
-                            alt="全球" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-22"></div>
                         <hr>
 
                         <p>東亞</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0031-002.jpg"
-                            alt="東亞" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-23"></div>
                         <hr>
 
                         <p>台灣</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0031-003.jpg"
-                            alt="台灣" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-24"></div>
                         <hr>
 
                         <b>高解析紅外線彩色衛星雲圖</b>
                         <p>全球</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-001.jpg"
-                            alt="全球" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-25"></div>
                         <hr>
 
                         <p>東亞</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0032-002.jpg"
-                            alt="東亞" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-26"></div>
                         <hr>
 
                         <p>台灣</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-002.jpg"
-                            alt="台灣" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-27"></div>
                         <hr>
 
                         <b>高解析紅外線黑白衛星雲圖</b>
                         <p>全球</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-003.jpg"
-                            alt="全球" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-28"></div>
                         <hr>
 
                         <p>東亞</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0032-003.jpg"
-                            alt="東亞" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-29"></div>
                         <hr>
 
                         <p>台灣</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-004.jpg"
-                            alt="台灣" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-30"></div>
                         <hr>
 
                         <b>高解析紅外線色調強化衛星雲圖</b>
                         <p>全球</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-005.jpg"
-                            alt="全球" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-31"></div>
                         <hr>
 
                         <p>東亞</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0032-004.jpg"
-                            alt="東亞" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-32"></div>
                         <hr>
 
                         <p>台灣</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-C0042-006.jpg"
-                            alt="台灣" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-33"></div>
                         <hr>
 
                         <b>全解析衛星雲圖</b>
                         <p>紅外線</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0033-001.jpg"
-                            alt="紅外線" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-34"></div>
                         <hr>
 
                         <b>地表位移速度場圖</b>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Observation/O-B0057-002.jpg"
-                            alt="地表位移速度場圖" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-35"></div>
                         <hr>
-
 
                         <b>滿潮預報圖</b>
                         <p>今日</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-001.png" alt="今日"
-                            style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-36"></div>
                         <hr>
 
                         <p>明日</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-002.png" alt="明日"
-                            style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-37"></div>
                         <hr>
 
                         <p>後天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-003.png" alt="後天"
-                            style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-38"></div>
                         <hr>
 
                         <p>第4天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-004.png"
-                            alt="第4天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-39"></div>
                         <hr>
 
                         <p>第5天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-005.png"
-                            alt="第5天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-40"></div>
                         <hr>
 
                         <p>第6天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-006.png"
-                            alt="第6天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-41"></div>
                         <hr>
 
                         <p>第7天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-A0022-007.png"
-                            alt="第7天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-42"></div>
                         <hr>
 
                         <b>天氣分析與預測圖</b>
                         <p>地面天氣圖</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-001.jpg"
-                            alt="地面天氣圖" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-43"></div>
                         <hr>
 
                         <b>一週天氣預測圖</b>
                         <p>第0天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-006.jpg"
-                            alt="第0天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-44"></div>
                         <hr>
 
                         <p>第1天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-007.jpg"
-                            alt="第1天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-45"></div>
                         <hr>
 
                         <p>第2天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-008.jpg"
-                            alt="第2天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-46"></div>
                         <hr>
 
                         <p>第3天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-009.jpg"
-                            alt="第3天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-47"></div>
                         <hr>
 
                         <p>第4天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-010.jpg"
-                            alt="第4天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-48"></div>
                         <hr>
 
                         <p>第5天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-011.jpg"
-                            alt="第5天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-49"></div>
                         <hr>
 
                         <p>第6天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-012.jpg"
-                            alt="第6天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-50"></div>
                         <hr>
 
                         <p>第7天</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-013.jpg"
-                            alt="第7天" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-51"></div>
                         <hr>
 
                         <b>定量降水預報</b>
                         <p>未來0-12小時</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-015.png"
-                            alt="未來0-12小時" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-52"></div>
                         <hr>
 
                         <p>未來12-24小時</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-017.png"
-                            alt="未來12-24小時" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-53"></div>
                         <hr>
 
                         <b>波浪預報圖</b>
                         <p>24小時</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-020.jpg"
-                            alt="24小時" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-54"></div>
                         <hr>
 
                         <p>36小時</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-021.jpg"
-                            alt="36小時" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-55"></div>
                         <hr>
 
                         <p>48小時</p>
-                        <img src="https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-022.jpg"
-                            alt="48小時" style="width: 300px; height: auto;">
+                        <div class="image-container" id="image-container-56"></div>
                         <hr>
-                        &copy; 氣象圖資訊由中央氣象署提供
-
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="footer">
-            &copy; 天氣資料由中央氣象署提供
-        </div> -->
-        <div class=""></div>
     </div>
-
-
-
-
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="index.js"></script>
 <script src="chart.js"></script>
+<script src="imginner.js"></script>
+
 </body>
 
 </html>
