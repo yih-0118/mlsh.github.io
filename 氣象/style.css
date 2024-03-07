@@ -32,6 +32,10 @@ img {
 .ddd{
     color:#f0f4f7 ;
 }
+
+.form-check-label{
+    font-size:small
+}
 .container {
     background-color: #fff;
     border-radius: 10px;
