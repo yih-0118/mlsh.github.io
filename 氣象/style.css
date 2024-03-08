@@ -15,10 +15,10 @@ body {
 
 :root {
     --primary-color: #1c3958; /* 淺藍色作為主色調 */
-    --secondary-color: #ffefc6; /* 淺黃色作為次要色調 */
+    --secondary-color: #e9efff; /* 淺黃色作為次要色調 */
     --text-color: #4d4d4d; /* 深灰色作為文字顏色 */
     --background-color: #f9f9f9; /* 淺灰色作為背景顏色 */
-    --accent-color: #ffd88a; /* 暖黃色作為輔助色調 */
+    --accent-color: #ffefce; /* 暖黃色作為輔助色調 */
 }
 .navbar {
     background-color: #333;
