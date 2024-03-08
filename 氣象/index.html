@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
-
-
 <div id="app" class="container my-5">
     <h2 class="text-center mb-4">天氣資料查詢</h2>
     <div class="accordion mb-4" id="accordionExample">
@@ -33,9 +31,7 @@
                     <div class="form-inline mb-4">
                         <div class="d-flex justify-content-center">
                             <div class="ddd">"</div>
-
                             <div class="form-check form-check-inline">
-
                                 <input class="form-check-input" type="radio" name="dataType" id="autoStation"
                                     value="氣象觀測資料" v-model="selectedDataType" @change="fetchData">
                                 <label class="form-check-label" for="autoStation">無人</label>
@@ -75,6 +71,8 @@
         </div>
     </div>
 
+
+
     <div v-if="weather" class="weather-info mb-4">
         <h4 class="text-center mb-4">{{ selectedStationName }} 觀測資料</h4>
 
@@ -89,7 +87,6 @@
                 <tr v-for="(value, key) in weather">
                     <td class="data-title">{{ key }}</td>
                     <td v-if="value !== '-99'">{{ value }} {{ getUnit(key) }}</td>
-                    <!-- <td v-if="value !== '-99'">{{ getUnit(key) }}</td> -->
                     <td v-else>無資料</td>
                 </tr>
             </tbody>
@@ -99,269 +96,602 @@
         </div>
         &copy; 天氣資料由中央氣象署提供
 
-
     </div>
-
 
     <div class="accordion mb-4" id="accordionExample">
         <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+            <h2 class="accordion-header" id="headingTotal">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTotal"
+                    aria-expanded="true" aria-controls="collapseTotal">
                     氣象圖資
                 </button>
             </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            <div id="collapseTotal" class="accordion-collapse show" aria-labelledby="headingTotal"
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    <div class="form-inline mb-4">
-                        <b>溫度分布圖</b>
-                        <div class="image-container" id="image-container-1"></div>
-                        <hr>
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    溫度分布圖
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <div class="image-container" id="image-container-1"></div>
+                                        <hr>
+                                    </div>
 
-                        <b>日累積雨量圖資料</b>
-                        <p>大間距日累積雨量圖資料</p>
-                        <div class="image-container" id="image-container-2"></div>
-                        <hr>
-
-                        <p>小間距日累積雨量圖資料</p>
-                        <div class="image-container" id="image-container-3"></div>
-                        <hr>
-
-                        <b>雷達整合回波圖</b>
-                        <p>臺灣(較大範圍)無地形</p>
-                        <div class="image-container" id="image-container-4"></div>
-                        <hr>
-
-                        <p>臺灣(較大範圍)_有地形</p>
-                        <div class="image-container" id="image-container-5"></div>
-                        <hr>
-
-                        <p>臺灣(鄰近區域)_無地形</p>
-                        <div class="image-container" id="image-container-6"></div>
-                        <hr>
-
-                        <p>臺灣(鄰近區域)_有地形</p>
-                        <div class="image-container" id="image-container-7"></div>
-                        <hr>
-
-                        <p>雷達整合回波透明圖層(較大範圍)</p>
-                        <div class="image-container" id="image-container-8"></div>
-                        <hr>
-
-                        <p>雷達整合回波透明圖層(鄰近區域)</p>
-                        <div class="image-container" id="image-container-9"></div>
-                        <hr>
-
-                        <b>降雨雷達</b>
-                        <p>樹林雷達回波圖</p>
-                        <div class="image-container" id="image-container-10"></div>
-                        <hr>
-
-                        <p>南屯雷達回波圖</p>
-                        <div class="image-container" id="image-container-11"></div>
-                        <hr>
-
-                        <p>林園雷達回波圖</p>
-                        <div class="image-container" id="image-container-12"></div>
-                        <hr>
-
-                        <b>紅外線彩色衛星雲圖</b>
-                        <p>全球</p>
-                        <div class="image-container" id="image-container-13"></div>
-                        <hr>
-
-                        <p>東亞</p>
-                        <div class="image-container" id="image-container-14"></div>
-                        <hr>
-
-                        <p>台灣</p>
-                        <div class="image-container" id="image-container-15"></div>
-                        <hr>
-
-                        <b>紅外線黑白衛星雲圖</b>
-                        <p>全球</p>
-                        <div class="image-container" id="image-container-16"></div>
-                        <hr>
-
-                        <p>東亞</p>
-                        <div class="image-container" id="image-container-17"></div>
-                        <hr>
-
-                        <p>台灣</p>
-                        <div class="image-container" id="image-container-18"></div>
-                        <hr>
-
-                        <b>紅外線色調強化衛星雲圖</b>
-                        <p>全球</p>
-                        <div class="image-container" id="image-container-19"></div>
-                        <hr>
-
-                        <p>東亞</p>
-                        <div class="image-container" id="image-container-20"></div>
-                        <hr>
-
-                        <p>台灣</p>
-                        <div class="image-container" id="image-container-21"></div>
-                        <hr>
-
-                        <b>可見光衛星雲圖</b>
-                        <p>全球</p>
-                        <div class="image-container" id="image-container-22"></div>
-                        <hr>
-
-                        <p>東亞</p>
-                        <div class="image-container" id="image-container-23"></div>
-                        <hr>
-
-                        <p>台灣</p>
-                        <div class="image-container" id="image-container-24"></div>
-                        <hr>
-
-                        <b>高解析紅外線彩色衛星雲圖</b>
-                        <p>全球</p>
-                        <div class="image-container" id="image-container-25"></div>
-                        <hr>
-
-                        <p>東亞</p>
-                        <div class="image-container" id="image-container-26"></div>
-                        <hr>
-
-                        <p>台灣</p>
-                        <div class="image-container" id="image-container-27"></div>
-                        <hr>
-
-                        <b>高解析紅外線黑白衛星雲圖</b>
-                        <p>全球</p>
-                        <div class="image-container" id="image-container-28"></div>
-                        <hr>
-
-                        <p>東亞</p>
-                        <div class="image-container" id="image-container-29"></div>
-                        <hr>
-
-                        <p>台灣</p>
-                        <div class="image-container" id="image-container-30"></div>
-                        <hr>
-
-                        <b>高解析紅外線色調強化衛星雲圖</b>
-                        <p>全球</p>
-                        <div class="image-container" id="image-container-31"></div>
-                        <hr>
-
-                        <p>東亞</p>
-                        <div class="image-container" id="image-container-32"></div>
-                        <hr>
-
-                        <p>台灣</p>
-                        <div class="image-container" id="image-container-33"></div>
-                        <hr>
-
-                        <b>全解析衛星雲圖</b>
-                        <p>紅外線</p>
-                        <div class="image-container" id="image-container-34"></div>
-                        <hr>
-
-                        <b>地表位移速度場圖</b>
-                        <div class="image-container" id="image-container-35"></div>
-                        <hr>
-
-                        <b>滿潮預報圖</b>
-                        <p>今日</p>
-                        <div class="image-container" id="image-container-36"></div>
-                        <hr>
-
-                        <p>明日</p>
-                        <div class="image-container" id="image-container-37"></div>
-                        <hr>
-
-                        <p>後天</p>
-                        <div class="image-container" id="image-container-38"></div>
-                        <hr>
-
-                        <p>第4天</p>
-                        <div class="image-container" id="image-container-39"></div>
-                        <hr>
-
-                        <p>第5天</p>
-                        <div class="image-container" id="image-container-40"></div>
-                        <hr>
-
-                        <p>第6天</p>
-                        <div class="image-container" id="image-container-41"></div>
-                        <hr>
-
-                        <p>第7天</p>
-                        <div class="image-container" id="image-container-42"></div>
-                        <hr>
-
-                        <b>天氣分析與預測圖</b>
-                        <p>地面天氣圖</p>
-                        <div class="image-container" id="image-container-43"></div>
-                        <hr>
-
-                        <b>一週天氣預測圖</b>
-                        <p>第0天</p>
-                        <div class="image-container" id="image-container-44"></div>
-                        <hr>
-
-                        <p>第1天</p>
-                        <div class="image-container" id="image-container-45"></div>
-                        <hr>
-
-                        <p>第2天</p>
-                        <div class="image-container" id="image-container-46"></div>
-                        <hr>
-
-                        <p>第3天</p>
-                        <div class="image-container" id="image-container-47"></div>
-                        <hr>
-
-                        <p>第4天</p>
-                        <div class="image-container" id="image-container-48"></div>
-                        <hr>
-
-                        <p>第5天</p>
-                        <div class="image-container" id="image-container-49"></div>
-                        <hr>
-
-                        <p>第6天</p>
-                        <div class="image-container" id="image-container-50"></div>
-                        <hr>
-
-                        <p>第7天</p>
-                        <div class="image-container" id="image-container-51"></div>
-                        <hr>
-
-                        <b>定量降水預報</b>
-                        <p>未來0-12小時</p>
-                        <div class="image-container" id="image-container-52"></div>
-                        <hr>
-
-                        <p>未來12-24小時</p>
-                        <div class="image-container" id="image-container-53"></div>
-                        <hr>
-
-                        <b>波浪預報圖</b>
-                        <p>24小時</p>
-                        <div class="image-container" id="image-container-54"></div>
-                        <hr>
-
-                        <p>36小時</p>
-                        <div class="image-container" id="image-container-55"></div>
-                        <hr>
-
-                        <p>48小時</p>
-                        <div class="image-container" id="image-container-56"></div>
-                        <hr>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    &copy; 圖資由中央氣象署提供
 
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                    日累積雨量圖資料
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>大間距日累積雨量圖資料</p>
+                                        <div class="image-container" id="image-container-2"></div>
+                                        <hr>
+
+                                        <p>小間距日累積雨量圖資料</p>
+                                        <div class="image-container" id="image-container-3"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    降雨雷達
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>臺灣(較大範圍)_無地形</p>
+                                        <div class="image-container" id="image-container-4"></div>
+                                        <hr>
+
+                                        <p>臺灣(較大範圍)_有地形</p>
+                                        <div class="image-container" id="image-container-5"></div>
+                                        <hr>
+
+                                        <p>臺灣(鄰近區域)_無地形</p>
+                                        <div class="image-container" id="image-container-6"></div>
+                                        <hr>
+
+                                        <p>臺灣(鄰近區域)_有地形</p>
+                                        <div class="image-container" id="image-container-7"></div>
+                                        <hr>
+
+                                        <p>雷達整合回波透明圖層(較大範圍)</p>
+                                        <div class="image-container" id="image-container-8"></div>
+                                        <hr>
+
+                                        <p>雷達整合回波透明圖層(鄰近區域)</p>
+                                        <div class="image-container" id="image-container-9"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                    雷達整合回波圖
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>樹林雷達回波圖</p>
+                                        <div class="image-container" id="image-container-10"></div>
+                                        <hr>
+
+                                        <p>南屯雷達回波圖</p>
+                                        <div class="image-container" id="image-container-11"></div>
+                                        <hr>
+
+                                        <p>林園雷達回波圖</p>
+                                        <div class="image-container" id="image-container-12"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSix">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                    紅外線彩色衛星雲圖
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>全球</p>
+                                        <div class="image-container" id="image-container-13"></div>
+                                        <hr>
+
+                                        <p>東亞</p>
+                                        <div class="image-container" id="image-container-14"></div>
+                                        <hr>
+
+                                        <p>台灣</p>
+                                        <div class="image-container" id="image-container-15"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSeven">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                                    紅外線黑白衛星雲圖
+                                </button>
+                            </h2>
+                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>全球</p>
+                                        <div class="image-container" id="image-container-16"></div>
+                                        <hr>
+
+                                        <p>東亞</p>
+                                        <div class="image-container" id="image-container-17"></div>
+                                        <hr>
+
+                                        <p>台灣</p>
+                                        <div class="image-container" id="image-container-18"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEight">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                                    紅外線色調強化衛星雲圖
+                                </button>
+                            </h2>
+                            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>全球</p>
+                                        <div class="image-container" id="image-container-19"></div>
+                                        <hr>
+
+                                        <p>東亞</p>
+                                        <div class="image-container" id="image-container-20"></div>
+                                        <hr>
+
+                                        <p>台灣</p>
+                                        <div class="image-container" id="image-container-21"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingNine">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+                                    可見光衛星雲圖
+                                </button>
+                            </h2>
+                            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>全球</p>
+                                        <div class="image-container" id="image-container-22"></div>
+                                        <hr>
+
+                                        <p>東亞</p>
+                                        <div class="image-container" id="image-container-23"></div>
+                                        <hr>
+
+                                        <p>台灣</p>
+                                        <div class="image-container" id="image-container-24"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTen">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+                                    高解析紅外線彩色衛星雲圖
+                                </button>
+                            </h2>
+                            <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>全球</p>
+                                        <div class="image-container" id="image-container-25"></div>
+                                        <hr>
+
+                                        <p>東亞</p>
+                                        <div class="image-container" id="image-container-26"></div>
+                                        <hr>
+
+                                        <p>台灣</p>
+                                        <div class="image-container" id="image-container-27"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEleven">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseEleven" aria-expanded="true"
+                                    aria-controls="collapseEleven">
+                                    高解析紅外線黑白衛星雲圖
+                                </button>
+                            </h2>
+                            <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>全球</p>
+                                        <div class="image-container" id="image-container-28"></div>
+                                        <hr>
+
+                                        <p>東亞</p>
+                                        <div class="image-container" id="image-container-29"></div>
+                                        <hr>
+
+                                        <p>台灣</p>
+                                        <div class="image-container" id="image-container-30"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwelve">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwelve" aria-expanded="true"
+                                    aria-controls="collapseTwelve">
+                                    高解析紅外線色調強化衛星雲圖
+                                </button>
+                            </h2>
+                            <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>全球</p>
+                                        <div class="image-container" id="image-container-31"></div>
+                                        <hr>
+
+                                        <p>東亞</p>
+                                        <div class="image-container" id="image-container-32"></div>
+                                        <hr>
+
+                                        <p>台灣</p>
+                                        <div class="image-container" id="image-container-33"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThirteen">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThirteen" aria-expanded="true"
+                                    aria-controls="collapseThirteen">
+                                    全解析衛星雲圖
+                                </button>
+                            </h2>
+                            <div id="collapseThirteen" class="accordion-collapse collapse"
+                                aria-labelledby="headingThirteen" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>紅外線</p>
+                                        <div class="image-container" id="image-container-34"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFourteen">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFourteen" aria-expanded="true"
+                                    aria-controls="collapseFourteen">
+                                    地表位移速度場圖
+                                </button>
+                            </h2>
+                            <div id="collapseFourteen" class="accordion-collapse collapse"
+                                aria-labelledby="headingFourteen" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <div class="image-container" id="image-container-35"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFifteen">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFifteen" aria-expanded="true"
+                                    aria-controls="collapseFifteen">
+                                    滿潮預報圖
+                                </button>
+                            </h2>
+                            <div id="collapseFifteen" class="accordion-collapse collapse"
+                                aria-labelledby="headingFifteen" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>今日</p>
+                                        <div class="image-container" id="image-container-36"></div>
+                                        <hr>
+
+                                        <p>明日</p>
+                                        <div class="image-container" id="image-container-37"></div>
+                                        <hr>
+
+                                        <p>後天</p>
+                                        <div class="image-container" id="image-container-38"></div>
+                                        <hr>
+
+                                        <p>第4天</p>
+                                        <div class="image-container" id="image-container-39"></div>
+                                        <hr>
+
+                                        <p>第5天</p>
+                                        <div class="image-container" id="image-container-40"></div>
+                                        <hr>
+
+                                        <p>第6天</p>
+                                        <div class="image-container" id="image-container-41"></div>
+                                        <hr>
+
+                                        <p>第7天</p>
+                                        <div class="image-container" id="image-container-42"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSixteen">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSixteen" aria-expanded="true"
+                                    aria-controls="collapseSixteen">
+                                    天氣分析與預測圖
+                                </button>
+                            </h2>
+                            <div id="collapseSixteen" class="accordion-collapse collapse"
+                                aria-labelledby="headingSixteen" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>地面天氣圖</p>
+                                        <div class="image-container" id="image-container-43"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSeventeen">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSeventeen" aria-expanded="true"
+                                    aria-controls="collapseSeventeen">
+                                    一週天氣預測圖
+                                </button>
+                            </h2>
+                            <div id="collapseSeventeen" class="accordion-collapse collapse"
+                                aria-labelledby="headingSeventeen" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>第0天</p>
+                                        <div class="image-container" id="image-container-44"></div>
+                                        <hr>
+
+                                        <p>第1天</p>
+                                        <div class="image-container" id="image-container-45"></div>
+                                        <hr>
+
+                                        <p>第2天</p>
+                                        <div class="image-container" id="image-container-46"></div>
+                                        <hr>
+
+                                        <p>第3天</p>
+                                        <div class="image-container" id="image-container-47"></div>
+                                        <hr>
+
+                                        <p>第4天</p>
+                                        <div class="image-container" id="image-container-48"></div>
+                                        <hr>
+
+                                        <p>第5天</p>
+                                        <div class="image-container" id="image-container-49"></div>
+                                        <hr>
+
+                                        <p>第6天</p>
+                                        <div class="image-container" id="image-container-50"></div>
+                                        <hr>
+
+                                        <p>第7天</p>
+                                        <div class="image-container" id="image-container-51"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEighteen">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseEighteen" aria-expanded="true"
+                                    aria-controls="collapseEighteen">
+                                    定量降水預報
+                                </button>
+                            </h2>
+                            <div id="collapseEighteen" class="accordion-collapse collapse"
+                                aria-labelledby="headingEighteen" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>未來0-12小時</p>
+                                        <div class="image-container" id="image-container-52"></div>
+                                        <hr>
+
+                                        <p>未來12-24小時</p>
+                                        <div class="image-container" id="image-container-53"></div>
+                                        <hr>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion mb-4" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingNineteen">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseNineteen" aria-expanded="true"
+                                    aria-controls="collapseNineteen">
+                                    波浪預報圖
+                                </button>
+                            </h2>
+                            <div id="collapseNineteen" class="accordion-collapse collapse"
+                                aria-labelledby="headingNineteen" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-inline mb-4">
+                                        <hr>
+                                        <p>24小時</p>
+                                        <div class="image-container" id="image-container-54"></div>
+                                        <hr>
+
+                                        <p>36小時</p>
+                                        <div class="image-container" id="image-container-55"></div>
+                                        <hr>
+
+                                        <p>48小時</p>
+                                        <div class="image-container" id="image-container-56"></div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                            &copy; 圖資由中央氣象署提供
+                        </div>
+                    </div>
                 </div>
-                
             </div>
+
+
         </div>
     </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
