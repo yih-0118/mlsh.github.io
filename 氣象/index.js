@@ -13,16 +13,30 @@ const app = new Vue({
         stationNamesByTown: {},
         weather: null,
         weatherData: null,
+        weatherForecast: null,
     },
     mounted() {
         this.fetchData();
     },
     methods: {
+        // downloadAsImage() {
+        //     const table = this.$refs.dataTable; // 使用ref屬性獲取表格元素
+        //     html2canvas(table).then(canvas => { // 使用 html2canvas 將表格轉換為 canvas
+        //         const imgData = canvas.toDataURL('image/png'); // 將 canvas 轉換為 PNG 圖片數據
+        //         const link = document.createElement('a'); // 創建一個 <a> 元素
+        //         link.href = imgData; // 設置 <a> 元素的 href 屬性為圖片數據
+        //         link.download = 'table_image.png'; // 設置下載的文件名
+        //         link.click(); // 觸發點擊事件下載圖片
+        //     });
+        // },
+        
+        
         fetchData() {
             const apiUrl = {
                 '氣象觀測資料': 'https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0001-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON',
                 '天氣觀測報告': 'https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0003-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON',
                 '雨量觀測資料': 'https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/O-A0002-001?Authorization=CWB-AFCD05A4-A82B-452D-A0C0-3434C0A7B30D&downloadType=WEB&format=JSON',
+                
             };
 
             if (this.selectedDataType in apiUrl) {
