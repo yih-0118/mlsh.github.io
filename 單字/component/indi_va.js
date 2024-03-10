@@ -6,7 +6,8 @@ const data = [
     { url: "./Vocabulary_Level_3.html", category: "link-l3", label: "Vocabulary Level 3" },
     { url: "./Vocabulary_Level_4.html", category: "link-l4", label: "Vocabulary Level 4" },
     { url: "./e2c.html", category: "link-test", label: "看英文選中文" },
-    { url: "./c2e.html", category: "link-test", label: "看中文選英文" }
+    { url: "./c2e.html", category: "link-test", label: "看中文選英文" },
+    { url: "./防呆.html", category: "link-find", label: "世界上最有用的查找系統" },
 ];
 
 function generateLinks() {

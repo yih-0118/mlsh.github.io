@@ -50,7 +50,9 @@
 .link-test {
     border-left: 6px solid #935bd7;
 }
-
+.link-find {
+    border-left: 6px solid #797979;
+}
 html {
     -moz-user-select: none;
     /* Firefox */

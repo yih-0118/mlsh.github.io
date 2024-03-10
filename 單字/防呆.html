@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Selection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom CSS files -->
+    <link rel="stylesheet" href="static/style/initialize.min.css">
+    <link rel="stylesheet" href="static/style/style.css">
+    <link rel="stylesheet" href="./component/fangdai.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>怕你找不到</h1>
+        <form id="vocabularyForm">
+            <div class="mb-3">
+                <label for="categories" class="form-label">類別:</label>
+                <select id="categories" name="category" class="form-select" onchange="showSubcategories(this.value)">
+                    <option value="">選取類別</option>
+                    <option value="ALL_PLUS_Mar">ALL PLUS March</option>
+                    <option value="Book4">Book4</option>
+                    <option value="單字書 Level 2">單字書 Level 2</option>
+                    <option value="單字書 Level 3">單字書 Level 3</option>
+                    <option value="單字書 Level 4">單字書 Level 4</option>
+                </select>
+            </div>
+
+            <div id="subcategory-list" style="display: none;">
+                <div class="mb-3">
+                    <label for="subcategories" class="form-label">篇目:</label>
+                    <select id="subcategories" name="subcategory" class="form-select">
+                    <!-- Subcategories will be populated dynamically -->
+                    </select>
+                </div>    
+            </div>
+            <button type="submit">按我</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showSubcategories(category) {
+            const subcategoriesSelect = document.getElementById('subcategories');
+            subcategoriesSelect.innerHTML = ''; // Clear existing options
+
+            if (category) {
+                $('#subcategory-list').show();
+
+                // Populate subcategories based on the selected category
+                switch (category) {
+                    case 'ALL_PLUS_Mar':
+                        addSubcategory('CNN News', './json/ALL_PLUS_Mar_CNN_News.json');
+                        addSubcategory('Unit 1', './json/ALL_PLUS_Mar_Unit_1.json');
+                        addSubcategory('Unit 2', './json/ALL_PLUS_Mar_Unit_2.json');
+                        addSubcategory('Unit 3', './json/ALL_PLUS_Mar_Unit_3.json');
+                        addSubcategory('Unit 4', './json/ALL_PLUS_Mar_Unit_4.json');
+                        addSubcategory('Unit 5', './json/ALL_PLUS_Mar_Unit_5.json');
+                        addSubcategory('Unit 6', './json/ALL_PLUS_Mar_Unit_6.json');
+                        addSubcategory('Unit 7', './json/ALL_PLUS_Mar_Unit_7.json');
+                        addSubcategory('Unit 8', './json/ALL_PLUS_Mar_Unit_8.json');
+                        addSubcategory('Unit 9', './json/ALL_PLUS_Mar_Unit_9.json');
+                        addSubcategory('Unit 10', './json/ALL_PLUS_Mar_Unit_10.json');
+                        addSubcategory('Unit 11', './json/ALL_PLUS_Mar_Unit_11.json');
+                        addSubcategory('Unit 12', './json/ALL_PLUS_Mar_Unit_12.json');
+                        addSubcategory('Unit 13', './json/ALL_PLUS_Mar_Unit_13.json');
+                        addSubcategory('Unit 14', './json/ALL_PLUS_Mar_Unit_14.json');
+                        addSubcategory('Unit 15', './json/ALL_PLUS_Mar_Unit_15.json');
+                        break;
+
+                    case 'Book4':
+                        addSubcategory('Lesson 1', './json/B4 L1.json');
+                        addSubcategory('Lesson 2', './json/B4 L2.json');
+                        addSubcategory('Lesson 3', './json/B4 L3.json');
+                        break;
+                    case '單字書 Level 2': addSubcategory
+                        addSubcategory('Unit1', './html/vocabulary(L2 Unit1).json');
+                        addSubcategory('Unit2', './html/vocabulary(L2 Unit2).json');
+                        addSubcategory('Unit3', './html/vocabulary(L2 Unit3).json');
+                        addSubcategory('Unit4', './html/vocabulary(L2 Unit4).json');
+                        addSubcategory('Unit5', './html/vocabulary(L2 Unit5).json');
+                        addSubcategory('Unit6', './html/vocabulary(L2 Unit6).json');
+                        addSubcategory('Unit7', './html/vocabulary(L2 Unit7).json');
+                        addSubcategory('Unit8', './html/vocabulary(L2 Unit8).json');
+                    case '單字書 Level 3': addSubcategory
+                        addSubcategory('Unit1', './html/vocabulary(L3 Unit1).json');
+                        addSubcategory('Unit2', './html/vocabulary(L3 Unit2).json');
+                        addSubcategory('Unit3', './html/vocabulary(L3 Unit3).json');
+                        addSubcategory('Unit4', './html/vocabulary(L3 Unit4).json');
+                        addSubcategory('Unit5', './html/vocabulary(L3 Unit5).json');
+                        addSubcategory('Unit6', './html/vocabulary(L3 Unit6).json');
+                        addSubcategory('Unit7', './html/vocabulary(L3 Unit7).json');
+                        addSubcategory('Unit8', './html/vocabulary(L3 Unit8).json');
+                        addSubcategory('Unit9', './html/vocabulary(L3 Unit9).json');
+                        addSubcategory('Unit10', './html/vocabulary(L3 Unit10).json');
+                        addSubcategory('Unit11', './html/vocabulary(L3 Unit11).json');
+                        addSubcategory('Unit12', './html/vocabulary(L3 Unit12).json');
+                        addSubcategory('Unit13', './html/vocabulary(L3 Unit13).json');
+                        addSubcategory('Unit14', './html/vocabulary(L3 Unit14).json');
+                        addSubcategory('Unit15', './html/vocabulary(L3 Unit15).json');
+                        addSubcategory('Unit16', './html/vocabulary(L3 Unit16).json');
+                        addSubcategory('Unit17', './html/vocabulary(L3 Unit17).json');
+                        addSubcategory('Unit18', './html/vocabulary(L3 Unit18).json');
+                        addSubcategory('Unit19', './html/vocabulary(L3 Unit19).json');
+                        addSubcategory('Unit20', './html/vocabulary(L3 Unit20).json');
+                        addSubcategory('Unit21', './html/vocabulary(L3 Unit21).json');
+                        break; 
+                    case '單字書 Level 4': addSubcategory
+                        addSubcategory('Unit1', './html/vocabulary(L4 Unit1).json');
+                        addSubcategory('Unit2', './html/vocabulary(L4 Unit2).json');
+                        addSubcategory('Unit3', './html/vocabulary(L4 Unit3).json');
+                        addSubcategory('Unit4', './html/vocabulary(L4 Unit4).json');
+                        addSubcategory('Unit5', './html/vocabulary(L4 Unit5).json');
+                        addSubcategory('Unit6', './html/vocabulary(L4 Unit6).json');
+                        addSubcategory('Unit7', './html/vocabulary(L4 Unit7).json');
+                        addSubcategory('Unit8', './html/vocabulary(L4 Unit8).json');
+                        addSubcategory('Unit9', './html/vocabulary(L4 Unit9).json');
+                        addSubcategory('Unit10', './html/vocabulary(L4 Unit10).json');
+                        addSubcategory('Unit11', './html/vocabulary(L4 Unit11).json');
+                        addSubcategory('Unit12', './html/vocabulary(L4 Unit12).json');
+                        addSubcategory('Unit13', './html/vocabulary(L4 Unit13).json');
+                        addSubcategory('Unit14', './html/vocabulary(L4 Unit14).json');
+                        addSubcategory('Unit15', './html/vocabulary(L4 Unit15).json');
+                        addSubcategory('Unit16', './html/vocabulary(L4 Unit16).json');
+                        addSubcategory('Unit17', './html/vocabulary(L4 Unit17).json');
+                        addSubcategory('Unit18', './html/vocabulary(L4 Unit18).json');
+                        addSubcategory('Unit19', './html/vocabulary(L4 Unit19).json');
+                        addSubcategory('Unit20', './html/vocabulary(L4 Unit20).json');
+                        addSubcategory('Unit21', './html/vocabulary(L4 Unit21).json');
+                        break;
+
+
+                }
+            } else {
+                $('#subcategory-list').hide();
+            }
+        }
+
+        function addSubcategory(name, url) {
+            const subcategoriesSelect = document.getElementById('subcategories');
+            const option = document.createElement('option');
+            option.value = url;
+            option.text = name;
+            subcategoriesSelect.appendChild(option);
+        }
+
+        $(document).ready(function () {
+            $('#vocabularyForm').submit(function (event) {
+                event.preventDefault(); // Prevent the form from submitting
+                const selectedUrl = $('#subcategories').val();
+                if (selectedUrl) {
+                    const jsonFileName = selectedUrl.split('/').pop(); // Get the JSON file name
+                    const htmlFileName = jsonFileName.replace('.json', '.html'); // Generate HTML file name
+                    localStorage.setItem('selectedVocabularyUrl', selectedUrl);
+                    window.location.href = "html/" + htmlFileName; // Navigate to HTML with JSON file name
+                }
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>
