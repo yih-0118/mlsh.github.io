@@ -1,3 +1,5 @@
+
+
 const state = {
     words: [],
     currentIndex: 0,
@@ -40,6 +42,7 @@ class VocabularyRenderer {
 
     renderQuestion() {
         const word = state.words[state.currentIndex];
+        gsap.to(this.questionEl, { duration: 0.3, opacity: 1, scale: 1, ease: "power2.out" });
         this.questionEl.html(word.vocabulary);
         this.hintEl.find('.type').html(word.partOfSpeech);
         this.hintEl.find('.answer').html(word.chinese);
@@ -96,6 +99,7 @@ class VocabularyController {
     }
 
     toggleHint() {
+        gsap.to(this.renderer.hintEl, { duration: 0.3, opacity: this.renderer.hintEl.css('display') === 'none' ? 1 : 0, ease: "power2.inOut" });
         this.renderer.hintEl.toggle();
     }
 
@@ -105,7 +109,7 @@ class VocabularyController {
         } else {
             state.currentIndex = (state.currentIndex + 1) % state.words.length;
         }
-        this.renderer.renderQuestion();
+        gsap.to(this.renderer.questionEl, { duration: 0.3, opacity: 0, scale: 0.8, ease: "power2.in", onComplete: () => this.renderer.renderQuestion() });
         this.saveState();
     }
 
@@ -115,7 +119,7 @@ class VocabularyController {
         } else {
             state.currentIndex = (state.currentIndex - 1 + state.words.length) % state.words.length;
         }
-        this.renderer.renderQuestion();
+        gsap.to(this.renderer.questionEl, { duration: 0.3, opacity: 0, scale: 0.8, ease: "power2.in", onComplete: () => this.renderer.renderQuestion() });
         this.saveState();
     }
 

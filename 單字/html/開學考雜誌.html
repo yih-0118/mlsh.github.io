@@ -1,3 +1,4 @@
+<!-- ALL_PLUS_Mar_CNN_News.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,7 @@
     <div class="app">
         <div class="container">
             <div id="question" class="question"></div>
-            <div id="hint" class="hint" style="display: none;">
+            <div id="hint" class="hint" style="display: none; opacity: 0;">
                 <span class="type"></span> <span class="answer"></span>
             </div>
             <button type="radio" id="answerBtn" class="btn"><i class="fa-solid fa-lightbulb"></i></button>
@@ -53,7 +54,7 @@
                             <th>idx</th>
                             <th>英文</th>
                             <th>詞性</th>
-                            <th>中文</th>
+                            <th id="chinese-header" class="hidden"></th>
                         </tr>
                     </thead>
                     <tbody>
