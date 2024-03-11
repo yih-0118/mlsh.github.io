@@ -46,6 +46,30 @@ class VocabularyRenderer {
         this.questionEl.html(word.vocabulary);
         this.hintEl.find('.type').html(word.partOfSpeech);
         this.hintEl.find('.answer').html(word.chinese);
+        this.changeQuestionColor();
+    }
+
+    // changeQuestionColor() {
+    //     const colors = ['#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF', '#FF8000', '#8000FF', '#00FF80', '#FF0080', '#80FF00', '#0080FF', '#FF8080', '#80FF80', '#8080FF', '#FFFF80', '#FF80FF', '#80FFFF', '#C0C0C0', '#808080', '#800000', '#008000', '#000080', '#808000', '#800080', '#008080', '#804000', '#004080', '#400080', '#804080', '#804040', '#408040', '#404080', '#408080', '#808040', '#804080', '#400040', '#400080', '#004080', '#008040', '#004040', '#400040', '#004040', '#000000'];
+    //     const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    //     this.questionEl.css('color', randomColor);
+    //     this.changeButtonColor(randomColor);
+    // }
+
+    // changeButtonColor(color) {
+    //     const buttons = $('.btn');
+    //     buttons.css('background-color', color);
+    //     buttons.css('outline-color', color);
+    // }
+    changeQuestionColor(color) {
+        //this.questionEl.css('color', color);
+        this.changeButtonColor(color);
+    }
+
+    changeButtonColor(color) {
+        const buttons = $('.btn');
+        buttons.css('background-color', color);
+        buttons.css('outline-color', color);
     }
 
     renderList() {
@@ -86,6 +110,7 @@ class VocabularyController {
         $('#prev').click(() => this.handlePrev());
         $('#chinese-display').change(() => this.toggleChineseDisplay());
         $('input[name="mode"]').change(() => this.handleModeChange());
+        $('#color-picker').change(() => this.handleColorChange());
     }
 
     initStateFromLocalStorage() {
@@ -140,6 +165,11 @@ class VocabularyController {
         utils.saveToLocalStorage('showChinese', state.showChinese);
         utils.saveToLocalStorage('minIndex', state.minIndex);
         utils.saveToLocalStorage('maxIndex', state.maxIndex);
+    }
+
+    handleColorChange() {
+        const newColor = $('#color-picker').val();
+        this.renderer.changeQuestionColor(newColor);
     }
 }
 

@@ -1,4 +1,3 @@
-<!-- ALL_PLUS_Mar_CNN_News.html -->
 <!DOCTYPE html>
 <html lang="tw">
 <head>
@@ -28,8 +27,10 @@
     </div>
     <div class="panel setting">
         <div class="container">
-            <div class="block">
-                <h3>設定</h3>
+            <div class="block" id="ccc">
+                <h3 >設定</h3>
+                <div id="cc">""</div>
+
                 <div class="options">
                     <div>
                         <input id="mode-1" type="radio" value="random" name="mode" class="mode-set">
@@ -39,18 +40,36 @@
                         <input id="mode-2" type="radio" value="sequential" name="mode" class="mode-set">
                         <label for="mode-2">順序</label>
                     </div>
+                    <div class="options">
+                        <label class="switch">
+                            <input type="checkbox" id="chinese-display" class="mode-set">
+                            <span class="slider round"></span>
+                        </label>
+                        <label for="chinese-display">顯示中文</label>
+                    </div>
                 </div>
             </div>
             <div class="block">
-                <div>
-                    <input type="checkbox" id="chinese-display">
-                    <label for="chinese-display">顯示中文</label>
+                <h3>更多設定</h3>
+                <div id="cc">"</div>
+                <div class="more-options">
+                    <div class="option-row">
+                        <label for="color-picker">選擇顏色:</label>
+                        <input type="color" id="color-picker" value="#872dd4" class="mode-set">
+                    </div>
+                    
                 </div>
+            
+
+            </div>
+            <div id="cc">""</div>
+            <div class="block">
+                
 
                 <table class="list">
                     <thead>
                         <tr>
-                            <th>idx</th>
+                            <th>索引</th>
                             <th>英文</th>
                             <th>詞性</th>
                             <th id="chinese-header" class="hidden"></th>

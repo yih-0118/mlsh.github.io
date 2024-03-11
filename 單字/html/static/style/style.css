@@ -1,10 +1,13 @@
 /* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 html {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     -khtml-user-select: none;
     user-select: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 .link {
@@ -85,12 +88,14 @@ html {
     padding: 0 5px;
     height: 100%;
     position: relative;
+    border-radius: 10px;
 }
 
 .question {
     font-size: 40px;
     opacity: 0;
     transform: scale(0.8);
+    transition: color 0.5s ease-in-out;
 }
 
 .hint {
@@ -116,7 +121,9 @@ html {
     justify-content: end;
     align-items: center;
 }
-
+#ccc{
+    margin-top: 10%;
+}
 .header>div {
     margin: 0 3%;
 }
@@ -125,7 +132,7 @@ html {
     margin: 2% 1.5%;
     padding: 5% 5%;
     border: rgba(128, 128, 128, 0.586) solid 2px;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .block h3 {
@@ -137,6 +144,13 @@ html {
     display: flex;
     width: 100%;
     justify-content: space-around;
+}
+
+.option-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 .block>table {
@@ -175,7 +189,36 @@ html {
         outline: #872dd4 3px solid;
     }
 }
+#cc{
+    color: #161616;
+}
+.more-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.option-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.option-row label:first-child {
+    margin-right: 10px;
+}
+
+#color-picker {
+    margin-left: 10px;
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
 @media (prefers-color-scheme: light) {
     body {
         background-color: #161616;
@@ -198,7 +241,73 @@ html {
         border-radius: 4px;
         font-weight: 600;
         cursor: pointer;
-        transition: outline-offset 0.2s ease;
+        transition: background-color 0.5s ease-in-out, outline-color 0.5s ease-in-out;
         outline: #872dd4 3px solid;
+    }
+}
+
+/* 切換開關樣式 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #872dd4;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* 切換動畫 */
+.switch .slider {
+    animation: switchAnimation 0.5s ease-in-out;
+}
+
+@keyframes switchAnimation {
+    0% {
+        transform: translateX(-50px);
+    }
+    100% {
+        transform: translateX(0);
     }
 }
