@@ -1,0 +1,73 @@
+<!-- ALL_PLUS_Mar_CNN_News.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="static/style/initialize.min.css">
+    <link rel="stylesheet" href="static/style/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <div class="container">
+            <div id="question" class="question"></div>
+            <div id="hint" class="hint" style="display: none; opacity: 0;">
+                <span class="type"></span> <span class="answer"></span>
+            </div>
+            <button type="radio" id="answerBtn" class="btn"><i class="fa-solid fa-lightbulb"></i></button>
+            <div class="rightLeftArea">
+                <button id="prev" class="btn"><i class="fa-solid fa-arrow-left"></i></button>
+                <button id="next" class="btn"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="panel setting">
+        <div class="container">
+            <div class="block">
+                <h3>設定</h3>
+                <div class="options">
+                    <div>
+                        <input id="mode-1" type="radio" value="random" name="mode" class="mode-set">
+                        <label for="mode-1">隨機</label>
+                    </div>
+                    <div>
+                        <input id="mode-2" type="radio" value="sequential" name="mode" class="mode-set">
+                        <label for="mode-2">順序</label>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div>
+                    <input type="checkbox" id="chinese-display">
+                    <label for="chinese-display">顯示中文</label>
+                </div>
+
+                <table class="list">
+                    <thead>
+                        <tr>
+                            <th>idx</th>
+                            <th>英文</th>
+                            <th>詞性</th>
+                            <th id="chinese-header" class="hidden"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- List rows will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <button id="menu" class="menu btn round">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <script src="./static/rule.js"></script>
+</body>
+
+</html>
