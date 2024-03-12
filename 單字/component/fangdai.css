@@ -1,81 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-        }
+html {
+    -moz-user-select: none;
+    /* Firefox */
+    -webkit-user-select: none;
+    /* Chrome , Safari*/
+    -ms-user-select: none;
+    /* IE10 */
+    -khtml-user-select: none;
+    /* 古早瀏覽器 */
+    user-select: none;
+}
 
-        .container {
-            margin-top: 10vh;
-            text-align: center;
-        }
+.link {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */
+}
 
-        h1 {
-            font-size: 2.5rem;
-            color: #4c4c4c;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease;
-        }
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
 
-        form {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1s ease;
-        }
+.container {
+    margin-top: 10vh;
+    text-align: center;
+}
 
-        .form-label {
-            font-weight: 500;
-            color: #555;
-        }
+h1 {
+    font-size: 2.5rem;
+    color: #4c4c4c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease;
+}
 
-        .form-select {
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            padding: 0.75rem;
-            transition: border-color 0.3s ease;
-        }
+form {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease;
+}
 
-        .form-select:focus {
-            border-color: #6c63ff;
-            box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
-        }
+.form-label {
+    font-weight: 500;
+    color: #555;
+}
 
-        .btn-primary {
-            background-color: #677bfd;
-            border-color: #677bfd;
-            padding: 0.75rem 1.5rem;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            width: 100%;
-        }
+.form-select {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    transition: border-color 0.3s ease;
+}
 
-        .btn-primary:hover {
-            background-color: #5a4eff;
-            border-color: #5a4eff;
-            transform: translateY(-3px);
-        }
+.form-select:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+.btn-primary {
+    background-color: #677bfd;
+    border-color: #677bfd;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.btn-primary:hover {
+    background-color: #5a4eff;
+    border-color: #5a4eff;
+    transform: translateY(-3px);
+}
 
-        /* @media (prefers-color-scheme: dark) {
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* @media (prefers-color-scheme: dark) {
             body {
                 background-color: #2b2b2b;
                 color: #ffffff;
@@ -90,11 +117,11 @@
             }
         } */
 
-        #categories-label,
-        #subcategories-label {
-            float: left;
-            clear: both;
-            /* 清除浮動 */
-            margin-left: 10px;
-            /* 可以調整右邊距以增加間距 */
-        }
+#categories-label,
+#subcategories-label {
+    float: left;
+    clear: both;
+    /* 清除浮動 */
+    margin-left: 10px;
+    /* 可以調整右邊距以增加間距 */
+}
