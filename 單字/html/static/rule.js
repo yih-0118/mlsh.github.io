@@ -205,19 +205,21 @@ class MenuController {
 
     showMenu() {
         this.panel.show();
-        gsap.fromTo(this.panel, { y: '-100%' }, { y: 0, ease: 'Power', duration: 0.5 });
+        gsap.fromTo(this.panel, { y: '-100%' }, { y: 0, ease: 'Power', duration: 0.7 });
     }
 
     hideMenu() {
         gsap.to(this.panel, {
-            opacity: 0,
-            duration: 0.2,
+            y: '-100%',
+            ease: 'Power',
+            duration: 0.7,
             onComplete: () => {
                 this.panel.hide();
-                gsap.set(this.panel, { opacity: 1 });
+                gsap.set(this.panel, { y: 0 }); 
             }
         });
     }
+    
 }
 
 const renderer = new VocabularyRenderer('#question', '#hint', '.list');
