@@ -9,6 +9,16 @@ const state = {
     maxIndex: 0
 };
 
+document.addEventListener('DOMContentLoaded', function () {
+    var fullPath = decodeURI(window.location.pathname);
+    var fileName = fullPath.split('/').pop();
+    var dotIndex = fileName.lastIndexOf('.');
+    if (dotIndex !== -1) {
+        fileName = fileName.substring(0, dotIndex);
+    }
+    document.getElementById('pageTitle').innerText = fileName;
+});
+
 const utils = {
     getRandomIndex: (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
     saveToLocalStorage: (key, value) => localStorage.setItem(key, JSON.stringify(value)),

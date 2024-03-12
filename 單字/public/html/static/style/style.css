@@ -1,6 +1,15 @@
 /* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+/* 在現有的 CSS 代碼中添加以下樣式 */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
 
+.app {
+    height: 100vh; /* 保證 .app 的高度佔滿整個視口高度 */
+    overflow: auto; /* 允許在 .app 內部上下滾動 */
+}
 html {
     -moz-user-select: none;
     -webkit-user-select: none;
