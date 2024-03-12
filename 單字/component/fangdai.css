@@ -125,3 +125,46 @@ form {
     margin-left: 10px;
     /* 可以調整右邊距以增加間距 */
 }
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #ddd;
+    }
+
+    h1 {
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1);
+    }
+
+    form {
+        background-color: #2b2b2b;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .form-label {
+        color: #ccc;
+    }
+
+    .form-select {
+        background-color: #444;
+        color: #ddd;
+        border: 1px solid #555;
+    }
+
+    .form-select:focus {
+        border-color: #677bfd;
+        box-shadow: 0 0 0 0.2rem rgba(103, 123, 253, 0.25);
+    }
+
+    .btn-primary {
+        background-color: #677bfd;
+        border-color: #677bfd;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #5a4eff;
+        border-color: #5a4eff;
+    }
+}
