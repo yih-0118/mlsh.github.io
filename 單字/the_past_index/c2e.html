@@ -346,6 +346,15 @@
                         this.generateOptions();
                         this.feedback = null;
                         this.currentQuestionIndex++;
+
+                        // 重新啟用所有選項
+                        const options = document.querySelectorAll('.option');
+                        options.forEach(option => {
+                            option.style.pointerEvents = 'auto';
+                        });
+
+                        this.startTimer();
+
                     } else {
                         this.isQuizCompleted = true;
                         clearInterval(this.timer);
@@ -371,6 +380,7 @@
                     this.shuffledOptions = this.shuffleArray(this.options);
                 },
                 checkAnswer(option) {
+                    if (this.feedback !== null) return; // 如果已經有回饋,則不執行
                     const correctAnswer = this.isEnglishToChineseMode ? this.currentWord.vocabulary : this.currentWord.vocabulary;
                     if (option === correctAnswer) {
                         this.feedback = 'Correct!';
@@ -379,12 +389,19 @@
                         this.feedback = 'Incorrect. The correct answer is: ' + correctAnswer;
 
                     }
+                    // 將所有選項設為不可點w選狀態
+                    const options = document.querySelectorAll('.option');
+                    options.forEach(option => {
+                        option.style.pointerEvents = 'none';
+                    });
+                    clearInterval(this.timer);
+
                 },
-                
+
                 resetQuiz() {
                     this.currentQuestionIndex = 0;
                     this.score = 0;
-                    this.timeLeft = this.vocabularies.length*5;
+                    this.timeLeft = this.vocabularies.length * 5;
                     this.isQuizCompleted = false;
                 },
                 startTimer() {
