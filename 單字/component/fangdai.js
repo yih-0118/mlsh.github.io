@@ -88,8 +88,8 @@ function showSubcategories(category) {
                 addSubcategory('Unit 21', './html/vocabulary(L4 Unit21).json');
                 break;
             case 'link-test':
-                addSubcategory('看英文選中文', './e2c.html');
-                addSubcategory('看中文選英文', './c2e.html');
+                addSubcategory('看英文選中文', './the_past_index/e2c.html');
+                addSubcategory('看中文選英文', './the_past_index/c2e.html');
                 break;
         }
     } else {
