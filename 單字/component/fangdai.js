@@ -95,6 +95,9 @@ function showSubcategories(category) {
     } else {
         $('#subcategory-list').hide();
     }
+
+    // Store the selected category in localStorage
+    localStorage.setItem('selectedCategory', category);
 }
 
 function addSubcategory(name, url) {
@@ -114,8 +117,10 @@ $(document).ready(function () {
             const htmlFileName = jsonFileName.replace('.json', '.html'); // Generate HTML file name
             if (jsonFileName.endsWith('.json')) {
                 localStorage.setItem('selectedVocabularyUrl', selectedUrl);
+                localStorage.setItem('selectedSubcategory', selectedUrl); // Store the selected subcategory in localStorage
                 window.location.href = "html/" + htmlFileName; // Navigate to HTML with JSON file name
             } else {
+                localStorage.setItem('selectedSubcategory', selectedUrl); // Store the selected subcategory in localStorage
                 window.location.href = selectedUrl; // Navigate to the selected URL
             }
         }
