@@ -30,6 +30,15 @@ function showSubcategories(category) {
                 addSubcategory('Lesson 1', './json/B4 L1.json');
                 addSubcategory('Lesson 2', './json/B4 L2.json');
                 addSubcategory('Lesson 3', './json/B4 L3.json');
+                addSubcategory('Review 1', './json/B4 review 1.json');
+                addSubcategory('Lesson 4', './json/B4 L4.json');
+                addSubcategory('Lesson 5', './json/B4 L5.json');
+                addSubcategory('Lesson 6', './json/B4 L6.json');
+                addSubcategory('Review 2', './json/B4 review 2.json');
+                addSubcategory('Lesson 7', './json/B4 L7.json');
+                addSubcategory('Lesson 8', './json/B4 L8.json');
+                addSubcategory('Lesson 9', './json/B4 L9.json');
+                addSubcategory('Review 3', './json/B4 review 3.json');
                 break;
             case '單字書 Level 2':
                 addSubcategory('Unit 1', './html/vocabulary(L2 Unit1).json');
