@@ -1,1 +1,152 @@
-eval(function(p,a,c,k,e,r){e=function(c){return(c<62?'':e(parseInt(c/62)))+((c=c%62)>35?String.fromCharCode(c+29):c.toString(36))};if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'([0a-zA-Z]|1\\w)'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('o showSubcategories(p){k q=r.I(\'u\');q.innerHTML=\'\';v(p){$(\'#J-K\').show();switch(p){l\'ALL_PLUS_Mar\':a(\'CNN News\',\'./0/ALL_PLUS_Mar_CNN_News.0\');a(\'b 1\',\'./0/ALL_PLUS_Mar_Unit_1.0\');a(\'b 2\',\'./0/ALL_PLUS_Mar_Unit_2.0\');a(\'b 3\',\'./0/ALL_PLUS_Mar_Unit_3.0\');a(\'b 4\',\'./0/ALL_PLUS_Mar_Unit_4.0\');a(\'b 5\',\'./0/ALL_PLUS_Mar_Unit_5.0\');a(\'b 6\',\'./0/ALL_PLUS_Mar_Unit_6.0\');a(\'b 7\',\'./0/ALL_PLUS_Mar_Unit_7.0\');a(\'b 8\',\'./0/ALL_PLUS_Mar_Unit_8.0\');a(\'b 9\',\'./0/ALL_PLUS_Mar_Unit_9.0\');a(\'b 10\',\'./0/ALL_PLUS_Mar_Unit_10.0\');a(\'b 11\',\'./0/ALL_PLUS_Mar_Unit_11.0\');a(\'b 12\',\'./0/ALL_PLUS_Mar_Unit_12.0\');a(\'b 13\',\'./0/ALL_PLUS_Mar_Unit_13.0\');a(\'b 14\',\'./0/ALL_PLUS_Mar_Unit_14.0\');a(\'b 15\',\'./0/ALL_PLUS_Mar_Unit_15.0\');m;l\'Book4\':a(\'h 1\',\'./0/g L1.0\');a(\'h 2\',\'./0/g i.0\');a(\'h 3\',\'./0/g e.0\');a(\'w 1\',\'./0/g x 1.0\');a(\'h 4\',\'./0/g f.0\');a(\'h 5\',\'./0/g L5.0\');a(\'h 6\',\'./0/g L6.0\');a(\'w 2\',\'./0/g x 2.0\');a(\'h 7\',\'./0/g L7.0\');a(\'h 8\',\'./0/g L8.0\');a(\'h 9\',\'./0/g L9.0\');a(\'w 3\',\'./0/g x 3.0\');m;l\'單字書 y 2\':a(\'b 1\',\'./c/d(i z).0\');a(\'b 2\',\'./c/d(i A).0\');a(\'b 3\',\'./c/d(i B).0\');a(\'b 4\',\'./c/d(i C).0\');a(\'b 5\',\'./c/d(i D).0\');a(\'b 6\',\'./c/d(i E).0\');a(\'b 7\',\'./c/d(i F).0\');a(\'b 8\',\'./c/d(i G).0\');m;l\'單字書 y 3\':a(\'b 1\',\'./c/d(e z).0\');a(\'b 2\',\'./c/d(e A).0\');a(\'b 3\',\'./c/d(e B).0\');a(\'b 4\',\'./c/d(e C).0\');a(\'b 5\',\'./c/d(e D).0\');a(\'b 6\',\'./c/d(e E).0\');a(\'b 7\',\'./c/d(e F).0\');a(\'b 8\',\'./c/d(e G).0\');a(\'b 9\',\'./c/d(e L).0\');a(\'b 10\',\'./c/d(e M).0\');a(\'b 11\',\'./c/d(e N).0\');a(\'b 12\',\'./c/d(e O).0\');a(\'b 13\',\'./c/d(e P).0\');a(\'b 14\',\'./c/d(e Q).0\');a(\'b 15\',\'./c/d(e R).0\');a(\'b 16\',\'./c/d(e S).0\');a(\'b 17\',\'./c/d(e T).0\');a(\'b 18\',\'./c/d(e U).0\');a(\'b 19\',\'./c/d(e V).0\');a(\'b 20\',\'./c/d(e W).0\');a(\'b 21\',\'./c/d(e X).0\');m;l\'單字書 y 4\':a(\'b 1\',\'./c/d(f z).0\');a(\'b 2\',\'./c/d(f A).0\');a(\'b 3\',\'./c/d(f B).0\');a(\'b 4\',\'./c/d(f C).0\');a(\'b 5\',\'./c/d(f D).0\');a(\'b 6\',\'./c/d(f E).0\');a(\'b 7\',\'./c/d(f F).0\');a(\'b 8\',\'./c/d(f G).0\');a(\'b 9\',\'./c/d(f L).0\');a(\'b 10\',\'./c/d(f M).0\');a(\'b 11\',\'./c/d(f N).0\');a(\'b 12\',\'./c/d(f O).0\');a(\'b 13\',\'./c/d(f P).0\');a(\'b 14\',\'./c/d(f Q).0\');a(\'b 15\',\'./c/d(f R).0\');a(\'b 16\',\'./c/d(f S).0\');a(\'b 17\',\'./c/d(f T).0\');a(\'b 18\',\'./c/d(f U).0\');a(\'b 19\',\'./c/d(f V).0\');a(\'b 20\',\'./c/d(f W).0\');a(\'b 21\',\'./c/d(f X).0\');m;l\'link-test\':a(\'看英文選中文\',\'./Y/e2c.c\');a(\'看中文選英文\',\'./Y/c2e.c\');m}}Z{$(\'#J-K\').hide()}s.t(\'selectedCategory\',p)}o a(1a,1b){k q=r.I(\'u\');k n=r.createElement(\'n\');n.value=1b;n.text=1a;q.appendChild(n)}$(r).ready(o(){$(\'#vocabularyForm\').submit(o(1c){1c.preventDefault();k j=$(\'#u\').val();v(j){k H=j.split(\'/\').pop();k 1d=H.replace(\'.0\',\'.c\');v(H.endsWith(\'.0\')){s.t(\'selectedVocabularyUrl\',j);s.t(\'1e\',j);1f.1g.1h="c/"+1d}Z{s.t(\'1e\',j);1f.1g.1h=j}}})});',[],80,'json||||||||||addSubcategory|Unit|html|vocabulary|L3|L4|B4|Lesson|L2|selectedUrl|const|case|break|option|function|category|subcategoriesSelect|document|localStorage|setItem|subcategories|if|Review|review|Level|Unit1|Unit2|Unit3|Unit4|Unit5|Unit6|Unit7|Unit8|jsonFileName|getElementById|subcategory|list|Unit9|Unit10|Unit11|Unit12|Unit13|Unit14|Unit15|Unit16|Unit17|Unit18|Unit19|Unit20|Unit21|the_past_index|else|||||||||||name|url|event|htmlFileName|selectedSubcategory|window|location|href'.split('|'),0,{}))
+function showSubcategories(category) {
+    const subcategoriesSelect = document.getElementById('subcategories');
+    subcategoriesSelect.innerHTML = ''; // Clear existing options
+
+    if (category) {
+        $('#subcategory-list').show();
+
+        // Populate subcategories based on the selected category
+        switch (category) {
+            case 'ALL_PLUS_Mar':
+                addSubcategory('CNN News', '../html/ALL_PLUS_Mar_CNN_News.html');
+                addSubcategory('Unit 1', '../html/ALL_PLUS_Mar_Unit_1.html');
+                addSubcategory('Unit 2', '../html/ALL_PLUS_Mar_Unit_2.html');
+                addSubcategory('Unit 3', '../html/ALL_PLUS_Mar_Unit_3.html');
+                addSubcategory('Unit 4', '../html/ALL_PLUS_Mar_Unit_4.html');
+                addSubcategory('Unit 5', '../html/ALL_PLUS_Mar_Unit_5.html');
+                addSubcategory('Unit 6', '../html/ALL_PLUS_Mar_Unit_6.html');
+                addSubcategory('Unit 7', '../html/ALL_PLUS_Mar_Unit_7.html');
+                addSubcategory('Unit 9', '../html/ALL_PLUS_Mar_Unit_9.html');
+                addSubcategory('Unit 10', '../html/ALL_PLUS_Mar_Unit_10.html');
+                addSubcategory('Unit 11', '../html/ALL_PLUS_Mar_Unit_11.html');
+                addSubcategory('Unit 12', '../html/ALL_PLUS_Mar_Unit_12.html');
+                addSubcategory('Unit 13', '../html/ALL_PLUS_Mar_Unit_13.html');
+                addSubcategory('Unit 14', '../html/ALL_PLUS_Mar_Unit_14.html');
+                addSubcategory('Unit 15', '../html/ALL_PLUS_Mar_Unit_15.html');
+                break;
+
+            case 'ALL_PLUS_Apr':
+                addSubcategory('Unit 1', '../html/ALL_PLUS_Apr_Unit_1.html');
+                addSubcategory('Unit 2', '../html/ALL_PLUS_Apr_Unit_2.html');
+                addSubcategory('Unit 3', '../html/ALL_PLUS_Apr_Unit_3.html');
+                addSubcategory('Unit 4', '../html/ALL_PLUS_Apr_Unit_4.html');
+                addSubcategory('Unit 5', '../html/ALL_PLUS_Apr_Unit_5.html');
+                addSubcategory('Unit 6', '../html/ALL_PLUS_Apr_Unit_6.html');
+                addSubcategory('Unit 7', '../html/ALL_PLUS_Apr_Unit_7.html');
+                addSubcategory('Unit 8', '../html/ALL_PLUS_Apr_Unit_8.html');
+                addSubcategory('Unit 9', '../html/ALL_PLUS_Apr_Unit_9.html');
+                addSubcategory('Unit 10', '../html/ALL_PLUS_Apr_Unit_10.html');
+                addSubcategory('Unit 12', '../html/ALL_PLUS_Apr_Unit_12.html');
+                addSubcategory('Unit 13', '../html/ALL_PLUS_Apr_Unit_13.html');
+                addSubcategory('Unit 14', '../html/ALL_PLUS_Apr_Unit_14.html');
+                break;
+
+            case 'Book4':
+                addSubcategory('Lesson 1', '../html/B4 L1.html');
+                addSubcategory('Lesson 2', '../html/B4 L2.html');
+                addSubcategory('Lesson 3', '../html/B4 L3.html');
+                addSubcategory('Review 1', '../html/B4 review 1.html');
+                addSubcategory('Lesson 4', '../html/B4 L4.html');
+                addSubcategory('Lesson 5', '../html/B4 L5.html');
+                addSubcategory('Lesson 6', '../html/B4 L6.html');
+                addSubcategory('Review 2', '../html/B4 review 2.html');
+                addSubcategory('Lesson 7', '../html/B4 L7.html');
+                addSubcategory('Lesson 8', '../html/B4 L8.html');
+                addSubcategory('Lesson 9', '../html/B4 L9.html');
+                addSubcategory('Review 3', '../html/B4 review 3.html');
+                break;
+            case '單字書 Level 2':
+                addSubcategory('Unit 1', './html/vocabulary(L2 Unit1).html');
+                addSubcategory('Unit 2', './html/vocabulary(L2 Unit2).html');
+                addSubcategory('Unit 3', './html/vocabulary(L2 Unit3).html');
+                addSubcategory('Unit 4', './html/vocabulary(L2 Unit4).html');
+                addSubcategory('Unit 5', './html/vocabulary(L2 Unit5).html');
+                addSubcategory('Unit 6', './html/vocabulary(L2 Unit6).html');
+                addSubcategory('Unit 7', './html/vocabulary(L2 Unit7).html');
+                addSubcategory('Unit 8', './html/vocabulary(L2 Unit8).html');
+                break;
+            case '單字書 Level 3':
+                addSubcategory('Unit 1', './html/vocabulary(L3 Unit1).html');
+                addSubcategory('Unit 2', './html/vocabulary(L3 Unit2).html');
+                addSubcategory('Unit 3', './html/vocabulary(L3 Unit3).html');
+                addSubcategory('Unit 4', './html/vocabulary(L3 Unit4).html');
+                addSubcategory('Unit 5', './html/vocabulary(L3 Unit5).html');
+                addSubcategory('Unit 6', './html/vocabulary(L3 Unit6).html');
+                addSubcategory('Unit 7', './html/vocabulary(L3 Unit7).html');
+                addSubcategory('Unit 8', './html/vocabulary(L3 Unit8).html');
+                addSubcategory('Unit 9', './html/vocabulary(L3 Unit9).html');
+                addSubcategory('Unit 10', './html/vocabulary(L3 Unit10).html');
+                addSubcategory('Unit 11', './html/vocabulary(L3 Unit11).html');
+                addSubcategory('Unit 12', './html/vocabulary(L3 Unit12).html');
+                addSubcategory('Unit 13', './html/vocabulary(L3 Unit13).html');
+                addSubcategory('Unit 14', './html/vocabulary(L3 Unit14).html');
+                addSubcategory('Unit 15', './html/vocabulary(L3 Unit15).html');
+                addSubcategory('Unit 16', './html/vocabulary(L3 Unit16).html');
+                addSubcategory('Unit 17', './html/vocabulary(L3 Unit17).html');
+                addSubcategory('Unit 18', './html/vocabulary(L3 Unit18).html');
+                addSubcategory('Unit 19', './html/vocabulary(L3 Unit19).html');
+                addSubcategory('Unit 20', './html/vocabulary(L3 Unit20).html');
+                addSubcategory('Unit 21', './html/vocabulary(L3 Unit21).html');
+                break;
+            case '單字書 Level 4':
+                addSubcategory('Unit 1', './html/vocabulary(L4 Unit1).html');
+                addSubcategory('Unit 2', './html/vocabulary(L4 Unit2).html');
+                addSubcategory('Unit 3', './html/vocabulary(L4 Unit3).html');
+                addSubcategory('Unit 4', './html/vocabulary(L4 Unit4).html');
+                addSubcategory('Unit 5', './html/vocabulary(L4 Unit5).html');
+                addSubcategory('Unit 6', './html/vocabulary(L4 Unit6).html');
+                addSubcategory('Unit 7', './html/vocabulary(L4 Unit7).html');
+                addSubcategory('Unit 8', './html/vocabulary(L4 Unit8).html');
+                addSubcategory('Unit 9', './html/vocabulary(L4 Unit9).html');
+                addSubcategory('Unit 10', './html/vocabulary(L4 Unit10).html');
+                addSubcategory('Unit 11', './html/vocabulary(L4 Unit11).html');
+                addSubcategory('Unit 12', './html/vocabulary(L4 Unit12).html');
+                addSubcategory('Unit 13', './html/vocabulary(L4 Unit13).html');
+                addSubcategory('Unit 14', './html/vocabulary(L4 Unit14).html');
+                addSubcategory('Unit 15', './html/vocabulary(L4 Unit15).html');
+                addSubcategory('Unit 16', './html/vocabulary(L4 Unit16).html');
+                addSubcategory('Unit 17', './html/vocabulary(L4 Unit17).html');
+                addSubcategory('Unit 18', './html/vocabulary(L4 Unit18).html');
+                addSubcategory('Unit 19', './html/vocabulary(L4 Unit19).html');
+                addSubcategory('Unit 20', './html/vocabulary(L4 Unit20).html');
+                addSubcategory('Unit 21', './html/vocabulary(L4 Unit21).html');
+                break;
+            case 'link-test':
+                addSubcategory('看英文選中文', './the_past_index/e2c.html');
+                addSubcategory('看中文選英文', './the_past_index/c2e.html');
+                break;
+        }
+    } else {
+        $('#subcategory-list').hide();
+    }
+
+    // Store the selected category in localStorage
+    localStorage.setItem('selectedCategory', category);
+}
+
+function addSubcategory(name, url) {
+    const subcategoriesSelect = document.getElementById('subcategories');
+    const option = document.createElement('option');
+    option.value = url;
+    option.text = name;
+    subcategoriesSelect.appendChild(option);
+}
+
+$(document).ready(function () {
+    $('#vocabularyForm').submit(function (event) {
+        event.preventDefault(); // Prevent the form from submitting
+        const selectedUrl = $('#subcategories').val();
+        if (selectedUrl) {
+            const jsonFileName = selectedUrl.split('/').pop(); // Get the JSON file name
+            const htmlFileName = jsonFileName.replace('.html', '.html'); // Generate HTML file name
+            if (jsonFileName.endsWith('.html')) {
+                localStorage.setItem('selectedVocabularyUrl', selectedUrl);
+                localStorage.setItem('selectedSubcategory', selectedUrl); // Store the selected subcategory in localStorage
+                window.location.href = "html/" + htmlFileName; // Navigate to HTML with JSON file name
+            } else {
+                localStorage.setItem('selectedSubcategory', selectedUrl); // Store the selected subcategory in localStorage
+                window.location.href = selectedUrl; // Navigate to the selected URL
+            }
+        }
+    });
+});

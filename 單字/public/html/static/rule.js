@@ -1,1 +1,227 @@
-eval(function(p,a,c,k,e,r){e=function(c){return(c<62?'':e(parseInt(c/62)))+((c=c%62)>35?String.fromCharCode(c+29):c.toString(36))};if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'([24-69a-xzA-Z]|1\\w)'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('a 4={c:[],6:0,d:D,e:D,k:0,g:0};N.addEventListener(\'DOMContentLoaded\',function(){O 1a=decodeURI(window.1b.1c);O u=1a.1d(\'/\').1e();O P=u.lastIndexOf(\'.\');E(P!==-1){u=u.substring(0,P)}N.getElementById(\'pageTitle\').innerText=u});a 9={Q:(R,1f)=>1g.floor(1g.S()*(1f-R+1))+R,n:(F,v)=>1h.setItem(F,1i.stringify(v)),o:(F,1j)=>{a v=1h.getItem(F);return v?1i.parse(v):1j}};G 1k{static 1l(1m,1n){$.ajax({1o:"GET",1m,dataType:"T",success:(1p)=>{4.c=1p.vocabularies;4.g=4.c.w-1;1n()}})}}G 1q{U(l,h,p){2.l=$(l);2.h=$(h);2.p=$(p).H(\'tbody\')}x(){a i=4.c[4.6];m.z(2.l,{q:0.3,I:1,V:1,r:"J.out"});2.l.K(i.1r);2.h.H(\'.1o\').K(i.1s);2.h.H(\'.answer\').K(i.s);2.W()}W(f){2.1t(f)}1t(f){a X=$(\'.btn\');X.Y(\'background-f\',f);X.Y(\'outline-f\',f)}1u(){2.p.empty();4.c.forEach((i,Z)=>{a t=$(\'<tr></tr>\').10(\'11\').A(()=>{4.6=Z;2.x()});t.B($(\'<j></j>\').10(\'idx\').L(Z));t.B($(\'<j></j>\').L(i.1r));t.B($(\'<j></j>\').L(i.1s));t.B($(\'<j></j>\').10(\'s\').L(i.s));2.p.B(t)});2.12()}12(){2.p.H(\'.s\').1w(4.e)}}G 1x{U(5){2.5=5;2.1y();2.1z();1k.1l(`./T/${N.1b.1c.1d(\'/\').1e().replace(\'.K\',\'.T\')}`,()=>{2.5.x();2.5.1u()})}1y(){$(\'#answerBtn\').A(()=>2.1A());$(\'#next\').A(()=>2.1B());$(\'#prev\').A(()=>2.1C());$(\'#s-13\').14(()=>2.1D());$(\'1E[1F="15"]\').14(()=>2.1G());$(\'#f-1H\').14(()=>2.1I())}1z(){4.6=9.o(\'6\',0);4.d=9.o(\'d\',D);4.e=9.o(\'e\',D);4.k=9.o(\'k\',0);4.g=9.o(\'g\',4.c.w-1);$(`#15-${4.d?\'S\':\'sequential\'}`).1J(\'16\',true);$(\'#s-13\').1J(\'16\',4.e)}1A(){m.z(2.5.h,{q:0.3,I:2.5.h.Y(\'13\')===\'none\'?1:0,r:"J.inOut"});2.5.h.1w()}1B(){E(4.d){4.6=9.Q(4.k,4.g)}17{4.6=(4.6+1)%4.c.w}m.z(2.5.l,{q:0.3,I:0,V:0.8,r:"J.in",18:()=>2.5.x()});2.C()}1C(){E(4.d){4.6=9.Q(4.k,4.g)}17{4.6=(4.6-1+4.c.w)%4.c.w}m.z(2.5.l,{q:0.3,I:0,V:0.8,r:"J.in",18:()=>2.5.x()});2.C()}1D(){4.e=!4.e;2.5.12();2.C()}1G(){4.d=$(\'1E[1F="15"]:16\').11()===\'S\';2.C()}C(){9.n(\'6\',4.6);9.n(\'d\',4.d);9.n(\'e\',4.e);9.n(\'k\',4.k);9.n(\'g\',4.g)}1I(){a 1L=$(\'#f-1H\').11();2.5.W(1L)}}G 1M{U(M,b){2.M=$(M);2.b=$(b);2.b.1N();2.1O()}1O(){2.M.A(()=>2.1P())}1P(){E(2.b.is(\':hidden\')){2.1Q()}17{2.1R()}}1Q(){2.b.show();m.fromTo(2.b,{y:\'-1S%\'},{y:0,r:\'1T\',q:0.7})}1R(){m.z(2.b,{y:\'-1S%\',r:\'1T\',q:0.7,18:()=>{2.b.1N();m.set(2.b,{y:0})}})}}a 5=19 1q(\'#question\',\'#hint\',\'.list\');a controller=19 1x(5);a menuController=19 1M(\'#menu\',\'.setting\');',[],118,'||this||state|renderer|currentIndex|||utils|const|panel|words|isRandom|showChinese|color|maxIndex|hintEl|word|td|minIndex|questionEl|gsap|saveToLocalStorage|loadFromLocalStorage|listEl|duration|ease|chinese|row|fileName|value|length|renderQuestion||to|click|append|saveState|false|if|key|class|find|opacity|power2|html|text|menuBtn|document|var|dotIndex|getRandomIndex|min|random|json|constructor|scale|changeQuestionColor|buttons|css|index|addClass|val|updateChineseDisplay|display|change|mode|checked|else|onComplete|new|fullPath|location|pathname|split|pop|max|Math|localStorage|JSON|defaultValue|DataLoader|loadData|url|callback|type|response|VocabularyRenderer|vocabulary|partOfSpeech|changeButtonColor|renderList||toggle|VocabularyController|initEventListeners|initStateFromLocalStorage|toggleHint|handleNext|handlePrev|toggleChineseDisplay|input|name|handleModeChange|picker|handleColorChange|prop||newColor|MenuController|hide|initEventListener|toggleMenu|showMenu|hideMenu|100|Power'.split('|'),0,{}))
+
+
+const state = {
+    words: [],
+    currentIndex: 0,
+    isRandom: false,
+    showChinese: false,
+    minIndex: 0,
+    maxIndex: 0
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    var fullPath = decodeURI(window.location.pathname);
+    var fileName = fullPath.split('/').pop();
+    var dotIndex = fileName.lastIndexOf('.');
+    if (dotIndex !== -1) {
+        fileName = fileName.substring(0, dotIndex);
+    }
+    document.getElementById('pageTitle').innerText = fileName;
+});
+
+const utils = {
+    getRandomIndex: (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
+    saveToLocalStorage: (key, value) => localStorage.setItem(key, JSON.stringify(value)),
+    loadFromLocalStorage: (key, defaultValue) => {
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : defaultValue;
+    }
+};
+
+class DataLoader {
+    static loadData(url, callback) {
+        $.ajax({
+            type: "GET",
+            url,
+            dataType: "json",
+            success: (response) => {
+                state.words = response.vocabularies;
+                state.maxIndex = state.words.length - 1;
+                callback();
+            }
+        });
+    }
+}
+
+class VocabularyRenderer {
+    constructor(questionEl, hintEl, listEl) {
+        this.questionEl = $(questionEl);
+        this.hintEl = $(hintEl);
+        this.listEl = $(listEl).find('tbody');
+    }
+
+    renderQuestion() {
+        const word = state.words[state.currentIndex];
+        gsap.to(this.questionEl, { duration: 0.3, opacity: 1, scale: 1, ease: "power2.out" });
+        this.questionEl.html(word.vocabulary);
+        this.hintEl.find('.type').html(word.partOfSpeech);
+        this.hintEl.find('.answer').html(word.chinese);
+        this.changeQuestionColor();
+    }
+
+    // changeQuestionColor() {
+    //     const colors = ['#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF', '#FF8000', '#8000FF', '#00FF80', '#FF0080', '#80FF00', '#0080FF', '#FF8080', '#80FF80', '#8080FF', '#FFFF80', '#FF80FF', '#80FFFF', '#C0C0C0', '#808080', '#800000', '#008000', '#000080', '#808000', '#800080', '#008080', '#804000', '#004080', '#400080', '#804080', '#804040', '#408040', '#404080', '#408080', '#808040', '#804080', '#400040', '#400080', '#004080', '#008040', '#004040', '#400040', '#004040', '#000000'];
+    //     const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    //     this.questionEl.css('color', randomColor);
+    //     this.changeButtonColor(randomColor);
+    // }
+
+    // changeButtonColor(color) {
+    //     const buttons = $('.btn');
+    //     buttons.css('background-color', color);
+    //     buttons.css('outline-color', color);
+    // }
+    changeQuestionColor(color) {
+        //this.questionEl.css('color', color);
+        this.changeButtonColor(color);
+    }
+
+    changeButtonColor(color) {
+        const buttons = $('.btn');
+        buttons.css('background-color', color);
+        buttons.css('outline-color', color);
+    }
+
+    renderList() {
+        this.listEl.empty();
+        state.words.forEach((word, index) => {
+            const row = $('<tr></tr>').addClass('val').click(() => {
+                state.currentIndex = index;
+                this.renderQuestion();
+            });
+            row.append($('<td></td>').addClass('idx').text(index));
+            row.append($('<td></td>').text(word.vocabulary));
+            row.append($('<td></td>').text(word.partOfSpeech));
+            row.append($('<td></td>').addClass('chinese').text(word.chinese));
+            this.listEl.append(row);
+        });
+        this.updateChineseDisplay();
+    }
+
+    updateChineseDisplay() {
+        this.listEl.find('.chinese').toggle(state.showChinese);
+    }
+}
+
+class VocabularyController {
+    constructor(renderer) {
+        this.renderer = renderer;
+        this.initEventListeners();
+        this.initStateFromLocalStorage();
+        DataLoader.loadData(`./json/${document.location.pathname.split('/').pop().replace('.html', '.json')}`, () => {
+            this.renderer.renderQuestion();
+            this.renderer.renderList();
+        });
+    }
+
+    initEventListeners() {
+        $('#answerBtn').click(() => this.toggleHint());
+        $('#next').click(() => this.handleNext());
+        $('#prev').click(() => this.handlePrev());
+        $('#chinese-display').change(() => this.toggleChineseDisplay());
+        $('input[name="mode"]').change(() => this.handleModeChange());
+        $('#color-picker').change(() => this.handleColorChange());
+    }
+
+    initStateFromLocalStorage() {
+        state.currentIndex = utils.loadFromLocalStorage('currentIndex', 0);
+        state.isRandom = utils.loadFromLocalStorage('isRandom', false);
+        state.showChinese = utils.loadFromLocalStorage('showChinese', false);
+        state.minIndex = utils.loadFromLocalStorage('minIndex', 0);
+        state.maxIndex = utils.loadFromLocalStorage('maxIndex', state.words.length - 1);
+        $(`#mode-${state.isRandom ? 'random' : 'sequential'}`).prop('checked', true);
+        $('#chinese-display').prop('checked', state.showChinese);
+    }
+
+    toggleHint() {
+        gsap.to(this.renderer.hintEl, { duration: 0.3, opacity: this.renderer.hintEl.css('display') === 'none' ? 1 : 0, ease: "power2.inOut" });
+        this.renderer.hintEl.toggle();
+    }
+
+    handleNext() {
+        if (state.isRandom) {
+            state.currentIndex = utils.getRandomIndex(state.minIndex, state.maxIndex);
+        } else {
+            state.currentIndex = (state.currentIndex + 1) % state.words.length;
+        }
+        gsap.to(this.renderer.questionEl, { duration: 0.3, opacity: 0, scale: 0.8, ease: "power2.in", onComplete: () => this.renderer.renderQuestion() });
+        this.saveState();
+    }
+
+    handlePrev() {
+        if (state.isRandom) {
+            state.currentIndex = utils.getRandomIndex(state.minIndex, state.maxIndex);
+        } else {
+            state.currentIndex = (state.currentIndex - 1 + state.words.length) % state.words.length;
+        }
+        gsap.to(this.renderer.questionEl, { duration: 0.3, opacity: 0, scale: 0.8, ease: "power2.in", onComplete: () => this.renderer.renderQuestion() });
+        this.saveState();
+    }
+
+    toggleChineseDisplay() {
+        state.showChinese = !state.showChinese;
+        this.renderer.updateChineseDisplay();
+        this.saveState();
+    }
+
+    handleModeChange() {
+        state.isRandom = $('input[name="mode"]:checked').val() === 'random';
+        this.saveState();
+    }
+
+    saveState() {
+        utils.saveToLocalStorage('currentIndex', state.currentIndex);
+        utils.saveToLocalStorage('isRandom', state.isRandom);
+        utils.saveToLocalStorage('showChinese', state.showChinese);
+        utils.saveToLocalStorage('minIndex', state.minIndex);
+        utils.saveToLocalStorage('maxIndex', state.maxIndex);
+    }
+
+    handleColorChange() {
+        const newColor = $('#color-picker').val();
+        this.renderer.changeQuestionColor(newColor);
+    }
+}
+
+class MenuController {
+    constructor(menuBtn, panel) {
+        this.menuBtn = $(menuBtn);
+        this.panel = $(panel);
+        this.panel.hide();
+        this.initEventListener();
+    }
+
+    initEventListener() {
+        this.menuBtn.click(() => this.toggleMenu());
+    }
+
+    toggleMenu() {
+        if (this.panel.is(':hidden')) {
+            this.showMenu();
+        } else {
+            this.hideMenu();
+        }
+    }
+
+    showMenu() {
+        this.panel.show();
+        gsap.fromTo(this.panel, { y: '-100%' }, { y: 0, ease: 'Power', duration: 0.7 });
+    }
+
+    hideMenu() {
+        gsap.to(this.panel, {
+            y: '-100%',
+            ease: 'Power',
+            duration: 0.7,
+            onComplete: () => {
+                this.panel.hide();
+                gsap.set(this.panel, { y: 0 }); 
+            }
+        });
+    }
+    
+}
+
+const renderer = new VocabularyRenderer('#question', '#hint', '.list');
+const controller = new VocabularyController(renderer);
+const menuController = new MenuController('#menu', '.setting');
