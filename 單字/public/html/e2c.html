@@ -10,8 +10,9 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');html{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-khtml-user-select:none;user-select:none;}.link{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}@media (prefers-color-scheme:light){body{background-color:#f0f0f0;font-family:'Poppins',sans-serif;}.container{align-items:center;justify-content:center;max-width:800px;margin:20px auto;padding:20px;background-color:white;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1);animation:fadeIn 1s ease-out;}.option{flex:0 0 48%;margin-bottom:10px;padding:10px;border:1px solid #ccc;border-radius:5px;cursor:pointer;transition:background-color 0.3s;flex:1;animation:slideIn 0.5s ease-out;}.option:hover{background-color:#e0e0e0;}}@media (prefers-color-scheme:dark){.question-card li {color: #1f1f1f;}body{background-color:#1f1e1e;font-family:'Poppins',sans-serif;}.container{align-items:center;justify-content:center;max-width:800px;margin:20px auto;padding:20px;background-color:#2f2f2f;border-radius:10px;box-shadow:0 0 10px #1f1f1f;animation:fadeIn 1s ease-out;color:#f0f0f0;}.option{flex:0 0 48%;margin-bottom:10px;padding:10px;border:1px solid #f0f0f0;border-radius:5px;cursor:pointer;transition:background-color 0.3s;flex:1;animation:slideIn 0.5s ease-out;color:#f0f0f0;}.option:hover{background-color:#1f1e1e;}}#app{margin-top:5%;}h1{text-align:center;}ul{list-style-type:none;padding:0;}li{margin-bottom:10px;}.options{display:flex;flex-wrap:wrap;justify-content:space-between;flex-direction:column;}.fade-out{animation:fadeOut 0.5s ease-out;}.correct-feedback{animation:pop-up 0.7s ease-out;}@keyframes pop-up{0%{transform:translateY(0);opacity:0;}50%{transform:translateY(-20px);opacity:1;}100%{transform:translateY(0);opacity:0;}}@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}@keyframes slideIn{from{transform:translateY(-50px);opacity:0;}to{transform:translateY(0);opacity:1;}}@keyframes fadeOut{from{opacity:1;}to{opacity:0;}}#submitButton{width:100%;}.question-card{background-color:#fff;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);padding:20px;margin-bottom:20px;}.question-card li{font-size:18px;margin-bottom:10px;}.question-card li strong{color:#007bff;}
     </style>
 </head>
+
 <body>
-    <div id="app" class="container"> <h1 class="mb-4">Vocabulary Quiz</h1> <label for="chapterSelect">Select Chapter:</label> <select id="chapterSelect" @change="selectChapter" class="form-select mb-4"> <option value="">Please Select</option> <option v-for="(value, key) in chapters" :key="key" :value="value">{{ key }}</option> </select> <div class="mb-4"> <span>Score: {{ score }} / {{ vocabularies.length }}</span> <span class="ms-4">Time Left: {{ formatTime(timeLeft) }}</span> </div> <div v-if="currentWord"> <div class="question-card"> <ul v-if="isEnglishToChineseMode"> <li><strong>Question {{ currentQuestionIndex }} / {{ vocabularies.length }}</strong></li> <li><strong>Chinese:</strong> {{ currentWord.chinese }}</li> <li><strong>Part of Speech:</strong> {{ currentWord.partOfSpeech }}</li> </ul> <ul v-else> <li><strong>Vocabulary:</strong> {{ currentWord.vocabulary }}</li> <li><strong>Part of Speech:</strong> {{ currentWord.partOfSpeech }}</li> </ul> </div> </div> <div class="options"> <div v-for="(option, index) in shuffledOptions" :key="index" :class="{ 'option': true, 'correct-feedback': feedback === 'Correct!' }" @click="checkAnswer(option)"> {{ option }} </div> </div> <p v-if="feedback !== null" class="mt-4 fade-out">{{ feedback }}</p> <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton" :disabled="isQuizCompleted"> {{ isQuizCompleted ? 'Quiz Completed' : 'Next' }} </button> <div v-if="isQuizCompleted" class="mt-4"> <h3>Quiz Result</h3> <p>Your final score is {{ score }} / {{ vocabularies.length }}</p> </div> </div>
+    <div id="app" class="container"> <h1 class="mb-4">Vocabulary Quiz</h1> <label for="chapterSelect">Select Chapter:</label> <select id="chapterSelect" @change="selectChapter" class="form-select mb-4"> <option value="">Please Select</option> <option v-for="(value, key) in chapters" :key="key" :value="value">{{ key }}</option> </select> <div class="mb-4"> <span>Score: {{ score }} / {{ vocabularies.length }}</span> <span class="ms-4">Time Left: {{ formatTime(timeLeft) }}</span> </div> <div v-if="currentWord"> <div class="question-card"> <ul v-if="isEnglishToChineseMode"> <li><strong>Question {{ currentQuestionIndex }} / {{ vocabularies.length }}</strong></li> <li><strong>Vocabulary:</strong> {{ currentWord.vocabulary }}</li> <li><strong>Part of Speech:</strong> {{ currentWord.partOfSpeech }}</li> </ul> <ul v-else> <li><strong>Vocabulary:</strong> {{ currentWord.vocabulary }}</li> <li><strong>Part of Speech:</strong> {{ currentWord.partOfSpeech }}</li> </ul> </div> </div> <div class="options"> <div v-for="(option, index) in shuffledOptions" :key="index" :class="{ 'option': true, 'correct-feedback': feedback === 'Correct!' }" @click="checkAnswer(option)"> {{ option }} </div> </div> <p v-if="feedback !== null" class="mt-4 fade-out">{{ feedback }}</p> <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton" :disabled="isQuizCompleted"> {{ isQuizCompleted ? 'Quiz Completed' : 'Next' }} </button> <div v-if="isQuizCompleted" class="mt-4"> <h3>Quiz Result</h3> <p>Your final score is {{ score }} / {{ vocabularies.length }}</p> </div> </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script>
         var vm = new Vue({
@@ -102,7 +103,7 @@
                     "ALL PLUS Mar. Unit 13": "../html/json/ALL_PLUS_Mar_Unit_13.json",
                     "ALL PLUS Mar. Unit 14": "../html/json/ALL_PLUS_Mar_Unit_14.json",
                     "ALL PLUS Mar. Unit 15": "../html/json/ALL_PLUS_Mar_Unit_15.json",
-                     "ALL PLUS Apr. Unit 1": "../html/json/ALL_PLUS_Apr_Unit_1.json",
+                    "ALL PLUS Apr. Unit 1": "../html/json/ALL_PLUS_Apr_Unit_1.json",
                     "ALL PLUS Apr. Unit 2": "../html/json/ALL_PLUS_Apr_Unit_2.json",
                     "ALL PLUS Apr. Unit 3": "../html/json/ALL_PLUS_Apr_Unit_3.json",
                     "ALL PLUS Apr. Unit 4": "../html/json/ALL_PLUS_Apr_Unit_4.json",
@@ -115,13 +116,12 @@
                     "ALL PLUS Apr. Unit 12": "../html/json/ALL_PLUS_Apr_Unit_12.json",
                     "ALL PLUS Apr. Unit 13": "../html/json/ALL_PLUS_Apr_Unit_13.json",
                     "ALL PLUS Apr. Unit 14": "../html/json/ALL_PLUS_Apr_Unit_14.json",
-
                 },
                 selectedChapter: null,
                 isEnglishToChineseMode: true,
                 score: 0,
                 currentQuestionIndex: 0,
-                timeLeft: 60, // 60 seconds
+                timeLeft: 0, // 60 seconds
                 timer: null,
                 isQuizCompleted: false
             },
@@ -175,10 +175,10 @@
                     for (let i = 0; i < 4; i++) {
                         let option;
                         if (i === this.correctIndex) {
-                            option = this.isEnglishToChineseMode ? this.currentWord.vocabulary : this.currentWord.vocabulary;
+                            option = this.isEnglishToChineseMode ? this.currentWord.chinese : this.currentWord.vocabulary;
                         } else {
                             let randomIndex = Math.floor(Math.random() * this.vocabularies.length);
-                            option = this.isEnglishToChineseMode ? this.vocabularies[randomIndex].vocabulary : this.vocabularies[randomIndex].vocabulary;
+                            option = this.isEnglishToChineseMode ? this.vocabularies[randomIndex].chinese : this.vocabularies[randomIndex].vocabulary;
                         }
                         optionsSet.add(option);
                     }
@@ -188,14 +188,15 @@
                 },
                 checkAnswer(option) {
                     if (this.feedback !== null) return; // 如果已經有回饋,則不執行
-                    const correctAnswer = this.isEnglishToChineseMode ? this.currentWord.vocabulary : this.currentWord.vocabulary;
+
+                    const correctAnswer = this.isEnglishToChineseMode ? this.currentWord.chinese : this.currentWord.vocabulary;
                     if (option === correctAnswer) {
                         this.feedback = 'Correct!';
                         this.score++;
                     } else {
                         this.feedback = 'Incorrect. The correct answer is: ' + correctAnswer;
-
                     }
+
                     // 將所有選項設為不可點w選狀態
                     const options = document.querySelectorAll('.option');
                     options.forEach(option => {
@@ -213,11 +214,14 @@
                 },
                 startTimer() {
                     clearInterval(this.timer);
+                    this.timeLeft = 10; // 將時間設為 10 秒
                     this.timer = setInterval(() => {
                         this.timeLeft--;
                         if (this.timeLeft === 0) {
                             clearInterval(this.timer);
-                            this.isQuizCompleted = true;
+                            // 處理時間到的邏輯,例如:
+                            this.feedback = 'Time is up. The correct answer is: ' + (this.isEnglishToChineseMode ? this.currentWord.vocabulary : this.currentWord.vocabulary);
+                            this.nextWord(); // 跳到下一題
                         }
                     }, 1000);
                 },
