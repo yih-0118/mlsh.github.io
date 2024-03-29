@@ -219,14 +219,32 @@ html {
 }
 
 #color-picker {
-    margin-left: 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     width: 50px;
-    height: 30px;
-    border-radius: 10px;
+    height: 50px;
+    border-radius: 50%;
     border: none;
     outline: none;
     cursor: pointer;
+    background-color: transparent;
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+    box-shadow: 0 0 0 2px #ffffff inset;
 }
+
+#color-picker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+#color-picker::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+
 @media (prefers-color-scheme: light) {
     body {
         background-color: #161616;
@@ -292,6 +310,11 @@ html {
 
 input:checked + .slider {
     background-color: #872dd4;
+}
+
+#color-picker:focus + .slider,
+input:checked + #color-picker:focus + .slider {
+    background-color: var(--selected-color);
 }
 
 input:checked + .slider:before {

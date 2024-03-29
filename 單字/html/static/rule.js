@@ -1,12 +1,11 @@
-
-
 const state = {
     words: [],
     currentIndex: 0,
     isRandom: false,
     showChinese: false,
     minIndex: 0,
-    maxIndex: 0
+    maxIndex: 0,
+    isAlphabeticalOrder: false
 };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -36,6 +35,7 @@ class DataLoader {
             dataType: "json",
             success: (response) => {
                 state.words = response.vocabularies;
+                state.originalWords = [...state.words]; // 保存原始順序
                 state.maxIndex = state.words.length - 1;
                 callback();
             }
@@ -59,20 +59,7 @@ class VocabularyRenderer {
         this.changeQuestionColor();
     }
 
-    // changeQuestionColor() {
-    //     const colors = ['#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF', '#FF8000', '#8000FF', '#00FF80', '#FF0080', '#80FF00', '#0080FF', '#FF8080', '#80FF80', '#8080FF', '#FFFF80', '#FF80FF', '#80FFFF', '#C0C0C0', '#808080', '#800000', '#008000', '#000080', '#808000', '#800080', '#008080', '#804000', '#004080', '#400080', '#804080', '#804040', '#408040', '#404080', '#408080', '#808040', '#804080', '#400040', '#400080', '#004080', '#008040', '#004040', '#400040', '#004040', '#000000'];
-    //     const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    //     this.questionEl.css('color', randomColor);
-    //     this.changeButtonColor(randomColor);
-    // }
-
-    // changeButtonColor(color) {
-    //     const buttons = $('.btn');
-    //     buttons.css('background-color', color);
-    //     buttons.css('outline-color', color);
-    // }
     changeQuestionColor(color) {
-        //this.questionEl.css('color', color);
         this.changeButtonColor(color);
     }
 
@@ -121,6 +108,18 @@ class VocabularyController {
         $('#chinese-display').change(() => this.toggleChineseDisplay());
         $('input[name="mode"]').change(() => this.handleModeChange());
         $('#color-picker').change(() => this.handleColorChange());
+        $('#alphabetical-order').change(() => this.handleAlphabeticalOrderChange());
+    }
+
+    handleAlphabeticalOrderChange() {
+        state.isAlphabeticalOrder = $('#alphabetical-order').prop('checked');
+        if (state.isAlphabeticalOrder) {
+            state.words.sort((a, b) => a.vocabulary.localeCompare(b.vocabulary));
+        } else {
+            state.words = [...state.originalWords]; // 重置為原始順序
+        }
+        this.renderer.renderList();
+        this.saveState();
     }
 
     initStateFromLocalStorage() {
@@ -131,6 +130,8 @@ class VocabularyController {
         state.maxIndex = utils.loadFromLocalStorage('maxIndex', state.words.length - 1);
         $(`#mode-${state.isRandom ? 'random' : 'sequential'}`).prop('checked', true);
         $('#chinese-display').prop('checked', state.showChinese);
+        state.isAlphabeticalOrder = utils.loadFromLocalStorage('isAlphabeticalOrder', false);
+        $('#alphabetical-order').prop('checked', state.isAlphabeticalOrder);
     }
 
     toggleHint() {
@@ -175,6 +176,7 @@ class VocabularyController {
         utils.saveToLocalStorage('showChinese', state.showChinese);
         utils.saveToLocalStorage('minIndex', state.minIndex);
         utils.saveToLocalStorage('maxIndex', state.maxIndex);
+        utils.saveToLocalStorage('isAlphabeticalOrder', state.isAlphabeticalOrder);
     }
 
     handleColorChange() {
