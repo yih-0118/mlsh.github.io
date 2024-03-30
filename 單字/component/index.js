@@ -114,6 +114,7 @@ function showSubcategories(category) {
             case 'link-test':
                 addSubcategory('看英文選中文', './component/html/e2c.html');
                 addSubcategory('看中文選英文', './component/html/c2e.html');
+                addSubcategory('文意字彙', './component/html/vocabulary.html');
                 break;
         }
     } else {
