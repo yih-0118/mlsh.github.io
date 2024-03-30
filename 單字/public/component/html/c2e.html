@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');html{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-khtml-user-select:none;user-select:none;}.link{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}@media (prefers-color-scheme:light){body{background-color:#f0f0f0;font-family:'Poppins',sans-serif;}.container{align-items:center;justify-content:center;max-width:800px;margin:20px auto;padding:20px;background-color:white;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1);animation:fadeIn 1s ease-out;}.option{flex:0 0 48%;margin-bottom:10px;padding:10px;border:1px solid #ccc;border-radius:5px;cursor:pointer;transition:background-color 0.3s;flex:1;animation:slideIn 0.5s ease-out;}.option:hover{background-color:#e0e0e0;}}@media (prefers-color-scheme:dark){.question-card li {color: #1f1f1f;}body{background-color:#1f1e1e;font-family:'Poppins',sans-serif;}.container{align-items:center;justify-content:center;max-width:800px;margin:20px auto;padding:20px;background-color:#2f2f2f;border-radius:10px;box-shadow:0 0 10px #1f1f1f;animation:fadeIn 1s ease-out;color:#f0f0f0;}.option{flex:0 0 48%;margin-bottom:10px;padding:10px;border:1px solid #f0f0f0;border-radius:5px;cursor:pointer;transition:background-color 0.3s;flex:1;animation:slideIn 0.5s ease-out;color:#f0f0f0;}.option:hover{background-color:#1f1e1e;}}#app{margin-top:5%;}h1{text-align:center;}ul{list-style-type:none;padding:0;}li{margin-bottom:10px;}.options{display:flex;flex-wrap:wrap;justify-content:space-between;flex-direction:column;}.fade-out{animation:fadeOut 0.5s ease-out;}.correct-feedback{animation:pop-up 0.7s ease-out;}@keyframes pop-up{0%{transform:translateY(0);opacity:0;}50%{transform:translateY(-20px);opacity:1;}100%{transform:translateY(0);opacity:0;}}@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}@keyframes slideIn{from{transform:translateY(-50px);opacity:0;}to{transform:translateY(0);opacity:1;}}@keyframes fadeOut{from{opacity:1;}to{opacity:0;}}#submitButton{width:100%;}.question-card{background-color:#fff;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);padding:20px;margin-bottom:20px;}.question-card li{font-size:18px;margin-bottom:10px;}.question-card li strong{color:#007bff;}
+    </style>
+</head>
+<body>
+    <div id="app" class="container"> <h1 class="mb-4">Vocabulary Quiz</h1> <label for="chapterSelect">Select Chapter:</label> <select id="chapterSelect" @change="selectChapter" class="form-select mb-4"> <option value="">Please Select</option> <option v-for="(value, key) in chapters" :key="key" :value="value">{{ key }}</option> </select> <div class="mb-4"> <span>Score: {{ score }} / {{ vocabularies.length }}</span> <span class="ms-4">Time Left: {{ formatTime(timeLeft) }}</span> </div> <div v-if="currentWord"> <div class="question-card"> <ul v-if="isEnglishToChineseMode"> <li><strong>Question {{ currentQuestionIndex }} / {{ vocabularies.length }}</strong></li> <li><strong>Chinese:</strong> {{ currentWord.chinese }}</li> <li><strong>Part of Speech:</strong> {{ currentWord.partOfSpeech }}</li> </ul> <ul v-else> <li><strong>Vocabulary:</strong> {{ currentWord.vocabulary }}</li> <li><strong>Part of Speech:</strong> {{ currentWord.partOfSpeech }}</li> </ul> </div> </div> <div class="options"> <div v-for="(option, index) in shuffledOptions" :key="index" :class="{ 'option': true, 'correct-feedback': feedback === 'Correct!' }" @click="checkAnswer(option)"> {{ option }} </div> </div> <p v-if="feedback !== null" class="mt-4 fade-out">{{ feedback }}</p> <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton" :disabled="isQuizCompleted"> {{ isQuizCompleted ? 'Quiz Completed' : 'Next' }} </button> <div v-if="isQuizCompleted" class="mt-4"> <h3>Quiz Result</h3> <p>Your final score is {{ score }} / {{ vocabularies.length }}</p> </div> </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                vocabularies: [],
+                currentWord: {},
+                options: [],
+                shuffledOptions: [],
+                correctIndex: null,
+                feedback: null,
+                chapters: {
+                    "B4 L1": "../json/B4 L1.json",
+                    "B4 L2": "../json/B4 L2.json",
+                    "B4 L3": "../json/B4 L3.json",
+                    "B4 R1": "../json/B4 review 1.json",
+                    "B4 L4": "../json/B4 L4.json",
+                    "B4 L5": "../json/B4 L5.json",
+                    "B4 L6": "../json/B4 L6.json",
+                    "B4 R2": "../json/B4 review 2.json",
+                    "B4 L7": "../json/B4 L7.json",
+                    "B4 L8": "../json/B4 L8.json",
+                    "B4 L9": "../json/B4 L9.json",
+                    "B4 R3": "../json/B4 review 3.json",
+                    "Vocabulary (L2 Unit1)": "../json/vocabulary(L2 Unit1).json",
+                    "Vocabulary (L2 Unit2)": "../json/vocabulary(L2 Unit2).json",
+                    "Vocabulary (L2 Unit3)": "../json/vocabulary(L2 Unit3).json",
+                    "Vocabulary (L2 Unit4)": "../json/vocabulary(L2 Unit4).json",
+                    "Vocabulary (L2 Unit5)": "../json/vocabulary(L2 Unit5).json",
+                    "Vocabulary (L2 Unit6)": "../json/vocabulary(L2 Unit6).json",
+                    "Vocabulary (L2 Unit7)": "../json/vocabulary(L2 Unit7).json",
+                    "Vocabulary (L2 Unit8)": "../json/vocabulary(L2 Unit8).json",
+                    "Vocabulary (L3 Unit1)": "../json/vocabulary(L3 Unit1).json",
+                    "Vocabulary (L3 Unit2)": "../json/vocabulary(L3 Unit2).json",
+                    "Vocabulary (L3 Unit3)": "../json/vocabulary(L3 Unit3).json",
+                    "Vocabulary (L3 Unit4)": "../json/vocabulary(L3 Unit4).json",
+                    "Vocabulary (L3 Unit5)": "../json/vocabulary(L3 Unit5).json",
+                    "Vocabulary (L3 Unit6)": "../json/vocabulary(L3 Unit6).json",
+                    "Vocabulary (L3 Unit7)": "../json/vocabulary(L3 Unit7).json",
+                    "Vocabulary (L3 Unit8)": "../json/vocabulary(L3 Unit8).json",
+                    "Vocabulary (L3 Unit9)": "../json/vocabulary(L3 Unit9).json",
+                    "Vocabulary (L3 Unit10)": "../json/vocabulary(L3 Unit10).json",
+                    "Vocabulary (L3 Unit11)": "../json/vocabulary(L3 Unit11).json",
+                    "Vocabulary (L3 Unit12)": "../json/vocabulary(L3 Unit12).json",
+                    "Vocabulary (L3 Unit13)": "../json/vocabulary(L3 Unit13).json",
+                    "Vocabulary (L3 Unit14)": "../json/vocabulary(L3 Unit14).json",
+                    "Vocabulary (L3 Unit15)": "../json/vocabulary(L3 Unit15).json",
+                    "Vocabulary (L3 Unit16)": "../json/vocabulary(L3 Unit16).json",
+                    "Vocabulary (L3 Unit17)": "../json/vocabulary(L3 Unit17).json",
+                    "Vocabulary (L3 Unit18)": "../json/vocabulary(L3 Unit18).json",
+                    "Vocabulary (L3 Unit19)": "../json/vocabulary(L3 Unit19).json",
+                    "Vocabulary (L3 Unit20)": "../json/vocabulary(L3 Unit20).json",
+                    "Vocabulary (L3 Unit21)": "../json/vocabulary(L3 Unit21).json",
+                    "Vocabulary (L4 Unit1)": "../json/vocabulary(L4 Unit1).json",
+                    "Vocabulary (L4 Unit2)": "../json/vocabulary(L4 Unit2).json",
+                    "Vocabulary (L4 Unit3)": "../json/vocabulary(L4 Unit3).json",
+                    "Vocabulary (L4 Unit4)": "../json/vocabulary(L4 Unit4).json",
+                    "Vocabulary (L4 Unit5)": "../json/vocabulary(L4 Unit5).json",
+                    "Vocabulary (L4 Unit6)": "../json/vocabulary(L4 Unit6).json",
+                    "Vocabulary (L4 Unit7)": "../json/vocabulary(L4 Unit7).json",
+                    "Vocabulary (L4 Unit8)": "../json/vocabulary(L4 Unit8).json",
+                    "Vocabulary (L4 Unit9)": "../json/vocabulary(L4 Unit9).json",
+                    "Vocabulary (L4 Unit10)": "../json/vocabulary(L4 Unit10).json",
+                    "Vocabulary (L4 Unit11)": "../json/vocabulary(L4 Unit11).json",
+                    "Vocabulary (L4 Unit12)": "../json/vocabulary(L4 Unit12).json",
+                    "Vocabulary (L4 Unit13)": "../json/vocabulary(L4 Unit13).json",
+                    "Vocabulary (L4 Unit14)": "../json/vocabulary(L4 Unit14).json",
+                    "Vocabulary (L4 Unit15)": "../json/vocabulary(L4 Unit15).json",
+                    "Vocabulary (L4 Unit16)": "../json/vocabulary(L4 Unit16).json",
+                    "Vocabulary (L4 Unit17)": "../json/vocabulary(L4 Unit17).json",
+                    "Vocabulary (L4 Unit18)": "../json/vocabulary(L4 Unit18).json",
+                    "Vocabulary (L4 Unit19)": "../json/vocabulary(L4 Unit19).json",
+                    "Vocabulary (L4 Unit20)": "../json/vocabulary(L4 Unit20).json",
+                    "Vocabulary (L4 Unit21)": "../json/vocabulary(L4 Unit21).json",
+                    "ALL PLUS 1/15~1/31": "../json/開學考雜誌.json",
+                    "ALL PLUS Mar. CNN_News": "../json/ALL_PLUS_Mar_CNN_News.json",
+                    "ALL PLUS Mar. Unit 1": "../json/ALL_PLUS_Mar_Unit_1.json",
+                    "ALL PLUS Mar. Unit 2": "../json/ALL_PLUS_Mar_Unit_2.json",
+                    "ALL PLUS Mar. Unit 3": "../json/ALL_PLUS_Mar_Unit_3.json",
+                    "ALL PLUS Mar. Unit 4": "../json/ALL_PLUS_Mar_Unit_4.json",
+                    "ALL PLUS Mar. Unit 5": "../json/ALL_PLUS_Mar_Unit_5.json",
+                    "ALL PLUS Mar. Unit 6": "../json/ALL_PLUS_Mar_Unit_6.json",
+                    "ALL PLUS Mar. Unit 7": "../json/ALL_PLUS_Mar_Unit_7.json",
+                    "ALL PLUS Mar. Unit 9": "../json/ALL_PLUS_Mar_Unit_9.json",
+                    "ALL PLUS Mar. Unit 10": "../json/ALL_PLUS_Mar_Unit_10.json",
+                    "ALL PLUS Mar. Unit 11": "../json/ALL_PLUS_Mar_Unit_11.json",
+                    "ALL PLUS Mar. Unit 12": "../json/ALL_PLUS_Mar_Unit_12.json",
+                    "ALL PLUS Mar. Unit 13": "../json/ALL_PLUS_Mar_Unit_13.json",
+                    "ALL PLUS Mar. Unit 14": "../json/ALL_PLUS_Mar_Unit_14.json",
+                    "ALL PLUS Mar. Unit 15": "../json/ALL_PLUS_Mar_Unit_15.json",
+                    "ALL PLUS Apr. Unit 1": "../json/ALL_PLUS_Apr_Unit_1.json",
+                    "ALL PLUS Apr. Unit 2": "../json/ALL_PLUS_Apr_Unit_2.json",
+                    "ALL PLUS Apr. Unit 3": "../json/ALL_PLUS_Apr_Unit_3.json",
+                    "ALL PLUS Apr. Unit 4": "../json/ALL_PLUS_Apr_Unit_4.json",
+                    "ALL PLUS Apr. Unit 5": "../json/ALL_PLUS_Apr_Unit_5.json",
+                    "ALL PLUS Apr. Unit 6": "../json/ALL_PLUS_Apr_Unit_6.json",
+                    "ALL PLUS Apr. Unit 7": "../json/ALL_PLUS_Apr_Unit_7.json",
+                    "ALL PLUS Apr. Unit 8": "../json/ALL_PLUS_Apr_Unit_8.json",
+                    "ALL PLUS Apr. Unit 9": "../json/ALL_PLUS_Apr_Unit_9.json",
+                    "ALL PLUS Apr. Unit 10": "../json/ALL_PLUS_Apr_Unit_10.json",
+                    "ALL PLUS Apr. Unit 12": "../json/ALL_PLUS_Apr_Unit_12.json",
+                    "ALL PLUS Apr. Unit 13": "../json/ALL_PLUS_Apr_Unit_13.json",
+                    "ALL PLUS Apr. Unit 14": "../json/ALL_PLUS_Apr_Unit_14.json",
+                },
+                selectedChapter: null,
+                isEnglishToChineseMode: true,
+                score: 0,
+                currentQuestionIndex: 0,
+                timeLeft: 0, // 60 seconds
+                timer: null,
+                isQuizCompleted: false
+            },
+            mounted() {
+                this.loadChapter('');
+            },
+            methods: {
+                loadChapter(chapter) {
+                    fetch(chapter)
+                        .then(response => response.json())
+                        .then(data => {
+                            this.vocabularies = data.vocabularies;
+                            this.nextWord();
+                            this.resetQuiz();
+                            this.startTimer();
+                        })
+                        .catch(error => console.error('Error fetching data:', error));
+                },
+                selectChapter(event) {
+                    this.selectedChapter = event.target.value;
+                    if (this.selectedChapter) {
+                        this.loadChapter(this.selectedChapter);
+                    }
+                },
+                nextWord() {
+                    if (this.currentQuestionIndex < this.vocabularies.length) {
+                        const randomIndex = Math.floor(Math.random() * this.vocabularies.length);
+                        this.currentWord = this.vocabularies[randomIndex];
+                        this.generateOptions();
+                        this.feedback = null;
+                        this.currentQuestionIndex++;
+
+                        // 重新啟用所有選項
+                        const options = document.querySelectorAll('.option');
+                        options.forEach(option => {
+                            option.style.pointerEvents = 'auto';
+                        });
+
+                        this.startTimer();
+
+                    } else {
+                        this.isQuizCompleted = true;
+                        clearInterval(this.timer);
+                    }
+                },
+                generateOptions() {
+                    this.options = [];
+                    this.correctIndex = Math.floor(Math.random() * 4);
+                    const optionsSet = new Set();
+
+                    for (let i = 0; i < 4; i++) {
+                        let option;
+                        if (i === this.correctIndex) {
+                            option = this.isEnglishToChineseMode ? this.currentWord.vocabulary : this.currentWord.vocabulary;
+                        } else {
+                            let randomIndex = Math.floor(Math.random() * this.vocabularies.length);
+                            option = this.isEnglishToChineseMode ? this.vocabularies[randomIndex].vocabulary : this.vocabularies[randomIndex].vocabulary;
+                        }
+                        optionsSet.add(option);
+                    }
+
+                    this.options = Array.from(optionsSet);
+                    this.shuffledOptions = this.shuffleArray(this.options);
+                },
+                checkAnswer(option) {
+                    if (this.feedback !== null) return; // 如果已經有回饋,則不執行
+                    const correctAnswer = this.isEnglishToChineseMode ? this.currentWord.vocabulary : this.currentWord.vocabulary;
+                    if (option === correctAnswer) {
+                        this.feedback = 'Correct!';
+                        this.score++;
+                    } else {
+                        this.feedback = 'Incorrect. The correct answer is: ' + correctAnswer;
+
+                    }
+                    // 將所有選項設為不可點w選狀態
+                    const options = document.querySelectorAll('.option');
+                    options.forEach(option => {
+                        option.style.pointerEvents = 'none';
+                    });
+                    clearInterval(this.timer);
+
+                },
+
+                resetQuiz() {
+                    this.currentQuestionIndex = 0;
+                    this.score = 0;
+                    this.timeLeft = this.vocabularies.length * 5;
+                    this.isQuizCompleted = false;
+                },
+                startTimer() {
+                    clearInterval(this.timer);
+                    this.timeLeft = 10; // 將時間設為 10 秒
+                    this.timer = setInterval(() => {
+                        this.timeLeft--;
+                        if (this.timeLeft === 0) {
+                            clearInterval(this.timer);
+                            // 處理時間到的邏輯,例如:
+                            this.feedback = 'Time is up. The correct answer is: ' + (this.isEnglishToChineseMode ? this.currentWord.vocabulary : this.currentWord.chinese);
+                            this.nextWord(); // 跳到下一題
+                        }
+                    }, 1000);
+                },
+                formatTime(time) {
+                    const minutes = Math.floor(time / 60);
+                    const seconds = time % 60;
+                    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                },
+                shuffleArray(array) {
+                    return array.sort(() => Math.random() - 0.5);
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

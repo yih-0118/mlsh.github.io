@@ -1,0 +1,344 @@
+{
+    "vocabularies": [
+        {
+            "vocabulary": "progress",
+            "partOfSpeech": "vi.",
+            "chinese": "進行；進展"
+        },
+        {
+            "vocabulary": "preservation",
+            "partOfSpeech": "n. [U]",
+            "chinese": "維護；保存"
+        },
+        {
+            "vocabulary": "preserve",
+            "partOfSpeech": "vt.",
+            "chinese": "維護；保留"
+        },
+        {
+            "vocabulary": "glimpse",
+            "partOfSpeech": "n. [C]",
+            "chinese": "短暫的體驗、感受；一瞥；一眼"
+        },
+        {
+            "vocabulary": "identity",
+            "partOfSpeech": "n. [U]",
+            "chinese": "認同；身分"
+        },
+        {
+            "vocabulary": "identity",
+            "partOfSpeech": "n. [C]",
+            "chinese": "身分"
+        },
+        {
+            "vocabulary": "development",
+            "partOfSpeech": "n. [U]",
+            "chinese": "發展"
+        },
+        {
+            "vocabulary": "treasure",
+            "partOfSpeech": "n. usually pl.",
+            "chinese": "瑰寶（尤指歷史或藝術珍品）"
+        },
+        {
+            "vocabulary": "treasure",
+            "partOfSpeech": "n. [U]",
+            "chinese": "寶藏；金銀財寶"
+        },
+        {
+            "vocabulary": "treasure",
+            "partOfSpeech": "vt.",
+            "chinese": "珍視；珍藏"
+        },
+        {
+            "vocabulary": "replace",
+            "partOfSpeech": "vt.",
+            "chinese": "取代；代替"
+        },
+        {
+            "vocabulary": "replacement",
+            "partOfSpeech": "n. [C]",
+            "chinese": "替換物；代替者"
+        },
+        {
+            "vocabulary": "endanger",
+            "partOfSpeech": "vt.",
+            "chinese": "危及；危害"
+        },
+        {
+            "vocabulary": "abundance",
+            "partOfSpeech": "n. [U]",
+            "chinese": "大量；豐盛"
+        },
+        {
+            "vocabulary": "abundant",
+            "partOfSpeech": "adj.",
+            "chinese": "大量的；豐富的"
+        },
+        {
+            "vocabulary": "campaign",
+            "partOfSpeech": "n. [C]",
+            "chinese": "（尤指政治、商業或軍事的）活動；運動"
+        },
+        {
+            "vocabulary": "campaign",
+            "partOfSpeech": "vi.",
+            "chinese": "參加或領導某運動"
+        },
+        {
+            "vocabulary": "conclude",
+            "partOfSpeech": "vt.",
+            "chinese": "作出結論；斷定"
+        },
+        {
+            "vocabulary": "conclusion",
+            "partOfSpeech": "n. [C]",
+            "chinese": "結論"
+        },
+        {
+            "vocabulary": "transport",
+            "partOfSpeech": "vt.",
+            "chinese": "（用交通工具）運輸；輸送"
+        },
+        {
+            "vocabulary": "transportation",
+            "partOfSpeech": "n. [U]",
+            "chinese": "交通工具"
+        },
+        {
+            "vocabulary": "situated",
+            "partOfSpeech": "adj.",
+            "chinese": "位於；坐落在"
+        },
+        {
+            "vocabulary": "situate",
+            "partOfSpeech": "vt.",
+            "chinese": "使坐落於"
+        },
+        {
+            "vocabulary": "drown",
+            "partOfSpeech": "vt.",
+            "chinese": "淹沒"
+        },
+        {
+            "vocabulary": "drown",
+            "partOfSpeech": "vi.",
+            "chinese": "（使）溺斃"
+        },
+        {
+            "vocabulary": "spare",
+            "partOfSpeech": "vt.",
+            "chinese": "使避免；抽空；撥出"
+        },
+        {
+            "vocabulary": "priceless",
+            "partOfSpeech": "adj.",
+            "chinese": "極珍貴的；極重要的"
+        },
+        {
+            "vocabulary": "relieve",
+            "partOfSpeech": "vt.",
+            "chinese": "緩解；減輕"
+        },
+        {
+            "vocabulary": "relief",
+            "partOfSpeech": "n. sing.",
+            "chinese": " [U]"
+        },
+        {
+            "vocabulary": "urban",
+            "partOfSpeech": "adj.",
+            "chinese": "城市的；都市的"
+        },
+        {
+            "vocabulary": "resident",
+            "partOfSpeech": "n. [C]",
+            "chinese": "居民；住戶"
+        },
+        {
+            "vocabulary": "residence",
+            "partOfSpeech": "n. [C]",
+            "chinese": "住所；宅第"
+        },
+        {
+            "vocabulary": "crucial",
+            "partOfSpeech": "adj.",
+            "chinese": "至關重要的；決定性的"
+        },
+        {
+            "vocabulary": "urgent",
+            "partOfSpeech": "adj.",
+            "chinese": "緊急的；緊迫的"
+        },
+        {
+            "vocabulary": "urgency",
+            "partOfSpeech": "n. [U]",
+            "chinese": "緊迫"
+        },
+        {
+            "vocabulary": "enormous",
+            "partOfSpeech": "adj.",
+            "chinese": "極大的；龐大的"
+        },
+        {
+            "vocabulary": "mission",
+            "partOfSpeech": "n. [C]",
+            "chinese": "任務"
+        },
+        {
+            "vocabulary": "fond",
+            "partOfSpeech": "adj.",
+            "chinese": "快樂美好的；深情的；喜愛⋯⋯的"
+        },
+        {
+            "vocabulary": "heritage",
+            "partOfSpeech": "n.",
+            "chinese": "遺產"
+        },
+        {
+            "vocabulary": "take place",
+            "partOfSpeech": "phr.",
+            "chinese": "發生"
+        },
+        {
+            "vocabulary": "happen",
+            "partOfSpeech": "phr.",
+            "chinese": "發生"
+        },
+        {
+            "vocabulary": "occur",
+            "partOfSpeech": "phr.",
+            "chinese": "發生"
+        },
+        {
+            "vocabulary": "go on",
+            "partOfSpeech": "phr.",
+            "chinese": "發生"
+        },
+        {
+            "vocabulary": "at the cost of",
+            "partOfSpeech": " ",
+            "chinese": "犧牲；以...為代價"
+        },
+        {
+            "vocabulary": "at the price of",
+            "partOfSpeech": " ",
+            "chinese": "犧牲；以...為代價"
+        },
+        {
+            "vocabulary": "at the expense of",
+            "partOfSpeech": " ",
+            "chinese": "犧牲；以...為代價"
+        },
+        {
+            "vocabulary": "dam",
+            "partOfSpeech": "n.",
+            "chinese": "水壩"
+        },
+        {
+            "vocabulary": "artificial",
+            "partOfSpeech": "a.",
+            "chinese": "人造的；人工的"
+        },
+        {
+            "vocabulary": "submerge",
+            "partOfSpeech": "v.",
+            "chinese": "淹沒"
+        },
+        {
+            "vocabulary": "as a result",
+            "partOfSpeech": "adv.",
+            "chinese": "因此"
+        },
+        {
+            "vocabulary": "as a consequence",
+            "partOfSpeech": "adv.",
+            "chinese": "因此"
+        },
+        {
+            "vocabulary": "hence",
+            "partOfSpeech": "adv.",
+            "chinese": "因此"
+        },
+        {
+            "vocabulary": "thus/",
+            "partOfSpeech": "adv.",
+            "chinese": "因此"
+        },
+        {
+            "vocabulary": "therefore",
+            "partOfSpeech": "adv.",
+            "chinese": "因此"
+        },
+        {
+            "vocabulary": "consequently",
+            "partOfSpeech": "adv.",
+            "chinese": "因此"
+        },
+        {
+            "vocabulary": "historic site",
+            "partOfSpeech": "n.",
+            "chinese": "歷史遺跡"
+        },
+        {
+            "vocabulary": "port",
+            "partOfSpeech": "n.",
+            "chinese": "港口"
+        },
+        {
+            "vocabulary": "figure out",
+            "partOfSpeech": "phr.",
+            "chinese": "想出；弄明白"
+        },
+        {
+            "vocabulary": "puzzle out",
+            "partOfSpeech": "phr.",
+            "chinese": "想出；弄明白"
+        },
+        {
+            "vocabulary": "congestion",
+            "partOfSpeech": "n.",
+            "chinese": "（交通）壅塞"
+        },
+        {
+            "vocabulary": "demolish",
+            "partOfSpeech": "v.",
+            "chinese": "拆除"
+        },
+        {
+            "vocabulary": "authority",
+            "partOfSpeech": "n.",
+            "chinese": "權力；當局"
+        },
+        {
+            "vocabulary": "be made to RV",
+            "partOfSpeech": " ",
+            "chinese": "（人）被迫做..."
+        },
+        {
+            "vocabulary": "when it comes to N/Ving",
+            "partOfSpeech": " ",
+            "chinese": "當涉及...時；談到...時"
+        },
+        {
+            "vocabulary": "depend on",
+            "partOfSpeech": " ",
+            "chinese": "取決於；視...而定"
+        },
+        {
+            "vocabulary": "depend on",
+            "partOfSpeech": " ",
+            "chinese": "依賴"
+        },
+        {
+            "vocabulary": "rely on",
+            "partOfSpeech": " ",
+            "chinese": "依賴"
+        },
+        {
+            "vocabulary": "count on",
+            "partOfSpeech": " ",
+            "chinese": "依賴"
+        }
+    ]
+}
