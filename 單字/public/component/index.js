@@ -40,19 +40,60 @@ function showSubcategories(category) {
                 addSubcategory('Unit 13', '../json/ALL_PLUS_Apr_Unit_13.json');
                 addSubcategory('Unit 14', '../json/ALL_PLUS_Apr_Unit_14.json');
                 break;
-
+            case 'Book1':
+                addSubcategory('Lesson 1', '../json/B1 L1.json');
+                addSubcategory('Lesson 2', '../json/B1 L2.json');
+                addSubcategory('Lesson 3', '../json/B1 L3.json');
+                addSubcategory('Lesson 4', '../json/B1 L4.json');
+                addSubcategory('Lesson 5', '../json/B1 L5.json');
+                addSubcategory('Lesson 6', '../json/B1 L6.json');
+                addSubcategory('Lesson 7', '../json/B1 L7.json');
+                addSubcategory('Lesson 8', '../json/B1 L8.json');
+                addSubcategory('Lesson 9', '../json/B1 L9.json');
+                addSubcategory('Review 1', '../json/B1 review 1.json');
+                addSubcategory('Review 2', '../json/B1 review 2.json');
+                addSubcategory('Review 3', '../json/B1 review 3.json');
+                break;    
+            case 'Book2':
+                addSubcategory('Lesson 1', '../json/B2 L1.json');
+                addSubcategory('Lesson 2', '../json/B2 L2.json');
+                addSubcategory('Lesson 3', '../json/B2 L3.json');
+                addSubcategory('Lesson 4', '../json/B2 L4.json');
+                addSubcategory('Lesson 5', '../json/B2 L5.json');
+                addSubcategory('Lesson 6', '../json/B2 L6.json');
+                addSubcategory('Lesson 7', '../json/B2 L7.json');
+                addSubcategory('Lesson 8', '../json/B2 L8.json');
+                addSubcategory('Lesson 9', '../json/B2 L9.json');
+                addSubcategory('Review 1', '../json/B2 review 1.json');
+                addSubcategory('Review 2', '../json/B2 review 2.json');
+                addSubcategory('Review 3', '../json/B2 review 3.json');
+                break;    
+            case 'Book3':
+                addSubcategory('Lesson 1', '../json/B3 L1.json');
+                addSubcategory('Lesson 2', '../json/B3 L2.json');
+                addSubcategory('Lesson 3', '../json/B3 L3.json');
+                addSubcategory('Lesson 4', '../json/B3 L4.json');
+                addSubcategory('Lesson 5', '../json/B3 L5.json');
+                addSubcategory('Lesson 6', '../json/B3 L6.json');
+                addSubcategory('Lesson 7', '../json/B3 L7.json');
+                addSubcategory('Lesson 8', '../json/B3 L8.json');
+                addSubcategory('Lesson 9', '../json/B3 L9.json');
+                addSubcategory('Review 1', '../json/B3 review 1.json');
+                addSubcategory('Review 2', '../json/B3 review 2.json');
+                addSubcategory('Review 3', '../json/B3 review 3.json');
+                break;
             case 'Book4':
                 addSubcategory('Lesson 1', '../json/B4 L1.json');
                 addSubcategory('Lesson 2', '../json/B4 L2.json');
                 addSubcategory('Lesson 3', '../json/B4 L3.json');
-                addSubcategory('Review 1', '../json/B4 review 1.json');
                 addSubcategory('Lesson 4', '../json/B4 L4.json');
                 addSubcategory('Lesson 5', '../json/B4 L5.json');
                 addSubcategory('Lesson 6', '../json/B4 L6.json');
-                addSubcategory('Review 2', '../json/B4 review 2.json');
                 addSubcategory('Lesson 7', '../json/B4 L7.json');
                 addSubcategory('Lesson 8', '../json/B4 L8.json');
                 addSubcategory('Lesson 9', '../json/B4 L9.json');
+                addSubcategory('Review 1', '../json/B4 review 1.json');
+                addSubcategory('Review 2', '../json/B4 review 2.json');
                 addSubcategory('Review 3', '../json/B4 review 3.json');
                 break;
             case '單字書 Level 2':
@@ -114,7 +155,10 @@ function showSubcategories(category) {
             case 'link-test':
                 addSubcategory('看英文選中文', './component/html/e2c.html');
                 addSubcategory('看中文選英文', './component/html/c2e.html');
-                addSubcategory('文意字彙', './component/html/vocabulary.html');
+                addSubcategory('文意字彙', './component/html/test vocabulary.html');
+                addSubcategory('地獄版文意字彙', './component/html/vocabulary.html');               
+                 addSubcategory('測試中', './component/html/test.html');
+
                 break;
         }
     } else {
