@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocabulary Quiz</title>
+    <title>mlsh-文意字彙</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
@@ -77,8 +77,8 @@
                 align-items: center;
                 justify-content: center;
                 max-width: 800px;
-                margin: 20px auto;
-                padding: 20px;
+                margin: 10px auto;
+                padding: 10px;
                 background-color: #2f2f2f;
                 border-radius: 10px;
                 box-shadow: 0 0 10px #1f1f1f;
@@ -192,11 +192,12 @@
                 opacity: 0;
             }
 
-            ;
+
         }
 
         #submitButton {
             width: 100%;
+            background-color: #4b52ab;
         }
 
         .question-card {
@@ -213,62 +214,72 @@
         }
 
         .question-card li strong {
-            color: #007bff;
+            color: #4b52ab;
         }
 
         /* Custom styles for mobile devices */
         @media only screen and (max-width: 600px) {
             .question-card li input[type="text"] {
-                width: 100%;
+                width: 80%;
+                padding: 2px;
+                border: 1px solid #c0c0c0;
+                border-radius: 5px;
             }
         }
     </style>
 </head>
+
 <body>
     <div id="app" class="container">
         <h1 class="mb-4">
-            Vocabulary Quiz
+            文意字彙
         </h1>
         <label for="chapterSelect">
-            Select Chapter:
+                選擇章節：
         </label>
         <select id="chapterSelect" @change="selectChapter" class="form-select mb-4">
             <option value="">
-                Please Select
+                請選擇
             </option>
             <option v-for="(value, key) in chapters" :key="key" :value="value">
                 {{ key }}
             </option>
         </select>
         <div class="mb-4">
-            <span>Score: {{ score }} / {{ vocabularies.length }}</span>
-            <span class="ms-4">Time Left: {{ formatTime(timeLeft) }}</span>
+            <span>分數： {{ score }} / {{ vocabularies.length }}</span>
+            <span class="ms-4">剩餘時間: {{ formatTime(timeLeft) }}</span>
+
         </div>
-        <!-- 提示和单词选项 -->
+        <!-- 提示和單字選項 -->
         <div v-if="currentWord">
             <div class="question-card">
                 <ul>
                     <li>
-                        <strong>Chinese:</strong>
+                        <strong>題號：</strong>
+                        {{ currentQuestionIndex }} / {{ vocabularies.length }}</span>
+                    </li>
+                    <li>
+                        <strong>中文：</strong>
                         {{ currentWord.chinese }}
                     </li>
                     <li>
-                        <strong>Part of Speech:</strong>
+                        <strong>詞性：</strong>
                         {{ currentWord.partOfSpeech }}
                     </li>
                     <li>
-                        <strong>Vocabulary:</strong>
+                        <strong>題目：</strong>
                         {{ currentWord.vocabularyWithHint }}
                     </li>
                     <li>
-                        <strong>Your Answer:</strong>
-                        <input type="text" v-model="userAnswer" @keydown.enter="submitAnswer" placeholder="Enter your answer">
+                        <strong>回答：</strong>
+                        <input type="text" v-model="userAnswer" @keydown.enter="submitAnswer"
+                            placeholder="請輸入答案">
                     </li>
                 </ul>
             </div>
         </div>
         <!-- <div class="options">
-           单词选项 
+           單字選項 
         </div> -->
         <!-- 提交按钮 -->
         <p v-if="feedback !== null" class="mt-4">{{ feedback }}</p>
@@ -390,21 +401,21 @@
                 isEnglishToChineseMode: true,
                 score: 0,
                 currentQuestionIndex: 0,
-                timeLeft: 0, // 60 seconds
+                timeLeft: 0, // 一開始顯示的東西
                 timer: null,
                 isQuizCompleted: false,
-                userAnswer: '' // 用户答案
+                userAnswer: '' // 答案
             },
             mounted() {
                 this.loadChapter('');
             },
             methods: {
-                // 加载章节数据
+                // 加載章節數據
                 loadChapter(chapter) {
                     fetch(chapter)
                         .then(response => response.json())
                         .then(data => {
-                            // 处理数据,为每个单词添加 vocabularyWithHint 属性
+                            // 幫每個單字新增 vocabularyWithHint 
                             const processedVocabularies = data.vocabularies.map(vocab => {
                                 const { vocabulary } = vocab;
                                 const hint = this.generateHint(vocabulary);
@@ -413,7 +424,7 @@
                                     vocabularyWithHint: hint
                                 };
                             });
-                
+
                             this.vocabularies = processedVocabularies;
                             this.nextWord();
                             this.resetQuiz();
@@ -423,8 +434,8 @@
                 },
                 generateHint(word) {
                     const length = word.length;
-                    const startIndex = Math.floor(Math.random() * (length - 1)); // 随机选择开始位置
-                    const endIndex = Math.floor(Math.random() * (length - startIndex)) + startIndex + 1; // 随机选择结束位置,确保结束位置在开始位置之后
+                    const startIndex = Math.floor(Math.random() * (length - 1)); // 隨機選擇開始位置
+                    const endIndex = Math.floor(Math.random() * (length - startIndex)) + startIndex + 1; // 隨機選擇結束位置,確保結束位置在開始位置之後
                     const hint = word.split('').map((char, index) => {
                         if (index >= startIndex && index < endIndex) {
                             return char;
@@ -434,69 +445,66 @@
                     }).join('');
                     return hint;
                 },
-                // 选择章节
+                // 選擇章節
                 selectChapter(event) {
                     this.selectedChapter = event.target.value;
                     if (this.selectedChapter) {
                         this.loadChapter(this.selectedChapter);
                     }
                 },
-                // 显示下一个单词
+                // 顯示下一個單字
                 nextWord() {
                     if (this.currentQuestionIndex < this.vocabularies.length) {
                         const randomIndex = Math.floor(Math.random() * this.vocabularies.length);
                         this.currentWord = this.vocabularies[randomIndex];
-                        this.feedback = null; // 清空反饋信息
+                        this.feedback = null; // 清空feedback
                         this.currentQuestionIndex++;
-                        this.userAnswer = ''; // 清空用戶輸入
+                        this.userAnswer = ''; // 清空輸入格
                         this.startTimer();
                     } else {
                         this.isQuizCompleted = true;
                         clearInterval(this.timer);
                     }
                 },
-                // 重置测验
+
                 resetQuiz() {
                     this.currentQuestionIndex = 0;
                     this.score = 0;
                     this.timeLeft = this.vocabularies.length * 5;
                     this.isQuizCompleted = false;
                 },
-                // 开始计时器
+                // 
                 startTimer() {
                     clearInterval(this.timer);
-                    this.timeLeft = 30; // 将时间设为 10 秒
+                    this.timeLeft = 30;
                     this.timer = setInterval(() => {
                         this.timeLeft--;
                         if (this.timeLeft === 0) {
                             clearInterval(this.timer);
-                            // 处理时间到的逻辑
                             this.feedback = 'Time is up. The correct answer is: ' + (this.isEnglishToChineseMode ? this.currentWord.chinese : this.currentWord.vocabulary);
-                            this.nextWord(); // 跳到下一题
+                            this.nextWord(); // 跳到下一題
                         }
                     }, 1000);
                 },
-                // 格式化时间
                 formatTime(time) {
                     const minutes = Math.floor(time / 60);
                     const seconds = time % 60;
                     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
                 },
-                // 洗牌数组
                 shuffleArray(array) {
                     return array.sort(() => Math.random() - 0.5);
                 },
-                // 提交用户答案
                 submitAnswer() {
                     const correctAnswer = this.currentWord.vocabulary;
                     if (this.userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase()) {
-                        this.feedback = 'Correct!'; // 顯示正確反饋
+                        this.feedback = '答對了!';
                         this.score++; // 加分
                     } else {
-                        this.feedback = 'Incorrect. The correct answer is: ' + correctAnswer; // 顯示錯誤反饋及正確答案
+                        this.feedback = '答錯了，正確答案是：' + correctAnswer; // 顯示錯誤及正確答案
                     }
                     clearInterval(this.timer); // 停止計時器
                     this.userAnswer = ''; // 清空用戶輸入
+
                 }
             }
         });
