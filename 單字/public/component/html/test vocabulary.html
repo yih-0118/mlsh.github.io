@@ -226,6 +226,107 @@
                 border-radius: 5px;
             }
         }
+
+        /* 彈出小畫面的背景遮罩 */
+        /* Light Mode */
+        @media (prefers-color-scheme: light) {
+            .modal {
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                border: 1px solid #888;
+            }
+
+            .close {
+                color: #aaa;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+            }
+        }
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            .modal {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .modal-content {
+                background-color: #2f2f2f;
+                border: 1px solid #f0f0f0;
+                color: #f0f0f0;
+            }
+
+            .close {
+                color: #000000;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: white;
+            }
+        }
+
+        /* 共同樣式 */
+        .modal {
+            display: block;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .modal-content {
+            margin: 10% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            animation: modalAnimation 0.4s;
+        }
+
+        .close {
+            float: none; /* 移除浮動 */
+            font-size: 0; /* 隱藏文字 */
+            border: none; /* 移除邊框 */
+            background: none; /* 移除背景 */
+        }
+        
+        .close span {
+            font-size: 28px; /* 恢復×字樣的字型大小 */
+            font-weight: bold; /* 恢復×字樣的字型粗細 */
+        }
+        
+        .close:hover,
+        .close:focus {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            .modal-content {
+                width: 90%;
+                margin: 20% auto;
+            }
+        }
+
+        @keyframes modalAnimation {
+            from {
+                top: -300px;
+                opacity: 0;
+            }
+            to {
+                top: 0;
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
@@ -272,8 +373,7 @@
                     </li>
                     <li>
                         <strong>回答：</strong>
-                        <input type="text" v-model="userAnswer" @keydown.enter="submitAnswer"
-                            placeholder="請輸入答案">
+                        <input type="text" v-model="userAnswer" @keydown.enter="submitAnswer" placeholder="請輸入答案" :disabled="disableInput">
                     </li>
                 </ul>
             </div>
@@ -282,17 +382,51 @@
            單字選項 
         </div> -->
         <!-- 提交按钮 -->
-        <p v-if="feedback !== null" class="mt-4">{{ feedback }}</p>
+        <!-- <p v-if="feedback !== null" class="mt-4">{{ feedback }}</p> -->
+        <div class="modal" tabindex="-1" role="dialog" v-if="showModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">回答結果</h5>
+                        <button type="button" class="close" @click="showModal = false">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ feedback }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" style="background-color: #4b52ab; border-color: #4b52ab; color: #ffffff;" @click="nextWord(); showModal = false;">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton" :disabled="isQuizCompleted">
             {{ isQuizCompleted ? 'Quiz Completed' : 'Next' }}
         </button>
-        <div v-if="isQuizCompleted" class="mt-4">
-            <h3>
-                Quiz Result
-            </h3>
-            <p>
-                Your final score is {{ score }} / {{ vocabularies.length }}
-            </p>
+
+        <div class="modal" tabindex="-1" role="dialog" v-if="showResultModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">測驗結果</h5>
+                        <button type="button" class="close" @click="showResultModal = false">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>你的分數是：{{ score }} / {{ vocabularies.length }}</p>
+                        <p>正確率：{{ (score / vocabularies.length * 100).toFixed(0) }}%</p>
+                        <p>錯誤題目：</p>
+                        <ul>
+                            <li v-for="word in uniqueWrongAnswers" :key="word.vocabulary">
+                                {{ word.vocabulary }} - {{ word.chinese }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
@@ -304,6 +438,7 @@
                 currentWord: {},
                 feedback: null,
                 userAnswer: '',
+                disableInput: false,
                 chapters: {
                     "B1 L1": "../json/B1 L1.json",
                     "B1 L2": "../json/B1 L2.json",
@@ -440,10 +575,20 @@
                 timeLeft: 0, // 一開始顯示的東西
                 timer: null,
                 isQuizCompleted: false,
-                userAnswer: '' // 答案
+                userAnswer: '', // 答案
+                showModal: false, // 新增控制彈出小畫面的屬性
+                showResultModal: false, // 新增控制測驗結果彈出小畫面的屬性
+                wrongAnswers: [],
             },
             mounted() {
                 this.loadChapter('');
+            },
+            computed: {
+                uniqueWrongAnswers() {
+                    // 使用 Set 去除重複的題目
+                    const uniqueSet = new Set(this.wrongAnswers.map(JSON.stringify));
+                    return Array.from(uniqueSet).map(JSON.parse);
+                }
             },
             methods: {
                 // 加載章節數據
@@ -476,13 +621,13 @@
                         // 如果單詞以ed或ing結尾,則保留結尾部分
                         const firstChar = word.charAt(0);
                         const lastChars = word.slice(-3); // 取最後三個字符,包括ed或ing
-                        const middleChars = '_'.repeat(length - 4); // 中間字符用下劃線代替
+                        const middleChars = ' _ '.repeat(length - 4); // 中間字符用下劃線代替
                         return `${firstChar}${middleChars}${lastChars}`;
                     } else {
                         // 如果單詞不以ed或ing結尾
                         const firstChar = word.charAt(0);
                         const lastChar = word.charAt(word.length - 1);
-                        const middleChars = '_'.repeat(length - 2); // 中間字符用下劃線代替
+                        const middleChars = ' _ '.repeat(length - 2); // 中間字符用下劃線代替
                         return `${firstChar}${middleChars}${lastChar}`;
                     }
                 },
@@ -505,7 +650,10 @@
                     } else {
                         this.isQuizCompleted = true;
                         clearInterval(this.timer);
+                        this.showResultModal = true; // 顯示測驗結果彈出小畫面
                     }
+                    this.showModal = false; // 關閉彈出小畫面
+                    this.disableInput = false; // 在這裡重置 disableInput
                 },
 
                 resetQuiz() {
@@ -513,6 +661,7 @@
                     this.score = 0;
                     this.timeLeft = this.vocabularies.length * 5;
                     this.isQuizCompleted = false;
+                    this.wrongAnswers = [];
                 },
                 // 
                 startTimer() {
@@ -537,15 +686,20 @@
                 },
                 submitAnswer() {
                     const correctAnswer = this.currentWord.vocabulary;
-                    if (this.userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+                    const userAnswer = this.userAnswer.trim().toLowerCase();
+                
+                    if (userAnswer === correctAnswer.toLowerCase()) {
                         this.feedback = '答對了!';
-                        this.score++; // 加分
+                        this.score++;
                     } else {
-                        this.feedback = '答錯了，正確答案是：' + correctAnswer; // 顯示錯誤及正確答案
+                        this.wrongAnswers.push(this.currentWord);
+                        this.feedback = '答錯了，正確答案是：' + correctAnswer;
                     }
-                    clearInterval(this.timer); // 停止計時器
-                    this.userAnswer = ''; // 清空用戶輸入
+                    this.showModal = true;
 
+                    clearInterval(this.timer);
+                    this.userAnswer = '';
+                    this.disableInput = true; // 添加這一行,鎖定輸入框
                 }
             }
         });

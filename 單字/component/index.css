@@ -2,29 +2,19 @@
 
 html {
     -moz-user-select: none;
-    /* Firefox */
     -webkit-user-select: none;
-    /* Chrome , Safari*/
     -ms-user-select: none;
-    /* IE10 */
     -khtml-user-select: none;
-    /* 古早瀏覽器 */
     user-select: none;
 }
 
 .link {
     -webkit-touch-callout: none;
-    /* iOS Safari */
     -webkit-user-select: none;
-    /* Safari */
     -khtml-user-select: none;
-    /* Konqueror HTML */
     -moz-user-select: none;
-    /* Firefox */
     -ms-user-select: none;
-    /* Internet Explorer/Edge */
     user-select: none;
-    /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 body {
@@ -164,7 +154,7 @@ form {
     }
 
     .btn-primary:hover {
-        background-color: #5a4eff;
+        background-color: #5a4eff;/*872dd4*/
         border-color: #5a4eff;
     }
 }
