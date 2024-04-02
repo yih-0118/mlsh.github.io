@@ -406,11 +406,11 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
     <script>
-        var vm = new Vue({
-            el: '#app',
-            data: {
+        const app = Vue.createApp({
+            data() {
+                return{
                 vocabularies: [],
                 currentWord: {},
                 options: [],
@@ -430,6 +430,7 @@
                 showModal: false, // 新增控制彈出小畫面的屬性
                 showResultModal: false, // 新增控制測驗結果彈出小畫面的屬性
                 wrongAnswers: [],
+                };
             },
             mounted() {
                 this.loadChapter('');
@@ -552,6 +553,7 @@
                 }
             }
         });
+        app.mount('#app');
     </script>
 
 </body>

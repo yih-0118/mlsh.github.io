@@ -7,7 +7,7 @@
         },
         {
             "vocabulary": "unrealistic",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "不切實際的"
         },
         {
@@ -47,7 +47,7 @@
         },
         {
             "vocabulary": "visual",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "視覺的、視力的"
         },
         {
@@ -57,7 +57,7 @@
         },
         {
             "vocabulary": "optical",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "視覺的、光學的"
         },
         {
@@ -77,7 +77,7 @@
         },
         {
             "vocabulary": "dynamic",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "充滿活力的、精力充沛的；不斷發展變化的"
         },
         {
@@ -87,12 +87,12 @@
         },
         {
             "vocabulary": "vibrant",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "充滿生氣的、活躍的：鮮明的"
         },
         {
             "vocabulary": "artistic",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "藝術的；具有藝術天賦的；有藝術鑑賞力的"
         },
         {
@@ -112,12 +112,12 @@
         },
         {
             "vocabulary": "structual",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "（建築）結構的、構造上的"
         },
         {
             "vocabulary": "absoluted",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "絕對的、完全的：充足的"
         },
         {
@@ -142,12 +142,12 @@
         },
         {
             "vocabulary": "striking",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "引人注目的、顯著的"
         },
         {
             "vocabulary": "eye-catching",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "引人注目的、搶眼的"
         },
         {
@@ -227,7 +227,7 @@
         },
         {
             "vocabulary": "vegetarian",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "素食的、無肉的"
         },
         {
@@ -247,12 +247,12 @@
         },
         {
             "vocabulary": "crucial",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "至關重要的、關鍵性的"
         },
         {
             "vocabulary": "marine",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "海洋的、海生的"
         },
         {
@@ -267,7 +267,7 @@
         },
         {
             "vocabulary": "potential",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "潛在的、可能的"
         },
         {
@@ -287,7 +287,7 @@
         },
         {
             "vocabulary": "dietary",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "飲食的、有關飲食的"
         },
         {
@@ -307,7 +307,7 @@
         },
         {
             "vocabulary": "massive",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "巨大的、龐大的"
         },
         {
@@ -332,12 +332,12 @@
         },
         {
             "vocabulary": "embarrassing",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "令人尷尬、難堪"
         },
         {
             "vocabulary": "digital",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "數位的、數字的"
         },
         {
@@ -362,7 +362,7 @@
         },
         {
             "vocabulary": "persuasive",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "具有說服力的"
         },
         {
@@ -382,7 +382,7 @@
         },
         {
             "vocabulary": "fierce",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "激烈的；強烈的；兇猛的"
         },
         {
@@ -402,7 +402,7 @@
         },
         {
             "vocabulary": "overwhelming",
-            "partOfSpeech": "a.",
+            "partOfSpeech": "adj.",
             "chinese": "令人難以承受的、不知所措的、壓倒性的"
         },
         {

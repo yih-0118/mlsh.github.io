@@ -1,17 +1,12 @@
 /* style.css */
-@import url('https://fonts.googleapis.com/css?family=SF+Pro+Text:400,500,600&display=swap');
 
-html {
-    font-family: 'SF Pro Text', sans-serif;
-    height: 100%;
-    overflow: hidden;
-}
 
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 html, body {
     height: 100%;
     overflow: hidden;
-} */
+}
 
 .app {
     height: 100vh;
