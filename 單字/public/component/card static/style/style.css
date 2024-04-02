@@ -1,14 +1,23 @@
 /* style.css */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-html, body {
+@import url('https://fonts.googleapis.com/css?family=SF+Pro+Text:400,500,600&display=swap');
+
+html {
+    font-family: 'SF Pro Text', sans-serif;
     height: 100%;
     overflow: hidden;
 }
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+html, body {
+    height: 100%;
+    overflow: hidden;
+} */
 
 .app {
     height: 100vh;
     overflow: auto;
 }
+
 html {
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -55,10 +64,12 @@ html {
     border-radius: 100%;
 }
 
-.answer,.type{
+.answer,
+.type {
     color: darkgray;
     font-size: 28px;
 }
+
 .left_hand_side {
     display: flex;
     justify-content: space-between;
@@ -67,11 +78,13 @@ html {
     left: 5%;
     bottom: 10%;
 }
+
 #answerBtn {
     position: relative;
     margin-right: 8%;
     right: 0;
 }
+
 /* #readBtn {
     position: absolute;
     left: 22%;
@@ -140,9 +153,11 @@ html {
     justify-content: end;
     align-items: center;
 }
-#ccc{
+
+#ccc {
     margin-top: 10%;
 }
+
 .header>div {
     margin: 0 3%;
 }
@@ -193,7 +208,7 @@ html {
         color: rgb(255, 255, 255);
         overflow-y: scroll;
     }
-    
+
     .btn {
         border: none;
         outline: none;
@@ -208,9 +223,11 @@ html {
         outline: #872dd4 3px solid;
     }
 }
-#cc{
+
+#cc {
     color: #161616;
 }
+
 .more-options {
     display: flex;
     flex-direction: column;
@@ -319,16 +336,16 @@ html {
     transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: #872dd4;
 }
 
-#color-picker:focus + .slider,
-input:checked + #color-picker:focus + .slider {
+#color-picker:focus+.slider,
+input:checked+#color-picker:focus+.slider {
     background-color: var(--selected-color);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(26px);
 }
 
@@ -349,6 +366,7 @@ input:checked + .slider:before {
     0% {
         transform: translateX(-50px);
     }
+
     100% {
         transform: translateX(0);
     }

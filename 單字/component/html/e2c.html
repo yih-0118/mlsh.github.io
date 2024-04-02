@@ -342,11 +342,14 @@
                 </ul>
                 <ul v-else>
                     <li>
-                        <strong>Vocabulary:</strong>
-                        {{ currentWord.vocabulary }}
+                        <strong>題號： {{ currentQuestionIndex }} / {{ vocabularies.length }}</strong>
                     </li>
                     <li>
-                        <strong>Part of Speech:</strong>
+                        <strong>中文：</strong>
+                        {{ currentWord.chinese }}
+                    </li>
+                    <li>
+                        <strong>詞性：</strong>
                         {{ currentWord.partOfSpeech }}
                     </li>
                 </ul>
