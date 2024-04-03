@@ -1,3 +1,34 @@
+$(function () {
+    const rateSlider = $('#rate-slider');
+    const pitchSlider = $('#pitch-slider');
+    const rateValue = $('#rate-value');
+    const pitchValue = $('#pitch-value');
+
+    // 更新數值並保留一位小數
+    function updateRateValue(value) {
+        rateValue.text(value.toFixed(1)); // 保留一位小數
+    }
+
+    function updatePitchValue(value) {
+        pitchValue.text(value.toFixed(1)); // 保留一位小數
+    }
+
+    // 初始數值
+    updateRateValue(parseFloat(rateSlider.val()));
+    updatePitchValue(parseFloat(pitchSlider.val()));
+
+    // 監聽滑桿變化事件
+    rateSlider.on('input', function () {
+        state.rate = parseFloat(this.value);
+        updateRateValue(state.rate); // 更新語速數值元素的內容
+    });
+
+    pitchSlider.on('input', function () {
+        state.pitch = parseFloat(this.value);
+        updatePitchValue(state.pitch); // 更新音高數值元素的內容
+    });
+});
+
 const state = {
     words: [],
     currentIndex: 0,
@@ -61,7 +92,7 @@ class VocabularyRenderer {
         utterance.pitch = state.pitch;
         speechSynthesis.speak(utterance);
     }
-    
+
     renderQuestion() {
         const word = state.words[state.currentIndex];
         gsap.to(this.questionEl, { duration: 0.3, opacity: 1, scale: 1, ease: "power2.out" });
