@@ -5,7 +5,9 @@ const state = {
     showChinese: false,
     minIndex: 0,
     maxIndex: 0,
-    isAlphabeticalOrder: false
+    isAlphabeticalOrder: false,
+    rate: 1, // 新增語速屬性
+    pitch: 1 // 新增音高屬性
 };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -51,17 +53,13 @@ class VocabularyRenderer {
     }
 
     speak(text) {
-            const utterance = new SpeechSynthesisUtterance(text);
-            //設置英國發音
-            const voices = window.speechSynthesis.getVoices();
-            //const englishVoice = voices.find(voice => voice.lang === 'en-US');
-
-            utterance.voice = voices.find(voice => voice.lang === 'en-US');
-            // 設置語速
-            utterance.rate = 1; // 可調整範圍 0.1 (最慢) 到 10 (最快)
-            // 設置音高
-            utterance.pitch = 1; // 可調整範圍 0 (最低) 到 2 (最高)
-            speechSynthesis.speak(utterance);
+        const utterance = new SpeechSynthesisUtterance(text);
+        const voices = window.speechSynthesis.getVoices();
+        utterance.voice = voices.find(voice => voice.lang === 'en-US');
+        // 使用state中的語速和音高值
+        utterance.rate = state.rate;
+        utterance.pitch = state.pitch;
+        speechSynthesis.speak(utterance);
     }
     
     renderQuestion() {

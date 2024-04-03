@@ -24,7 +24,7 @@
                 <button type="radio" id="answerBtn" class="btn"><i class="fa-solid fa-lightbulb"></i></button>
                 <button id="readBtn" class="btn"><i class="fa-solid fa-volume-high"></i></button>
             </div>
-            
+
             <div class="rightLeftArea">
                 <button id="prev" class="btn"><i class="fa-solid fa-arrow-left"></i></button>
                 <button id="next" class="btn"><i class="fa-solid fa-arrow-right"></i></button>
@@ -38,6 +38,7 @@
         <div class="container">
             <div class="block" id="ccc">
                 <h3>設定</h3>
+                <hr>
                 <div class="options">
                     <div> <input id="mode-1" type="radio" value="random" name="mode" class="mode-set"> <label
                             for="mode-1">隨機</label> </div>
@@ -46,10 +47,13 @@
                     <div class="options"> <label class="switch"> <input type="checkbox" id="chinese-display"
                                 class="mode-set"> <span class="slider round"></span> </label> <label
                             for="chinese-display">顯示中文</label> </div>
+                    
                 </div>
+                <hr>
             </div>
             <div class="block">
                 <h3>實驗功能</h3>
+                <hr>
                 <div class="more-options">
                     <div class="option-row"> <label for="color-picker">選擇顏色:</label> <input type="color"
                             id="color-picker" value="#872dd4" class="mode-set" style="--selected-color: #872dd4;">
@@ -59,6 +63,18 @@
                                     id="alphabetical-order" class="mode-set"> <span class="slider round"></span>
                             </label> <label for="chinese-display"></label> </div>
                     </div>
+                    <div class="option-row">
+                        <label for="rate-slider">語速:</label>
+                        <input type="range" id="rate-slider" min="0.1" max="2" step="0.1" value="1">
+                        <span id="rate-value">1.0</span> <!-- 初始數值為1.0 -->
+                    </div>
+                    <div class="option-row">
+                        <label for="pitch-slider">音高:</label>
+                        <input type="range" id="pitch-slider" min="0" max="2" step="0.1" value="1">
+                        <span id="pitch-value">1.0</span> <!-- 初始數值為1.0 -->
+                    </div>
+                    
+                    
                 </div>
             </div>
             <div class="block">
@@ -75,9 +91,41 @@
                 </table>
             </div>
         </div>
-    </div> 
+    </div>
     <button id="menu" class="menu btn round"> <i class="fa-solid fa-bars"></i> </button>
     <script src="../card static/rule.js"></script>
+    <script>
+        $(function() {
+            const rateSlider = $('#rate-slider');
+            const pitchSlider = $('#pitch-slider');
+            const rateValue = $('#rate-value');
+            const pitchValue = $('#pitch-value');
+        
+            // 更新數值並保留一位小數
+            function updateRateValue(value) {
+                rateValue.text(value.toFixed(1)); // 保留一位小數
+            }
+        
+            function updatePitchValue(value) {
+                pitchValue.text(value.toFixed(1)); // 保留一位小數
+            }
+        
+            // 初始數值
+            updateRateValue(parseFloat(rateSlider.val()));
+            updatePitchValue(parseFloat(pitchSlider.val()));
+        
+            // 監聽滑桿變化事件
+            rateSlider.on('input', function() {
+                state.rate = parseFloat(this.value);
+                updateRateValue(state.rate); // 更新語速數值元素的內容
+            });
+        
+            pitchSlider.on('input', function() {
+                state.pitch = parseFloat(this.value);
+                updatePitchValue(state.pitch); // 更新音高數值元素的內容
+            });
+        });
+    </script>
 </body>
 
 </html>

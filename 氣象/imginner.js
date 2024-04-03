@@ -17,6 +17,8 @@ const accordion16 = document.getElementById('collapseSixteen');
 const accordion17 = document.getElementById('collapseSeventeen');
 const accordion18 = document.getElementById('collapseEighteen');
 const accordion19 = document.getElementById('collapseNineteen');
+const accordion20 = document.getElementById('collapseTwenty');
+
 
 const imageContainers = document.querySelectorAll('.image-container');
 
@@ -77,7 +79,9 @@ const imageUrls = [
     'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-017.png',
     'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-020.jpg',
     'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-021.jpg',
-    'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-022.jpg'];
+    'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Forecast/F-C0035-022.jpg',
+    'https://cwaopendata.s3.ap-northeast-1.amazonaws.com/Earthquake/E-A0015-003.png'
+];
 
 // 監聽 #collapseTwo 的展開事件
 accordion2.addEventListener('shown.bs.collapse', () => {
@@ -323,6 +327,20 @@ accordion19.addEventListener('shown.bs.collapse', () => {
     imageContainers.forEach((container, index) => {
         // 檢查圖片是否已經插入
         if (container.children.length === 0 && (index === 53 || index === 54 || index === 55)) {
+            // 插入圖片
+            const img = document.createElement('img');
+            img.src = imageUrls[index];
+            img.style.width = '300px';
+            img.style.height = 'auto';
+            container.appendChild(img);
+        }
+    });
+});
+
+accordion20.addEventListener('shown.bs.collapse', () => {
+    imageContainers.forEach((container, index) => {
+        // 檢查圖片是否已經插入
+        if (container.children.length === 0 && (index === 56)) {
             // 插入圖片
             const img = document.createElement('img');
             img.src = imageUrls[index];

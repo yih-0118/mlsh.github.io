@@ -157,7 +157,6 @@ function showSubcategories(category) {
                 addSubcategory('看中文選英文', './component/html/c2e.html');
                 addSubcategory('文意字彙', './component/html/test vocabulary.html');
                 addSubcategory('地獄版文意字彙', './component/html/vocabulary.html');
-                addSubcategory('測試中', '');
                 break;
         }
     } else {
