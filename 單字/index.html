@@ -7,16 +7,14 @@
     <title>明倫單字卡</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./component/index.css">
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="./components/style/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <h1><i class="fas fa-book-open"></i> 明倫單字卡</h1>
         <form id="vocabularyForm" class="mb-5">
+            <h1><i class="fas fa-book-open"></i> 明倫單字卡</h1>
             <div class="mb-3">
                 <label for="categories" id="categories-label" class="form-label">類別:</label>
                 <select id="categories" name="category" class="form-select" onchange="showSubcategories(this.value)">
@@ -31,6 +29,8 @@
                     <option value="單字書 Level 4">單字書 Level 4</option>
                     <option value="ALL_PLUS_Mar">ALL PLUS March</option>
                     <option value="ALL_PLUS_Apr">ALL PLUS April</option>
+                    <option value="ALL_PLUS_May">ALL PLUS May</option>
+
                 </select>
             </div>
 
@@ -40,7 +40,7 @@
                     <!-- Subcategories will be populated dynamically -->
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary" style="background-color: #4b52ab; border-color: #4b52ab; color: #ffffff;"s>Go</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #4b52ab; border-color: #4b52ab; color: #ffffff;">Go</button>
         </form>
         <p class="text-secondary">本應用僅提供教育用途，無任何商業行為。</p>
 
@@ -48,7 +48,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="./component/index.js"></script>
+    <script src="./components/javascript/index.js"></script>
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
@@ -72,9 +72,11 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4792394423150983"
+    <script 
+        async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4792394423150983"
         crossorigin="anonymous"></script>
     <script>
+        
         // Get stored selections from localStorage
         const storedCategory = localStorage.getItem('selectedCategory');
         const storedSubcategory = localStorage.getItem('selectedSubcategory');
@@ -105,6 +107,7 @@
             }
         };
     </script>
+    
 </body>
 
 </html>
