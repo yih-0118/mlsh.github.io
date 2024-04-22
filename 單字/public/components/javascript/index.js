@@ -171,8 +171,8 @@ function showSubcategories(category) {
             case 'link-test':
                 addSubcategory('看英文選中文', './components/html/e2c.html');
                 addSubcategory('看中文選英文', './components/html/c2e.html');
-                addSubcategory('文意字彙', './components/html/test vocabulary.html');
-                addSubcategory('地獄版文意字彙', './components/html/vocabulary.html');
+                addSubcategory('文意字彙(Beta)', './components/html/test vocabulary.html');
+                addSubcategory('地獄版文意字彙(Beta)', './components/html/vocabulary.html');
                 break;
         }
     } else {
