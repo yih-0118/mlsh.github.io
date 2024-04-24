@@ -3,11 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mlsh-看英文選中文</title>
     <!-- <link href="../style/c2e.css" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        .text{
+            font-size: medium;
+        }
+        /* 新增自定義樣式以適應手機 */
+        .navbar-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 20%;
+            /* 讓每個按鈕佔據工具列四分之一的寬度 */
+            padding: 10px 0;
+            /* 調整按鈕的內邊距 */
+        }
+
+        .navbar-brand .icon {
+            margin-bottom: 5px;
+            /* 調整圖標與文字之間的距離 */
+        }
+
+        /* 深色模式 */
+        @media (prefers-color-scheme: dark) {
+            .navbar-brand {
+                color: #fff;
+                /* 深色模式下按鈕文字顏色 */
+            }
+        }
+
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
@@ -58,7 +88,7 @@
                 animation: slideIn 0.5s ease-out;
                 background-color: #f5f5f5;
             }
-        
+
             .option:hover {
                 background-color: #e0e0e0;
                 border-color: #b3b3b3;
@@ -85,9 +115,11 @@
                 padding: 20px;
                 margin-bottom: 20px;
             }
+
             .question-card li strong {
                 color: #cdcdcd;
             }
+
             .question-card li {
                 color: #ffffff;
             }
@@ -123,7 +155,7 @@
                 color: #f0f0f0;
                 background-color: #3f3f3f;
             }
-        
+
             .option:hover {
                 background-color: #4f4f4f;
                 border-color: #b3b3b3;
@@ -330,20 +362,21 @@
                 opacity: 1;
             }
         }
+
         .pause-button {
-            background-color: #ff4f3f; /* 調整按鈕的背景顏色 */
-            color: white; /* 調整文字顏色 */
-            border: none; /* 移除按鈕邊框 */
-            border-radius: 5px; /* 圓角 */
-            padding: 8px 28px; /* 調整內邊距 */
-            font-size: 12px; /* 調整文字大小 */
-            cursor: pointer; /* 顯示指示詞 */
-            transition: background-color 0.3s, color 0.3s; /* 添加平滑過渡效果 */
+            background-color: #ff4f3f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 28px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
         }
-        
+
         .pause-button:hover {
-            background-color: #ff8f81; /* 滑鼠懸停時的背景顏色 */
-            color: #fff; /* 滑鼠懸停時的文字顏色 */
+            background-color: #ff8f81;
+            color: #fff;
         }
     </style>
 </head>
@@ -364,7 +397,7 @@
                 <option value="Level 4">Level 4</option>
                 <option value="ALL_PLUS_Mar">ALL_PLUS_Mar</option>
                 <option value="ALL_PLUS_Apr">ALL_PLUS_Apr</option>
-                <option value="ALL_PLUS_MaY">ALL_PLUS_May</option>                <!-- 添加更多書籍選項 -->
+                <option value="ALL_PLUS_MaY">ALL_PLUS_May</option> <!-- 添加更多書籍選項 -->
             </select>
         </div>
         <div class="mb-3" style="width: 61%; display: inline-block;">
@@ -423,7 +456,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">回答結果</h5>
-                        <button type="button" class="close" @click="showModal = false">
+                        <!-- <button type="button" class="close" @click="showModal = false"> -->
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -438,9 +471,9 @@
                 </div>
             </div>
         </div>
-        <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton" :disabled="isQuizCompleted">
+        <!-- <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton" :disabled="isQuizCompleted">
             {{ isQuizCompleted ? 'Quiz Completed' : 'Next' }}
-        </button>
+        </button> -->
 
         <div class="modal" tabindex="-1" role="dialog" v-if="showResultModal">
             <div class="modal-dialog" role="document">
@@ -465,6 +498,24 @@
             </div>
         </div>
     </div>
+    <nav class="navbar fixed-bottom d-flex">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app" role="button">
+                <i class="fa-solid fa-house"></i> <span class="text">首頁</span>
+            </a>
+            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app/components/html/e2c.html" role="button">
+                <i class="fa-solid fa-language"></i> <span class="text">英到中</span>
+            </a>
+            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app/components/html/c2e.html" role="button">
+                <i class="fa-solid fa-language"></i>
+                <span class="text">中到英</span>
+            </a>
+            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app/components/html/test vocabulary.html" role="button">
+                <i class="fas fa-book icon"></i>
+                <span class="text">文意字彙</span>
+            </a>
+        </div>
+    </nav>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
     <script src="../javascript/e2c.js"></script>
 

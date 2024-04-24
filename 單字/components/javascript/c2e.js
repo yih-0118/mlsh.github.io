@@ -22,7 +22,7 @@ const app = Vue.createApp({
             wrongAnswers: [],
             isPaused: false,
             books: {
-                'Book1': ['請選取章節','請選取章節', 'B1 L1', 'B1 L2', 'B1 L3', 'B1 L4', 'B1 L5', 'B1 L6', 'B1 L7', 'B1 L8', 'B1 L9', 'B1 R1', 'B1 R2', 'B1 R3'],
+                'Book1': ['請選取章節', 'B1 L1', 'B1 L2', 'B1 L3', 'B1 L4', 'B1 L5', 'B1 L6', 'B1 L7', 'B1 L8', 'B1 L9', 'B1 R1', 'B1 R2', 'B1 R3'],
                 'Book2': ['請選取章節','B2 L1', 'B2 L2', 'B2 L3', 'B2 L4', 'B2 L5', 'B2 L6', 'B2 L7', 'B2 L8', 'B2 L9', 'B2 R1', 'B2 R2', 'B2 R3'],
                 'Book3': ['請選取章節','B3 L1', 'B3 L2', 'B3 L3', 'B3 L4', 'B3 L5', 'B3 L6', 'B3 L7', 'B3 L8', 'B3 L9', 'B3 R1', 'B3 R2', 'B3 R3'],
                 'Book4': ['請選取章節','B4 L1', 'B4 L2', 'B4 L3', 'B4 L4', 'B4 L5', 'B4 L6', 'B4 L7', 'B4 L8', 'B4 L9', 'B4 R1', 'B4 R2', 'B4 R3'],

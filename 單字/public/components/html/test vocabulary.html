@@ -3,10 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mlsh-文意字彙</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        .text {
+            font-size: medium;
+        }
+
+        /* 新增自定義樣式以適應手機 */
+        .navbar-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 20%;
+            /* 讓每個按鈕佔據工具列四分之一的寬度 */
+            padding: 10px 0;
+            /* 調整按鈕的內邊距 */
+        }
+
+        .navbar-brand .icon {
+            margin-bottom: 5px;
+            /* 調整圖標與文字之間的距離 */
+        }
+
+        /* 深色模式 */
+        @media (prefers-color-scheme: dark) {
+            .navbar-brand {
+                color: #fff;
+                /* 深色模式下按鈕文字顏色 */
+            }
+
+            .modal {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .modal-content {
+                background-color: #2f2f2f;
+                border: 1px solid #f0f0f0;
+                color: #f0f0f0;
+            }
+
+            .close {
+                color: #000000;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: white;
+            }
+        }
+
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
         html {
@@ -64,9 +114,23 @@
         }
 
         @media (prefers-color-scheme: dark) {
-            .question-card li {
-                color: #1f1f1f;
+            .question-card {
+                background-color: #3f3f3f;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                margin-bottom: 20px;
             }
+
+            .question-card li strong {
+                font-size: 18px;
+                color: #cdcdcd;
+            }
+
+            .question-card li {
+                color: #ffffff;
+            }
+
 
             body {
                 background-color: #1f1e1e;
@@ -200,22 +264,7 @@
             background-color: #4b52ab;
         }
 
-        .question-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
 
-        .question-card li {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .question-card li strong {
-            color: #4b52ab;
-        }
 
         /* Custom styles for mobile devices */
         @media only screen and (max-width: 600px) {
@@ -230,6 +279,23 @@
         /* 彈出小畫面的背景遮罩 */
         /* Light Mode */
         @media (prefers-color-scheme: light) {
+            .question-card {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .question-card li {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .question-card li strong {
+                color: #4b52ab;
+            }
+
             .modal {
                 background-color: rgba(0, 0, 0, 0.4);
             }
@@ -293,17 +359,23 @@
         }
 
         .close {
-            float: none; /* 移除浮動 */
-            font-size: 0; /* 隱藏文字 */
-            border: none; /* 移除邊框 */
-            background: none; /* 移除背景 */
+            float: none;
+            /* 移除浮動 */
+            font-size: 0;
+            /* 隱藏文字 */
+            border: none;
+            /* 移除邊框 */
+            background: none;
+            /* 移除背景 */
         }
-        
+
         .close span {
-            font-size: 28px; /* 恢復×字樣的字型大小 */
-            font-weight: bold; /* 恢復×字樣的字型粗細 */
+            font-size: 28px;
+            /* 恢復×字樣的字型大小 */
+            font-weight: bold;
+            /* 恢復×字樣的字型粗細 */
         }
-        
+
         .close:hover,
         .close:focus {
             text-decoration: none;
@@ -322,44 +394,71 @@
                 top: -300px;
                 opacity: 0;
             }
+
             to {
                 top: 0;
                 opacity: 1;
             }
+        }
+
+        .pause-button {
+            background-color: #ff4f3f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 28px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .pause-button:hover {
+            background-color: #ff8f81;
+            color: #fff;
         }
     </style>
 </head>
 
 <body>
     <div id="app" class="container">
-        <h1 class="mb-4">
-            文意字彙
-        </h1>
-        <label for="chapterSelect">
-                選擇章節：
-        </label>
-        <select id="chapterSelect" @change="selectChapter" class="form-select mb-4">
-            <option value="">
-                請選擇
-            </option>
-            <option v-for="(value, key) in chapters" :key="key" :value="value">
-                {{ key }}
-            </option>
-        </select>
-        <div class="mb-4">
+        <div style="height: 1vh;"></div>
+        <h1 class="mb-4">文意字彙</h1>
+        <div class="mb-3" style="width: 36%; margin-right: 2%; display: inline-block;">
+            <label for="bookSelect" class="form-label">選擇類別:</label>
+            <select id="bookSelect" name="book" class="form-select" @change="filterChapters($event.target.value)">
+                <option value="">選擇書籍</option>
+                <option value="Book1">Book 1</option>
+                <option value="Book2">Book 2</option>
+                <option value="Book3">Book 3</option>
+                <option value="Book4">Book 4</option>
+                <option value="Level 2">Level 2</option>
+                <option value="Level 3">Level 3</option>
+                <option value="Level 4">Level 4</option>
+                <option value="ALL_PLUS_Mar">ALL_PLUS_Mar</option>
+                <option value="ALL_PLUS_Apr">ALL_PLUS_Apr</option>
+                <option value="ALL_PLUS_MaY">ALL_PLUS_May</option> <!-- 添加更多書籍選項 -->
+            </select>
+        </div>
+        <div class="mb-3" style="width: 60%; display: inline-block;">
+            <label for="chapterSelect" class="form-label">選擇章節:</label>
+            <select id="chapterSelect" class="form-select" @change="selectChapter" disabled>
+                <option value="">請先選擇書籍</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
             <span>分數： {{ score }} / {{ vocabularies.length }}</span>
             <span class="ms-4">剩餘時間: {{ formatTime(timeLeft) }}</span>
-            <!-- <button @click="togglePause" class="pause-button">
+            <button @click="togglePause" class="pause-button">
                 {{ isPaused ? '繼續' : '暫停' }}
-            </button> -->
+            </button>
         </div>
         <!-- 提示和單字選項 -->
         <div v-if="currentWord">
-            <div class="question-card">
+            <div class="question-card" :class="{ paused: isPaused }">
                 <ul>
                     <li>
-                        <strong>題號：</strong>
-                        {{ currentQuestionIndex }} / {{ vocabularies.length }}</span>
+                        <strong>題號：
+                            {{ currentQuestionIndex }} / {{ vocabularies.length }}</span></strong>
                     </li>
                     <li>
                         <strong>中文：</strong>
@@ -375,7 +474,8 @@
                     </li>
                     <li>
                         <strong>回答：</strong>
-                        <input type="text" v-model="userAnswer" @keydown.enter="submitAnswer" placeholder="請輸入答案" :disabled="disableInput">
+                        <input type="text" v-model="userAnswer" @keydown.enter="submitAnswer" placeholder="請輸入答案"
+                            :disabled="disableInput">
                     </li>
                 </ul>
             </div>
@@ -390,7 +490,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">回答結果</h5>
-                        <button type="button" class="close" @click="showModal = false">
+                        <!-- <button type="button" class="close" @click="showModal = false"> -->
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -398,15 +498,17 @@
                         <p>{{ feedback }}</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" style="background-color: #4b52ab; border-color: #4b52ab; color: #ffffff;" @click="nextWord(); showModal = false;">Next</button>
+                        <button type="button" class="btn"
+                            style="background-color: #4b52ab; border-color: #4b52ab; color: #ffffff;"
+                            @click="nextWord(); showModal = false;">Next</button>
                     </div>
                 </div>
             </div>
         </div>
-
+<!-- 
         <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton" :disabled="isQuizCompleted">
             {{ isQuizCompleted ? 'Quiz Completed' : 'Next' }}
-        </button>
+        </button> -->
 
         <div class="modal" tabindex="-1" role="dialog" v-if="showResultModal">
             <div class="modal-dialog" role="document">
@@ -431,6 +533,25 @@
             </div>
         </div>
     </div>
+    <nav class="navbar fixed-bottom d-flex">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app" role="button">
+                <i class="fa-solid fa-house"></i> <span class="text">首頁</span>
+            </a>
+            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app/components/html/e2c.html" role="button">
+                <i class="fa-solid fa-language"></i> <span class="text">英到中</span>
+            </a>
+            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app/components/html/c2e.html" role="button">
+                <i class="fa-solid fa-language"></i>
+                <span class="text">中到英</span>
+            </a>
+            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app/components/html/test vocabulary.html"
+                role="button">
+                <i class="fas fa-book icon"></i>
+                <span class="text">文意字彙</span>
+            </a>
+        </div>
+    </nav>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="../javascript/vocabulary.js"></script>
 </body>

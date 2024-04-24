@@ -21,6 +21,44 @@ var vm = new Vue({
         showResultModal: false, // 新增控制測驗結果彈出小畫面的屬性
         wrongAnswers: [],
         isPaused: false,
+        savedTimeLeft: 0,
+        disableInput: false,
+        books: {
+            'Book1': ['請選取章節', 'B1 L1', 'B1 L2', 'B1 L3', 'B1 L4', 'B1 L5', 'B1 L6', 'B1 L7', 'B1 L8', 'B1 L9', 'B1 R1', 'B1 R2', 'B1 R3'],
+            'Book2': ['請選取章節','B2 L1', 'B2 L2', 'B2 L3', 'B2 L4', 'B2 L5', 'B2 L6', 'B2 L7', 'B2 L8', 'B2 L9', 'B2 R1', 'B2 R2', 'B2 R3'],
+            'Book3': ['請選取章節','B3 L1', 'B3 L2', 'B3 L3', 'B3 L4', 'B3 L5', 'B3 L6', 'B3 L7', 'B3 L8', 'B3 L9', 'B3 R1', 'B3 R2', 'B3 R3'],
+            'Book4': ['請選取章節','B4 L1', 'B4 L2', 'B4 L3', 'B4 L4', 'B4 L5', 'B4 L6', 'B4 L7', 'B4 L8', 'B4 L9', 'B4 R1', 'B4 R2', 'B4 R3'],
+            'Level 2': ['請選取章節',
+                'Vocabulary (L2 Unit1)', 'Vocabulary (L2 Unit2)', 'Vocabulary (L2 Unit3)', 'Vocabulary (L2 Unit4)', 'Vocabulary (L2 Unit5)',
+                'Vocabulary (L2 Unit6)', 'Vocabulary (L2 Unit7)', 'Vocabulary (L2 Unit8)'
+            ],
+            'Level 3': ['請選取章節',
+                'Vocabulary (L3 Unit1)', 'Vocabulary (L3 Unit2)',
+                'Vocabulary (L3 Unit3)', 'Vocabulary (L3 Unit4)', 'Vocabulary (L3 Unit5)', 'Vocabulary (L3 Unit6)', 'Vocabulary (L3 Unit7)',
+                'Vocabulary (L3 Unit8)', 'Vocabulary (L3 Unit9)', 'Vocabulary (L3 Unit10)', 'Vocabulary (L3 Unit11)', 'Vocabulary (L3 Unit12)',
+                'Vocabulary (L3 Unit13)', 'Vocabulary (L3 Unit14)', 'Vocabulary (L3 Unit15)', 'Vocabulary (L3 Unit16)', 'Vocabulary (L3 Unit17)',
+                'Vocabulary (L3 Unit18)', 'Vocabulary (L3 Unit19)', 'Vocabulary (L3 Unit20)', 'Vocabulary (L3 Unit21)',
+            ],
+            'Level 4': ['請選取章節',
+                'Vocabulary (L4 Unit1)',
+                'Vocabulary (L4 Unit2)', 'Vocabulary (L4 Unit3)', 'Vocabulary (L4 Unit4)', 'Vocabulary (L4 Unit5)', 'Vocabulary (L4 Unit6)',
+                'Vocabulary (L4 Unit7)', 'Vocabulary (L4 Unit8)', 'Vocabulary (L4 Unit9)', 'Vocabulary (L4 Unit10)', 'Vocabulary (L4 Unit11)',
+                'Vocabulary (L4 Unit12)', 'Vocabulary (L4 Unit13)', 'Vocabulary (L4 Unit14)', 'Vocabulary (L4 Unit15)', 'Vocabulary (L4 Unit16)',
+                'Vocabulary (L4 Unit17)', 'Vocabulary (L4 Unit18)', 'Vocabulary (L4 Unit19)', 'Vocabulary (L4 Unit20)', 'Vocabulary (L4 Unit21)'
+            ],
+            'ALL_PLUS_Mar': ['請選取章節','ALL PLUS Mar. Unit 1', 'ALL PLUS Mar. Unit 2', 'ALL PLUS Mar. Unit 3',
+                'ALL PLUS Mar. Unit 4', 'ALL PLUS Mar. Unit 5', 'ALL PLUS Mar. Unit 6', 'ALL PLUS Mar. Unit 7', 'ALL PLUS Mar. Unit 9',
+                'ALL PLUS Mar. Unit 10', 'ALL PLUS Mar. Unit 11', 'ALL PLUS Mar. Unit 12', 'ALL PLUS Mar. Unit 13', 'ALL PLUS Mar. Unit 14',
+                'ALL PLUS Mar. Unit 15'],    
+            'ALL_PLUS_Apr': ['請選取章節','ALL PLUS Apr. Unit 1', 'ALL PLUS Apr. Unit 2', 'ALL PLUS Apr. Unit 3', 'ALL PLUS Apr. Unit 4',
+                'ALL PLUS Apr. Unit 5', 'ALL PLUS Apr. Unit 6', 'ALL PLUS Apr. Unit 7', 'ALL PLUS Apr. Unit 8', 'ALL PLUS Apr. Unit 9',
+                'ALL PLUS Apr. Unit 10', 'ALL PLUS Apr. Unit 12', 'ALL PLUS Apr. Unit 13', 'ALL PLUS Apr. Unit 14'],
+            'ALL_PLUS_May': ['請選取章節','ALL PLUS May Unit 1',
+                'ALL PLUS May Unit 2', 'ALL PLUS May Unit 3', 'ALL PLUS May Unit 4', 'ALL PLUS May Unit 5', 'ALL PLUS May Unit 6',
+                'ALL PLUS May Unit 7', 'ALL PLUS May Unit 8', 'ALL PLUS May Unit 10', 'ALL PLUS May Unit 12', 'ALL PLUS May Unit 13',
+                'ALL PLUS May Unit 14', 'ALL PLUS May Unit 15', 'ALL PLUS May Unit 16']                           // 添加更多書籍和對應的章節
+        },
+        selectedBook: null,
     },
     mounted() {
         this.loadChapter('');
@@ -33,6 +71,37 @@ var vm = new Vue({
         }
     },
     methods: {
+        filterChapters(book) {
+            this.selectedBook = book;
+            const chapterSelect = document.getElementById('chapterSelect');
+            chapterSelect.disabled = !book;
+            chapterSelect.innerHTML = '';
+            if (book) {
+                const chapters = this.books[book];
+                chapters.forEach(chapter => {
+                    const option = document.createElement('option');
+                    option.value = this.chapters[chapter];
+                    option.textContent = chapter;
+                    chapterSelect.appendChild(option);
+                });
+            } else {
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = '請先選擇書籍';
+                chapterSelect.appendChild(option);
+            }
+        },
+        togglePause() {
+            this.isPaused = !this.isPaused;
+            if (this.isPaused) {
+                clearInterval(this.timer);
+                this.savedTimeLeft = this.timeLeft;
+                this.disableInput = true; // 禁用輸入框
+            } else {
+                this.disableInput = false; // 啟用輸入框
+                this.startTimer();
+            }
+        },
         // 加載章節數據
         loadChapter(chapter) {
             fetch(chapter)
@@ -107,14 +176,21 @@ var vm = new Vue({
         },
         // 
         startTimer() {
+            if (this.isPaused) return;
+        
             clearInterval(this.timer);
-            this.timeLeft = 30;
+            if (this.savedTimeLeft > 0) {
+                this.timeLeft = this.savedTimeLeft; // 從保存的時間開始計時
+                this.savedTimeLeft = 0; // 重置 savedTimeLeft
+            } else {
+                this.timeLeft = 30; // 如果沒有保存的時間,重置為 30 秒
+            }
             this.timer = setInterval(() => {
                 this.timeLeft--;
                 if (this.timeLeft === 0) {
                     clearInterval(this.timer);
                     this.feedback = 'Time is up. The correct answer is: ' + (this.isEnglishToChineseMode ? this.currentWord.chinese : this.currentWord.vocabulary);
-                    this.nextWord(); // 跳到下一題
+                    this.nextWord();
                 }
             }, 1000);
         },

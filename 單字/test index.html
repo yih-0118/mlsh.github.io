@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="./components/style/index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <style>
-        .text{
-            font-size: medium;
-        }
-        /* 假设 "unique-page" 是你在特定页面底部工作栏的父元素上添加的类名 */
         /* 新增自定義樣式以適應手機 */
         .navbar-brand {
             display: flex;
@@ -21,22 +17,18 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            width: 20%;
-            /* 讓每個按鈕佔據工具列四分之一的寬度 */
-            padding: 10px 0;
-            /* 調整按鈕的內邊距 */
+            width: 20%; /* 讓每個按鈕佔據工具列四分之一的寬度 */
+            padding: 10px 0; /* 調整按鈕的內邊距 */
         }
 
         .navbar-brand .icon {
-            margin-bottom: 5px;
-            /* 調整圖標與文字之間的距離 */
+            margin-bottom: 5px; /* 調整圖標與文字之間的距離 */
         }
 
         /* 深色模式 */
         @media (prefers-color-scheme: dark) {
             .navbar-brand {
-                color: #fff;
-                /* 深色模式下按鈕文字顏色 */
+                color: #fff; /* 深色模式下按鈕文字顏色 */
             }
         }
     </style>
@@ -49,7 +41,7 @@
             <div class="mb-3"><label for="categories" id="categories-label" class="form-label">類別:</label><select
                     id="categories" name="category" class="form-select" onchange="showSubcategories(this.value)">
                     <option value="">選擇類別</option>
-                    <!-- <option value="link-test">Quiz</option> -->
+                    <option value="link-test">Quiz</option>
                     <option value="Book1">Book 1</option>
                     <option value="Book2">Book 2</option>
                     <option value="Book3">Book 3</option>
@@ -74,20 +66,19 @@
     </div>
 
     <!-- 新增文字輔助 -->
-    <nav class="navbar fixed-bottom d-flex">
+    <nav class="navbar fixed-bottom ">
         <div class="container-fluid">
-            <a class="navbar-brand unique-page" href="https://mlsh-vocabulary.web.app" role="button">
+            <a class="navbar-brand" href="/單字/test index.html" role="button">
                 <i class="fa-solid fa-house"></i> <span class="text">首頁</span>
             </a>
-            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app/components/html/e2c.html" role="button">
-                <i class="fa-solid fa-language"></i> <span class="text">英到中</span>
+            <a class="navbar-brand" href="./components/html/e2c.html" role="button">
+                <i class="fa-solid fa-language"></i>           <span class="text">英到中</span>
             </a>
-            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app/components/html/c2e.html" role="button">
+            <a class="navbar-brand" href="./components/html/c2e.html" role="button">
                 <i class="fa-solid fa-language"></i>
                 <span class="text">中到英</span>
             </a>
-            <a class="navbar-brand" href="https://mlsh-vocabulary.web.app/components/html/test vocabulary.html"
-                role="button">
+            <a class="navbar-brand" href="./components/html/test vocabulary.html" role="button">
                 <i class="fas fa-book icon"></i>
                 <span class="text">文意字彙</span>
             </a>
@@ -155,5 +146,4 @@
         };
     </script>
 </body>
-
 </html>
