@@ -48,7 +48,7 @@
                                 class="mode-set"> <span class="slider round"></span> </label> <label
                             for="chinese-display">顯示中文</label> </div>
                 </div>
-                <hr>
+                <!-- <hr> -->
             </div>
             <div class="block">
                 <h3>實驗功能</h3>
@@ -73,17 +73,23 @@
                         <span id="pitch-value">1.0</span> <!-- 初始數值為1.0 -->
                     </div>
                 </div>
-                <hr>
+                <!-- <hr> -->
             </div>
             <div class="block">
                 <table class="list">
                     <thead>
+                        <!-- 在 HTML 中添加折疊/展開按鈕 -->
+                        <!-- <button id="toggle-list-btn">折疊單字區</button> -->
                         <h3>單字區</h3>
+                        <div class="option-row">
+                            <input type="text" id="search-input" placeholder="搜尋(中英皆可輸入)">
+
+                        </div>
                         <hr>
                         <tr>
-                            <th>索引</th>
-                            <th>英文</th>
-                            <th>詞性</th>
+                            <th class="underline">索引</th>
+                            <th class="underline">英文</th>
+                            <th class="underline">詞性</th>
                             <th id="chinese-header" class="hidden"></th>
                         </tr>
                     </thead>
@@ -91,9 +97,11 @@
                 </table>
             </div>
         </div>
-        
+
     </div>
-    <button id="menu" class="menu btn round"> <i class="fa-solid fa-bars"></i> </button>
+    <button id="menu" class="menu btn round"> <i class="fa-solid fa-list"></i> </button>
+    <button id="house" class="menu btn round"> <i class="fa-solid fa-house"></i> </button>
+
     <script src="../javascript/rule.js"></script>
     <script>
 

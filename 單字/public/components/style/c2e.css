@@ -1,5 +1,52 @@
-html{
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+#c2e-link {
+    font-weight: bold;
+    color: #007bff;
+  }
+.navbar {
+    border-top: 1px solid #ccc;
+}
+
+.container {
+    margin-bottom: 60px;
+}
+
+.text {
+    font-size: medium;
+}
+
+.navbar.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.navbar-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 20%;
+    padding: 1px 0;
+}
+
+.navbar-brand .icon {
+    margin-bottom: 1px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background-color: #1f1e1e;
+    }
+
+    .navbar-brand {
+        color: #fff;
+    }
+}
+
 
 html {
     -moz-user-select: none;
@@ -19,6 +66,10 @@ html {
 }
 
 @media (prefers-color-scheme:light) {
+    .navbar {
+        background-color: #f0f0f0;
+    }
+
     body {
         background-color: #f0f0f0;
         font-family: 'Poppins', sans-serif;
@@ -40,22 +91,48 @@ html {
         flex: 0 0 48%;
         margin-bottom: 10px;
         padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: background-color 0.3s, border-color 0.3s;
         flex: 1;
         animation: slideIn 0.5s ease-out;
+        background-color: #f5f5f5;
     }
 
     .option:hover {
         background-color: #e0e0e0;
+        border-color: #b3b3b3;
+    }
+
+    .question-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .question-card li strong {
+        color: #4b52ab;
     }
 }
 
 @media (prefers-color-scheme:dark) {
+    .question-card {
+        background-color: #3f3f3f;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .question-card li strong {
+        color: #cdcdcd;
+    }
+
     .question-card li {
-        color: #1f1f1f;
+        color: #ffffff;
     }
 
     body {
@@ -80,17 +157,19 @@ html {
         flex: 0 0 48%;
         margin-bottom: 10px;
         padding: 10px;
-        border: 1px solid #f0f0f0;
-        border-radius: 5px;
+        border: 2px solid #f0f0f0;
+        border-radius: 10px;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: background-color 0.3s, border-color 0.3s;
         flex: 1;
         animation: slideIn 0.5s ease-out;
         color: #f0f0f0;
+        background-color: #3f3f3f;
     }
 
     .option:hover {
-        background-color: #1f1e1e;
+        background-color: #4f4f4f;
+        border-color: #b3b3b3;
     }
 }
 
@@ -180,25 +259,13 @@ li {
     background-color: #4b52ab;
 }
 
-.question-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
 .question-card li {
     font-size: 18px;
     margin-bottom: 10px;
 }
 
-.question-card li strong {
-    color: #4b52ab;
-}
 
-/* 彈出小畫面的背景遮罩 */
-/* Light Mode */
+
 @media (prefers-color-scheme: light) {
     .modal {
         background-color: rgba(0, 0, 0, 0.4);
@@ -219,7 +286,6 @@ li {
     }
 }
 
-/* Dark Mode */
 @media (prefers-color-scheme: dark) {
     .modal {
         background-color: rgba(255, 255, 255, 0.2);
@@ -241,7 +307,6 @@ li {
     }
 }
 
-/* 共同樣式 */
 .modal {
     display: block;
     position: fixed;
@@ -259,25 +324,19 @@ li {
     width: 80%;
     max-width: 600px;
     position: relative;
-    animation: modalAnimation 0.4s;
+    animation: modalAnimation 0.3s;
 }
 
 .close {
     float: none;
-    /* 移除浮動 */
     font-size: 0;
-    /* 隱藏文字 */
     border: none;
-    /* 移除邊框 */
     background: none;
-    /* 移除背景 */
 }
 
 .close span {
     font-size: 28px;
-    /* 恢復×字樣的字型大小 */
     font-weight: bold;
-    /* 恢復×字樣的字型粗細 */
 }
 
 .close:hover,
@@ -296,7 +355,7 @@ li {
 @keyframes modalAnimation {
     from {
         top: -300px;
-        opacity: 0;
+        opacity: 1;
     }
 
     to {
@@ -304,4 +363,19 @@ li {
         opacity: 1;
     }
 }
+
+.pause-button {
+    background-color: #ff4f3f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 28px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pause-button:hover {
+    background-color: #ff8f81;
+    color: #fff;
 }

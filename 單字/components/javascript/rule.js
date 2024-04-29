@@ -81,6 +81,38 @@ class VocabularyRenderer {
         this.hintEl = $(hintEl);
         this.listEl = $(listEl).find('tbody');
         this.readBtn = $('#readBtn');
+        this.searchInput = $('#search-input');
+        this.initSearchEventListener();
+        // this.listContainer = listEl.parent(); // 獲取單字區容器元素
+        // this.toggleListBtn = $('#toggle-list-btn');
+        // this.initToggleListEventListener();
+    }
+    // initToggleListEventListener() {
+    //     this.toggleListBtn.click(() => {
+    //         this.listContainer.toggle();
+    //         const isVisible = this.listContainer.is(':visible');
+    //         this.toggleListBtn.text(isVisible ? '折疊單字區' : '展開單字區');
+    //     });
+    // }
+    initSearchEventListener() {
+        this.searchInput.on('input', () => {
+            const searchValue = this.searchInput.val().toLowerCase();
+            this.filterWords(searchValue);
+        });
+    }
+
+    filterWords(searchValue) {
+        const filteredWords = state.originalWords.filter(word => {
+            const vocabulary = word.vocabulary.toLowerCase();
+            const partOfSpeech = word.partOfSpeech.toLowerCase();
+            const chinese = word.chinese.toLowerCase();
+            return vocabulary.includes(searchValue) ||
+                partOfSpeech.includes(searchValue) ||
+                chinese.includes(searchValue);
+        });
+
+        state.words = filteredWords;
+        this.renderList();
     }
 
     speak(text) {
@@ -95,7 +127,10 @@ class VocabularyRenderer {
 
     renderQuestion() {
         const word = state.words[state.currentIndex];
-        gsap.to(this.questionEl, { duration: 0.3, opacity: 1, scale: 1, ease: "power2.out" });
+        const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+        tl.fromTo(this.questionEl, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3 })
+          .fromTo(this.hintEl.find('.type'), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3 }, '-=0.2')
+          .fromTo(this.hintEl.find('.answer'), { x: 20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3 }, '-=0.2');
         this.questionEl.html(word.vocabulary);
         this.hintEl.find('.type').html(word.partOfSpeech);
         this.hintEl.find('.answer').html(word.chinese);
@@ -119,7 +154,7 @@ class VocabularyRenderer {
                 state.currentIndex = index;
                 this.renderQuestion();
             });
-            row.append($('<td></td>').addClass('idx').text(index));
+            row.append($('<td></td>').addClass('idx').text(index+1));
             row.append($('<td></td>').text(word.vocabulary));
             row.append($('<td></td>').text(word.partOfSpeech));
             row.append($('<td></td>').addClass('chinese').text(word.chinese));
@@ -129,6 +164,14 @@ class VocabularyRenderer {
     }
 
     updateChineseDisplay() {
+        const chineseHeader = $('#chinese-header');
+        if (state.showChinese) {
+            chineseHeader.text('中文');
+            chineseHeader.removeClass('hidden');
+            chineseHeader.addClass('underline');
+        } else {
+            chineseHeader.addClass('hidden');
+        }
         this.listEl.find('.chinese').toggle(state.showChinese);
     }
 }
@@ -293,12 +336,12 @@ class MenuController {
 
     showMenu() {
         this.panel.show();
-        gsap.fromTo(this.panel, { x: '-100%' }, { x: 0, ease: 'Power', duration: 0.6 });
+        gsap.fromTo(this.panel, { x: '100%' }, { x: 0, ease: 'Power', duration: 0.6 });
     }
 
     hideMenu() {
         gsap.to(this.panel, {
-            x: '-100%',
+            x: '100%',
             ease: 'Power',
             duration: 0.5,
             onComplete: () => {
@@ -308,6 +351,10 @@ class MenuController {
         });
     }
 }
+document.getElementById("house").addEventListener("click", function() {
+    window.location.href = "/index.html";
+});
+
 const renderer = new VocabularyRenderer('#question', '#hint', '.list');
 const controller = new VocabularyController(renderer);
 const menuController = new MenuController('#menu', '.setting');

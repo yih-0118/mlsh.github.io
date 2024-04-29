@@ -50,6 +50,7 @@ function showSubcategories(category) {
                 addSubcategory('Unit 7', '../json/ALL_PLUS_May_Unit_7.json');
                 addSubcategory('Unit 8', '../json/ALL_PLUS_May_Unit_8.json');
                 addSubcategory('Unit 10', '../json/ALL_PLUS_May_Unit_10.json');
+                addSubcategory('Unit 11', '../json/ALL_PLUS_May_Unit_11.json');
                 addSubcategory('Unit 12', '../json/ALL_PLUS_May_Unit_12.json');
                 addSubcategory('Unit 13', '../json/ALL_PLUS_May_Unit_13.json');
                 addSubcategory('Unit 14', '../json/ALL_PLUS_May_Unit_14.json');
@@ -207,3 +208,33 @@ $(document).ready(function () {
         }
     });
 });
+
+// 從 localStorage 中取得儲存的選擇
+const storedCategory = localStorage.getItem('selectedCategory');
+const storedSubcategory = localStorage.getItem('selectedSubcategory');
+
+// 函式：設置下拉選單中的選擇項
+function setSelectedOption(selectElement, value) {
+    const options = selectElement.options;
+    for (let i = 0; i < options.length; i++) {
+        if (options[i].value === value) {
+            options[i].selected = true;
+            break;
+        }
+    }
+}
+
+// 當頁面加載時，用儲存的選擇來填充下拉選單
+window.onload = function () {
+    const categoriesSelect = document.getElementById('categories');
+    const subcategoriesSelect = document.getElementById('subcategories');
+
+    if (storedCategory) {
+        setSelectedOption(categoriesSelect, storedCategory);
+        showSubcategories(storedCategory);
+    }
+
+    if (storedSubcategory) {
+        setSelectedOption(subcategoriesSelect, storedSubcategory);
+    }
+};

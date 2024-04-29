@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+#test-link {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.navbar {
+    border-top: 1px solid #ccc;
+}
+
+.container {
+    margin-bottom: 60px;
+}
+
+.text {
+    font-size: medium;
+}
+
+.navbar-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 20%;
+    padding: 1px 0;
+}
+
+.navbar-brand .icon {
+    margin-bottom: 1px;
+}
+
+html {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.link {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.navbar {
+    background-color: #f0f0f0;
+}
+
+body {
+    background-color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+.option {
+    flex: 0 0 48%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex: 1;
+    animation: slideIn 0.5s ease-out;
+}
+
+.option:hover {
+    background-color: #e0e0e0;
+}
+
+
+#app {
+    margin-top: 5%;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out;
+}
+
+.correct-feedback {
+    animation: pop-up 0.7s ease-out;
+}
+
+@keyframes pop-up {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    ;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+    ;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    ;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+
+
+}
+
+#submitButton {
+    width: 100%;
+    background-color: #4b52ab;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .question-card li input[type="text"] {
+        width: 80%;
+        padding: 2px;
+        border: 1px solid #c0c0c0;
+        border-radius: 8px;
+    }
+}
+
+.question-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.question-card li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.question-card li strong {
+    color: #4b52ab;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+}
+
+.close {
+    color: #aaa;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+}
+
+
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-content {
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    animation: modalAnimation 0.4s;
+}
+
+.close {
+    float: none;
+    font-size: 0;
+    border: none;
+    background: none;
+}
+
+.close span {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+}
+
+@keyframes modalAnimation {
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.pause-button {
+    background-color: #ff4f3f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 28px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pause-button:hover {
+    background-color: #ff8f81;
+    color: #fff;
+}
+
+
+/* 深色模式 */
+@media (prefers-color-scheme: dark) {
+    .form-label{
+        color: white;
+    }
+    h1{
+        color: white;
+    }
+    hr{
+        color: white;
+    }
+    .navbar {
+        background-color: #1f1e1e;
+    }
+
+    .navbar-brand {
+        color: #fff;
+    }
+
+    .modal {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-content {
+        background-color: #2f2f2f;
+        border: 1px solid #f0f0f0;
+        color: #f0f0f0;
+    }
+
+    .close {
+        color: #000000;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: white;
+    }
+
+    .question-card {
+        background-color: #3f3f3f;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .question-card li strong {
+        font-size: 18px;
+        color: #cdcdcd;
+    }
+
+    .question-card li {
+        color: #ffffff;
+    }
+
+
+    body {
+        background-color: #1f1e1e;
+    }
+
+    .container {
+        align-items: center;
+        justify-content: center;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #2f2f2f;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-out;
+    }
+
+    .option {
+        flex: 0 0 48%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #f0f0f0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        flex: 1;
+        animation: slideIn 0.5s ease-out;
+        color: #f0f0f0;
+    }
+
+    .option:hover {
+        background-color: #1f1e1e;
+    }
+
+    .modal {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-content {
+        background-color: #2f2f2f;
+        border: 1px solid #f0f0f0;
+        color: #f0f0f0;
+    }
+
+    .close {color: #000000;}
+
+    .close:hover,
+    .close:focus {color: white;}
+    span{color: white;}
+}
