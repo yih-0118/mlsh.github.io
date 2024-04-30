@@ -1,7 +1,6 @@
 function showSubcategories(category) {
     const subcategoriesSelect = document.getElementById('subcategories');
     subcategoriesSelect.innerHTML = ''; // Clear existing options
-
     if (category) {
         $('#subcategory-list').show();
 
