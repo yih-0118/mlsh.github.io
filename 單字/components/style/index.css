@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 .navbar {
     border-top: 1px solid #ccc;
 }
 
 .container {
     margin-bottom: 60px;
+    position: relative;
 }
 
 .text {
@@ -30,6 +32,7 @@
         color: #fff;
     }
 }
+
 html {
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -185,11 +188,258 @@ form {
     }
 
     .btn-primary:hover {
-        background-color: #5a4eff;/*872dd4*/
+        background-color: #5a4eff;
+        /*872dd4*/
         border-color: #5a4eff;
     }
 }
+
 #home-link {
     font-weight: bold;
     color: #007bff;
+}
+
+@media (max-width: 767px) {
+    .sidebar {
+        right: -100vw;
+        /* 在較小屏幕上,初始位置設置為完全隱藏 */
+        width: 100vw;
+        /* 側邊欄佔滿整個屏幕寬度 */
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .menu-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    .menu-icon span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #333333;
+        margin-bottom: 5px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-icon.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70vw;
+        height: 100vh;
+        background-color: #f5f5f5ef;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: transform 0.35s ease;
+        transform: translateX(100%);
+        /* 初始時將側邊欄移出畫面 */
+        z-index: 999;
+        overflow-y: auto;
+        /* 添加垂直滾動條 */
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        /* 當添加 active 類時,側邊欄滑入畫面 */
+    }
+
+    .sidebar h2 {
+        margin-top: 5vh;
+        margin-bottom: 20px;
+        color: #695C45;
+        font-size: 23px;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: #333333;
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .menu-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    .menu-icon span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #333333;
+        margin-bottom: 5px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-icon.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70vw;
+        height: 100vh;
+        background-color: #f5f5f5ef;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: transform 0.35s ease;
+        transform: translateX(100%);
+        /* 初始時將側邊欄移出畫面 */
+        z-index: 999;
+        overflow-y: auto;
+        /* 添加垂直滾動條 */
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        /* 當添加 active 類時,側邊欄滑入畫面 */
+    }
+
+    .sidebar h2 {
+        margin-top: 5vh;
+        margin-bottom: 20px;
+        color: #695C45;
+        font-size: 23px;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: #333333;
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .menu-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    .menu-icon span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #c9c9c9;
+        margin-bottom: 5px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-icon.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70vw;
+        height: 100vh;
+        background-color: #242424;
+        /* 將側邊欄背景色改為深灰色 */
+        color: #ddd;
+        /* 將側邊欄內文本設置為淺灰色 */
+        padding: 20px;
+        box-sizing: border-box;
+        transition: transform 0.35s ease;
+        transform: translateX(100%);
+        /* 初始時將側邊欄移出畫面 */
+        z-index: 999;
+        overflow-y: auto;
+        /* 添加垂直滾動條 */
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        /* 當添加 active 類時,側邊欄滑入畫面 */
+    }
+
+    .sidebar h2 {
+        margin-top: 5vh;
+        margin-bottom: 20px;
+        color: #e2d2b7;
+        font-size: 23px;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        margin-bottom: 10px;
+        color: #ddd;
+
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: #ddd;
+        font-weight: bold;
+        font-size: 16px;
+    }
 }

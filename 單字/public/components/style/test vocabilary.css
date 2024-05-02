@@ -7,7 +7,22 @@
 .navbar {
     border-top: 1px solid #ccc;
 }
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background-color: #1f1e1e;
+    }
+    .navbar-brand {
+        color: #fff;
+    }
+    #test-link {
+        font-weight: bold;
+        color: #007bff;
+    }
+    #test-link > span{
+        color: #007bff;
 
+    }
+}
 .container {
     margin-bottom: 60px;
 }
@@ -315,9 +330,6 @@ li {
         background-color: #1f1e1e;
     }
 
-    .navbar-brand {
-        color: #fff;
-    }
 
     .modal {
         background-color: rgba(255, 255, 255, 0.2);

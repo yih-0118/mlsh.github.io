@@ -206,12 +206,12 @@ html,body {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #161616;
+        background-color: #000000;
         color: rgb(255, 255, 255);
     }
 
     .setting {
-        background-color: #161616;
+        background-color: #000000;
         color: rgb(255, 255, 255);
         overflow-y: scroll;
     }
@@ -282,12 +282,12 @@ html,body {
 
 @media (prefers-color-scheme: light) {
     body {
-        background-color: #161616;
+        background-color: #000000;
         color: rgb(255, 255, 255);
     }
 
     .setting {
-        background-color: #161616;
+        background-color: #000000;
         color: rgb(255, 255, 255);
         overflow-y: scroll;
     }
@@ -412,6 +412,7 @@ input:checked+.slider:before {
     background-color: #161616;
     color: #ddd;
     font-size: 16px;
+    margin-top: 2%;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;

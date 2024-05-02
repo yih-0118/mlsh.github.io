@@ -1,7 +1,6 @@
 function showSubcategories(category) {
     const subcategoriesSelect = document.getElementById('subcategories');
     subcategoriesSelect.innerHTML = ''; // Clear existing options
-
     if (category) {
         $('#subcategory-list').show();
 
@@ -112,6 +111,14 @@ function showSubcategories(category) {
                 addSubcategory('Review 1', '../json/B4 review 1.json');
                 addSubcategory('Review 2', '../json/B4 review 2.json');
                 addSubcategory('Review 3', '../json/B4 review 3.json');
+                break;
+            case 'Book5':
+                addSubcategory('Lesson 1', '../json/B5 L1.json');
+                addSubcategory('Lesson 2', '../json/B5 L2.json');
+                addSubcategory('Lesson 3', '../json/B5 L3.json');
+                addSubcategory('Lesson 4', '../json/B5 L4.json');
+                addSubcategory('Lesson 5', '../json/B5 L5.json');
+                addSubcategory('Lesson 6', '../json/B5 L6.json');
                 break;
             case '單字書 Level 2':
                 addSubcategory('Unit 1', '../json/vocabulary(L2 Unit1).json');
@@ -238,3 +245,10 @@ window.onload = function () {
         setSelectedOption(subcategoriesSelect, storedSubcategory);
     }
 };
+const sidebar = document.getElementById('sidebar');
+const menuIcon = document.getElementById('menuIcon');
+
+menuIcon.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    menuIcon.classList.toggle('active');
+});
