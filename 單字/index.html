@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>明倫單字卡</title>
+    <link rel="icon" href="./components/icon/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./components/style/index.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <style>
-        </style>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="./components/javascript/custom.js" type="module"></script>
 </head>
 
 <body>
@@ -46,28 +47,32 @@
             <button type="submit" class="btn btn-primary"
                 style="background-color: #4b52ab; border-color: #4b52ab; color: #ffffff;">Go</button>
         </form>
-        <p class="text-secondary">本應用僅提供教育用途，無任何商業行為。</p>
+        <p class="text-primary">高二段考範圍：B4 L4~6</p>
+        <p class="text-primary">三月雜誌：Unit 14</p>
+        <p class="text-primary">四月雜誌：Unit 3, 6, 8, 9, 14</p>
+        <p class="text-primary">單字書：Level 4 Unit 12~15</p>
     </div>
 
     <div class="sidebar" id="sidebar">
-        <h2><u>資源</u></h2>
+        <!-- <h2><u>資源</u></h2>
         <ul>
             <li><a href="https://github.com/yih-0118/mlsh-vocabulary">Github</a></li>
         </ul>
         <ul>
             <li><a href="https://hackmd.io/@yih0118/SyE19pChp">單字卡介紹</a></li>
-        </ul>
-        
-        <h2><u>最常使用的篇章</u></h2>
-        <ol>
-            <li>Book4 L5</li>
-            <li>Book4 L4</li>
-            <li>Book4 L6</li>
+        </ul> -->
+        <h2><u>前十點擊率</u></h2>
+        <ol id="mostUsedChapters">
         </ol>
+
+        <h2><u>分佈詳情</u></h2>
+        <li><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=927367109&format=interactive">圓餅圖</a></li>
 
         <h2><u>作者資訊</u></h2>
         <p>由一個很無聊的人所建</p>
         <p>電子郵件: s11131191@mlsh.tp.edu.tw</p>
+
+        
     </div>
 
     <div class="menu-icon" id="menuIcon">
@@ -94,7 +99,6 @@
             <span class="text">文意字彙</span>
         </a>
     </nav>
-
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="./components/javascript/index.js"></script>

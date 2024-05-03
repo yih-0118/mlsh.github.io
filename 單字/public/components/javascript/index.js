@@ -69,7 +69,7 @@ function showSubcategories(category) {
                 addSubcategory('Review 1', '../json/B1 review 1.json');
                 addSubcategory('Review 2', '../json/B1 review 2.json');
                 addSubcategory('Review 3', '../json/B1 review 3.json');
-                break;    
+                break;
             case 'Book2':
                 addSubcategory('Lesson 1', '../json/B2 L1.json');
                 addSubcategory('Lesson 2', '../json/B2 L2.json');
@@ -83,7 +83,7 @@ function showSubcategories(category) {
                 addSubcategory('Review 1', '../json/B2 review 1.json');
                 addSubcategory('Review 2', '../json/B2 review 2.json');
                 addSubcategory('Review 3', '../json/B2 review 3.json');
-                break;    
+                break;
             case 'Book3':
                 addSubcategory('Lesson 1', '../json/B3 L1.json');
                 addSubcategory('Lesson 2', '../json/B3 L2.json');
@@ -251,4 +251,34 @@ const menuIcon = document.getElementById('menuIcon');
 menuIcon.addEventListener('click', () => {
     sidebar.classList.toggle('active');
     menuIcon.classList.toggle('active');
+});
+
+$('#vocabularyForm').submit(function (e) {
+    //在這裡我們要先擋掉form默認事件
+    e.preventDefault();
+
+    // 獲取類別和篇目的值
+    const category = $('#categories').val();
+    const subcategoryUrl = $('#subcategories').val();
+    const subcategory = subcategoryUrl.substring(subcategoryUrl.lastIndexOf('/') + 1, subcategoryUrl.lastIndexOf('.json'));
+
+    if (category && subcategory) {//需要先確認必填欄位是否填寫
+        $.ajax({
+            // url為Google Form按下submit的action
+            url: "https://docs.google.com/forms/d/e/1FAIpQLSea6i5d506MbZFJF25eWjA0AIgEmM4JuzxQb3HcKrCk_px_jQ/formResponse",
+            crossDomain: true,//解決跨網域CORS的問題
+            data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
+                "entry.490026391": category,
+                "entry.277839773": subcategory,
+            },
+            type: "POST", //因為是要進行insert的動作，故事用POST
+            dataType: "JSONP",
+            complete: function () {
+                //完成後把這些欄位清空
+                $('#categories').val('');
+                $('#subcategories').val('');
+                //最後跳轉到感謝的頁面
+            }
+        });
+    }
 });
