@@ -261,7 +261,7 @@ form {
     }
 
     .sidebar h2 {
-        margin-top: 5vh;
+        margin-top: 3vh;
         margin-bottom: 20px;
         color: #695C45;
         font-size: 23px;
@@ -286,6 +286,21 @@ form {
 }
 
 @media (prefers-color-scheme: light) {
+    #mostUsedChapters {
+        display: grid;
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+
+    #mostUsedChapters div {
+        background-color: #faf9f9e7;
+        padding: 8px;
+        margin: 3px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+    }
+
     .menu-icon {
         position: fixed;
         top: 20px;
@@ -319,12 +334,12 @@ form {
         position: fixed;
         top: 0;
         right: 0;
-        width: 70vw;
+        width: 80vw;
         height: 100vh;
         background-color: #f5f5f5ef;
         padding: 20px;
         box-sizing: border-box;
-        transition: transform 0.35s ease;
+        transition: transform 0.4s ease;
         transform: translateX(100%);
         /* 初始時將側邊欄移出畫面 */
         z-index: 999;
@@ -338,7 +353,7 @@ form {
     }
 
     .sidebar h2 {
-        margin-top: 5vh;
+        margin-top: 3vh;
         margin-bottom: 20px;
         color: #695C45;
         font-size: 23px;
@@ -363,6 +378,23 @@ form {
 }
 
 @media (prefers-color-scheme: dark) {
+
+    #mostUsedChapters {
+        display: grid;
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+
+    #mostUsedChapters div {
+        background-color: #303030;
+        padding: 8px;
+        margin: 3px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        color: white;
+    }
+
     .menu-icon {
         position: fixed;
         top: 20px;
@@ -396,7 +428,7 @@ form {
         position: fixed;
         top: 0;
         right: 0;
-        width: 70vw;
+        width: 80vw;
         height: 100vh;
         background-color: #242424;
         /* 將側邊欄背景色改為深灰色 */
@@ -418,7 +450,7 @@ form {
     }
 
     .sidebar h2 {
-        margin-top: 5vh;
+        margin-top: 3vh;
         margin-bottom: 20px;
         color: #e2d2b7;
         font-size: 23px;
@@ -441,5 +473,67 @@ form {
         color: #ddd;
         font-weight: bold;
         font-size: 16px;
+    }
+}
+
+.t {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #7a7a7a;
+    /* 深藍色 */
+    margin: 0;
+    padding: 1px 0;
+}
+
+.countdown {
+    color: #695C45;
+    font-size: 16px;
+    white-space: pre-wrap;
+}
+
+#visitCount {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #4b52ab;
+    font-weight: bold;
+}
+
+#visitCount {
+    margin-top: 12px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(0.9);
+    }
+}
+
+#visitCount {
+    animation: pulse 2.3s infinite;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    #visitCount {
+        margin-top: 12px;
+        background-color: #333;
+        color: #fff;
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+    }
+
+    .countdown {
+        color: #aaa;
     }
 }

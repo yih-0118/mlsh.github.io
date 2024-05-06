@@ -7,6 +7,7 @@ function showSubcategories(category) {
         // Populate subcategories based on the selected category
         switch (category) {
             case 'ALL_PLUS_Mar':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('CNN News', '../json/ALL_PLUS_Mar_CNN_News.json');
                 addSubcategory('Unit 1', '../json/ALL_PLUS_Mar_Unit_1.json');
                 addSubcategory('Unit 2', '../json/ALL_PLUS_Mar_Unit_2.json');
@@ -25,6 +26,7 @@ function showSubcategories(category) {
                 break;
 
             case 'ALL_PLUS_Apr':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Unit 1', '../json/ALL_PLUS_Apr_Unit_1.json');
                 addSubcategory('Unit 2', '../json/ALL_PLUS_Apr_Unit_2.json');
                 addSubcategory('Unit 3', '../json/ALL_PLUS_Apr_Unit_3.json');
@@ -40,6 +42,7 @@ function showSubcategories(category) {
                 addSubcategory('Unit 14', '../json/ALL_PLUS_Apr_Unit_14.json');
                 break;
             case 'ALL_PLUS_May':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Unit 1', '../json/ALL_PLUS_May_Unit_1.json');
                 addSubcategory('Unit 2', '../json/ALL_PLUS_May_Unit_2.json');
                 addSubcategory('Unit 3', '../json/ALL_PLUS_May_Unit_3.json');
@@ -57,6 +60,7 @@ function showSubcategories(category) {
                 addSubcategory('Unit 16', '../json/ALL_PLUS_May_Unit_16.json');
                 break;
             case 'Book1':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Lesson 1', '../json/B1 L1.json');
                 addSubcategory('Lesson 2', '../json/B1 L2.json');
                 addSubcategory('Lesson 3', '../json/B1 L3.json');
@@ -71,6 +75,7 @@ function showSubcategories(category) {
                 addSubcategory('Review 3', '../json/B1 review 3.json');
                 break;
             case 'Book2':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Lesson 1', '../json/B2 L1.json');
                 addSubcategory('Lesson 2', '../json/B2 L2.json');
                 addSubcategory('Lesson 3', '../json/B2 L3.json');
@@ -85,6 +90,7 @@ function showSubcategories(category) {
                 addSubcategory('Review 3', '../json/B2 review 3.json');
                 break;
             case 'Book3':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Lesson 1', '../json/B3 L1.json');
                 addSubcategory('Lesson 2', '../json/B3 L2.json');
                 addSubcategory('Lesson 3', '../json/B3 L3.json');
@@ -99,6 +105,7 @@ function showSubcategories(category) {
                 addSubcategory('Review 3', '../json/B3 review 3.json');
                 break;
             case 'Book4':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Lesson 1', '../json/B4 L1.json');
                 addSubcategory('Lesson 2', '../json/B4 L2.json');
                 addSubcategory('Lesson 3', '../json/B4 L3.json');
@@ -113,6 +120,7 @@ function showSubcategories(category) {
                 addSubcategory('Review 3', '../json/B4 review 3.json');
                 break;
             case 'Book5':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Lesson 1', '../json/B5 L1.json');
                 addSubcategory('Lesson 2', '../json/B5 L2.json');
                 addSubcategory('Lesson 3', '../json/B5 L3.json');
@@ -121,6 +129,7 @@ function showSubcategories(category) {
                 addSubcategory('Lesson 6', '../json/B5 L6.json');
                 break;
             case '單字書 Level 2':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Unit 1', '../json/vocabulary(L2 Unit1).json');
                 addSubcategory('Unit 2', '../json/vocabulary(L2 Unit2).json');
                 addSubcategory('Unit 3', '../json/vocabulary(L2 Unit3).json');
@@ -131,6 +140,7 @@ function showSubcategories(category) {
                 addSubcategory('Unit 8', '../json/vocabulary(L2 Unit8).json');
                 break;
             case '單字書 Level 3':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Unit 1', '../json/vocabulary(L3 Unit1).json');
                 addSubcategory('Unit 2', '../json/vocabulary(L3 Unit2).json');
                 addSubcategory('Unit 3', '../json/vocabulary(L3 Unit3).json');
@@ -154,6 +164,7 @@ function showSubcategories(category) {
                 addSubcategory('Unit 21', '../json/vocabulary(L3 Unit21).json');
                 break;
             case '單字書 Level 4':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Unit 1', '../json/vocabulary(L4 Unit1).json');
                 addSubcategory('Unit 2', '../json/vocabulary(L4 Unit2).json');
                 addSubcategory('Unit 3', '../json/vocabulary(L4 Unit3).json');
@@ -177,6 +188,7 @@ function showSubcategories(category) {
                 addSubcategory('Unit 21', '../json/vocabulary(L4 Unit21).json');
                 break;
             case 'link-test':
+                addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('看英文選中文', './components/html/e2c.html');
                 addSubcategory('看中文選英文', './components/html/c2e.html');
                 addSubcategory('文意字彙', './components/html/test vocabulary.html');
@@ -262,7 +274,7 @@ $('#vocabularyForm').submit(function (e) {
     const subcategoryUrl = $('#subcategories').val();
     const subcategory = subcategoryUrl.substring(subcategoryUrl.lastIndexOf('/') + 1, subcategoryUrl.lastIndexOf('.json'));
 
-    if (category && subcategory) {//需要先確認必填欄位是否填寫
+if (category && subcategory && subcategory !== '/') {
         $.ajax({
             // url為Google Form按下submit的action
             url: "https://docs.google.com/forms/d/e/1FAIpQLSea6i5d506MbZFJF25eWjA0AIgEmM4JuzxQb3HcKrCk_px_jQ/formResponse",
@@ -272,7 +284,7 @@ $('#vocabularyForm').submit(function (e) {
                 "entry.277839773": subcategory,
             },
             type: "POST", //因為是要進行insert的動作，故事用POST
-            dataType: "JSONP",
+            dataType: "JSON",
             complete: function () {
                 //完成後把這些欄位清空
                 $('#categories').val('');
@@ -282,3 +294,50 @@ $('#vocabularyForm').submit(function (e) {
         });
     }
 });
+window.onload = function() {
+    $.ajax({
+      url: "https://ipapi.co/json/",
+      type: "GET",
+      dataType: "json",
+      success: function(data) {
+        const city = data.city;
+        const region = data.region;
+        const country = data.country_name;
+        const location = `${city}, ${region}, ${country}`;
+  
+        $.ajax({
+          url: "https://docs.google.com/forms/d/e/1FAIpQLSeCvxN309s_Rrm4nGKaVdP6s9aDmIWoCF-mK49_5nHBATcRqQ/formResponse",
+          crossDomain: true,
+          data: {
+            "entry.271493781": '到',
+            "entry.819813079": location
+          },
+          type: "POST",
+          dataType: "JSON"
+        });
+      },
+    });
+  }
+
+const countdownElement = document.getElementById('countdown');
+
+function updateCountdown() {
+    const examDate = new Date('2024-5-13');
+    const currentDate = new Date();
+
+    const timeDifference = examDate - currentDate;
+    if (timeDifference > 0) {
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        countdownElement.textContent = `距離第二次段考：\n${days} 天 ${hours} 小時 ${minutes} 分 ${seconds} 秒`;
+    } else {
+        countdownElement.textContent = '二段已结束\n';
+    }
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
