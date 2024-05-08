@@ -210,6 +210,7 @@ form {
 
 @media (prefers-color-scheme: light) {
     .menu-icon {
+        margin-top: 12px;
         position: fixed;
         top: 20px;
         right: 20px;
@@ -220,7 +221,7 @@ form {
     .menu-icon span {
         display: block;
         width: 25px;
-        height: 3px;
+        height: 5px;
         background-color: #333333;
         margin-bottom: 5px;
         transition: transform 0.3s ease, opacity 0.3s ease;
@@ -396,6 +397,7 @@ form {
     }
 
     .menu-icon {
+        margin-top: 12px;
         position: fixed;
         top: 20px;
         right: 20px;

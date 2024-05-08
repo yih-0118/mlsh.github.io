@@ -274,7 +274,7 @@ $('#vocabularyForm').submit(function (e) {
     const subcategoryUrl = $('#subcategories').val();
     const subcategory = subcategoryUrl.substring(subcategoryUrl.lastIndexOf('/') + 1, subcategoryUrl.lastIndexOf('.json'));
 
-if (category && subcategory && subcategory !== '/') {
+    if (category && subcategory && subcategory !== '/') {
         $.ajax({
             // url為Google Form按下submit的action
             url: "https://docs.google.com/forms/d/e/1FAIpQLSea6i5d506MbZFJF25eWjA0AIgEmM4JuzxQb3HcKrCk_px_jQ/formResponse",
@@ -294,30 +294,31 @@ if (category && subcategory && subcategory !== '/') {
         });
     }
 });
-window.onload = function() {
+window.onload = function () {
     $.ajax({
-      url: "https://ipapi.co/json/",
-      type: "GET",
-      dataType: "json",
-      success: function(data) {
-        const city = data.city;
-        const region = data.region;
-        const country = data.country_name;
-        const location = `${city}, ${region}, ${country}`;
-  
-        $.ajax({
-          url: "https://docs.google.com/forms/d/e/1FAIpQLSeCvxN309s_Rrm4nGKaVdP6s9aDmIWoCF-mK49_5nHBATcRqQ/formResponse",
-          crossDomain: true,
-          data: {
-            "entry.271493781": '到',
-            "entry.819813079": location
-          },
-          type: "POST",
-          dataType: "JSON"
-        });
-      },
+        url: "https://ipapi.co/json/",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            const city = data.city;
+            const region = data.region;
+            const country = data.country_name;
+            const location = `${city}, ${region}, ${country}`;
+
+
+            $.ajax({
+                url: "https://docs.google.com/forms/d/e/1FAIpQLSeCvxN309s_Rrm4nGKaVdP6s9aDmIWoCF-mK49_5nHBATcRqQ/formResponse",
+                crossDomain: true,
+                data: {
+                    "entry.271493781": '到',
+                    "entry.819813079": location
+                },
+                type: "POST",
+                dataType: "JSON"
+            });
+        },
     });
-  }
+}
 
 const countdownElement = document.getElementById('countdown');
 
