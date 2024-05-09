@@ -1,113 +1,50 @@
 <!DOCTYPE html>
-<html lang="tw">
-
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../icon/favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle"></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="../style/initialize.min.css">
-    <link rel="stylesheet" href="../style/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <title>網站例行性維護</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            padding-top: 50px;
+        }
+        .maintenance {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        .end-time {
+            color: #f00;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="app">
-        <div class="container">
-            <div id="question" class="question"></div>
-            <div class="hint-area">
-                <div id="hint" class="hint" style="display: none; opacity: 0;"> <span class="type"></span> <span
-                        class="answer"></span> </div>
-            </div>
-            <div class="left_hand_side">
-                <button type="radio" id="answerBtn" class="btn"><i class="fa-solid fa-lightbulb"></i></button>
-                <button id="readBtn" class="btn"><i class="fa-solid fa-volume-high"></i></button>
-            </div>
 
-            <div class="rightLeftArea">
-                <button id="prev" class="btn"><i class="fa-solid fa-arrow-left"></i></button>
-                <button id="next" class="btn"><i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
-    </div>
+<div class="maintenance">
+    <h1>網站例行性維護通知</h1>
+    <p>明倫單字卡正在例行性維護</p>
 
-    </div>
-    </div>
-    <div class="panel setting">
-        <div class="container">
-            <div class="block" id="ccc">
-                <h3>設定</h3>
-                <hr>
-                <div class="options">
-                    <div> <input id="mode-1" type="radio" value="random" name="mode" class="mode-set"> <label
-                            for="mode-1">隨機</label> </div>
-                    <div> <input id="mode-2" type="radio" value="sequential" name="mode" class="mode-set"> <label
-                            for="mode-2">順序</label> </div>
-                    <div class="options"> <label class="switch"> <input type="checkbox" id="chinese-display"
-                                class="mode-set"> <span class="slider round"></span> </label> <label
-                            for="chinese-display">顯示中文</label> </div>
-                </div>
-                <!-- <hr> -->
-            </div>
-            <div class="block">
-                <h3>實驗功能</h3>
-                <hr>
-                <div class="more-options">
-                    <div class="option-row"> <label for="color-picker">選擇顏色:</label> <input type="color"
-                            id="color-picker" value="#872dd4" class="mode-set" style="--selected-color: #872dd4;">
-                    </div>
-                    <div class="option-row"> <label for="alphabetical-order"></label>
-                        <div class="options">A-Z排序 : <label class="switch"> <input type="checkbox"
-                                    id="alphabetical-order" class="mode-set"> <span class="slider round"></span>
-                            </label> <label for="chinese-display"></label> </div>
-                    </div>
-                    <div class="option-row">
-                        <label for="rate-slider">語速:</label>
-                        <input type="range" id="rate-slider" min="0.1" max="2" step="0.1" value="1">
-                        <span id="rate-value">1.0</span> <!-- 初始數值為1.0 -->
-                    </div>
-                    <div class="option-row">
-                        <label for="pitch-slider">音高:</label>
-                        <input type="range" id="pitch-slider" min="0" max="2" step="0.1" value="1">
-                        <span id="pitch-value">1.0</span> <!-- 初始數值為1.0 -->
-                    </div>
-                </div>
-                <!-- <hr> -->
-            </div>
-            <div class="block">
-                <table class="list">
-                    <thead>
-                        <!-- 在 HTML 中添加折疊/展開按鈕 -->
-                        <!-- <button id="toggle-list-btn">折疊單字區</button> -->
-                        <h3>單字區</h3>
-                        <div class="option-row">
-                            <input type="text" id="search-input" placeholder="搜尋(中英皆可輸入)">
+    <ul>
+        <li>預計增添考試區榮譽榜</li>
+        <li>沒成功就算了</li>
+    </ul>
+    <p>維護預計於 <span class="end-time">2024-05-09 12:00</span> 結束，屆時網站將恢復正常運行。造成不便。</p>
+    <a href="https://yih-0118.github.io/mlsh.github.io/%E5%96%AE%E5%AD%97/index.html">臨時連結，急用用這個</a>
+</div>
 
-                        </div>
-                        <!-- <hr> -->
-                        <tr>
-                            <th class="underline">索引</th>
-                            <th class="underline">英文</th>
-                            <th class="underline">詞性</th>
-                            <th id="chinese-header" class="hidden"></th>
-                        </tr>
-                    </thead>
-                    <tbody> <!-- List rows will be dynamically added here --> </tbody>
-                </table>
-            </div>
-            <br>
-        </div>
-
-    </div>
-    <button id="menu" class="menu btn round"> <i class="fa-solid fa-list"></i> </button>
-    <button id="house" class="menu btn round"> <i class="fa-solid fa-house"></i> </button>
-
-    <script src="../javascript/rule.js"></script>
-    <script>
-
-    </script>
 </body>
-
 </html>

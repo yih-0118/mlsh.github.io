@@ -1,153 +1,50 @@
 <!DOCTYPE html>
-<html lang="tw">
-
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../icon/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mlsh-看英文選中文</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../style/e2c.css" rel="stylesheet">
+    <title>網站例行性維護</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            padding-top: 50px;
+        }
+        .maintenance {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        .end-time {
+            color: #f00;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
-    <div id="app" class="container">
-        <h1 class="mb-4">看英文選中文</h1>
-        <hr>
-        <div class="mb-3" style="width: 36%; margin-right: 2%; display: inline-block;">
-            <label for="bookSelect" class="form-label">選擇類別:</label>
-            <select id="bookSelect" name="book" class="form-select" @change="filterChapters($event.target.value)">
-                <option value="">選擇書籍</option>
-                <option value="Book1">Book 1</option>
-                <option value="Book2">Book 2</option>
-                <option value="Book3">Book 3</option>
-                <option value="Book4">Book 4</option>
-                <option value="Book5">Book 5</option>
-                <option value="Level 2">單字書 Level 2</option>
-                <option value="Level 3">單字書 Level 3</option>
-                <option value="Level 4">單字書 Level 4</option>
-                <option value="ALL_PLUS_Mar">ALL_PLUS_Mar</option>
-                <option value="ALL_PLUS_Apr">ALL_PLUS_Apr</option>
-                <option value="ALL_PLUS_MaY">ALL_PLUS_May</option>
-            </select>
-        </div>
-        <div class="mb-3" style="width: 61%; display: inline-block;">
-            <label for="chapterSelect" class="form-label">選擇章節:</label>
-            <select id="chapterSelect" class="form-select" @change="selectChapter" disabled>
-                <option value="">請先選擇書籍</option>
-            </select>
-        </div>
-        <div class="d-flex justify-content-between mb-4">
-            <div>
-                <span>分數： {{ score }} / {{ vocabularies.length }}</span>
-                <span class="ms-4">剩餘時間： {{ formatTime(timeLeft) }}</span>
-            </div>
-            <button @click="togglePause" class="pause-button">
-                {{ isPaused ? '繼續' : '暫停' }}
-            </button>
-        </div>
-        <div v-if="currentWord">
-            <div class="question-card">
-                <ul v-if="isEnglishToChineseMode">
-                    <li>
-                        <strong>題號： {{ currentQuestionIndex }} / {{ vocabularies.length }}</strong>
-                    </li>
-                    <li>
-                        <strong>單字：</strong>{{ currentWord.vocabulary }}
-                    </li>
-                    <li>
-                        <strong>詞性：</strong>{{ currentWord.partOfSpeech }}
-                    </li>
-                </ul>
-                <ul v-else>
-                    <li>
-                        <strong>題號： {{ currentQuestionIndex }} / {{ vocabularies.length }}</strong>
-                    </li>
-                    <li>
-                        <strong>中文：</strong>
-                        {{ currentWord.chinese }}
-                    </li>
-                    <li>
-                        <strong>詞性：</strong>
-                        {{ currentWord.partOfSpeech }}
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="options">
-            <div v-for="(option, index) in shuffledOptions" :key="index"
-                :class="{ 'option': true, 'correct-feedback': feedback === 'Correct!' }" @click="checkAnswer(option)">{{
-                option }}</div>
-        </div>
-        <!-- <p v-if="feedback !== null" class="mt-4 fade-out">
-            {{ feedback }}
-        </p> -->
-        <div class="modal" tabindex="-1" role="dialog" v-if="showModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">回答結果</h5>
-                        <!-- <button type="button" class="close" @click="showModal = false"> -->
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>{{ feedback }}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn"
-                            style="background-color: #4b52ab; border-color: #4b52ab; color: #ffffff;"
-                            @click="nextWord(); showModal = false;">Next</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton" :disabled="isQuizCompleted">
-            {{ isQuizCompleted ? 'Quiz Completed' : 'Next' }}
-        </button> -->
 
-        <div class="modal" tabindex="-1" role="dialog" v-if="showResultModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">測驗結果</h5>
-                        <button type="button" class="close" @click="showResultModal = false">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>你的分數是：{{ score }} / {{ vocabularies.length }}</p>
-                        <p>正確率：{{ (score / vocabularies.length * 100).toFixed(0) }}%</p>
-                        <p>錯誤題目：</p>
-                        <ul>
-                            <li v-for="word in uniqueWrongAnswers" :key="word.vocabulary">
-                                {{ word.vocabulary }} - {{ word.chinese }}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <nav class="navbar fixed-bottom d-flex">
-        <a class="navbar-brand unique-page" href="/index.html" role="button" id="home-link">
-            <i class="fa-solid fa-house"></i> <span class="text">首頁</span>
-        </a>
-        <a class="navbar-brand" href="./e2c.html" role="button" id="e2c-link">
-            <i class="fa-solid fa-language"></i> <span class="text">英到中</span>
-        </a>
-        <a class="navbar-brand" href="./c2e.html" role="button" id="c2e-link">
-            <span class="material-symbols-outlined">translate</span>
-            <span class="text">中到英</span>
-        </a>
-        <a class="navbar-brand" href="./test vocabulary.html" role="button" id="test-link">
-            <i class="fas fa-book icon"></i>
-            <span class="text">文意字彙</span>
-        </a>
-    </nav>
-    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
-    <script src="../javascript/e2c.js"></script>
+<div class="maintenance">
+    <h1>網站例行性維護通知</h1>
+    <p>明倫單字卡正在例行性維護</p>
+
+    <ul>
+        <li>預計增添考試區榮譽榜</li>
+        <li>沒成功就算了</li>
+    </ul>
+    <p>維護預計於 <span class="end-time">2024-05-09 12:00</span> 結束，屆時網站將恢復正常運行。造成不便。</p>
+    <a href="https://yih-0118.github.io/mlsh.github.io/%E5%96%AE%E5%AD%97/index.html">臨時連結，急用用這個</a>
+</div>
 
 </body>
+</html>
