@@ -1,50 +1,125 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="tw">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>網站例行性維護</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f1f1f1;
-            padding-top: 50px;
-        }
-        .maintenance {
-            background-color: #fff;
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-        .end-time {
-            color: #f00;
-            font-weight: bold;
-        }
-    </style>
+    <title>明倫單字卡</title>
+    <link rel="icon" href="./components/icon/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./components/style/index.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
+    <div class="container">
+        <form id="vocabularyForm" class="mb-5">
+            <h1><i class="fas fa-book-open"></i> 明倫單字卡</h1>
+            <div class="mb-3"><label for="categories" id="categories-label" class="form-label"></label><select id="categories" name="category" class="form-select" onchange="showSubcategories(this.value)">
+                    <option value="">選擇類別</option>
+                    <!-- <option value="link-test">Quiz</option> -->
+                    <option value="Book1">Book 1</option>
+                    <option value="Book2">Book 2</option>
+                    <option value="Book3">Book 3</option>
+                    <option value="Book4">Book 4</option>
+                    <option value="Book5">Book 5</option>
+                    <option value="單字書 Level 2">單字書 Level 2</option>
+                    <option value="單字書 Level 3">單字書 Level 3</option>
+                    <option value="單字書 Level 4">單字書 Level 4</option>
+                    <option value="ALL_PLUS_Mar">ALL PLUS March</option>
+                    <option value="ALL_PLUS_Apr">ALL PLUS April</option>
+                    <option value="ALL_PLUS_May">ALL PLUS May</option>
+                </select></div>
+            <div id="subcategory-list" class="mb-3" style="display: none;">
+                <label for="subcategories" id="subcategories-label" class="form-label"></label>
+                <select id="subcategories" name="subcategory" class="form-select">
+                    <!-- Subcategories will be populated dynamically -->
+                </select>
 
-<div class="maintenance">
-    <h1>網站例行性維護通知</h1>
-    <p>明倫單字卡正在例行性維護</p>
+            </div>
 
-    <ul>
-        <li>預計增添考試區榮譽榜</li>
-        <li>沒成功就算了</li>
-    </ul>
-    <p>維護預計於 <span class="end-time">2024-05-09 12:00</span> 結束，屆時網站將恢復正常運行。造成不便。</p>
-    <a href="https://yih-0118.github.io/mlsh.github.io/%E5%96%AE%E5%AD%97/index.html">臨時連結，急用用這個</a>
-</div>
+            <!-- <div class="mb-3">
+                <label for="searchInput" class="form-label">搜尋:</label>
+                <input type="text" class="form-control" id="searchInput" placeholder="搜尋(中英皆可輸入)">
+            </div> -->
+            <button type="submit" class="btn btn-primary"
+                style="background-color: #4b52ab; border-color: #4b52ab; color: #ffffff;">Go</button>
+            <p id="visitCount">
+                <i class="fa-regular fa-circle-user"></i> 今日造訪次數 : <span id="visitCountNumber"></span>
+            </p>
+        </form>
+        <p class="t">高二段考範圍</p>
+        <p class="t">三月雜誌：Unit 14</p>
+        <p class="t">四月雜誌：Unit 3, 6, 8, 9, 14</p>
+        <p class="t">單字書：Level 4 Unit 12~15</p>
+    </div>
 
+    <div class="sidebar" id="sidebar">
+        <!-- <h2><u>資源</u></h2>
+        <ul>
+            <li><a href="https://github.com/yih-0118/mlsh-vocabulary">Github</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://hackmd.io/@yih0118/SyE19pChp">單字卡介紹</a></li>
+        </ul> -->
+        <h2><u>點擊率</u></h2>
+        <div id="mostUsedChapters"></div>
+
+
+        <h2><u>分佈圖表</u></h2>
+        <ul>
+            <li><a
+                    href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=829889471&format=image">❗️類別分佈❗️</a>
+            </li>
+            <li><a
+                    href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=723178579&format=image">🔺單元分佈🔻</a>
+            </li>
+        </ul>
+
+        <!-- <h2><u>分佈詳情</u></h2>
+        <li><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=927367109&format=interactive">圓餅圖</a></li> -->
+        <h2><u>溫馨提醒</u></h2>
+        <p class="countdown" id="countdown"></p>
+        <!-- <h2><u>作者資訊</u></h2>
+        <p>由一個很無聊的人所建❓</p> -->
+
+
+    </div>
+
+    <div class="menu-icon" id="menuIcon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- 新增文字輔助 -->
+    <nav class="navbar fixed-bottom d-flex">
+        <a class="navbar-brand unique-page" href="./index.html" role="button" id="home-link">
+            <i class="fa-solid fa-house"></i>
+            <span class="text">首頁</span>
+        </a>
+        <a class="navbar-brand" href="./components/html/e2c.html" role="button" id="e2c-link">
+            <i class="fa-solid fa-language"></i> <span class="text">英到中</span>
+        </a>
+        <a class="navbar-brand" href="./components/html/c2e.html" role="button" id="c2e-link">
+            <span class="material-symbols-outlined">translate</span></i>
+            <span class="text">中到英</span>
+        </a>
+        <a class="navbar-brand" href="./components/html/test vocabulary.html" role="button" id="test-link">
+            <i class="fas fa-book icon"></i>
+            <span class="text">文意字彙</span>
+        </a>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="./components/javascript/index.js"></script>
+    <script type="module" src="./components/javascript/analytic.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4792394423150983"
+        crossorigin="anonymous"></script>
+    <script src="./components/javascript/custom.js" type="module"></script>
 </body>
+
 </html>

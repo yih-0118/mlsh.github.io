@@ -73,7 +73,7 @@ function fetchDataAndUpdate() {
 }
 
 // 每十秒執行一次
-setInterval(fetchDataAndUpdate, 2500);
+setInterval(fetchDataAndUpdate, 5000);
 
 // 初始載入一次
 fetchDataAndUpdate();

@@ -222,3 +222,35 @@ var vm = new Vue({
         }
     }
 });
+const sidebar = document.getElementById('sidebar');
+const menuIcon = document.getElementById('menuIcon');
+
+menuIcon.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    menuIcon.classList.toggle('active');
+});
+
+const bookSelect = document.getElementById('bookSelect');
+const chapterSelect = document.getElementById('chapterSelect');
+
+
+bookSelect.addEventListener('change', sendToGoogleForm);
+chapterSelect.addEventListener('change', sendToGoogleForm);
+
+function sendToGoogleForm() {
+    const category = bookSelect.value;
+    const subcategoryUrl = chapterSelect.value;
+    const subcategory = subcategoryUrl.substring(subcategoryUrl.lastIndexOf('/') + 1, subcategoryUrl.lastIndexOf('.json'));
+
+    if (subcategory) {
+        const formData = new FormData();
+        formData.append('entry.66807398', "test vocabulary");
+        formData.append('entry.954497501', category);
+        formData.append('entry.698090182', subcategory);
+        fetch('https://docs.google.com/forms/d/e/1FAIpQLScQNw03tQ3A_RCwXp34YxgwkghnrEtgag_Ru_ETI0t76nJQPw/formResponse', {
+            method: 'POST',
+            mode: 'no-cors', 
+            body: formData
+        })
+    }
+}

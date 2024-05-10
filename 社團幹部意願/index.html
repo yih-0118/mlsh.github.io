@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社團幹部意願</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            /* 淺灰色背景 */
+            font-family: 'Montserrat', sans-serif;
+            /* 使用 Montserrat 字體 */
+        }
+
+        .container {
+            margin-top: 5%;
+            /* 調整垂直間距 */
+        }
+
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .btn-primary {
+            background-color: #6090cb;
+            /* 藍色按鈕 */
+            border: none;
+            color: #fff;
+            padding: 12px 28px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 10px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #5076a3;
+            /* 深藍色按鈕 */
+        }
+
+        .form-control:focus {
+            border-color: #6090cb;
+            box-shadow: 0 0 0 0.2rem rgba(96, 144, 203, 0.25);
+        }
+
+        h2 {
+            color: #333;
+            font-weight: 700;
+            /* 加粗標題 */
+        }
+
+        label {
+            color: #555;
+            /* 深灰色標籤 */
+            font-weight: 600;
+            /* 加粗標籤 */
+        }
+
+        input[type="text"] {
+            border: 1px solid #ccc;
+            /* 灰色輸入框邊框 */
+            border-radius: 5px;
+            /* 圓角輸入框 */
+            padding: 10px 15px;
+            /* 增加內邊距 */
+        }
+
+        input[type="text"]:focus {
+            border-color: #6090cb;
+            /* 聚焦時的藍色邊框 */
+            box-shadow: 0 0 0 0.2rem rgba(96, 144, 203, 0.25);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #222;
+                /* 深灰色背景 */
+                color: #f8f9fa;
+                /* 淺灰色文字 */
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            .container {
+                margin-top: 5%;
+            }
+
+            .card {
+                background-color: #333;
+                /* 深灰色卡片背景 */
+                border-radius: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .card:hover {
+                transform: translateY(-8px);
+            }
+
+            .btn-primary {
+                background-color: #6090cb;
+                border: none;
+                color: #fff;
+                padding: 12px 28px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                border-radius: 10px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+
+            .btn-primary:hover {
+                background-color: #5076a3;
+            }
+
+            .form-control {
+                background-color: #444;
+                /* 深灰色輸入框背景 */
+                border: 1px solid #555;
+                /* 灰色輸入框邊框 */
+                color: #f8f9fa;
+                /* 淺灰色輸入框文字 */
+            }
+
+            .form-control:focus {
+                border-color: #6090cb;
+                box-shadow: 0 0 0 0.2rem rgba(96, 144, 203, 0.25);
+            }
+
+            h2 {
+                color: #f8f9fa;
+                /* 淺灰色標題 */
+                font-weight: 700;
+            }
+
+            label {
+                color: #ccc;
+                /* 灰色標籤 */
+                font-weight: 600;
+            }
+
+            input[type="text"] {
+                border-radius: 5px;
+                padding: 10px 15px;
+            }
+
+            input[type="text"]:focus {
+                border-color: #6090cb;
+                box-shadow: 0 0 0 0.2rem rgba(96, 144, 203, 0.25);
+            }
+
+            .alert-success {
+                background-color: #28a745;
+                /* 綠色成功提示 */
+                color: #fff;
+            }
+
+            .alert-danger {
+                background-color: #dc3545;
+                /* 紅色錯誤提示 */
+                color: #fff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card p-4">
+                    <h2 class="text-center mb-2">程式設計社</h2>
+                    <h2 class="text-center mb-2">接任幹部意願調查</h2>
+                    <hr>
+                    <form id="gradeForm">
+                        <div class="form-group">
+                            <label for="seatNumber">姓名</label>
+                            <input type="text" class="form-control" id="seatNumber" required>
+                        </div>
+                        <div id="preferenceFields">
+                            <!-- This will contain the dynamically added preference fields -->
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block mt-4" id="addPreferenceBtn">添加志願</button>
+                        <button type="submit" class="btn btn-primary btn-block mt-2">提交</button>
+                    </form>
+                    <div id="result" class="mt-3 text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入 Bootstrap 和 jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#addPreferenceBtn').click(function () {
+                const preferenceCount = $('.preference').length;
+                if (preferenceCount < 8) {
+                    const newPreferenceField = `
+            <div class="form-group">
+              <label for="score">志願${preferenceCount + 1}</label>
+              <div class="input-group">
+                <select class="form-control preference" required>
+                  <option value="">請選擇志願</option>
+                  <option value="社長">社長</option>
+                  <option value="副社長">副社長</option>
+                  <option value="文書">文書</option>
+                  <option value="總務">總務</option>
+                  <option value="公關">公關</option>
+                  <option value="教學">教學</option>
+                  <option value="美宣">美宣</option>
+                  <option value="活動">活動</option>
+
+                  <option value="無意願">無意願</option>
+                </select>
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-outline-danger deletePreferenceBtn" ${preferenceCount === 0 ? 'disabled' : ''}>刪除</button>
+                </div>
+              </div>
+            </div>
+          `;
+                    $('#preferenceFields').append(newPreferenceField);
+                    updateDeleteButtonState();
+                }
+            });
+
+            $(document).on('click', '.deletePreferenceBtn', function () {
+                const preferenceFields = $(this).closest('#preferenceFields').find('.form-group');
+                if (preferenceFields.length > 1) {
+                    const currentPreferenceField = $(this).closest('.form-group');
+                    currentPreferenceField.remove();
+                    updatePreferenceLabels();
+                    updateDeleteButtonState();
+                }
+            });
+
+            function updateDeleteButtonState() {
+                $('.deletePreferenceBtn').prop('disabled', $('.preference').length === 1);
+            }
+
+            $('#gradeForm').submit(function (event) {
+                event.preventDefault();
+                sendToGoogleForm();
+            });
+
+            function updatePreferenceLabels() {
+                $('#preferenceFields').find('.form-group').each(function (index) {
+                    $(this).find('label').text(`志願${index + 1}`);
+                });
+            }
+
+            function sendToGoogleForm() {
+                const name = $('#seatNumber').val();
+                let preferences = [];
+                $('.preference').each(function () {
+                    preferences.push($(this).val());
+                });
+
+                if (name && preferences.length > 0) {
+                    const formData = new FormData();
+                    formData.append('entry.2032722806', name);
+                    formData.append('entry.1365132693', preferences.join(', '));
+                    fetch('https://docs.google.com/forms/d/e/1FAIpQLScxkcPVr9T-LVX2Ue8o_EPjKf8zI6VNozlHmh67fek0NIwkKQ/formResponse', {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: formData
+                    })
+                        .then(response => {
+                            $('#seatNumber').val('');
+                            $('.preference').val('');
+                            $('#result').html('<div class="alert alert-success" role="alert">提交成功！感謝🥹</div>');
+                            console.log('提交成功');
+                        })
+                        .catch(error => {
+                            $('#result').html('<div class="alert alert-danger" role="alert">提交失敗！</div>');
+                            console.error('提交失敗:', error);
+                        });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
