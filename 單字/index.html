@@ -18,7 +18,8 @@
     <div class="container">
         <form id="vocabularyForm" class="mb-5">
             <h1><i class="fa-solid fa-book-bookmark"></i> 明倫單字卡</h1>
-            <div class="mb-3"><label for="categories" id="categories-label" class="form-label"></label><select id="categories" name="category" class="form-select" onchange="showSubcategories(this.value)">
+            <div class="mb-3"><label for="categories" id="categories-label" class="form-label"></label><select
+                    id="categories" name="category" class="form-select" onchange="showSubcategories(this.value)">
                     <option value="">選擇類別</option>
                     <!-- <option value="link-test">Quiz</option> -->
                     <option value="Book1">Book 1</option>
@@ -32,6 +33,7 @@
                     <option value="ALL_PLUS_Mar">ALL PLUS March</option>
                     <option value="ALL_PLUS_Apr">ALL PLUS April</option>
                     <option value="ALL_PLUS_May">ALL PLUS May</option>
+                    <option value="其他">其他</option>
                 </select></div>
             <div id="subcategory-list" class="mb-3" style="display: none;">
                 <label for="subcategories" id="subcategories-label" class="form-label"></label>
@@ -77,9 +79,6 @@
             <li><a
                     href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=723178579&format=image">🔺單元分佈🔻</a>
             </li>
-            <li><a
-                href="        https://docs.google.com/spreadsheets/d/e/2PACX-1vRGYv7WBngvUH8c1R-yEvri6QGRj5AY3JloTcjOam3YJWYdwJ270njGB5fgf1SkTdZrG4b5ZIW2EspX/pubchart?oid=1331513432&format=image">🔵使用來源分佈🔵</a>
-        </li>
         </ul>
 
         <!-- <h2><u>分佈詳情</u></h2>
@@ -88,8 +87,6 @@
         <p class="countdown" id="countdown"></p>
         <!-- <h2><u>作者資訊</u></h2>
         <p>由一個很無聊的人所建❓</p> -->
-
-
     </div>
 
     <div class="menu-icon" id="menuIcon">
@@ -123,6 +120,43 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4792394423150983"
         crossorigin="anonymous"></script>
     <script src="./components/javascript/custom.js" type="module"></script>
+    <script>
+        // 請求通知許可權
+        function requestNotificationPermission() {
+            if (Notification.permission !== "granted") {
+                Notification.requestPermission().then(function (permission) {
+                    if (permission === "granted") {
+                        console.log("已獲得通知許可權");
+                    } else {
+                        console.log("未獲得通知許可權");
+                    }
+                });
+            }
+        }
+        // 顯示通知
+        function showNotification(title, body) {
+            if (Notification.permission === "granted") {
+                var notification = new Notification(title, {
+                    body: body,
+                    icon: "./components/icon/favicon.ico" // 可選,通知圖標
+                });
+            }
+        }
+        $(document).ready(function () {
+            var vocabularies = [];
+            requestNotificationPermission();
+            $.getJSON("./components/json/all.json", function (data) {
+                vocabularies = data.vocabularies;
+            });
+            setInterval(function () {
+                var randomIndex = Math.floor(Math.random() * vocabularies.length);
+                var randomVocabulary = vocabularies[randomIndex];
+                var title = "背單字拉～";
+                var body = "單字：" + randomVocabulary.vocabulary + "、詞性：" + randomVocabulary.partOfSpeech + "，中文：" + randomVocabulary.chinese;
+                showNotification(title, body);
+            }, 10000); // 10分鐘
+        });
+    </script>
 </body>
 
 </html>

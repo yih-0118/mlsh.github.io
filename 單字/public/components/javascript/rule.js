@@ -351,6 +351,8 @@ class MenuController {
         });
     }
 }
+
+
 document.getElementById("house").addEventListener("click", function() {
     window.location.href = "/index.html";
 });
@@ -358,3 +360,49 @@ document.getElementById("house").addEventListener("click", function() {
 const renderer = new VocabularyRenderer('#question', '#hint', '.list');
 const controller = new VocabularyController(renderer);
 const menuController = new MenuController('#menu', '.setting');
+        // 將單字表轉換成CSV格式
+        function convertToCSV() {
+            var table = document.querySelector('.list');
+            var rows = table.querySelectorAll('tr');
+            var csv = [];
+
+            for (var i = 0; i < rows.length; i++) {
+                var row = [], cols = rows[i].querySelectorAll('td, th');
+
+                for (var j = 0; j < cols.length; j++) {
+                    row.push(cols[j].innerText);
+                }
+
+                csv.push(row.join(','));
+            }
+
+            return csv.join('\n');
+        }
+
+        // 下載CSV檔案
+        function downloadCSV() {
+            var csv = convertToCSV();
+            var blob = new Blob([csv], { type: 'text/csv;charset=big5;' });
+            var link = document.createElement('a');
+            
+            // 獲取GMT+8時區當前時間
+            var tzOffset = 8 * 60 * 60 * 1000; // 時區偏移量(8小時)
+            var currentTime = new Date(Date.now() + tzOffset);
+            var timestamp = currentTime.toISOString().replace(/[-:]/g, '').replace('T', '_').split('.')[0];
+          
+            if (link.download !== undefined) {
+              var url = URL.createObjectURL(blob);
+              link.setAttribute('href', url);
+              link.setAttribute('download', '明倫單字卡_' + timestamp + '.csv');
+              link.style.visibility = 'hidden';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }
+          }
+        
+
+        // 在匯出按鈕上綁定點擊事件
+        document.getElementById('exportBtn').addEventListener('click', function () {
+            downloadCSV();
+        });

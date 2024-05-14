@@ -3,7 +3,11 @@ function showSubcategories(category) {
     subcategoriesSelect.innerHTML = ''; // Clear existing options
     if (category) {
         $('#subcategory-list').show();
-
+        switch (category) {
+            case '其他':
+                addSubcategory('選擇篇目', '/404.html');
+                addSubcategory('段考特別篇', '../json/段考特別篇.json');
+        }
         // Populate subcategories based on the selected category
         switch (category) {
             case 'ALL_PLUS_Mar':
@@ -27,19 +31,20 @@ function showSubcategories(category) {
 
             case 'ALL_PLUS_Apr':
                 addSubcategory('選擇篇目', '/404.html');
+                addSubcategory('CNN News', '../json/ALL_PLUS_Apr_CNN_News.json');
                 addSubcategory('Unit 1', '../json/ALL_PLUS_Apr_Unit_1.json');
                 addSubcategory('Unit 2', '../json/ALL_PLUS_Apr_Unit_2.json');
                 addSubcategory('Unit 3', '../json/ALL_PLUS_Apr_Unit_3.json');
                 addSubcategory('Unit 4', '../json/ALL_PLUS_Apr_Unit_4.json');
                 addSubcategory('Unit 5', '../json/ALL_PLUS_Apr_Unit_5.json');
                 addSubcategory('Unit 6', '../json/ALL_PLUS_Apr_Unit_6.json');
-                addSubcategory('Unit 7', '../json/ALL_PLUS_Apr_Unit_7.json');
                 addSubcategory('Unit 8', '../json/ALL_PLUS_Apr_Unit_8.json');
                 addSubcategory('Unit 9', '../json/ALL_PLUS_Apr_Unit_9.json');
                 addSubcategory('Unit 10', '../json/ALL_PLUS_Apr_Unit_10.json');
                 addSubcategory('Unit 12', '../json/ALL_PLUS_Apr_Unit_12.json');
                 addSubcategory('Unit 13', '../json/ALL_PLUS_Apr_Unit_13.json');
                 addSubcategory('Unit 14', '../json/ALL_PLUS_Apr_Unit_14.json');
+                addSubcategory('Unit 15', '../json/ALL_PLUS_Apr_Unit_15.json');
                 break;
             case 'ALL_PLUS_May':
                 addSubcategory('選擇篇目', '/404.html');
@@ -206,10 +211,12 @@ function showSubcategories(category) {
 function addSubcategory(name, jsonUrl) {
     const subcategoriesSelect = document.getElementById('subcategories');
     const option = document.createElement('option');
-    option.value = jsonUrl; // 將 JSON 文件路徑設為 value
+    option.value = jsonUrl;
     option.text = name;
+    option.dataset.unitName = name; // 存儲單元名稱
     subcategoriesSelect.appendChild(option);
 }
+
 
 $(document).ready(function () {
     $('#vocabularyForm').submit(function (event) {
