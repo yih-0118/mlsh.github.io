@@ -362,6 +362,7 @@ const controller = new VocabularyController(renderer);
 const menuController = new MenuController('#menu', '.setting');
         // 將單字表轉換成CSV格式
         function convertToCSV() {
+            let csvContent = "\ufeff"; // 添加 UTF-8 BOM
             var table = document.querySelector('.list');
             var rows = table.querySelectorAll('tr');
             var csv = [];
@@ -377,12 +378,14 @@ const menuController = new MenuController('#menu', '.setting');
             }
 
             return csv.join('\n');
+            return csvContent;
+
         }
 
         // 下載CSV檔案
         function downloadCSV() {
             var csv = convertToCSV();
-            var blob = new Blob([csv], { type: 'text/csv;charset=big5;' });
+            var blob = new Blob([csv], { type: 'text/csv' });
             var link = document.createElement('a');
             
             // 獲取GMT+8時區當前時間

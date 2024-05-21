@@ -168,6 +168,23 @@ const app = Vue.createApp({
                 "ALL PLUS May Unit 14": "../json/ALL_PLUS_May_Unit_14.json",
                 "ALL PLUS May Unit 15": "../json/ALL_PLUS_May_Unit_15.json",
                 "ALL PLUS May Unit 16": "../json/ALL_PLUS_May_Unit_16.json",
+
+
+
+                "ALL PLUS Jun. CNN_News": "../json/ALL_PLUS_Jun_CNN_News.json",
+                "ALL PLUS Jun. Unit 1": "../json/ALL_PLUS_Jun_Unit_1.json",
+                "ALL PLUS Jun. Unit 2": "../json/ALL_PLUS_Jun_Unit_2.json",
+                "ALL PLUS Jun. Unit 3": "../json/ALL_PLUS_Jun_Unit_3.json",
+                "ALL PLUS Jun. Unit 4": "../json/ALL_PLUS_Jun_Unit_4.json",
+                "ALL PLUS Jun. Unit 5": "../json/ALL_PLUS_Jun_Unit_5.json",
+                "ALL PLUS Jun. Unit 6": "../json/ALL_PLUS_Jun_Unit_6.json",
+                "ALL PLUS Jun. Unit 7": "../json/ALL_PLUS_Jun_Unit_7.json",
+                "ALL PLUS Jun. Unit 9": "../json/ALL_PLUS_Jun_Unit_9.json",
+                "ALL PLUS Jun. Unit 10": "../json/ALL_PLUS_Jun_Unit_10.json",
+                "ALL PLUS Jun. Unit 11": "../json/ALL_PLUS_Jun_Unit_11.json",
+                "ALL PLUS Jun. Unit 12": "../json/ALL_PLUS_Jun_Unit_12.json",
+                "ALL PLUS Jun. Unit 13": "../json/ALL_PLUS_Jun_Unit_13.json",
+                "ALL PLUS Jun. Unit 14": "../json/ALL_PLUS_Jun_Unit_14.json",
                 "段考特別篇": "../json/段考特別篇.json",
             },
             books: {
@@ -205,6 +222,11 @@ const app = Vue.createApp({
                     'ALL PLUS May Unit 2', 'ALL PLUS May Unit 3', 'ALL PLUS May Unit 4', 'ALL PLUS May Unit 5', 'ALL PLUS May Unit 6',
                     'ALL PLUS May Unit 7', 'ALL PLUS May Unit 8', 'ALL PLUS May Unit 10', 'ALL PLUS May Unit 11', 'ALL PLUS May Unit 12', 'ALL PLUS May Unit 13',
                     'ALL PLUS May Unit 14', 'ALL PLUS May Unit 15', 'ALL PLUS May Unit 16'],
+
+                'ALL_PLUS_Jun': ['請選取章節','ALL PLUS Jun. CNN_News', 'ALL PLUS Jun. Unit 1', 'ALL PLUS Jun. Unit 2', 'ALL PLUS Jun. Unit 3', 'ALL PLUS Jun. Unit 4',
+                    'ALL PLUS Jun. Unit 5', 'ALL PLUS Jun. Unit 6', 'ALL PLUS Jun. Unit 8', 'ALL PLUS Jun. Unit 9',
+                    'ALL PLUS Jun. Unit 10', 'ALL PLUS Jun. Unit 12', 'ALL PLUS Jun. Unit 13', 'ALL PLUS Jun. Unit 14'],
+
                 '其他': ['請選取章節', '段考特別篇']                          // 添加更多書籍和對應的章節
             },
             selectedBook: null,

@@ -64,6 +64,23 @@ function showSubcategories(category) {
                 addSubcategory('Unit 15', '../json/ALL_PLUS_May_Unit_15.json');
                 addSubcategory('Unit 16', '../json/ALL_PLUS_May_Unit_16.json');
                 break;
+            case 'ALL_PLUS_Jun':
+                addSubcategory('選擇篇目', '/404.html');
+                addSubcategory('CNN News', '../json/ALL_PLUS_Jun_CNN_News.json');
+                addSubcategory('Unit 1', '../json/ALL_PLUS_Jun_Unit_1.json');
+                addSubcategory('Unit 2', '../json/ALL_PLUS_Jun_Unit_2.json');
+                addSubcategory('Unit 3', '../json/ALL_PLUS_Jun_Unit_3.json');
+                addSubcategory('Unit 4', '../json/ALL_PLUS_Jun_Unit_4.json');
+                addSubcategory('Unit 5', '../json/ALL_PLUS_Jun_Unit_5.json');
+                addSubcategory('Unit 6', '../json/ALL_PLUS_Jun_Unit_6.json');
+                addSubcategory('Unit 7', '../json/ALL_PLUS_Jun_Unit_7.json');
+                addSubcategory('Unit 9', '../json/ALL_PLUS_Jun_Unit_9.json');
+                addSubcategory('Unit 10', '../json/ALL_PLUS_Jun_Unit_10.json');
+                addSubcategory('Unit 11', '../json/ALL_PLUS_Jun_Unit_11.json');
+                addSubcategory('Unit 12', '../json/ALL_PLUS_Jun_Unit_12.json');
+                addSubcategory('Unit 13', '../json/ALL_PLUS_Jun_Unit_13.json');
+                addSubcategory('Unit 14', '../json/ALL_PLUS_Jun_Unit_14.json');
+                break;
             case 'Book1':
                 addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('Lesson 1', '../json/B1 L1.json');
@@ -330,7 +347,7 @@ window.onload = function () {
 const countdownElement = document.getElementById('countdown');
 
 function updateCountdown() {
-    const examDate = new Date('2024-5-13');
+    const examDate = new Date('2025-1-17');
     const currentDate = new Date();
 
     const timeDifference = examDate - currentDate;
@@ -340,9 +357,9 @@ function updateCountdown() {
         const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-        countdownElement.textContent = `距離第二次段考：\n${days} 天 ${hours} 小時 ${minutes} 分 ${seconds} 秒`;
+        countdownElement.textContent = `距離學測：\n${days} 天 ${hours} 小時 ${minutes} 分 ${seconds} 秒`;
     } else {
-        countdownElement.textContent = '二段已结束\n';
+        countdownElement.textContent = '學測已结束\n';
     }
 }
 

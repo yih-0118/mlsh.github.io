@@ -6,7 +6,7 @@ result = {
 }
 
 if __name__ == "__main__":
-    with open("all.csv", "r", encoding="utf-8") as csvfile:
+    with open("段考特供版.csv", "r", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         next(reader)
         for row in reader:
@@ -17,7 +17,7 @@ if __name__ == "__main__":
             }
             result["vocabularies"].append(dictionary)
 
-    with open("all.json", 'w', encoding="utf-8") as file:
+    with open("段考特供版.json", 'w', encoding="utf-8") as file:
         file.write(dumps(result, ensure_ascii=False))
 
 # from json import dumps

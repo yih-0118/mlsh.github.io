@@ -5,6 +5,9 @@
 }
 
 .navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     border-top: 1px solid #ccc;
 }
 @media (prefers-color-scheme: dark) {
