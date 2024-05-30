@@ -10,14 +10,11 @@
     <style>
         body {
             background-color: #f8f9fa;
-            /* 淺灰色背景 */
             font-family: 'Montserrat', sans-serif;
-            /* 使用 Montserrat 字體 */
         }
 
         .container {
             margin-top: 5%;
-            /* 調整垂直間距 */
         }
 
         .card {
@@ -32,7 +29,6 @@
 
         .btn-primary {
             background-color: #6090cb;
-            /* 藍色按鈕 */
             border: none;
             color: #fff;
             padding: 12px 28px;
@@ -47,7 +43,6 @@
 
         .btn-primary:hover {
             background-color: #5076a3;
-            /* 深藍色按鈕 */
         }
 
         .form-control:focus {
@@ -58,37 +53,46 @@
         h2 {
             color: #333;
             font-weight: 700;
-            /* 加粗標題 */
         }
 
         label {
             color: #555;
-            /* 深灰色標籤 */
             font-weight: 600;
-            /* 加粗標籤 */
         }
 
         input[type="text"] {
             border: 1px solid #ccc;
-            /* 灰色輸入框邊框 */
             border-radius: 5px;
-            /* 圓角輸入框 */
             padding: 10px 15px;
-            /* 增加內邊距 */
         }
 
         input[type="text"]:focus {
             border-color: #6090cb;
-            /* 聚焦時的藍色邊框 */
             box-shadow: 0 0 0 0.2rem rgba(96, 144, 203, 0.25);
+        }
+
+        .announcement {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+        }
+
+        .announcement h4 {
+            font-weight: 700;
+            color: #333;
+        }
+
+        .announcement p {
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
 
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: #222;
-                /* 深灰色背景 */
                 color: #f8f9fa;
-                /* 淺灰色文字 */
                 font-family: 'Montserrat', sans-serif;
             }
 
@@ -98,7 +102,6 @@
 
             .card {
                 background-color: #333;
-                /* 深灰色卡片背景 */
                 border-radius: 20px;
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
                 transition: transform 0.3s ease-in-out;
@@ -128,11 +131,8 @@
 
             .form-control {
                 background-color: #444;
-                /* 深灰色輸入框背景 */
                 border: 1px solid #555;
-                /* 灰色輸入框邊框 */
                 color: #f8f9fa;
-                /* 淺灰色輸入框文字 */
             }
 
             .form-control:focus {
@@ -142,13 +142,11 @@
 
             h2 {
                 color: #f8f9fa;
-                /* 淺灰色標題 */
                 font-weight: 700;
             }
 
             label {
                 color: #ccc;
-                /* 灰色標籤 */
                 font-weight: 600;
             }
 
@@ -162,17 +160,119 @@
                 box-shadow: 0 0 0 0.2rem rgba(96, 144, 203, 0.25);
             }
 
+            .announcement {
+                background-color: #444;
+                border-radius: 10px;
+            }
+
+            .announcement h4 {
+                color: #f8f9fa;
+            }
+
+            .announcement p {
+                color: #ccc;
+            }
+
             .alert-success {
                 background-color: #28a745;
-                /* 綠色成功提示 */
                 color: #fff;
             }
 
             .alert-danger {
                 background-color: #dc3545;
-                /* 紅色錯誤提示 */
                 color: #fff;
             }
+        }
+
+
+        #mostUsedChapters {
+            display: grid;
+            flex-wrap: wrap;
+            justify-content: left;
+        }
+
+
+
+
+        .menu-icon {
+            margin-top: 12px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #060606;
+            margin-bottom: 5px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .menu-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80vw;
+            height: 100vh;
+            background-color: #ffffff;
+            /* 將側邊欄背景色改為深灰色 */
+            color: #ddd;
+            /* 將側邊欄內文本設置為淺灰色 */
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.35s ease;
+            transform: translateX(100%);
+            /* 初始時將側邊欄移出畫面 */
+            z-index: 999;
+            overflow-y: auto;
+            /* 添加垂直滾動條 */
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+            /* 當添加 active 類時,側邊欄滑入畫面 */
+        }
+
+        .sidebar h2 {
+            margin-top: 3vh;
+            margin-bottom: 20px;
+            color: #e2d2b7;
+            font-size: 23px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+            color: #ddd;
+
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #ddd;
+            font-weight: bold;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -181,14 +281,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
+
                 <div class="card p-4">
                     <h2 class="text-center mb-2">程式設計社</h2>
                     <h2 class="text-center mb-2">接任幹部意願調查</h2>
                     <hr>
                     <form id="gradeForm">
                         <div class="form-group">
-                            <label for="seatNumber">姓名</label>
+                            <label for="seatNumber">班級座號(例如:21004)</label>
                             <input type="text" class="form-control" id="seatNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" class="form-control" id="name" required>
                         </div>
                         <div id="preferenceFields">
                             <!-- This will contain the dynamically added preference fields -->
@@ -200,6 +305,58 @@
                 </div>
             </div>
         </div>
+        <div class="sidebar" id="sidebar">
+            <div class="announcement">
+                <h4 class="mb-4">幹部職位說明</h4>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h5 class="text-dark"><u>社長：</u></h5>
+                        <p>協調社內大小事，監督幹部職責，維護社員之間的關係，決策社團方針，與大小事務，學校及社團內部間的溝通橋樑，安排社團行事曆，辦理社團同樂會外食訂購。</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="text-dark"><u>副社長：</u></h5>
+                        <p>輔佐社長協調社內大小事，監督幹部職責，維護社員之間的關係，密切關注學校相關訊息，給予提醒，學校及社團內部間的溝通橋樑，安排社團行事曆，定期查看社團扣點情形。</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h5 class="text-dark"><u>文書：</u></h5>
+                        <p>填寫社課紀錄，社課時負責點名，負責會議紀錄。</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="text-dark"><u>總務：</u></h5>
+                        <p>催促社團成員繳錢，估計預算，控制經費運用，記帳，詳細紀錄社團收入及支出。</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h5 class="text-dark"><u>公關：</u></h5>
+                        <p>管理社團帳號，和友社交流。</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="text-dark"><u>教學：</u></h5>
+                        <p>安排課表，確定社課細流（包括時間分配、需使用器材），偶爾代理老師為本社新生上課，規劃社課備案，以備不時之需，負責照顧高一社員，讓剛進入高中生活的高一新生能儘早適應高中生活。</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="text-dark"><u>美宣：</u></h5>
+                        <p>負責社團活動的美術設計與宣傳。</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="text-dark"><u>活動：</u></h5>
+                        <p>規劃與籌辦社團活動。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="menu-icon" id="menuIcon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
 
     <!-- 引入 Bootstrap 和 jQuery JS -->
@@ -208,6 +365,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+        const sidebar = document.getElementById('sidebar');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuIcon.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+        });
+
         $(document).ready(function () {
             $('#addPreferenceBtn').click(function () {
                 const preferenceCount = $('.preference').length;
@@ -226,7 +391,6 @@
                   <option value="教學">教學</option>
                   <option value="美宣">美宣</option>
                   <option value="活動">活動</option>
-
                   <option value="無意願">無意願</option>
                 </select>
                 <div class="input-group-append">
@@ -266,14 +430,16 @@
             }
 
             function sendToGoogleForm() {
-                const name = $('#seatNumber').val();
+                const seatNumber = $('#seatNumber').val();
+                const name = $('#name').val();
                 let preferences = [];
                 $('.preference').each(function () {
                     preferences.push($(this).val());
                 });
 
-                if (name && preferences.length > 0) {
+                if (seatNumber && name && preferences.length > 0) {
                     const formData = new FormData();
+                    formData.append('entry.1884173569', seatNumber);
                     formData.append('entry.2032722806', name);
                     formData.append('entry.1365132693', preferences.join(', '));
                     fetch('https://docs.google.com/forms/d/e/1FAIpQLScxkcPVr9T-LVX2Ue8o_EPjKf8zI6VNozlHmh67fek0NIwkKQ/formResponse', {
@@ -283,9 +449,14 @@
                     })
                         .then(response => {
                             $('#seatNumber').val('');
+                            $('#name').val('');
                             $('.preference').val('');
                             $('#result').html('<div class="alert alert-success" role="alert">提交成功！感謝🥹</div>');
                             console.log('提交成功');
+                            // 在成功提示後，設置定時器，在3秒後隱藏成功提示
+                            setTimeout(function () {
+                                $('#result').empty();
+                            }, 3000);
                         })
                         .catch(error => {
                             $('#result').html('<div class="alert alert-danger" role="alert">提交失敗！</div>');
@@ -293,6 +464,7 @@
                         });
                 }
             }
+
         });
     </script>
 </body>
