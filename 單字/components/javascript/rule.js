@@ -125,12 +125,23 @@ class VocabularyRenderer {
         speechSynthesis.speak(utterance);
     }
 
+    getAudioUrl(word) {
+        const encodedWord = encodeURIComponent(word);
+        return `https://dict.youdao.com/dictvoice?type=1&audio=${encodedWord}`;
+    }
+
+    playAudio(word) {
+        const audioUrl = this.getAudioUrl(word);
+        const audio = new Audio(audioUrl);
+        audio.play();
+    }
+
     renderQuestion() {
         const word = state.words[state.currentIndex];
         const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
         tl.fromTo(this.questionEl, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3 })
-          .fromTo(this.hintEl.find('.type'), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3 }, '-=0.2')
-          .fromTo(this.hintEl.find('.answer'), { x: 20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3 }, '-=0.2');
+            .fromTo(this.hintEl.find('.type'), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3 }, '-=0.2')
+            .fromTo(this.hintEl.find('.answer'), { x: 20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3 }, '-=0.2');
         this.questionEl.html(word.vocabulary);
         this.hintEl.find('.type').html(word.partOfSpeech);
         this.hintEl.find('.answer').html(word.chinese);
@@ -154,10 +165,11 @@ class VocabularyRenderer {
                 state.currentIndex = index;
                 this.renderQuestion();
             });
-            row.append($('<td></td>').addClass('idx').text(index+1));
+            row.append($('<td></td>').addClass('idx').text(index + 1));
             row.append($('<td></td>').text(word.vocabulary));
             row.append($('<td></td>').text(word.partOfSpeech));
             row.append($('<td></td>').addClass('chinese').text(word.chinese));
+            row.append($('<td></td>').append($('<i class="fa-regular fa-star"></i>').click(() => addToFavourites(word.vocabulary))));
             this.listEl.append(row);
         });
         this.updateChineseDisplay();
@@ -273,7 +285,7 @@ class VocabularyController {
     }
     handleRead() {
         const currentWord = state.words[state.currentIndex].vocabulary;
-        this.renderer.speak(currentWord);
+        this.renderer.playAudio(currentWord);
     }
 }
 
@@ -353,59 +365,151 @@ class MenuController {
 }
 
 
-document.getElementById("house").addEventListener("click", function() {
+document.getElementById("house").addEventListener("click", function () {
     window.location.href = "/index.html";
 });
 
 const renderer = new VocabularyRenderer('#question', '#hint', '.list');
 const controller = new VocabularyController(renderer);
 const menuController = new MenuController('#menu', '.setting');
-        // 將單字表轉換成CSV格式
-        function convertToCSV() {
-            let csvContent = "\ufeff"; // 添加 UTF-8 BOM
-            var table = document.querySelector('.list');
-            var rows = table.querySelectorAll('tr');
-            var csv = [];
+// 將單字表轉換成CSV格式
+function convertToCSV() {
+    let csvContent = "\ufeff"; // 添加 UTF-8 BOM
+    var table = document.querySelector('.list');
+    var rows = table.querySelectorAll('tr');
+    var csv = [];
 
-            for (var i = 0; i < rows.length; i++) {
-                var row = [], cols = rows[i].querySelectorAll('td, th');
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
 
-                for (var j = 0; j < cols.length; j++) {
-                    row.push(cols[j].innerText);
-                }
-
-                csv.push(row.join(','));
-            }
-
-            return csv.join('\n');
-            return csvContent;
-
+        for (var j = 0; j < cols.length; j++) {
+            row.push(cols[j].innerText);
         }
 
-        // 下載CSV檔案
-        function downloadCSV() {
-            var csv = convertToCSV();
-            var blob = new Blob([csv], { type: 'text/csv' });
-            var link = document.createElement('a');
-            
-            // 獲取GMT+8時區當前時間
-            var tzOffset = 8 * 60 * 60 * 1000; // 時區偏移量(8小時)
-            var currentTime = new Date(Date.now() + tzOffset);
-            var timestamp = currentTime.toISOString().replace(/[-:]/g, '').replace('T', '_').split('.')[0];
-          
-            if (link.download !== undefined) {
-              var url = URL.createObjectURL(blob);
-              link.setAttribute('href', url);
-              link.setAttribute('download', '明倫單字卡_' + timestamp + '.csv');
-              link.style.visibility = 'hidden';
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-            }
-          }
-        
+        csv.push(row.join(','));
+    }
 
-        // 在匯出按鈕上綁定點擊事件
-        document.getElementById('exportBtn').addEventListener('click', function () {
-            downloadCSV();
+    return csv.join('\n');
+    return csvContent;
+
+}
+
+// 下載CSV檔案
+function downloadCSV() {
+    var csv = convertToCSV();
+    var blob = new Blob([csv], { type: 'text/csv' });
+    var link = document.createElement('a');
+
+    // 獲取GMT+8時區當前時間
+    var tzOffset = 8 * 60 * 60 * 1000; // 時區偏移量(8小時)
+    var currentTime = new Date(Date.now() + tzOffset);
+    var timestamp = currentTime.toISOString().replace(/[-:]/g, '').replace('T', '_').split('.')[0];
+
+    if (link.download !== undefined) {
+        var url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', '明倫單字卡_' + timestamp + '.csv');
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+}
+
+
+// 在匯出按鈕上綁定點擊事件
+document.getElementById('exportBtn').addEventListener('click', function () {
+    downloadCSV();
+});
+
+let favouriteWords = [];
+
+function addToFavourites(word) {
+    const wordData = state.words.find(w => w.vocabulary === word);
+
+    if (wordData) {
+        if (!favouriteWords.some(w => w.vocabulary === word && w.partOfSpeech === partOfSpeech)) {
+            favouriteWords.push(wordData);
+            localStorage.setItem('favouriteWords', JSON.stringify(favouriteWords));
+            console.log(`${word} 已添加到收藏列表!`);
+            displayFavouriteWords();
+        } else {
+            console.log(`${word} 已在收藏列表中!`);
+        }
+    }
+}
+
+function displayFavouriteWords() {
+    const favouriteWordsContainer = document.getElementById('favouriteWordsContainer');
+    favouriteWordsContainer.innerHTML = '';
+
+    favouriteWords.forEach((wordData, index) => {
+        const row = document.createElement('div');
+        row.classList.add('favourite-word-row');
+
+        const indexElement = document.createElement('span');
+        indexElement.textContent = index + 1 + '.';
+        row.appendChild(indexElement);
+
+        const vocabularyElement = document.createElement('span');
+        vocabularyElement.textContent = wordData.vocabulary;
+        row.appendChild(vocabularyElement);
+
+        const partOfSpeechElement = document.createElement('span');
+        partOfSpeechElement.textContent = wordData.partOfSpeech;
+        row.appendChild(partOfSpeechElement);
+
+        const chineseElement = document.createElement('span');
+        chineseElement.textContent = wordData.chinese;
+        row.appendChild(chineseElement);
+
+        const removeButton = document.createElement('i');
+        removeButton.classList.add('fa-solid', 'fa-trash');
+        removeButton.addEventListener('click', () => {
+            removeFavouriteWord(wordData.vocabulary);
         });
+        row.appendChild(removeButton);
+
+        favouriteWordsContainer.appendChild(row);
+
+        // Animation effect
+        row.classList.add('fade-in');
+    });
+}
+
+function removeFavouriteWord(word) {
+    favouriteWords = favouriteWords.filter(w => w.vocabulary !== word);
+    localStorage.setItem('favouriteWords', JSON.stringify(favouriteWords));
+    displayFavouriteWords();
+}
+
+window.onload = function () {
+    const storedFavouriteWords = JSON.parse(localStorage.getItem('favouriteWords'));
+    if (storedFavouriteWords) {
+        favouriteWords = storedFavouriteWords;
+    }
+    displayFavouriteWords();
+}
+
+// Handle star icon toggle and animation
+function toggleFavouriteWord(word) {
+    const wordData = state.words.find(w => w.vocabulary === word);
+    const starIcon = document.querySelector(`#star-${word}`);
+
+    if (wordData) {
+        if (!favouriteWords.some(w => w.vocabulary === word)) {
+            favouriteWords.push(wordData);
+            starIcon.classList.remove('fa-regular');
+            starIcon.classList.add('fa-solid', 'favourite');
+            localStorage.setItem('favouriteWords', JSON.stringify(favouriteWords));
+            console.log(`${word} 已添加到收藏列表!`);
+        } else {
+            favouriteWords = favouriteWords.filter(w => w.vocabulary !== word);
+            starIcon.classList.remove('fa-solid', 'favourite');
+            starIcon.classList.add('fa-regular');
+            localStorage.setItem('favouriteWords', JSON.stringify(favouriteWords));
+            console.log(`${word} 已從收藏列表中移除!`);
+        }
+        displayFavouriteWords();
+    }
+}

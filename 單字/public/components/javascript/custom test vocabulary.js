@@ -6,7 +6,7 @@ function fetchDataAndRender() {
             mostUsedChaptersContainer.empty(); // 清除先前的資料
             var currentNum = 1;
             data.forEach(function (chapterData, index) {
-                if (index >=10 && index <15) {
+                if (index >= 10 && index < 15) {
                     var chapter = chapterData[0];
                     var frequency = chapterData[1];
                     if (chapter !== "") {

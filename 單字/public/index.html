@@ -9,67 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./components/style/index.css">
+    <link rel="stylesheet" href="./components/style/dark-index.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-        .Btn {
-            border-radius: 5px;
-            width: 100%;
-            height: 6vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #4b52ab;
-            border: none;
-            color: white;
-            font-weight: 600;
-            gap: 8px;
-            cursor: pointer;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
-            position: relative;
-            overflow: hidden;
-            transition-duration: .3s;
-          }
-          
-          .svgIcon {
-            width: 16px;
-          }
-          
-          .svgIcon path {
-            fill: white;
-          }
-          
-          .Btn::before {
-            width: 130px;
-            height: 130px;
-            position: absolute;
-            content: "";
-            background-color: white;
-            border-radius: 50%;
-            left: -100%;
-            top: 0;
-            transition-duration: .3s;
-            mix-blend-mode: difference;
-          }
-          
-          .Btn:hover::before {
-            transition-duration: .3s;
-            transform: translate(100%,-50%);
-            border-radius: 0;
-          }
-          
-          .Btn:active {
-            transform: translate(5px,5px);
-            transition-duration: .3s;
-          }
+
           
     </style>
 </head>
 
 <body>
     <div class="container">
-        <form id="vocabularyForm" class="mb-5">
+        <form id="vocabularyForm" method="POST" action="path/to/your/form/processing/script.php" class="mb-5">
             <h1><i class="fa-solid fa-book-bookmark"></i> 明倫單字卡</h1>
             <div class="mb-3"><label for="categories" id="categories-label" class="form-label"></label><select
                     id="categories" name="category" class="form-select" onchange="showSubcategories(this.value)">
@@ -95,17 +47,8 @@
                     <!-- Subcategories will be populated dynamically -->
                 </select>
             </div>
-
-            <!-- <div class="mb-3">
-                <label for="searchInput" class="form-label">搜尋:</label>
-                <input type="text" class="form-control" id="searchInput" placeholder="搜尋(中英皆可輸入)">
-            </div> -->
-            <!-- <button type="submit" class="btn btn-primary"
-                style="background-color: #4b52ab; border-color: #4b52ab; color: #ffffff;">Go</button> -->
-                <button class="Btn">
-                    Go
-                  </button>
-                  
+            <div class="g-recaptcha" data-sitekey="6LfQEfYpAAAAAElquiiBnCcnH-JObsp5K77sBVeG"></div>
+            <button class="Btn">Go</button>
             <p id="visitCount">
                 <i class="fa-regular fa-circle-user"></i> 今日造訪次數 : <span id="visitCountNumber"></span>
             </p>
@@ -137,7 +80,8 @@
                     href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=723178579&format=image">🔺單元分佈🔻</a>
             </li>
         </ul>
-
+        <h2><u>日誌</u></h2>
+        <li><a href="./components/html/log.html">更新紀錄</a></li>
         <!-- <h2><u>分佈詳情</u></h2>
         <li><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=927367109&format=interactive">圓餅圖</a></li> -->
         <!-- <h2><u>溫馨提醒</u></h2>
@@ -182,6 +126,13 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4792394423150983"
         crossorigin="anonymous"></script>
     <script src="./components/javascript/custom.js" type="module"></script>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+});
+    </script>
 </body>
 
 </html>
