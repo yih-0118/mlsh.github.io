@@ -209,6 +209,37 @@ function showSubcategories(category) {
                 addSubcategory('Unit 20', '../json/vocabulary(L4 Unit20).json');
                 addSubcategory('Unit 21', '../json/vocabulary(L4 Unit21).json');
                 break;
+            case '常春藤 Level 5':
+                addSubcategory('選擇篇目', '/404.html');
+                addSubcategory('Unit 1', '../json/vocabulary(L5 Unit1).json');
+                addSubcategory('Unit 2', '../json/vocabulary(L5 Unit2).json');
+                addSubcategory('Unit 3', '../json/vocabulary(L5 Unit3).json');
+                addSubcategory('Unit 4', '../json/vocabulary(L5 Unit4).json');
+                addSubcategory('Unit 5', '../json/vocabulary(L5 Unit5).json');
+                addSubcategory('Unit 6', '../json/vocabulary(L5 Unit6).json');
+                addSubcategory('Unit 7', '../json/vocabulary(L5 Unit7).json');
+                addSubcategory('Unit 8', '../json/vocabulary(L5 Unit8).json');
+                addSubcategory('Unit 9', '../json/vocabulary(L5 Unit9).json');
+                addSubcategory('Unit 10', '../json/vocabulary(L5 Unit10).json');
+                addSubcategory('Unit 11', '../json/vocabulary(L5 Unit11).json');
+                addSubcategory('Unit 12', '../json/vocabulary(L5 Unit12).json');
+                addSubcategory('Unit 13', '../json/vocabulary(L5 Unit13).json');
+                addSubcategory('Unit 14', '../json/vocabulary(L5 Unit14).json');
+                addSubcategory('Unit 15', '../json/vocabulary(L5 Unit15).json');
+                addSubcategory('Unit 16', '../json/vocabulary(L5 Unit16).json');
+                addSubcategory('Unit 17', '../json/vocabulary(L5 Unit17).json');
+                addSubcategory('Unit 18', '../json/vocabulary(L5 Unit18).json');
+                addSubcategory('Unit 19', '../json/vocabulary(L5 Unit19).json');
+                addSubcategory('Unit 20', '../json/vocabulary(L5 Unit20).json');
+                addSubcategory('Unit 21', '../json/vocabulary(L5 Unit21).json');
+                addSubcategory('Unit 22', '../json/vocabulary(L5 Unit22).json');
+                addSubcategory('Unit 23', '../json/vocabulary(L5 Unit23).json');
+                addSubcategory('Unit 24', '../json/vocabulary(L5 Unit24).json');
+                addSubcategory('Unit 25', '../json/vocabulary(L5 Unit25).json');
+
+
+                
+                break;
             case 'link-test':
                 addSubcategory('選擇篇目', '/404.html');
                 addSubcategory('看英文選中文', './components/html/e2c.html');

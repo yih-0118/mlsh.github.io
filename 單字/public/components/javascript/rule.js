@@ -127,7 +127,7 @@ class VocabularyRenderer {
 
     getAudioUrl(word) {
         const encodedWord = encodeURIComponent(word);
-        return `https://dict.youdao.com/dictvoice?type=0&audio=${encodedWord}`;
+        return `https://dict.youdao.com/dictvoice?type1&audio=${encodedWord}`;
     }
 
     playAudio(word) {
@@ -502,13 +502,13 @@ function toggleFavouriteWord(word) {
             starIcon.classList.remove('fa-regular');
             starIcon.classList.add('fa-solid', 'favourite');
             localStorage.setItem('favouriteWords', JSON.stringify(favouriteWords));
-            console.log(`${word} 已添加到收藏列表!`);
+            //console.log(`${word} 已添加到收藏列表!`);
         } else {
             favouriteWords = favouriteWords.filter(w => w.vocabulary !== word);
             starIcon.classList.remove('fa-solid', 'favourite');
             starIcon.classList.add('fa-regular');
             localStorage.setItem('favouriteWords', JSON.stringify(favouriteWords));
-            console.log(`${word} 已從收藏列表中移除!`);
+            //console.log(`${word} 已從收藏列表中移除!`);
         }
         displayFavouriteWords();
     }

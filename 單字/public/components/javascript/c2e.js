@@ -123,6 +123,33 @@ const app = Vue.createApp({
                 "Vocabulary (L4 Unit19)": "../json/vocabulary(L4 Unit19).json",
                 "Vocabulary (L4 Unit20)": "../json/vocabulary(L4 Unit20).json",
                 "Vocabulary (L4 Unit21)": "../json/vocabulary(L4 Unit21).json",
+                "Vocabulary (L5 Unit1)": "../json/vocabulary(L5 Unit1).json",
+                "Vocabulary (L5 Unit2)": "../json/vocabulary(L5 Unit2).json",
+                "Vocabulary (L5 Unit3)": "../json/vocabulary(L5 Unit3).json",
+                "Vocabulary (L5 Unit4)": "../json/vocabulary(L5 Unit4).json",
+                "Vocabulary (L5 Unit5)": "../json/vocabulary(L5 Unit5).json",
+                "Vocabulary (L5 Unit6)": "../json/vocabulary(L5 Unit6).json",
+                "Vocabulary (L5 Unit7)": "../json/vocabulary(L5 Unit7).json",
+                "Vocabulary (L5 Unit8)": "../json/vocabulary(L5 Unit8).json",
+                "Vocabulary (L5 Unit9)": "../json/vocabulary(L5 Unit9).json",
+                "Vocabulary (L5 Unit10)": "../json/vocabulary(L5 Unit10).json",
+                "Vocabulary (L5 Unit11)": "../json/vocabulary(L5 Unit11).json",
+                "Vocabulary (L5 Unit12)": "../json/vocabulary(L5 Unit12).json",
+                "Vocabulary (L5 Unit13)": "../json/vocabulary(L5 Unit13).json",
+                "Vocabulary (L5 Unit14)": "../json/vocabulary(L5 Unit14).json",
+                "Vocabulary (L5 Unit15)": "../json/vocabulary(L5 Unit15).json",
+                "Vocabulary (L5 Unit16)": "../json/vocabulary(L5 Unit16).json",
+                "Vocabulary (L5 Unit17)": "../json/vocabulary(L5 Unit17).json",
+                "Vocabulary (L5 Unit18)": "../json/vocabulary(L5 Unit18).json",
+                "Vocabulary (L5 Unit19)": "../json/vocabulary(L5 Unit19).json",
+                "Vocabulary (L5 Unit20)": "../json/vocabulary(L5 Unit20).json",
+                "Vocabulary (L5 Unit21)": "../json/vocabulary(L5 Unit21).json",
+                "Vocabulary (L5 Unit22)": "../json/vocabulary(L5 Unit22).json",
+                "Vocabulary (L5 Unit23)": "../json/vocabulary(L5 Unit23).json",
+                "Vocabulary (L5 Unit24)": "../json/vocabulary(L5 Unit24).json",
+                "Vocabulary (L5 Unit25)": "../json/vocabulary(L5 Unit25).json",
+
+
                 "ALL PLUS 1/15~1/31": "../json/開學考雜誌.json",
                 "ALL PLUS Mar. CNN_News": "../json/ALL_PLUS_Mar_CNN_News.json",
                 "ALL PLUS Mar. Unit 1": "../json/ALL_PLUS_Mar_Unit_1.json",
@@ -207,6 +234,15 @@ const app = Vue.createApp({
                     'Vocabulary (L4 Unit7)', 'Vocabulary (L4 Unit8)', 'Vocabulary (L4 Unit9)', 'Vocabulary (L4 Unit10)', 'Vocabulary (L4 Unit11)',
                     'Vocabulary (L4 Unit12)', 'Vocabulary (L4 Unit13)', 'Vocabulary (L4 Unit14)', 'Vocabulary (L4 Unit15)', 'Vocabulary (L4 Unit16)',
                     'Vocabulary (L4 Unit17)', 'Vocabulary (L4 Unit18)', 'Vocabulary (L4 Unit19)', 'Vocabulary (L4 Unit20)', 'Vocabulary (L4 Unit21)'
+                ],
+                'Level 5': ['請選取章節',
+                    'Vocabulary (L5 Unit1)',
+                    'Vocabulary (L5 Unit2)', 'Vocabulary (L5 Unit3)', 'Vocabulary (L5 Unit4)', 'Vocabulary (L5 Unit5)', 'Vocabulary (L5 Unit6)',
+                    'Vocabulary (L5 Unit7)', 'Vocabulary (L5 Unit8)', 'Vocabulary (L5 Unit9)', 'Vocabulary (L5 Unit10)', 'Vocabulary (L5 Unit11)',
+                    'Vocabulary (L5 Unit12)', 'Vocabulary (L5 Unit13)', 'Vocabulary (L5 Unit14)', 'Vocabulary (L5 Unit15)', 'Vocabulary (L5 Unit16)',
+                    'Vocabulary (L5 Unit17)', 'Vocabulary (L5 Unit18)', 'Vocabulary (L5 Unit19)', 'Vocabulary (L5 Unit20)', 'Vocabulary (L5 Unit21)'
+                    , 'Vocabulary (L5 Unit22)', 'Vocabulary (L5 Unit23)', 'Vocabulary (L5 Unit24)', 'Vocabulary (L5 Unit25)'
+                    
                 ],
                 'ALL_PLUS_Mar': ['請選取章節', 'ALL PLUS Mar. CNN_News', 'ALL PLUS Mar. Unit 1', 'ALL PLUS Mar. Unit 2', 'ALL PLUS Mar. Unit 3',
                     'ALL PLUS Mar. Unit 4', 'ALL PLUS Mar. Unit 5', 'ALL PLUS Mar. Unit 6', 'ALL PLUS Mar. Unit 7', 'ALL PLUS Mar. Unit 9',
@@ -298,7 +334,6 @@ const app = Vue.createApp({
                 options.forEach(option => {
                     option.style.pointerEvents = 'auto';
                 });
-
                 this.startTimer();
             } else {
                 this.isQuizCompleted = true;
@@ -374,19 +409,22 @@ const app = Vue.createApp({
             if (option === correctAnswer) {
                 this.feedback = '答對了!';
                 this.score++;
+                this.nextWord()
+                // 不顯示彈出小畫面
             } else {
                 this.wrongAnswers.push(this.currentWord);
                 this.feedback = '答錯了，正確答案是：' + correctAnswer;
+                this.showModal = true; // 只在答錯時顯示彈出小畫面
+                // 將所有選項設為不可點選狀態
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.style.pointerEvents = 'none';
+                });
             }
-            this.showModal = true;
-            // 將所有選項設為不可點w選狀態
-            const options = document.querySelectorAll('.option');
-            options.forEach(option => {
-                option.style.pointerEvents = 'none';
-            });
             clearInterval(this.timer);
-
+            this.startTimer();
         },
+
 
         resetQuiz() {
             this.currentQuestionIndex = 0;
