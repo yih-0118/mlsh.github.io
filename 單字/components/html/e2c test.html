@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="../icon/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mlsh-看英文選中文</title>
@@ -14,9 +15,7 @@
 
 <body>
     <div id="app" class="container">
-        <h1 class="mb-4">看英文選中文</h1>
-        <hr>
-        <div class="mb-3" style="width: 36%; margin-right: 2%; display: inline-block;">
+        <div class="mb-3" style="width: 36%; margin-right: 2%; display: inline-block; margin-top: 10vh;">
             <label for="bookSelect" class="form-label">選擇類別:</label>
             <select id="bookSelect" name="book" class="form-select" @change="filterChapters($event.target.value)">
                 <option value="">選擇書籍</option>
@@ -84,15 +83,11 @@
                 :class="{ 'option': true, 'correct-feedback': feedback === 'Correct!' }" @click="checkAnswer(option)">{{
                 option }}</div>
         </div>
-        <!-- <p v-if="feedback !== null" class="mt-4 fade-out">
-            {{ feedback }}
-        </p> -->
         <div class="modal" tabindex="-1" role="dialog" v-if="showModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">回答結果</h5>
-                        <!-- <button type="button" class="close" @click="showModal = false"> -->
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -107,10 +102,6 @@
                 </div>
             </div>
         </div>
-        <!-- <button @click="nextWord" class="btn btn-primary mt-4" id="submitButton" :disabled="isQuizCompleted">
-            {{ isQuizCompleted ? 'Quiz Completed' : 'Next' }}
-        </button> -->
-
         <div class="modal" tabindex="-1" role="dialog" v-if="showResultModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -134,7 +125,7 @@
             </div>
         </div>
     </div>
-    <nav class="navbar fixed-bottom d-flex">
+    <nav class="navbar fixed-bottom">
         <a class="navbar-brand unique-page" href="/index.html" role="button" id="home-link">
             <i class="fa-solid fa-house"></i> <span class="text">首頁</span>
         </a>
@@ -151,37 +142,12 @@
         </a>
     </nav>
     <div class="sidebar" id="sidebar">
-        <!-- <h2><u>資源</u></h2>
-        <ul>
-            <li><a href="https://github.com/yih-0118/mlsh-vocabulary">Github</a></li>
-        </ul>
-        <ul>
-            <li><a href="https://hackmd.io/@yih0118/SyE19pChp">單字卡介紹</a></li>
-        </ul> -->
         <h2><u>點擊率</u></h2>
         <div id="mostUsedChapters"></div>
-
-<!-- 
-        <h2><u>分佈圖表</u></h2>
-        <ul>
-            <li><a
-                    href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=829889471&format=image">❗️類別分佈❗️</a>
-            </li>
-            <li><a
-                    href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=723178579&format=image">🔺單元分佈🔻</a>
-            </li>
-        </ul> -->
-
-        <!-- <h2><u>分佈詳情</u></h2>
-        <li><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRRWoejV4KXDc80AjasCIOP2HXS7-V5QcdwDrLtBGqtw4D9YSY4qIbAofpXQ-hon0c0dEy891YF13eh/pubchart?oid=927367109&format=interactive">圓餅圖</a></li> -->
-        <!-- <h2><u>溫馨提醒</u></h2>
-        <p class="countdown" id="countdown"></p> -->
         <h2><u>作者資訊</u></h2>
         <p>由一個很無聊的人所建❓</p>
         <p>聯絡資訊(bug回報)
             s11131191@mlsh.tp.edu.tw</p>
-
-
     </div>
 
     <div class="menu-icon" id="menuIcon">
@@ -192,7 +158,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
     <script type="module" src="../javascript/custom e2c.js"></script>
 
-    <script src="../javascript/e2c test.js"></script>
+    <script src="../javascript/e2c.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
+
 </html>

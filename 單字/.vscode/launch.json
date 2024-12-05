@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/yih_0118/Documents/GitHub/mlsh.github.io/單字/fjdfnisnfsjk",
+      "program": "/Users/yih_0118/Documents/GitHub/mlsh.github.io/單字/fjdfnisnfsjk/build/Debug/outDebug"
+    }
+  ]
+}

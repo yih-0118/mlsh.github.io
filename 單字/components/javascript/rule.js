@@ -245,19 +245,66 @@ class VocabularyController {
         } else {
             state.currentIndex = (state.currentIndex + 1) % state.words.length;
         }
-        gsap.to(this.renderer.questionEl, { duration: 0.3, opacity: 0, scale: 0.8, ease: "power2.in", onComplete: () => this.renderer.renderQuestion() });
+    
+        const wordElement = this.renderer.questionEl;
+        const hintElement = this.renderer.hintEl;
+    
+        // 滑出動畫
+        gsap.to([wordElement, hintElement], {
+            x: '-100%', // 滑出方向
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => {
+                this.renderer.renderQuestion(); // 更新內容
+                gsap.set([wordElement, hintElement], { x: '100%' }); // 重置為滑入位置
+    
+                // 滑入動畫
+                gsap.to([wordElement, hintElement], {
+                    x: '0%',
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            }
+        });
+    
         this.saveState();
     }
-
+    
     handlePrev() {
         if (state.isRandom) {
             state.currentIndex = utils.getRandomIndex(state.minIndex, state.maxIndex);
         } else {
             state.currentIndex = (state.currentIndex - 1 + state.words.length) % state.words.length;
         }
-        gsap.to(this.renderer.questionEl, { duration: 0.3, opacity: 0, scale: 0.8, ease: "power2.in", onComplete: () => this.renderer.renderQuestion() });
+    
+        const wordElement = this.renderer.questionEl;
+        const hintElement = this.renderer.hintEl;
+    
+        // 滑出動畫
+        gsap.to([wordElement, hintElement], {
+            x: '100%', // 滑出方向
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => {
+                this.renderer.renderQuestion(); // 更新內容
+                gsap.set([wordElement, hintElement], { x: '-100%' }); // 重置為滑入位置
+    
+                // 滑入動畫
+                gsap.to([wordElement, hintElement], {
+                    x: '0%',
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            }
+        });
+    
         this.saveState();
     }
+    
 
     toggleChineseDisplay() {
         state.showChinese = !state.showChinese;
@@ -363,6 +410,33 @@ class MenuController {
         });
     }
 }
+// function animateCardSwitch(direction) {
+//     const wordElement = $('#question');
+//     const hintElement = $('#hint');
+
+//     const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+
+//     if (direction === 'next') {
+//         tl.to(wordElement, { x: '-100%', opacity: 0, duration: 0.3 })
+//           .to(hintElement, { x: '-100%', opacity: 0, duration: 0.3 }, '-=0.3')
+//           .set(wordElement, { x: '100%' })
+//           .set(hintElement, { x: '100%' })
+//           .call(() => controller.handleNext())
+//           .to(wordElement, { x: '0%', opacity: 1, duration: 0.3 })
+//           .to(hintElement, { x: '0%', opacity: 1, duration: 0.3 }, '-=0.3');
+//     } else {
+//         tl.to(wordElement, { x: '100%', opacity: 0, duration: 0.3 })
+//           .to(hintElement, { x: '100%', opacity: 0, duration: 0.3 }, '-=0.3')
+//           .set(wordElement, { x: '-100%' })
+//           .set(hintElement, { x: '-100%' })
+//           .call(() => controller.handlePrev())
+//           .to(wordElement, { x: '0%', opacity: 1, duration: 0.3 })
+//           .to(hintElement, { x: '0%', opacity: 1, duration: 0.3 }, '-=0.3');
+//     }
+// }
+
+// $('#next').click(() => animateCardSwitch('next'));
+// $('#prev').click(() => animateCardSwitch('prev'));
 
 
 document.getElementById("house").addEventListener("click", function () {

@@ -15,9 +15,8 @@
 
 <body>
     <div id="app" class="container">
-        <h1 class="mb-4">看中文選英文</h1>
-        <hr>
-        <div class="mb-3" style="width: 36%; margin-right: 2%; display: inline-block;">
+        <!-- <hr> -->
+        <div class="mb-3" style="width: 36%; margin-right: 2%; display: inline-block;  margin-top: 10vh;">
             <label for="bookSelect" class="form-label">選擇類別:</label>
             <select id="bookSelect" name="book" class="form-select" @change="filterChapters($event.target.value)">
                 <option value="">選擇書籍</option>
@@ -132,15 +131,15 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="modal-footer">
+                    <!-- <div class="modal-footer">
                         <button id="submitBtn" type="submit" class="btn btn-primary">提交结果</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 
-    <nav class="navbar fixed-bottom d-flex">
+    <nav class="navbar fixed-bottom">
         <a class="navbar-brand unique-page" href="/index.html" role="button" id="home-link">
             <i class="fa-solid fa-house"></i> <span class="text">首頁</span>
         </a>

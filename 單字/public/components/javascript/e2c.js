@@ -8,7 +8,7 @@ const app = Vue.createApp({
             correctIndex: null,
             feedback: null,
             selectedChapter: null,
-            isEnglishToChineseMode: 0,
+            isEnglishToChineseMode: 1,
             score: 0,
             currentQuestionIndex: 0,
             timeLeft: 0, // 60 seconds

@@ -236,9 +236,6 @@ function showSubcategories(category) {
                 addSubcategory('Unit 23', '../json/vocabulary(L5 Unit23).json');
                 addSubcategory('Unit 24', '../json/vocabulary(L5 Unit24).json');
                 addSubcategory('Unit 25', '../json/vocabulary(L5 Unit25).json');
-
-
-                
                 break;
             case 'link-test':
                 addSubcategory('選擇篇目', '/404.html');
@@ -396,4 +393,3 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
